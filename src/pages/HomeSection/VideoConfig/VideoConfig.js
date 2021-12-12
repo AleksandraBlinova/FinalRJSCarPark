@@ -31,7 +31,13 @@ const VideoConfig = () => {
           конфигуратора Mazda
         </HeroP>
         <HeroBtn>
-          <ButtonHome to="#" onMouseEnter={onHover} onMouseLeave={onHover}>
+          <ButtonHome
+            to="#"
+            onMouseEnter={onHover}
+            onMouseLeave={onHover}
+            primary={true}
+            dark={true}
+          >
             Конфигуратор{hover ? <ArrowForward /> : <ArrowRight />}
           </ButtonHome>
         </HeroBtn>

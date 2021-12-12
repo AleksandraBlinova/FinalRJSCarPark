@@ -6,6 +6,7 @@ export const HeroContainer = styled.div`
   justify-context: center;
   align-items: center;
   position: relative;
+  margin-bottom: 10px;
 `;
 export const HeroBg = styled.div`
   margin-left: 120px;
@@ -30,10 +31,12 @@ export const HeroH1 = styled.h1`
   color: #fff;
   font-size: 48px;
   text-align: center;
+  margin-left: 340px;
 `;
 
 export const HeroP = styled.p`
   margin-top: 24px;
+  margin-left: 340px;
   color: #fff;
   font-size: 24px;
   text-align: center;
@@ -41,6 +44,7 @@ export const HeroP = styled.p`
 
 export const HeroBtn = styled.div`
   margin-top: 32px;
+  margin-left: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 
 export const ButtonHome = styled(Link)`
   border-radius: 50px;
-  background: ${({ primary }) => (primary ? "#01BF71" : "#010606")};
+  background: ${({ primary }) => (primary ? "#000" : "#AB2233")};
   white-space: nowrap;
   outline: none;
   border: none;
@@ -11,4 +11,15 @@ export const ButtonHome = styled(Link)`
   cursor: pointer;
   display: flex;
   align-items: center;
+  color: ${({ dark }) => (dark ? "#fff" : "#000")};
+  padding: ${({ big }) => (big ? "30px 20px  30px" : "30px 20px  30px")};
+  width: 200px;
+  height: 60px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: ${({ primary }) => (primary ? "#fff" : "#AB2233")};
+    color: ${({ dark }) => (dark ? "#000" : "#000")};
+  }
 `;
