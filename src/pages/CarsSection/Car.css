@@ -1,0 +1,26 @@
+.Car{
+    margin-left: 20px;
+    margin: 40px;
+}
+
+.delete-btn{
+    border-radius: 4px;
+    background: #df2f2f;
+    padding: 8px 14px;
+    color: #fff;
+    border:none;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    
+}
+
+.h1{
+    padding: 3rem;
+    text-align: center;
+}
+
+
+

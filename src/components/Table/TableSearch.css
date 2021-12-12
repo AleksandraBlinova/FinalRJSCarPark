@@ -1,0 +1,9 @@
+.form-control{
+    position:fixed;
+    max-width: 32%;
+}
+
+.input-group-prepend{
+    margin-left: 30rem;
+    
+}

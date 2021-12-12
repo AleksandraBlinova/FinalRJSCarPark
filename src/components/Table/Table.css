@@ -1,0 +1,37 @@
+table {
+    width: 100%;
+}
+
+    table th {
+        padding: 10px 15px;
+        color: #fff;
+        background-color: #202020
+    }
+
+    table td {
+        
+        padding: 10px 5px;
+        background-color: #fff
+    }
+
+.table-wrapper {
+    overflow-y: hidden;
+    overflow-x: auto;
+    max-width: 100%;
+    position: relative;
+    background: #bcbcbc
+}
+
+.container-table {
+    
+    width: 100%;
+    max-width: 2020px;
+    height: 100%;
+    padding: 0 120px;
+    margin: 0 auto
+}
+
+img {
+    width: 300px;
+    height: auto
+}
