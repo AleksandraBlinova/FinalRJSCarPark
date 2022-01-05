@@ -1,4 +1,3 @@
-import { Button } from "bootstrap";
 import React, { useState } from "react";
 import Video from "../../../video/04_configurator_promo1280x720px.mp4";
 import {

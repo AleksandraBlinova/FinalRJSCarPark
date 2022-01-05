@@ -6,7 +6,7 @@ export const ButtonHome = styled(Link)`
   background: ${({ primary }) => (primary ? "#000" : "#AB2233")};
   white-space: nowrap;
   outline: none;
-  border: none;
+  border-color: black;
   font-size: 20px;
   cursor: pointer;
   display: flex;
@@ -19,7 +19,7 @@ export const ButtonHome = styled(Link)`
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: ${({ primary }) => (primary ? "#fff" : "#AB2233")};
+    background: ${({ primary }) => (primary ? "grey" : "#AB2233")};
     color: ${({ dark }) => (dark ? "#000" : "#000")};
   }
 `;
