@@ -5,11 +5,13 @@ import Footer from "../../../components/Footer/Footer";
 import CaroselHome from "../CaroselHome/CaroselHome";
 import VideoConfig from "../VideoConfig/VideoConfig";
 import HundredyearsConfig from "../Hundredyears/Hundredyears";
+import EndlessProgress from "../EndlessProgress/EndlessProgress";
 const Home = () => {
   return (
     <>
       <CaroselHome />
       <Info />
+      <EndlessProgress />
       <VideoConfig />
       <HundredyearsConfig />
       <Footer />
