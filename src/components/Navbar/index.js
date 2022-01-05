@@ -9,11 +9,11 @@ import {
 } from "./NavbarElements";
 import axios from "axios";
 
-import Toggle from "../Toggler";
+import Toggle from "../SwitchTheme/Toggler";
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "../Themes";
-import { useDarkMode } from "../useDarkMode";
-import { GlobalStyles } from "../GlobalStyles";
+import { lightTheme, darkTheme } from "../SwitchTheme/Themes";
+import { useDarkMode } from "../SwitchTheme/useDarkMode";
+import { GlobalStyles } from "../../components/SwitchTheme/GlobalStyles";
 
 const Navbar = (props) => {
   const [theme, themeToggler, mountedComponent] = useDarkMode();

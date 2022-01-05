@@ -1,15 +1,14 @@
-import React from 'react'
-import Footer from '../HomeSection/Footer'
-import Offers from '../OfferSection/Offers'
+import React from "react";
+import Footer from "../../components/Footer/Footer";
+import Offers from "../OfferSection/Offers";
 
 const index = () => {
-    return (
-        < >
-           
-            <Offers /> 
-            <Footer /> 
-        </>
-    )
-}
+  return (
+    <>
+      <Offers />
+      <Footer />
+    </>
+  );
+};
 
-export default index
+export default index;

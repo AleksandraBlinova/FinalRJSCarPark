@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./pages/HomeSection";
+import Home from "./pages/HomeSection/HomeTogether";
 import Offers from "./pages/OfferSection/index";
 import form from "./pages/forms/Form";
 import Contacts from "./pages/ContactsSection/Contacts";
