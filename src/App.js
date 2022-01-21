@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/HomeSection/HomeTogether";
 import Offers from "./pages/OfferSection/index";
 import form from "./pages/forms/Form";
-import Contacts from "./pages/ContactsSection/Contacts";
+import Contacts from "./pages/ContactsSection/ContactsInfo/Contacts";
 import Cars from "./pages/CarsSection/Cars";
 import FormL from "./pages/forms/FormL";
 import FormLogOut from "./pages/forms/FormLogOut";

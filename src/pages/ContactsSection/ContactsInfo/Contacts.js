@@ -1,6 +1,8 @@
 import React from "react";
 import "./Contacts.css";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../../components/Footer/Footer";
+import AdditionalInfo from "../AdditionalInfo/AdditionalGeneral/AdditionalInfo";
+import FeedbackLink from "../FeedbackLink/FeedbackLink";
 
 const Contacts = () => {
   return (
@@ -27,6 +29,8 @@ const Contacts = () => {
           "Метрополис"
         </p>
       </div>
+      <AdditionalInfo />
+      <FeedbackLink />
       <Footer />
     </>
   );

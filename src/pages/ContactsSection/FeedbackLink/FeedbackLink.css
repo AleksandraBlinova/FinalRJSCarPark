@@ -1,0 +1,18 @@
+.feedback_info {
+  padding: 20px 0px 40px 0px;
+}
+
+.feedback_text {
+  font-size: 18px;
+  text-align: center;
+}
+.feedback_link {
+  font-size: 18px;
+  margin-left: 5px;
+  color: purple;
+}
+
+.feedback_link:hover {
+  color: #08020a;
+  transition: 0.8s ease-in-out;
+}
