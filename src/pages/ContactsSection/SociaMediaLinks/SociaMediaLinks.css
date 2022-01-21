@@ -1,0 +1,18 @@
+.socmed_info {
+  padding: 20px 0px 40px 0px;
+}
+
+.socmed_text {
+  font-size: 18px;
+  text-align: center;
+}
+.socmed_link {
+  font-size: 18px;
+  margin-left: 5px;
+  color: purple;
+}
+
+.socmed_link:hover {
+  color: #08020a;
+  transition: 0.8s ease-in-out;
+}

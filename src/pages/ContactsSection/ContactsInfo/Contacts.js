@@ -3,6 +3,7 @@ import "./Contacts.css";
 import Footer from "../../../components/Footer/Footer";
 import AdditionalInfo from "../AdditionalInfo/AdditionalGeneral/AdditionalInfo";
 import FeedbackLink from "../FeedbackLink/FeedbackLink";
+import SocialMediaLinks from "../SociaMediaLinks/SociaMediaLinks";
 
 const Contacts = () => {
   return (
@@ -31,6 +32,7 @@ const Contacts = () => {
       </div>
       <AdditionalInfo />
       <FeedbackLink />
+      <SocialMediaLinks />
       <Footer />
     </>
   );

@@ -13,6 +13,7 @@ export default function FeedbackLink() {
           <a href="#" className="feedback_link">
             «Обратная связь»
           </a>
+          .
         </Typography>
       </div>
       <></>
