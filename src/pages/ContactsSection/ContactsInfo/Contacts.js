@@ -1,15 +1,49 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Contacts.css";
 import Footer from "../../../components/Footer/Footer";
 import AdditionalInfo from "../AdditionalInfo/AdditionalGeneral/AdditionalInfo";
 import FeedbackLink from "../FeedbackLink/FeedbackLink";
 import SocialMediaLinks from "../SociaMediaLinks/SociaMediaLinks";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import {
+  HeroContainer,
+  HeroBg,
+  HeroContent,
+  HeroH1,
+} from "./ContactsElements.style";
 
 const Contacts = () => {
+  const titleRef = useRef();
+  function handleBackClick() {
+    titleRef.current.scrollIntoView({ behavior: "smooth" });
+  }
   return (
     <>
       <div>
-        <h1 className="title-h1">
+        <HeroContainer>
+          <HeroBg>
+            <img
+              src="../contactspage/contact_us_hero_01.jpg"
+              alt="contact_us_hero"
+              style={{ width: "100%" }}
+            />
+          </HeroBg>
+          <HeroContent>
+            <HeroH1>СВЯЗАТЬСЯ С НАМИ</HeroH1>
+            <HeroH1>ПОДДЕРЖКА КЛИЕНТОВ</HeroH1>
+
+            <KeyboardArrowDownIcon
+              sx={{ fontSize: 80 }}
+              style={{
+                marginLeft: 350,
+              }}
+              onClick={handleBackClick}
+              className="down-link"
+            />
+          </HeroContent>
+        </HeroContainer>
+
+        <h1 ref={titleRef} className="title-h1">
           МЫ ВСЕГДА РАДЫ ВАМ ПОМОЧЬ И ОТВЕТИТЬ НА ЛЮБЫЕ ВАШИ ВОПРОСЫ
         </h1>
 
@@ -33,6 +67,7 @@ const Contacts = () => {
       <AdditionalInfo />
       <FeedbackLink />
       <SocialMediaLinks />
+
       <Footer />
     </>
   );

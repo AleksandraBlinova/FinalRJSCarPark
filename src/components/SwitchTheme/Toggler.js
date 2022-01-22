@@ -1,30 +1,23 @@
-import React from 'react'
+import React from "react";
 
-import { func, string } from 'prop-types';
+import { func, string } from "prop-types";
 
-import styled from "styled-components"
-import Switch from '@material-ui/core/Switch';
+import styled from "styled-components";
+import Switch from "@material-ui/core/Switch";
 
-
-const Toggle = ({theme, toggleTheme }) => {
-
-    return (
+const Toggle = ({ theme, toggleTheme }) => {
+  return (
     <>
-    <h5>Темная тема</h5>
-    <Switch onClick={toggleTheme}
-    />
+      <h5>Темная тема</h5>
+      <Switch onClick={toggleTheme} />
     </>
-    
-    );
-    
-    };
-    
-    Toggle.propTypes = {
-    
-    theme: string.isRequired,
-    
-    toggleTheme: func.isRequired,
-    
-    }
-    
-    export default Toggle;
+  );
+};
+
+Toggle.propTypes = {
+  theme: string.isRequired,
+
+  toggleTheme: func.isRequired,
+};
+
+export default Toggle;

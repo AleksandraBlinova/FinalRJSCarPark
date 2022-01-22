@@ -31,3 +31,12 @@
   width: 58%;
   margin-bottom: 40px;
 }
+.down-link {
+  font-size: 80px;
+}
+
+.down-link:hover {
+  color: #ffffff;
+  transition: 0.3s ease-out;
+  font-size: 150px;
+}
