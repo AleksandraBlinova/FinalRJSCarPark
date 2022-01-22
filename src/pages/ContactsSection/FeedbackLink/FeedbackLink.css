@@ -3,8 +3,11 @@
 }
 
 .feedback_text {
-  font-size: 18px;
+  font-size: 17px;
+  width: 85%;
+  margin-left: 80px;
   text-align: center;
+  line-height: 2rem;
 }
 .feedback_link {
   font-size: 18px;

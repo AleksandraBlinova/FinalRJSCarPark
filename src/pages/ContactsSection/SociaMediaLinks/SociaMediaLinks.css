@@ -3,8 +3,11 @@
 }
 
 .socmed_text {
-  font-size: 18px;
+  font-size: 17px;
   text-align: center;
+  width: 85%;
+  margin-left: 80px;
+  line-height: 2rem;
 }
 .socmed_link {
   font-size: 18px;

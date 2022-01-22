@@ -1,7 +1,13 @@
 .contacts__item__region {
-  padding: 0px 260px 40px 40px;
+  padding: 0px 235px 50px 40px;
 }
 
 .contacts__item__regionText {
+  font-size: 30px;
+  text-align: center;
+}
+
+.contacts__item__text {
   font-size: 18px;
+  margin-top: 20px;
 }

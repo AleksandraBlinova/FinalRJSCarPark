@@ -1,18 +1,19 @@
 .title-h1 {
   font-family: "PT Sans", sans-serif;
   font-size: 35px;
-  margin-top: 80px;
+  margin-top: 130px;
   text-align: center;
 }
 
 .contacts__container {
   flex-flow: row;
-  max-width: 1000px;
+  max-width: 1200px;
   width: 100%;
-  margin: 0 0 0 390px;
+  margin: 0 0 0 20px;
 }
 .contacts__wrapper {
   position: relative;
+  align-items: center;
 }
 
 @media only screen and (min-width: 600px) {

@@ -9,6 +9,9 @@ export default function RegionsInfo(props) {
         <Typography className="contacts__item__regionText">
           {props.label}
         </Typography>
+        <div className="contacts__item__info">
+          <Typography className="contacts__item__text">{props.text}</Typography>
+        </div>
       </div>
     </>
   );

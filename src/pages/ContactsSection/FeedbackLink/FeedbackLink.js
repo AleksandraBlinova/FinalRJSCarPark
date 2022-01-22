@@ -5,7 +5,6 @@ import { Typography } from "antd";
 export default function FeedbackLink() {
   return (
     <>
-      <h1 className="title-h1">ОБРАТНАЯ СВЯЗЬ</h1>
       <div className="feedback_info">
         <Typography className="feedback_text">
           Если вам неудобно звонить на инфо-линию Mazda, есть возможность задать

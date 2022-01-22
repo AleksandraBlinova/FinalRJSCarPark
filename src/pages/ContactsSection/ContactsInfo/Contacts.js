@@ -4,13 +4,14 @@ import Footer from "../../../components/Footer/Footer";
 import AdditionalInfo from "../AdditionalInfo/AdditionalGeneral/AdditionalInfo";
 import FeedbackLink from "../FeedbackLink/FeedbackLink";
 import SocialMediaLinks from "../SociaMediaLinks/SociaMediaLinks";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import {
-  HeroContainer,
-  HeroBg,
-  HeroContent,
-  HeroH1,
-} from "./ContactsElements.style";
+import ClientsSupport from "../ClientsSupport/ClientsSupport";
+import GeneralInfo from "../GeneralInfo/GeneralInfo";
+
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const Contacts = () => {
   const titleRef = useRef();
@@ -18,58 +19,62 @@ const Contacts = () => {
     titleRef.current.scrollIntoView({ behavior: "smooth" });
   }
   return (
-    <>
+    <div>
       <div>
-        <HeroContainer>
-          <HeroBg>
-            <img
-              src="../contactspage/contact_us_hero_01.jpg"
-              alt="contact_us_hero"
-              style={{ width: "100%" }}
-            />
-          </HeroBg>
-          <HeroContent>
-            <HeroH1>СВЯЗАТЬСЯ С НАМИ</HeroH1>
-            <HeroH1>ПОДДЕРЖКА КЛИЕНТОВ</HeroH1>
-
-            <KeyboardArrowDownIcon
-              sx={{ fontSize: 80 }}
-              style={{
-                marginLeft: 350,
-              }}
-              onClick={handleBackClick}
-              className="down-link"
-            />
-          </HeroContent>
-        </HeroContainer>
-
+        <ClientsSupport handleBackClick={handleBackClick} />
         <h1 ref={titleRef} className="title-h1">
           МЫ ВСЕГДА РАДЫ ВАМ ПОМОЧЬ И ОТВЕТИТЬ НА ЛЮБЫЕ ВАШИ ВОПРОСЫ
         </h1>
-
-        <p className="text">
-          Большое спасибо за интерес к Mazda! Будучи открытой компанией, мы
-          поддерживаем <p className="pad"></p>
-          стремление клиентов к общению с Mazda. Для вашего удобства мы
-          постоянно расширяем <p className="pad"></p>
-          количество каналов, через которые вы можете задать тот или иной
-          вопрос, будь то интерес<p className="pad"></p>к конкретной модели
-          Mazda или интерес к сервисам, которые вам всегда готовы оказать{" "}
-          <p className="pad"></p>
-          дилеры Mazda, либо вы просто хотите высказать свое мнение или сделать
-          предложение.
-        </p>
-        <p className="adress">
-          Адрес: 125171, г.Москва, Ленинградское шоссе, 16А, стр.2 БЦ
-          "Метрополис"
-        </p>
+        <GeneralInfo />
       </div>
-      <AdditionalInfo />
-      <FeedbackLink />
-      <SocialMediaLinks />
+      <div className="accordion">
+        <Accordion style={{ boxShadow: "none" }} className="accordion_element">
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="1-content"
+            id="1-header"
+          >
+            <Typography className="accordion_element_text">
+              ИНФО-ЛИНИЯ MAZDA
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <AdditionalInfo />
+          </AccordionDetails>
+        </Accordion>
 
+        <Accordion style={{ boxShadow: "none" }} className="accordion_element">
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="2-content"
+            id="2-header"
+          >
+            <Typography className="accordion_element_text">
+              ОБРАТНАЯ СВЯЗЬ
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <FeedbackLink />
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion style={{ boxShadow: "none" }} className="accordion_element">
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="3-content"
+            id="3-header"
+          >
+            <Typography className="accordion_element_text">
+              MAZDA В СОЦИАЛЬНЫХ СЕТЯХ
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <SocialMediaLinks />
+          </AccordionDetails>
+        </Accordion>
+      </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

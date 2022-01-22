@@ -5,7 +5,6 @@ import { Typography } from "antd";
 export default function SocialMediaLinks() {
   return (
     <>
-      <h1 className="title-h1">MAZDA В СОЦИАЛЬНЫХ СЕТЯХ</h1>
       <div className="socmed_info">
         <Typography className="socmed_text">
           Официальные группы Mazda открыты на

@@ -12,14 +12,5 @@
   margin-right: 0px;
   margin-bottom: 0px;
   margin-left: 0px;
-  width: 200px;
-  height: auto;
-}
-
-.contacts__item__info {
-  padding: 65px 50px 0px 15px;
-}
-
-.contacts__item__text {
-  font-size: 18px;
+  width: 60%;
 }

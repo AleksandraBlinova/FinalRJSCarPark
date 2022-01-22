@@ -14,9 +14,7 @@ export default function NumberInfo(props) {
           />
         </figure>
       </li>
-      <div className="contacts__item__info">
-        <Typography className="contacts__item__text">{props.text}</Typography>
-      </div>
+
       <></>
     </>
   );
