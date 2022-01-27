@@ -6,6 +6,7 @@ import CaroselHome from "../CaroselHome/CaroselHome";
 import VideoConfig from "../VideoConfig/VideoConfig";
 import HundredyearsConfig from "../Hundredyears/Hundredyears";
 import EndlessProgress from "../EndlessProgress/EndlessProgress";
+import { Box } from "@material-ui/core";
 const Home = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const Home = () => {
       <EndlessProgress />
       <VideoConfig />
       <HundredyearsConfig />
+
       <Footer />
     </>
   );
