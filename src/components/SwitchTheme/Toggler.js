@@ -8,7 +8,6 @@ import Switch from "@material-ui/core/Switch";
 const Toggle = ({ theme, toggleTheme }) => {
   return (
     <>
-      <h5>Темная тема</h5>
       <Switch onClick={toggleTheme} />
     </>
   );

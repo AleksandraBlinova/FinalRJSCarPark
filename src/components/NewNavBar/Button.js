@@ -1,29 +1,28 @@
-import React from "react";
-import "./Button.css";
+import { NavLink as Link } from "react-router-dom";
+import styled from "styled-components";
 
-const STYLES = ["btn--primary", "btn--outline"];
-const SIZES = ["btn--medium", "btn--large"];
+export const NavBtn = styled.nav`
+  display: flex;
+  align-items: center;
+  height: 70px;
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
+`;
 
-export const Button = ({
-  children,
-  type,
-  onClick,
-  buttonStyle,
-  buttonSize,
-}) => {
-  const checkButtonStyle = STYLES.includes(buttonStyle)
-    ? buttonStyle
-    : STYLES[0];
-
-  const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
-
-  return (
-    <button
-      className={`btn ${checkButtonStyle} ${checkButtonSize}`}
-      onClick={onClick}
-      type={type}
-    >
-      {children}
-    </button>
-  );
-};
+export const NavBtnLink = styled(Link)`
+  border-radius: 4px;
+  background: #ccc4c2;
+  padding: 10px 22px;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s eain-out;
+  text-decoration: none;
+  margin-left: 24px;
+  &:hover {
+    transition: all 0.2s eain-out;
+    background: #fff;
+    color: #010606;
+  }
+`;
