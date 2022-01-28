@@ -44,6 +44,9 @@ function Navbar(props) {
         <GlobalStyles />
 
         <nav className="navbar">
+          <div className="menu-icon" onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          </div>
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             <img
               src="favicon.ico"
@@ -51,11 +54,6 @@ function Navbar(props) {
               alt="logo"
             />
           </Link>
-
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
-          </div>
-
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <Link

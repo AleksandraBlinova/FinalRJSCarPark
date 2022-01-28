@@ -13,7 +13,7 @@
   margin-left: 20px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 0rem;
+  margin-bottom: 13px;
 }
 
 .fa-firstdraft {
@@ -40,13 +40,16 @@
 .nav-links {
   color: white;
   text-decoration: none;
-  padding: 0.5rem 0rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 .nav-links:hover {
-  background-color: #4e5255;
+  background-color: #3c3d3d;
+  color: rgb(255, 255, 255);
   border-radius: 4px;
-  transition: all 0.2s ease-out;
+  transition: all 1s ease-out;
+  cursor: pointer;
 }
 
 .fa-bars {
@@ -91,11 +94,13 @@
     padding: 2rem;
     width: 100%;
     display: table;
+    color: #fff;
   }
 
   .nav-links:hover {
-    background-color: #7b05aa;
+    background-color: #4e5255;
     border-radius: 0;
+    color: #fff;
   }
 
   .navbar-logo {
