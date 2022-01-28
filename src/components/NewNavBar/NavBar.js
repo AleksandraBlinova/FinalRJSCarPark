@@ -82,6 +82,7 @@ function Navbar(props) {
                 Контакты
               </Link>
             </li>
+
             <li>
               <Link
                 to="/sign-up"
