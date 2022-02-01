@@ -3,7 +3,7 @@ import "./EndlessProgress.css";
 
 const EndlessProgress = () => {
   return (
-    <section>
+    <section className="endless-container">
       <h1 className="endless-h1">БЕСКОНЕЧНЫЙ ПРОГРЕСС</h1>
 
       <p className="text2">

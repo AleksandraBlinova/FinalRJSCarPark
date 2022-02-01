@@ -1,0 +1,41 @@
+.hundred-text {
+  font-size: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding-bottom: 15px;
+  margin-left: 20%;
+  margin-right: 20%;
+  text-align: center;
+}
+
+.hundred-container {
+  margin-top: 20px;
+}
+
+.hundred-image {
+  height: auto;
+  margin-top: 60px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.hundred-btns {
+  margin-top: 32px;
+  margin-bottom: 60px;
+}
+
+.hundred-btn {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+@media screen and (min-width: 960px) {
+  .hundred-image {
+    width: 35%;
+  }
+}

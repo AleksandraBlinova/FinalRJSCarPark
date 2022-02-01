@@ -3,7 +3,7 @@ import "./Info.css";
 
 const Info = () => {
   return (
-    <section>
+    <section className="container-info">
       <h1 className="mazda-info">О КОМПАНИИ</h1>
       <p className="text1">
         Mazda Москва и Mazda Санкт-Петербург-официальные дилеры Mazda в России

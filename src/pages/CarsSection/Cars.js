@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Cars.css";
 import Car from "./Car.js";
 import CarCreate from "../CarsSection/CarCreate/CarCreate";
-import Footer from "../../components/Footer/Footer";
+import { NewFooter } from "../../components/New Footer/NewFooter";
 import CarChange from "../CarsSection/CarChange/CarChange";
 import PropTypes from "prop-types";
 import axios from "axios";

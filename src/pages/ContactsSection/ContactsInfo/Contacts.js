@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "./Contacts.css";
-import Footer from "../../../components/Footer/Footer";
+import { NewFooter } from "../../../components/New Footer/NewFooter";
 import AdditionalInfo from "../AdditionalInfo/AdditionalGeneral/AdditionalInfo";
 import FeedbackLink from "../FeedbackLink/FeedbackLink";
 import SocialMediaLinks from "../SociaMediaLinks/SociaMediaLinks";
@@ -73,7 +73,7 @@ const Contacts = () => {
           </AccordionDetails>
         </Accordion>
       </div>
-      <Footer />
+      <NewFooter />
     </div>
   );
 };

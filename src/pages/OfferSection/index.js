@@ -1,12 +1,12 @@
 import React from "react";
-import Footer from "../../components/Footer/Footer";
+import { NewFooter } from "../../components/New Footer/NewFooter";
 import Offers from "../OfferSection/Offers";
 
 const index = () => {
   return (
     <>
       <Offers />
-      <Footer />
+      <NewFooter />
     </>
   );
 };
