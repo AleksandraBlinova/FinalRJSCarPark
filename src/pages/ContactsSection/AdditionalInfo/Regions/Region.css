@@ -1,13 +1,24 @@
-.contacts__item__region {
-  padding: 0px 235px 50px 40px;
+.regions__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  object-fit: contain;
+  position: relative;
 }
 
-.contacts__item__regionText {
-  font-size: 30px;
-  text-align: center;
+.regions-text {
+  font-size: 16px;
 }
 
-.contacts__item__text {
-  font-size: 18px;
-  margin-top: 20px;
+@media screen and (max-width: 960px) {
+  .regions-text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .regions-text {
+    font-size: 12px;
+  }
 }

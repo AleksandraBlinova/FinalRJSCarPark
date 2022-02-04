@@ -1,12 +1,10 @@
 .socmed_info {
-  padding: 20px 0px 40px 0px;
+  margin: 0 auto;
 }
 
 .socmed_text {
   font-size: 17px;
   text-align: center;
-  width: 85%;
-  margin-left: 80px;
   line-height: 2rem;
 }
 .socmed_link {

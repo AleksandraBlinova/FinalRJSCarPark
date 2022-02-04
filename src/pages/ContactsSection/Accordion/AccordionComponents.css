@@ -1,0 +1,29 @@
+.accordion_element {
+  padding: 40px 50px 40px 0;
+}
+
+.accordion_element_text {
+  color: #6e6e6e;
+  padding-left: 10px;
+}
+
+.accordion-container > h1 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+  .accordion-container {
+    margin-top: 40px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .accordion-container {
+    width: 1000px;
+    margin: 0 auto;
+    align-items: center;
+    margin-top: 100px;
+  }
+}

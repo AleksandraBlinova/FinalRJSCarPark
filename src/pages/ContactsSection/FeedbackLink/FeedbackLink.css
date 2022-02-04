@@ -1,11 +1,9 @@
 .feedback_info {
-  padding: 20px 0px 40px 0px;
+  margin: 0 auto;
 }
 
 .feedback_text {
   font-size: 17px;
-  width: 85%;
-  margin-left: 80px;
   text-align: center;
   line-height: 2rem;
 }
@@ -18,4 +16,14 @@
 .feedback_link:hover {
   color: #08020a;
   transition: 0.8s ease-in-out;
+}
+
+@media screen and (max-width: 960px) {
+  .feedback_text {
+    width: 100%;
+    text-align: center;
+  }
+  .feedback_info {
+    margin: 0 auto;
+  }
 }

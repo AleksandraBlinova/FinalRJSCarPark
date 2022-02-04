@@ -1,62 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital@0;1&display=swap");
 .title-h1 {
-  font-family: "PT Sans", sans-serif;
   font-size: 45px;
-  margin-top: 50px;
-  margin-left: 490px;
-  width: 30%;
   text-align: center;
   font-weight: bold;
-}
-
-.text {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 17px;
-  margin-top: 50px;
-  margin-left: 130px;
-  text-align: center;
-  line-height: 2rem;
-  width: 25%;
-}
-
-.pad {
-  margin-top: 10px;
-}
-
-.adress {
-  margin-top: 20px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
-  margin-top: 50px;
-  margin-left: 130px;
-  text-align: center;
-  width: 25%;
-  margin-bottom: 60px;
-  font-weight: 600;
-}
-.down-link {
-  font-size: 80px;
-}
-
-.down-link:hover {
-  color: #ffffff;
-  transition: 0.3s ease-out;
-  font-size: 150px;
-}
-
-.accordion {
-  margin-left: 300px;
-  width: 1000px;
-  align-items: center;
-  margin-bottom: 60px;
-  margin-top: 130px;
-}
-
-.accordion_element {
-  padding: 40px 50px 40px 0;
-}
-
-.accordion_element_text {
-  color: #6e6e6e;
-  padding-left: 10px;
+  margin-bottom: 30px;
+  margin-top: 100px;
 }

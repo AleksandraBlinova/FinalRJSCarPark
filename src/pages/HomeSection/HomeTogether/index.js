@@ -3,7 +3,7 @@ import Info from "../AboutCompany/Info";
 import "./index.css";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
 import ImageSlider from "../CaroselHome/ImageSlider";
-import VideoConfig from "../../../components/VideoConfig/VideoConfig";
+import VideoConfig from "../../../components/VideoConfigHomeSec/VideoConfig";
 import HundredyearsConfig from "../Hundredyears/Hundredyears";
 import EndlessProgress from "../EndlessProgress/EndlessProgress";
 

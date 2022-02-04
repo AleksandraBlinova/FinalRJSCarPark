@@ -2,20 +2,11 @@ import * as React from "react";
 import "./NumberInfo.css";
 import { Typography } from "antd";
 
-export default function NumberInfo(props) {
+export default function NumberInfo() {
   return (
-    <>
-      <li className="contacts__item">
-        <figure className="contacts__item__pic-wrap">
-          <img
-            className="contacts__item__img"
-            alt="ContactsImage"
-            src={props.src}
-          />
-        </figure>
-      </li>
-
-      <></>
-    </>
+    <div className="numbers__container">
+      <img src="../contactspage/detskie-raskraski-russia19.jpg" />
+      <img src="../contactspage/detskie-raskraski-moscow.jpg" />
+    </div>
   );
 }
