@@ -83,6 +83,16 @@ function Navbar(props) {
               </Link>
             </li>
 
+            <li className="nav-item">
+              <Link
+                to="/configurator"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                Конфигуратор
+              </Link>
+            </li>
+
             <li>
               <Link
                 to="/sign-up"

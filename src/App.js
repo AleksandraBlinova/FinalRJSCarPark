@@ -9,6 +9,7 @@ import Contacts from "./pages/ContactsSection/ContactsInfo/Contacts";
 import Cars from "./pages/CarsSection/Cars";
 import FormL from "./pages/forms/FormL";
 import FormLogOut from "./pages/forms/FormLogOut";
+import ConfMain from "./pages/ConfiguratorSection/ConfMain/ConfMain";
 
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
@@ -27,6 +28,7 @@ function App() {
           <Route path="/offers" component={Offers} />
           <Route path="/contacts" component={Contacts} />
           <Route path="/signin" component={form} />
+          <Route path="/configurator" component={ConfMain} />
 
           <Route
             path="/models"

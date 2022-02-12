@@ -3,6 +3,7 @@ import { ButtonHome } from "../BtnHome/ButtonHome";
 import "./VideoConfig.css";
 import Video from "../../video/04_configurator_promo1280x720px.mp4";
 import { ArrowForward, ArrowRight } from "./Button";
+import ConfMain from "../../pages/ConfiguratorSection/ConfMain/ConfMain";
 
 function VideoConfig() {
   const [hover, setHover] = useState(false);
