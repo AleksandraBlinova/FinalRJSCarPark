@@ -1,8 +1,0 @@
-.cards-main-container {
-  margin: 0 auto;
-  display: grid;
-  grid-template: auto/repeat(3, 1fr);
-  grid-gap: 2rem;
-  padding: 1rem 1rem 0 1rem;
-  max-width: 1220px;
-}

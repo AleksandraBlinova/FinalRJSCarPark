@@ -1,6 +1,7 @@
 import React from "react";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
-import CardsMain from "../CardsMain/CardsMain";
+import CardsMain from "./CardsMain/CardsMain";
+import OptionsMain from "./OptionsMain/OptionsMain";
 import "./ConfMain.css";
 
 const ConfMain = () => {
@@ -8,6 +9,7 @@ const ConfMain = () => {
     <>
       <div className="conf-main-container">
         <h1>ВЫБЕРИТЕ МОДЕЛЬ</h1>
+        <OptionsMain />
         <CardsMain />
         <div className="prices-container">
           <p className="prices-text-conf-main">
