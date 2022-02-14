@@ -10,7 +10,7 @@ const ConfMain = () => {
       <div className="conf-main-container">
         <h1>ВЫБЕРИТЕ МОДЕЛЬ</h1>
         <OptionsMain />
-        <CardsMain />
+
         <div className="prices-container">
           <p className="prices-text-conf-main">
             Цены действительны с 29 декабря 2021 года на автомобили 2021 года
