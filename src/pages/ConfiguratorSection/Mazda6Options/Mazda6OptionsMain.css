@@ -1,0 +1,20 @@
+.mazda6-options-main-container {
+  margin: 0 auto;
+  padding: 0 25px;
+  max-width: 1220px;
+}
+
+.mazda6-options-link {
+  color: grey;
+  font-size: 18px;
+}
+
+.mazda6-options-link:hover {
+  color: rgb(85, 25, 25);
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.mazda6-options-link-container {
+  margin-top: 30px;
+}

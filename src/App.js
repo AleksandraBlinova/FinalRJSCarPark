@@ -10,6 +10,9 @@ import Cars from "./pages/CarsSection/Cars";
 import FormL from "./pages/forms/FormL";
 import FormLogOut from "./pages/forms/FormLogOut";
 import ConfMain from "./pages/ConfiguratorSection/ConfMain/ConfMain";
+import Mazda6OptionsMain from "./pages/ConfiguratorSection/Mazda6Options/Mazda6OptionsMain";
+import MazdaCX5OptionsMain from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5OptionsMain";
+import MazdaCX9OptionsMain from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaCX9OptionsMain";
 
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
@@ -29,6 +32,9 @@ function App() {
           <Route path="/contacts" component={Contacts} />
           <Route path="/signin" component={form} />
           <Route path="/configurator" component={ConfMain} />
+          <Route path="/mazda6config" component={Mazda6OptionsMain} />
+          <Route path="/mazdacx5config" component={MazdaCX5OptionsMain} />
+          <Route path="/mazdacx9config" component={MazdaCX9OptionsMain} />
 
           <Route
             path="/models"

@@ -15,7 +15,7 @@ const CardsMain = (props) => {
         <Card
           src="../configurator/main-cards/m6_new.png"
           text="MAZDA 6"
-          path=""
+          path="/mazda6config"
           type="Седан"
           price="от 1 843 000 ₽"
         />
@@ -30,9 +30,9 @@ const CardsMain = (props) => {
         <Card
           src="../configurator/main-cards/cx-5_2020_blue.png"
           text="MAZDA CX-5"
-          path=""
           type="Кроссовер"
           price="от 1 919 000 ₽"
+          path="/mazdacx5config"
         />
       </div>
       <div
@@ -45,9 +45,9 @@ const CardsMain = (props) => {
         <Card
           src="../configurator/main-cards/mcx9.png"
           text="MAZDA CX-9"
-          path=""
           type="Кроссовер"
           price="от 3 310 000 ₽"
+          path="/mazdacx9config"
         />
       </div>
     </div>
