@@ -1,10 +1,8 @@
 import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
-import Mazda6OptionsMain from "../../Mazda6Options/Mazda6OptionsMain";
 
 const Card = (props) => {
-  console.log("dfdf", props.path);
   return (
     <div className="cards-item">
       <Link className="cards-item-link" to={props.path}>

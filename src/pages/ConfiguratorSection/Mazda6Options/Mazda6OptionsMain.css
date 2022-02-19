@@ -11,10 +11,108 @@
 
 .mazda6-options-link:hover {
   color: rgb(85, 25, 25);
-  font-size: 20px;
+  font-size: 19px;
   text-decoration: none;
 }
 
-.mazda6-options-link-container {
+.mazda6-options-link-h2-container {
+  display: grid;
+  grid-template: auto/repeat(11, 1fr);
+  grid-column-gap: 12px;
+  align-items: center;
+
+  padding: 0 25px;
   margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.mazda6-options-link-h2-container > h2 {
+  font-size: 22px;
+  grid-column: 4/11;
+  text-align: center;
+}
+
+.main-container-engine-cards {
+  margin: 0 auto;
+  display: grid;
+  grid-template: auto/repeat(3, 1fr);
+  grid-gap: 2rem;
+  padding: 1rem 0rem 0rem 0rem;
+  max-width: 900px;
+}
+
+@media only screen and (max-width: 1020px) {
+  .mazda6-options-link {
+    color: grey;
+    font-size: 14px;
+  }
+
+  .mazda6-options-link-h2-container > h2 {
+    font-size: 18px;
+  }
+  .main-container-engine-cards {
+    max-width: 700px;
+  }
+  .mazda6-options-main-container {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mazda6-options-link {
+    color: grey;
+    font-size: 14px;
+  }
+
+  .mazda6-options-link-h2-container > h2 {
+    font-size: 18px;
+  }
+  .main-container-engine-cards {
+    max-width: 600px;
+    grid-gap: 0.3rem;
+  }
+  .mazda6-options-main-container {
+    padding: 0 10px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .mazda6-options-link {
+    color: grey;
+    font-size: 13px;
+  }
+
+  .mazda6-options-link-h2-container > h2 {
+    font-size: 17px;
+  }
+  .main-container-engine-cards {
+    max-width: 450px;
+  }
+  .main-container-engine-cards {
+    grid-gap: 0.1rem;
+  }
+  .mazda6-options-main-container {
+    padding: 0 5px;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .mazda6-options-link {
+    color: grey;
+    font-size: 12px;
+  }
+
+  .mazda6-options-link-h2-container > h2 {
+    font-size: 16px;
+  }
+  .main-container-engine-cards {
+    max-width: 350px;
+  }
+  .main-container-engine-cards {
+    grid-gap: 0.1rem;
+  }
+  .mazda6-options-main-container {
+    padding: 0 10px;
+  }
 }
