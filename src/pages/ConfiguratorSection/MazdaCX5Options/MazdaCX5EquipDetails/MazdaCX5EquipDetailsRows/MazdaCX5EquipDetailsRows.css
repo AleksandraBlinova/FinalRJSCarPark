@@ -1,0 +1,15 @@
+.mazda-cx5-equip-det-rows {
+  border-radius: 0px;
+  border: black;
+  padding: 0rem 0rem 1.5rem;
+}
+
+.mazda-cx5-equip-det-rows-text-container {
+  margin-bottom: 20px;
+}
+
+.mazda-cx5-equip-det-rows-text-container:hover {
+  box-shadow: inset 0 0 0 2.5px #807e7e;
+  transition: all 0.2s;
+  text-decoration: none;
+}

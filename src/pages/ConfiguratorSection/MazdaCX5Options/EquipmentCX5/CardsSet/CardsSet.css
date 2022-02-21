@@ -78,7 +78,10 @@
   text-decoration: none;
 }
 
-@media only screen and (max-width: 1020px) {
+@media only screen and (max-width: 1260px) {
+  .set-cards-item-link {
+    width: 230px;
+  }
   .set-cards-item-link {
     padding: 0.5rem 0rem 1rem;
   }
@@ -110,6 +113,7 @@
   .set-cards-item-link {
     padding: 0.5rem 0rem 1rem;
     min-height: 100px;
+    width: 200px;
   }
 
   .set-cards-item {
@@ -131,11 +135,18 @@
     font-size: 10px;
   }
 }
-
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 650px) {
+  .set-cards-item-link {
+    padding: 0.5rem 0rem 1rem;
+    min-height: 100px;
+    width: 150px;
+  }
+}
+@media only screen and (max-width: 500px) {
   .set-cards-item-link {
     padding: 0.2rem 0rem 0.2rem;
     min-height: 70px;
+    width: 100px;
   }
 
   .set-cards-item {
@@ -152,5 +163,17 @@
   }
   .set-cards-item-price {
     font-size: 8px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .set-cards-item-link {
+    padding: 0.5rem 0rem 1rem;
+    min-height: 100px;
+    width: 80px;
+  }
+
+  .set-cards-item-more {
+    font-size: 10px;
   }
 }

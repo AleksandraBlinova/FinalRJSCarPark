@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./Mazda6OptionsMain.css";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
 import { MdArrowBack } from "react-icons/md";
-import CardsEngine from "../Equipment/CardsEngine/CardsEngine";
-import CardsSet from "../Equipment/CardsSet/CardsSet";
+import CardsEngine from "./Equipment6/CardsEngine/CardsEngine";
+import CardsSet from "./Equipment6/CardsSet/CardsSet";
 
 const Mazda6OptionsMain = (props) => {
   const [hover, setHover] = useState(false);

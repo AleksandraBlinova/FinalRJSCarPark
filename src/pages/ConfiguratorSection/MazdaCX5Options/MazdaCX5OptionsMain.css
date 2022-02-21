@@ -1,7 +1,7 @@
 .mazdacx5-options-main-container {
   margin: 0 auto;
   padding: 0 25px;
-  max-width: 1220px;
+  max-width: 1300px;
 }
 
 .mazdacx5-options-link {
@@ -11,10 +11,134 @@
 
 .mazdacx5-options-link:hover {
   color: rgb(85, 25, 25);
-  font-size: 20px;
+  font-size: 19px;
   text-decoration: none;
 }
 
-.mazdacx5-options-link-container {
+.mazdacx5-options-link-h2-container {
+  display: grid;
+  grid-template: auto/repeat(12, 1fr);
+  grid-column-gap: 12px;
+  align-items: center;
+  padding: 0 25px;
   margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.mazdacx5-options-link-h2-container > h2 {
+  font-size: 22px;
+  grid-column: 3/11;
+  text-align: center;
+}
+
+.main-container-engine-cards-cx5 {
+  margin: 0 auto;
+  display: grid;
+  grid-template: auto/repeat(2, 1fr);
+  grid-gap: 1rem;
+  padding: 1rem 0rem 0rem 0rem;
+  max-width: 700px;
+}
+
+.main-container-set-cards-cx5 {
+  margin: 0 auto;
+  display: grid;
+  grid-template: auto/repeat(4, 1fr);
+  grid-gap: 1rem;
+  padding: 1rem 0rem 0rem 0rem;
+  max-width: 1300px;
+}
+
+@media only screen and (max-width: 1020px) {
+  .mazdacx5-options-link {
+    color: grey;
+    font-size: 14px;
+  }
+
+  .mazdacx5-options-link-h2-container > h2 {
+    font-size: 18px;
+  }
+  .main-container-engine-cards-cx5 {
+    max-width: 700px;
+  }
+  .mazdacx5-options-main-container-cx5 {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .main-container-set-cards-cx5 {
+    margin: 0 auto;
+    display: grid;
+    grid-template: auto/repeat(3, 1fr);
+    grid-gap: 0.2rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mazdacx5-options-link {
+    color: grey;
+    font-size: 14px;
+  }
+
+  .mazdacx5-options-link-h2-container > h2 {
+    font-size: 18px;
+  }
+  .main-container-engine-cards-cx5 {
+    max-width: 500px;
+    grid-gap: 0.3rem;
+  }
+  .mazdacx5-options-main-container-cx5 {
+    padding: 0 10px;
+  }
+  .main-container-set-cards-cx5 {
+    margin: 0 auto;
+    display: grid;
+    grid-template: auto/repeat(3, 1fr);
+    grid-gap: 0.2rem;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .mazdacx5-options-link {
+    color: grey;
+    font-size: 13px;
+  }
+
+  .mazdacx5-options-link-h2-container > h2 {
+    font-size: 17px;
+  }
+  .main-container-engine-cards-cx5 {
+    max-width: 450px;
+  }
+  .main-container-engine-cards-cx5 {
+    grid-gap: 0.1rem;
+  }
+  .mazdacx5-options-main-container {
+    padding: 0 5px;
+  }
+  .main-container-set-cards-cx5 {
+    margin: 0 auto;
+    display: grid;
+    grid-template: auto/repeat(3, 1fr);
+    grid-gap: 0.2rem;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .mazdacx5-options-link {
+    color: grey;
+    font-size: 12px;
+  }
+
+  .mazdacx5-options-link-h2-container > h2 {
+    font-size: 16px;
+  }
+  .main-container-engine-cards-cx5 {
+    max-width: 350px;
+  }
+  .main-container-engine-cards-cx5 {
+    grid-gap: 0.1rem;
+  }
+  .mazdacx5-options-main-container {
+    padding: 0 10px;
+  }
 }

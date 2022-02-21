@@ -14,6 +14,7 @@ import Mazda6OptionsMain from "./pages/ConfiguratorSection/Mazda6Options/Mazda6O
 import MazdaCX5OptionsMain from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5OptionsMain";
 import MazdaCX9OptionsMain from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaCX9OptionsMain";
 import Mazda6EquipDetails from "./pages/ConfiguratorSection/Mazda6Options/Mazda6EquipDetails/Mazda6EquipDetails";
+import MazdaCX5EquipDetails from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5EquipDetails/MazdaCX5EquipDetails";
 
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
@@ -37,6 +38,10 @@ function App() {
           <Route path="/mazdacx5config" component={MazdaCX5OptionsMain} />
           <Route path="/mazdacx9config" component={MazdaCX9OptionsMain} />
           <Route path="/mazda6equipdetails" component={Mazda6EquipDetails} />
+          <Route
+            path="/mazdacx5equipdetails"
+            component={MazdaCX5EquipDetails}
+          />
 
           <Route
             path="/models"
