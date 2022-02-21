@@ -34,6 +34,7 @@ const Mazda6OptionsMain = (props) => {
             text="DRIVE"
             price="1 876 000 ₽"
             path="/mazda6equipdetails"
+            number={0}
           />
           <CardsSet
             type="AT 6 / 2WD"
@@ -41,6 +42,7 @@ const Mazda6OptionsMain = (props) => {
             price="1 990 000 ₽"
             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
             path="/mazda6equipdetails"
+            number={1}
           />
           <CardsSet
             type="AT 6 / 2WD"
@@ -48,6 +50,7 @@ const Mazda6OptionsMain = (props) => {
             price="2 268 000 ₽"
             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
             path="/mazda6equipdetails"
+            number={2}
           />
         </div>
       </div>

@@ -63,8 +63,8 @@ function a11yProps(index) {
   };
 }
 
-const Mazda6EquipDetails = () => {
-  const [value, setValue] = React.useState(0);
+const Mazda6EquipDetails = (props) => {
+  const [value, setValue] = React.useState(props.location.propsSearch);
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);

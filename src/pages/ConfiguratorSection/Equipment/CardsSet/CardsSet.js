@@ -14,7 +14,10 @@ const CardsSet = (props) => {
         </div>
 
         <div className="set-cards-item-more-container">
-          <Link className="set-cards-item-more" to={props.path}>
+          <Link
+            className="set-cards-item-more"
+            to={{ pathname: props.path, propsSearch: props.number }}
+          >
             ПОДРОБНО
           </Link>
         </div>
