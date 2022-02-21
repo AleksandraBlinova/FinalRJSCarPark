@@ -1,0 +1,114 @@
+.mazdacx9-equip-main-container {
+  margin: 0 auto;
+  padding: 0 25px;
+  max-width: 1220px;
+}
+
+.mazdacx9-equip-h2-closelink {
+  display: grid;
+  grid-template: auto/repeat(12, 1fr);
+  grid-column-gap: 25px;
+  align-items: center;
+}
+.mazdacx9-equip-h2-closelink > h2 {
+  text-align: center;
+  margin-top: 30px;
+  grid-column: 4/9;
+}
+
+.mazdacx9-equip-details-link {
+  grid-column: 11/13;
+  cursor: pointer;
+  position: relative;
+  color: #999;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 1px;
+  line-height: normal;
+  padding-top: 1.5rem;
+}
+
+.mazdacx9-equip-details-link:hover {
+  text-decoration: none;
+  color: black;
+  font-size: 17px;
+}
+
+.mazdacx9-equip-details-prices-container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mazdacx9-equip-details-prices-text {
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  color: #999;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.mazdacx9-equip-tabs-main-container {
+  margin: 0 auto;
+  display: flex;
+  padding: 1rem 0rem 1rem 0rem;
+  max-width: 1200px;
+}
+
+@media screen and (max-width: 1024px) {
+  .mazdacx9-equip-tabs-main-container {
+    margin: 0 auto;
+    display: flex;
+    padding: 1rem 0rem 1rem 0rem;
+    max-width: 900px;
+  }
+  .mazdacx9-equip-h2-closelink > h2 {
+    font-size: 30px;
+  }
+
+  .mazdacx9-equip-main-container {
+    margin: 0 auto;
+    padding: 0 5px;
+    max-width: 900px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mazdacx9-equip-tabs-main-container {
+    margin: 0 auto;
+    display: flex;
+    padding: 1rem 0rem 1rem 0rem;
+    max-width: 600px;
+  }
+  .mazdacx9-equip-h2-closelink > h2 {
+    font-size: 20px;
+  }
+
+  .mazdacx9-equip-main-container {
+    margin: 0 auto;
+    padding: 0 5px;
+    max-width: 700px;
+  }
+
+  .mazdacx9-equip-h2-closelink {
+    display: grid;
+    grid-template: auto/repeat(10, 1fr);
+    grid-column-gap: 5px;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .mazdacx9-equip-tabs-main-container {
+    margin: 0 auto;
+    display: flex;
+    padding: 1rem 0rem 1rem 0rem;
+    max-width: 400px;
+  }
+
+  .mazdacx9-equip-h2-closelink {
+    display: grid;
+    grid-template: auto/repeat(9, 1fr);
+    grid-column-gap: 5px;
+    align-items: center;
+  }
+}

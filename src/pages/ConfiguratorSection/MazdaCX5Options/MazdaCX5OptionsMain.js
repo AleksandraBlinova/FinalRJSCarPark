@@ -29,7 +29,7 @@ const MazdaCX5OptionsMain = (props) => {
         <div className="main-container-set-cards-cx5">
           <CardsSet
             type="MT 6 / 2WD"
-            src="../configurator/main-cards/cx-30_soul-red_dgh1901_turn-min.png"
+            src="../configurator/main-cards/4,05b3f90622f0a5.png"
             text="DRIVE"
             price="1 952 000 ₽"
             path="/mazdacx5equipdetails"
@@ -39,7 +39,7 @@ const MazdaCX5OptionsMain = (props) => {
             type="AT 6 / 2WD"
             text="ACTIVE"
             price="2 249 000 ₽"
-            src="../configurator/main-cards/cx-30_soul-red_dgh1901_turn-min.png"
+            src="../configurator/main-cards/4,05b3f90622f0a5.png"
             path="/mazdacx5equipdetails"
             number={1}
           />
@@ -47,7 +47,7 @@ const MazdaCX5OptionsMain = (props) => {
             type="AT 6 / 4WD"
             text="ACTIVE"
             price="2 349 000 ₽"
-            src="../configurator/main-cards/cx-30_soul-red_dgh1901_turn-min.png"
+            src="../configurator/main-cards/4,05b3f90622f0a5.png"
             path="/mazdacx5equipdetails"
             number={2}
           />
@@ -55,7 +55,7 @@ const MazdaCX5OptionsMain = (props) => {
             type="AT 6 / 4WD"
             text="SUPREME"
             price="2 573 000 ₽"
-            src="../configurator/main-cards/cx-30_soul-red_dgh1901_turn-min.png"
+            src="../configurator/main-cards/4,05b3f90622f0a5.png"
             path="/mazdacx5equipdetails"
             number={3}
           />
