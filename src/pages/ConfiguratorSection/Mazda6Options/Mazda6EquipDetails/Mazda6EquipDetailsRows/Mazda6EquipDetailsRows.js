@@ -6,6 +6,8 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "./Mazda6EquipDetailsRows.css";
+import { ListItem } from "@mui/material";
+import CircleIcon from "@mui/icons-material/Circle";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -76,7 +78,27 @@ export default function mazda6equipdetailsRows(props) {
                 fontWeight: 500,
               }}
             >
-              {props.text}
+              {props.value === 0 &&
+                props.interiordrive.map((interiordrive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{interiordrive}
+                  </ListItem>
+                ))}
+              {props.value === 1 &&
+                props.interioractive.map((interioractive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{interioractive}
+                  </ListItem>
+                ))}
+              {props.value === 2 &&
+                props.interiorsupreme.map((interiorsupreme) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{interiorsupreme}
+                  </ListItem>
+                ))}
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -101,7 +123,28 @@ export default function mazda6equipdetailsRows(props) {
           </AccordionSummary>
           <AccordionDetails>
             <Typography style={{ fontFamily: "inherit" }}>
-              {props.text}
+              {props.value === 0 &&
+                props.comfortdrive.map((comfortdrive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;
+                    {comfortdrive}
+                  </ListItem>
+                ))}
+              {props.value === 1 &&
+                props.comfortactive.map((comfortactive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{comfortactive}
+                  </ListItem>
+                ))}
+              {props.value === 2 &&
+                props.comfortsupreme.map((comfortsupreme) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{comfortsupreme}
+                  </ListItem>
+                ))}
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -126,7 +169,27 @@ export default function mazda6equipdetailsRows(props) {
           </AccordionSummary>
           <AccordionDetails>
             <Typography style={{ fontFamily: "inherit" }}>
-              {props.text}
+              {props.value === 0 &&
+                props.safetydrive.map((safetydrive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{safetydrive}
+                  </ListItem>
+                ))}
+              {props.value === 1 &&
+                props.safetyactive.map((safetyactive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{safetyactive}
+                  </ListItem>
+                ))}
+              {props.value === 2 &&
+                props.safetysupreme.map((safetysupreme) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{safetysupreme}
+                  </ListItem>
+                ))}
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -158,7 +221,27 @@ export default function mazda6equipdetailsRows(props) {
                 fontWeight: 500,
               }}
             >
-              {props.text}
+              {props.value === 0 &&
+                props.lightdrive.map((lightdrive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{lightdrive}
+                  </ListItem>
+                ))}
+              {props.value === 1 &&
+                props.lightactive.map((lightactive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{lightactive}
+                  </ListItem>
+                ))}
+              {props.value === 2 &&
+                props.lightsupreme.map((lightsupreme) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{lightsupreme}
+                  </ListItem>
+                ))}
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -190,7 +273,27 @@ export default function mazda6equipdetailsRows(props) {
                 fontWeight: 500,
               }}
             >
-              {props.text}
+              {props.value === 0 &&
+                props.wtdrive.map((wtdrive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{wtdrive}
+                  </ListItem>
+                ))}
+              {props.value === 1 &&
+                props.wtactive.map((wtactive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{wtactive}
+                  </ListItem>
+                ))}
+              {props.value === 2 &&
+                props.wtsupreme.map((wtsupreme) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{wtsupreme}
+                  </ListItem>
+                ))}
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -215,7 +318,27 @@ export default function mazda6equipdetailsRows(props) {
           </AccordionSummary>
           <AccordionDetails>
             <Typography style={{ fontFamily: "inherit" }}>
-              {props.text}
+              {props.value === 0 &&
+                props.audiodrive.map((audiodrive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{audiodrive}
+                  </ListItem>
+                ))}
+              {props.value === 1 &&
+                props.audioactive.map((audioactive) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{audioactive}
+                  </ListItem>
+                ))}
+              {props.value === 2 &&
+                props.audiosupreme.map((audiosupreme) => (
+                  <ListItem>
+                    <CircleIcon style={{ fontSize: "9px", color: "#999999" }} />
+                    &nbsp; &nbsp;{audiosupreme}
+                  </ListItem>
+                ))}
             </Typography>
           </AccordionDetails>
         </Accordion>

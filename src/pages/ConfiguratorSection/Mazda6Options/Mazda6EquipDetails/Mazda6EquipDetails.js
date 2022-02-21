@@ -9,6 +9,26 @@ import Box from "@mui/material/Box";
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Mazda6EquipDetailsRows from "./Mazda6EquipDetailsRows/Mazda6EquipDetailsRows";
+import {
+  InteriorDrive,
+  InteriorActive,
+  InteriorSupremePlus,
+  ComfortActive,
+  ComfortDrive,
+  ComfortSupremePlus,
+  SafetyActive,
+  SafetyDrive,
+  SafetySupremePlus,
+  LightingDevicesActive,
+  LightingDevicesDrive,
+  LightingDevicesSupremePlus,
+  WheelsAndTiresActive,
+  WheelsAndTiresDrive,
+  WheelsAndTiresSupremePlus,
+  AudioActive,
+  AudioDrive,
+  AudioSupremePlus,
+} from "../Mazda6EquipDetails/Mazda6EquipDetailsRows/Mazda6EquipDetailsRowsLists";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -45,9 +65,6 @@ function a11yProps(index) {
 
 const Mazda6EquipDetails = () => {
   const [value, setValue] = React.useState(0);
-  const [disabled, setDisabled] = React.useState(true);
-  const [statusSedan, setStatusSedan] = React.useState("sedan");
-  const [statusCrossover, setStatusCrossover] = React.useState("crossover");
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
@@ -56,6 +73,7 @@ const Mazda6EquipDetails = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   return (
     <>
       <div className="mazda6-equip-main-container">
@@ -104,7 +122,27 @@ const Mazda6EquipDetails = () => {
           </Box>
         </div>
         <div>
-          <Mazda6EquipDetailsRows />
+          <Mazda6EquipDetailsRows
+            interiordrive={InteriorDrive}
+            interioractive={InteriorActive}
+            interiorsupreme={InteriorSupremePlus}
+            comfortdrive={ComfortDrive}
+            comfortactive={ComfortActive}
+            comfortsupreme={ComfortSupremePlus}
+            safetydrive={SafetyDrive}
+            safetyactive={SafetyActive}
+            safetysupreme={SafetySupremePlus}
+            lightdrive={LightingDevicesDrive}
+            lightactive={LightingDevicesActive}
+            lightsupreme={LightingDevicesSupremePlus}
+            wtdrive={WheelsAndTiresDrive}
+            wtactive={WheelsAndTiresActive}
+            wtsupreme={WheelsAndTiresSupremePlus}
+            audiodrive={AudioDrive}
+            audioactive={AudioActive}
+            audiosupreme={AudioSupremePlus}
+            value={value}
+          />
         </div>
         <div className="mazda6-equip-details-prices-container">
           <p className="mazda6-equip-details-prices-text">

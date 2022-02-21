@@ -3,7 +3,6 @@ import "./CardsSet.css";
 import { Link } from "react-router-dom";
 
 const CardsSet = (props) => {
-  console.log("dvdvd", props.path);
   return (
     <div className="set-cards-item">
       <div className="set-cards-item-link">
