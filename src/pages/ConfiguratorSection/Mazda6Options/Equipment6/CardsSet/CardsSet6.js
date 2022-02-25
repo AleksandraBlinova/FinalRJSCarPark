@@ -1,7 +1,7 @@
 import React from "react";
 import "./CardsSet.css";
 import { Link } from "react-router-dom";
-import ButtonsForCardsSets from "../ButtonsForCardsSets/ButtonsForCardsSets";
+import ButtonsForCardsSets from "../../../../../components/ButtonsForCardsSets/ButtonsForCardsSets";
 
 const CardsSet6 = (props) => {
   return (

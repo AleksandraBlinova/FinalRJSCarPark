@@ -8,6 +8,8 @@ import CardsSet9 from "./EquipmentCX9/CardsSet/CardsSet9";
 
 const MazdaCX9OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
+  const [isShown, setIsShown] = useState(true);
+  const [chosen, setChosen] = useState(0);
   const onHover = () => {
     setHover(!hover);
   };
@@ -26,30 +28,122 @@ const MazdaCX9OptionsMain = (props) => {
           <CardsEngine9 type="2.5 Skyactiv-G (231 л.с.)" />
         </div>
         <div className="main-container-set-cards-cx9">
-          <CardsSet9
-            type="AT 6 / 4WD"
-            src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
-            text="ACTIVE"
-            price="3 335 000 ₽"
-            path="/mazdacx9equipdetails"
-            number={0}
-          />
-          <CardsSet9
-            type="AT 6 / 4WD"
-            text="SUPREME"
-            price="3 816 000 ₽"
-            src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
-            path="/mazdacx9equipdetails"
-            number={1}
-          />
-          <CardsSet9
-            type="AT 6 / 4WD"
-            text="EXCLUSIVE"
-            price="3 955 000 ₽"
-            src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
-            path="/mazdacx9equipdetails"
-            number={2}
-          />
+          <div
+            onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
+            onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+            className="main-container-set-cards-first-card"
+          >
+            {(isShown === true && chosen === 2) ||
+            (isShown === true && chosen === 3) ? (
+              <div
+                style={{
+                  pointerEvents: "none",
+                  opacity: "0.4",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
+                <CardsSet9
+                  type="AT 6 / 4WD"
+                  src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                  text="ACTIVE"
+                  price="3 335 000 ₽"
+                  path="/mazdacx9equipdetails"
+                  number={0}
+                />
+              </div>
+            ) : (
+              <div>
+                <CardsSet9
+                  type="AT 6 / 4WD"
+                  src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                  text="ACTIVE"
+                  price="3 335 000 ₽"
+                  path="/mazdacx9equipdetails"
+                  number={0}
+                  isShown={isShown}
+                  chosen={chosen}
+                />
+              </div>
+            )}
+          </div>
+
+          <div
+            className="main-container-set-cards-second-card"
+            onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
+            onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+          >
+            {(isShown === true && chosen === 1) ||
+            (isShown === true && chosen === 3) ? (
+              <div
+                style={{
+                  pointerEvents: "none",
+                  opacity: "0.4",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
+                <CardsSet9
+                  type="AT 6 / 4WD"
+                  text="SUPREME"
+                  price="3 816 000 ₽"
+                  src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                  path="/mazdacx9equipdetails"
+                  number={1}
+                />
+              </div>
+            ) : (
+              <div>
+                <CardsSet9
+                  type="AT 6 / 4WD"
+                  text="SUPREME"
+                  price="3 816 000 ₽"
+                  src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                  path="/mazdacx9equipdetails"
+                  number={1}
+                  isShown={isShown}
+                  chosen={chosen}
+                />
+              </div>
+            )}
+          </div>
+
+          <div
+            onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
+            onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+            className="main-container-set-cards-third-card"
+          >
+            {(isShown === true && chosen === 2) ||
+            (isShown === true && chosen === 1) ? (
+              <div
+                style={{
+                  pointerEvents: "none",
+                  opacity: "0.4",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
+                <CardsSet9
+                  type="AT 6 / 4WD"
+                  text="EXCLUSIVE"
+                  price="3 955 000 ₽"
+                  src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                  path="/mazdacx9equipdetails"
+                  number={2}
+                />
+              </div>
+            ) : (
+              <div>
+                <CardsSet9
+                  type="AT 6 / 4WD"
+                  text="EXCLUSIVE"
+                  price="3 955 000 ₽"
+                  src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                  path="/mazdacx9equipdetails"
+                  number={2}
+                  isShown={isShown}
+                  chosen={chosen}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <NewFooter />

@@ -8,6 +8,8 @@ import CardsSet from "./EquipmentCX5/CardsSet/CardsSet";
 
 const MazdaCX5OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
+  const [isShown, setIsShown] = useState(true);
+  const [chosen, setChosen] = useState(0);
   const onHover = () => {
     setHover(!hover);
   };
@@ -27,38 +29,165 @@ const MazdaCX5OptionsMain = (props) => {
           <CardsEngine type="2.5 Skyactiv-G (194 л.с.)" />
         </div>
         <div className="main-container-set-cards-cx5">
-          <CardsSet
-            type="MT 6 / 2WD"
-            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-            text="DRIVE"
-            price="1 952 000 ₽"
-            path="/mazdacx5equipdetails"
-            number={0}
-          />
-          <CardsSet
-            type="AT 6 / 2WD"
-            text="ACTIVE"
-            price="2 249 000 ₽"
-            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-            path="/mazdacx5equipdetails"
-            number={1}
-          />
-          <CardsSet
-            type="AT 6 / 4WD"
-            text="ACTIVE"
-            price="2 349 000 ₽"
-            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-            path="/mazdacx5equipdetails"
-            number={2}
-          />
-          <CardsSet
-            type="AT 6 / 4WD"
-            text="SUPREME"
-            price="2 573 000 ₽"
-            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-            path="/mazdacx5equipdetails"
-            number={3}
-          />
+          <div
+            onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
+            onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+            className="main-container-set-cards-first-card"
+          >
+            {(isShown === true && chosen === 2) ||
+            (isShown === true && chosen === 3) ||
+            (isShown === true && chosen === 4) ? (
+              <div
+                style={{
+                  pointerEvents: "none",
+                  opacity: "0.4",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
+                <CardsSet
+                  type="MT 6 / 2WD"
+                  src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                  text="DRIVE"
+                  price="1 952 000 ₽"
+                  path="/mazdacx5equipdetails"
+                  number={0}
+                />
+              </div>
+            ) : (
+              <div>
+                <CardsSet
+                  type="MT 6 / 2WD"
+                  src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                  text="DRIVE"
+                  price="1 952 000 ₽"
+                  path="/mazdacx5equipdetails"
+                  number={0}
+                  isShown={isShown}
+                  chosen={chosen}
+                />
+              </div>
+            )}
+          </div>
+
+          <div
+            className="main-container-set-cards-second-card"
+            onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
+            onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+          >
+            {(isShown === true && chosen === 1) ||
+            (isShown === true && chosen === 3) ||
+            (isShown === true && chosen === 4) ? (
+              <div
+                style={{
+                  pointerEvents: "none",
+                  opacity: "0.4",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
+                <CardsSet
+                  type="AT 6 / 2WD"
+                  text="ACTIVE"
+                  price="2 249 000 ₽"
+                  src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                  path="/mazdacx5equipdetails"
+                  number={1}
+                />
+              </div>
+            ) : (
+              <div>
+                <CardsSet
+                  type="AT 6 / 2WD"
+                  text="ACTIVE"
+                  price="2 249 000 ₽"
+                  src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                  path="/mazdacx5equipdetails"
+                  number={1}
+                  isShown={isShown}
+                  chosen={chosen}
+                />
+              </div>
+            )}
+          </div>
+
+          <div
+            onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
+            onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+            className="main-container-set-cards-third-card"
+          >
+            {(isShown === true && chosen === 2) ||
+            (isShown === true && chosen === 4) ||
+            (isShown === true && chosen === 1) ? (
+              <div
+                style={{
+                  pointerEvents: "none",
+                  opacity: "0.4",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
+                <CardsSet
+                  type="AT 6 / 4WD"
+                  text="ACTIVE"
+                  price="2 349 000 ₽"
+                  src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                  path="/mazdacx5equipdetails"
+                  number={2}
+                />
+              </div>
+            ) : (
+              <div>
+                <CardsSet
+                  type="AT 6 / 4WD"
+                  text="ACTIVE"
+                  price="2 349 000 ₽"
+                  src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                  path="/mazdacx5equipdetails"
+                  number={2}
+                  isShown={isShown}
+                  chosen={chosen}
+                />
+              </div>
+            )}
+          </div>
+
+          <div
+            onMouseEnter={(() => setIsShown(true), () => setChosen(4))}
+            onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+            className="main-container-set-cards-third-card"
+          >
+            {(isShown === true && chosen === 2) ||
+            (isShown === true && chosen === 3) ||
+            (isShown === true && chosen === 1) ? (
+              <div
+                style={{
+                  pointerEvents: "none",
+                  opacity: "0.4",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
+                <CardsSet
+                  type="AT 6 / 4WD"
+                  text="SUPREME"
+                  price="2 573 000 ₽"
+                  src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                  path="/mazdacx5equipdetails"
+                  number={3}
+                />
+              </div>
+            ) : (
+              <div>
+                <CardsSet
+                  type="AT 6 / 4WD"
+                  text="SUPREME"
+                  price="2 573 000 ₽"
+                  src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                  path="/mazdacx5equipdetails"
+                  number={3}
+                  isShown={isShown}
+                  chosen={chosen}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <NewFooter />

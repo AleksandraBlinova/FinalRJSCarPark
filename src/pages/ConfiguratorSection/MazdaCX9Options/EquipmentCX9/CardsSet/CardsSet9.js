@@ -1,11 +1,15 @@
 import React from "react";
 import "./CardsSet.css";
 import { Link } from "react-router-dom";
+import ButtonsForCardsSets from "../../../../../components/ButtonsForCardsSets/ButtonsForCardsSets";
 
 const CardsSet9 = (props) => {
   return (
     <div className="set-cards-item">
       <div className="set-cards-item-link">
+        {props.isShown === true && props.chosen !== 0 && (
+          <ButtonsForCardsSets />
+        )}
         <img className="set-cards-item-img" src={props.src} />
         <div className="set-cards-item-info">
           <h5 className="set-cards-item-text"> {props.text}</h5>
