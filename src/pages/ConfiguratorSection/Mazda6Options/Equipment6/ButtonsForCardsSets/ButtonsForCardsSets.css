@@ -1,0 +1,16 @@
+.buttons-for-cards-set-container {
+  letter-spacing: 1px;
+  position: absolute;
+  z-index: 5;
+  top: 30%;
+  left: 10%;
+}
+
+@media only screen and (max-width: 940px) {
+  .buttons-for-cards-set-container {
+    letter-spacing: 1px;
+    position: absolute;
+    z-index: 5;
+    top: 20%;
+  }
+}

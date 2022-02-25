@@ -42,6 +42,7 @@ const Mazda6OptionsMain = (props) => {
                 style={{
                   pointerEvents: "none",
                   opacity: "0.4",
+                  transition: "all 0.2s ease-in-out",
                 }}
               >
                 <CardsSet
@@ -62,6 +63,8 @@ const Mazda6OptionsMain = (props) => {
                   price="1 876 000 ₽"
                   path="/mazda6equipdetails"
                   number={0}
+                  isShown={isShown}
+                  chosen={chosen}
                 />
               </div>
             )}
@@ -74,7 +77,13 @@ const Mazda6OptionsMain = (props) => {
           >
             {(isShown === true && chosen === 1) ||
             (isShown === true && chosen === 3) ? (
-              <div style={{ pointerEvents: "none", opacity: "0.4" }}>
+              <div
+                style={{
+                  pointerEvents: "none",
+                  opacity: "0.4",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
                 <CardsSet
                   type="AT 6 / 2WD"
                   text="ACTIVE"
@@ -93,6 +102,8 @@ const Mazda6OptionsMain = (props) => {
                   src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                   path="/mazda6equipdetails"
                   number={1}
+                  isShown={isShown}
+                  chosen={chosen}
                 />
               </div>
             )}
@@ -105,7 +116,13 @@ const Mazda6OptionsMain = (props) => {
           >
             {(isShown === true && chosen === 2) ||
             (isShown === true && chosen === 1) ? (
-              <div style={{ pointerEvents: "none", opacity: "0.4" }}>
+              <div
+                style={{
+                  pointerEvents: "none",
+                  opacity: "0.4",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
                 <CardsSet
                   type="AT 6 / 2WD"
                   text="SUPREME PLUS"
@@ -124,6 +141,8 @@ const Mazda6OptionsMain = (props) => {
                   src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                   path="/mazda6equipdetails"
                   number={2}
+                  isShown={isShown}
+                  chosen={chosen}
                 />
               </div>
             )}
