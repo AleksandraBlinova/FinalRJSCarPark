@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./Mazda6OptionsMain.css";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
 import { MdArrowBack } from "react-icons/md";
-import CardsEngine from "./Equipment6/CardsEngine/CardsEngine";
-import CardsSet from "./Equipment6/CardsSet/CardsSet";
+import CardsEngine6 from "./Equipment6/CardsEngine/CardsEngine6";
+import CardsSet6 from "./Equipment6/CardsSet/CardsSet6";
 
 const Mazda6OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
@@ -25,9 +25,9 @@ const Mazda6OptionsMain = (props) => {
           <h2>ВЫБЕРИТЕ ДВИГАТЕЛЬ, КОМПЛЕКТАЦИЮ И ПАКЕТ</h2>
         </div>
         <div className="main-container-engine-cards">
-          <CardsEngine type="2.0 Skyactiv-G (150 л.с.)" />
-          <CardsEngine type="2.5 Skyactiv-G (194 л.с.)" />
-          <CardsEngine type="2.5 Skyactiv-G (231 л.с.)" />
+          <CardsEngine6 type="2.0 Skyactiv-G (150 л.с.)" />
+          <CardsEngine6 type="2.5 Skyactiv-G (194 л.с.)" />
+          <CardsEngine6 type="2.5 Skyactiv-G (231 л.с.)" />
         </div>
 
         <div className="main-container-set-cards">
@@ -45,7 +45,7 @@ const Mazda6OptionsMain = (props) => {
                   transition: "all 0.2s ease-in-out",
                 }}
               >
-                <CardsSet
+                <CardsSet6
                   type="AT 6 / 2WD"
                   src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                   text="DRIVE"
@@ -56,7 +56,7 @@ const Mazda6OptionsMain = (props) => {
               </div>
             ) : (
               <div>
-                <CardsSet
+                <CardsSet6
                   type="AT 6 / 2WD"
                   src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                   text="DRIVE"
@@ -84,7 +84,7 @@ const Mazda6OptionsMain = (props) => {
                   transition: "all 0.2s ease-in-out",
                 }}
               >
-                <CardsSet
+                <CardsSet6
                   type="AT 6 / 2WD"
                   text="ACTIVE"
                   price="1 990 000 ₽"
@@ -95,7 +95,7 @@ const Mazda6OptionsMain = (props) => {
               </div>
             ) : (
               <div>
-                <CardsSet
+                <CardsSet6
                   type="AT 6 / 2WD"
                   text="ACTIVE"
                   price="1 990 000 ₽"
@@ -123,7 +123,7 @@ const Mazda6OptionsMain = (props) => {
                   transition: "all 0.2s ease-in-out",
                 }}
               >
-                <CardsSet
+                <CardsSet6
                   type="AT 6 / 2WD"
                   text="SUPREME PLUS"
                   price="2 268 000 ₽"
@@ -134,7 +134,7 @@ const Mazda6OptionsMain = (props) => {
               </div>
             ) : (
               <div>
-                <CardsSet
+                <CardsSet6
                   type="AT 6 / 2WD"
                   text="SUPREME PLUS"
                   price="2 268 000 ₽"

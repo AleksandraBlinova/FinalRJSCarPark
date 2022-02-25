@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./MazdaCX9OptionsMain.css";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
 import { MdArrowBack } from "react-icons/md";
-import CardsEngine from "./EquipmentCX9/CardsEngine/CardsEngine";
-import CardsSet from "./EquipmentCX9/CardsSet/CardsSet";
+import CardsEngine9 from "./EquipmentCX9/CardsEngine/CardsEngine9";
+import CardsSet9 from "./EquipmentCX9/CardsSet/CardsSet9";
 
 const MazdaCX9OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
@@ -23,10 +23,10 @@ const MazdaCX9OptionsMain = (props) => {
           <h2>ВЫБЕРИТЕ ДВИГАТЕЛЬ, КОМПЛЕКТАЦИЮ И ПАКЕТ</h2>
         </div>
         <div className="main-container-engine-cards-cx9">
-          <CardsEngine type="2.5 Skyactiv-G (231 л.с.)" />
+          <CardsEngine9 type="2.5 Skyactiv-G (231 л.с.)" />
         </div>
         <div className="main-container-set-cards-cx9">
-          <CardsSet
+          <CardsSet9
             type="AT 6 / 4WD"
             src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
             text="ACTIVE"
@@ -34,7 +34,7 @@ const MazdaCX9OptionsMain = (props) => {
             path="/mazdacx9equipdetails"
             number={0}
           />
-          <CardsSet
+          <CardsSet9
             type="AT 6 / 4WD"
             text="SUPREME"
             price="3 816 000 ₽"
@@ -42,7 +42,7 @@ const MazdaCX9OptionsMain = (props) => {
             path="/mazdacx9equipdetails"
             number={1}
           />
-          <CardsSet
+          <CardsSet9
             type="AT 6 / 4WD"
             text="EXCLUSIVE"
             price="3 955 000 ₽"
