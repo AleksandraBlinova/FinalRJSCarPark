@@ -24,6 +24,39 @@ const ColorButton = styled(Button)(({ theme }) => ({
     border: "none",
     borderRadius: "3px ",
   },
+  "@media only screen and (max-width: 1260px)": {
+    width: "110px",
+    height: "30px",
+    fontSize: "11px",
+    padding: "0 auto",
+    right: "8%",
+  },
+  "@media only screen and (max-width: 960px)": {
+    width: "90px",
+    height: "30px",
+    fontSize: "11px",
+    padding: "0 auto",
+  },
+
+  "@media only screen and (max-width: 769px)": {
+    width: "80px",
+    height: "30px",
+    fontSize: "11px",
+    padding: "0 auto",
+  },
+  "@media only screen and (max-width: 651px)": {
+    width: "60px",
+    height: "30px",
+    fontSize: "11px",
+    padding: "0 auto",
+  },
+
+  "@media only screen and (max-width: 551px)": {
+    width: "20px",
+    height: "15px",
+    fontSize: "8px",
+    padding: "0 auto",
+  },
 }));
 
 const StackStyled = styled(Stack)(({ theme }) => ({

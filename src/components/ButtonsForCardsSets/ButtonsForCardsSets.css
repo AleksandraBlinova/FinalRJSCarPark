@@ -6,11 +6,104 @@
   left: 10%;
 }
 
-@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 960px) {
   .buttons-for-cards-set-container {
     letter-spacing: 1px;
     position: absolute;
     z-index: 5;
     top: 20%;
+  }
+
+  .buttons-for-cards-set-link-interior-butt {
+    width: 90px;
+    height: 30px;
+    font-size: 11px;
+    padding: 0 auto;
+    left: 0;
+  }
+
+  .buttons-for-cards-set-link-exterior-butt {
+    width: 90px;
+    height: 30px;
+    font-size: 11px;
+    padding: 0 auto;
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .buttons-for-cards-set-container {
+    letter-spacing: 1px;
+    position: absolute;
+    z-index: 5;
+    top: 20%;
+  }
+
+  .buttons-for-cards-set-link-interior-butt {
+    width: 80px;
+    height: 30px;
+    font-size: 11px;
+    padding: 0 auto;
+    left: 0;
+  }
+
+  .buttons-for-cards-set-link-exterior-butt {
+    width: 80px;
+    height: 30px;
+    font-size: 11px;
+    padding: 0 auto;
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 651px) {
+  .buttons-for-cards-set-container {
+    letter-spacing: 1px;
+    position: absolute;
+    z-index: 5;
+    top: 20%;
+    right: 10%;
+  }
+
+  .buttons-for-cards-set-link-interior-butt {
+    width: 60px;
+    height: 30px;
+    font-size: 10px;
+    padding: 0 auto;
+    left: 0;
+  }
+
+  .buttons-for-cards-set-link-exterior-butt {
+    width: 60px;
+    height: 30px;
+    font-size: 10px;
+    padding: 0 auto;
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 551px) {
+  .buttons-for-cards-set-container {
+    letter-spacing: 1px;
+    position: absolute;
+    z-index: 5;
+    top: 20%;
+    left: 20%;
+  }
+
+  .buttons-for-cards-set-link-interior-butt {
+    width: 20px;
+    height: 15px;
+    font-size: 8px;
+    padding: 0 auto;
+    left: 0;
+  }
+
+  .buttons-for-cards-set-link-exterior-butt {
+    width: 20px;
+    height: 15px;
+    font-size: 8px;
+    padding: 0 auto;
+    left: 0;
   }
 }
