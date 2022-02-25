@@ -35,10 +35,10 @@
 .main-container-engine-cards {
   margin: 0 auto;
   display: grid;
-  grid-template: auto/repeat(3, 1fr);
-  grid-gap: 2rem;
+  grid-template: auto/repeat(2, 1fr);
+  grid-gap: 1rem;
   padding: 1rem 0rem 0rem 0rem;
-  max-width: 900px;
+  max-width: 700px;
 }
 
 .main-container-set-cards {
@@ -60,7 +60,7 @@
     font-size: 18px;
   }
   .main-container-engine-cards {
-    max-width: 800px;
+    max-width: 700px;
   }
   .mazda6-options-main-container {
     margin: 0 auto;
@@ -78,7 +78,7 @@
     font-size: 18px;
   }
   .main-container-engine-cards {
-    max-width: 600px;
+    max-width: 500px;
     grid-gap: 0.3rem;
   }
   .mazda6-options-main-container {

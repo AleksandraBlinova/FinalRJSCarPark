@@ -36,23 +36,14 @@
 }
 
 @media only screen and (max-width: 1020px) {
-  .cards-item-link-engine {
-    width: 200px;
-  }
-
   .cards-item-type-engine {
     font-size: 13px;
-  }
-}
-@media only screen and (max-width: 860px) {
-  .cards-item-link-engine {
-    width: 200px;
   }
 }
 
 @media only screen and (max-width: 768px) {
   .cards-item-link-engine {
-    width: 180px;
+    width: 200px;
     height: 30px;
   }
 
@@ -61,9 +52,9 @@
   }
 }
 
-@media only screen and (max-width: 580px) {
+@media only screen and (max-width: 530px) {
   .cards-item-link-engine {
-    width: 100px;
+    width: 150px;
     height: 35px;
   }
   .cards-item-type-engine {

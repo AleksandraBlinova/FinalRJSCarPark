@@ -27,7 +27,6 @@ const Mazda6OptionsMain = (props) => {
         <div className="main-container-engine-cards">
           <CardsEngine6 type="2.0 Skyactiv-G (150 л.с.)" />
           <CardsEngine6 type="2.5 Skyactiv-G (194 л.с.)" />
-          <CardsEngine6 type="2.5 Skyactiv-G (231 л.с.)" />
         </div>
 
         <div className="main-container-set-cards">
