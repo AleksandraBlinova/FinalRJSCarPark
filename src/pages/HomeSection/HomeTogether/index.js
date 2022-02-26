@@ -15,9 +15,41 @@ import image5 from "../../../imageCarosel/img5.jpg";
 import image6 from "../../../imageCarosel/img6.jpg";
 
 const Home = () => {
+  const images = [
+    {
+      imageUrl: image1,
+      caption: "MAZDA 6",
+      doubleCaption: "Страсть и достоинство",
+    },
+    {
+      imageUrl: image2,
+      caption: "MAZDA CX-5",
+      doubleCaption: "Премиальное качество",
+    },
+    {
+      imageUrl: image3,
+      caption: "СПЕЦИАЛЬНАЯ СЕРИЯ NOIR",
+      doubleCaption: "Mazda 6, Mazda CX-5 и Mazda CX-9",
+    },
+    {
+      imageUrl: image4,
+      caption: "ПО ЦЕНАМ 2022 ГОДА",
+      doubleCaption: "Ограниченная партия",
+    },
+    {
+      imageUrl: image5,
+      caption: "НОВЫЙ MAZDA CX-9",
+      doubleCaption: "Благородное происхождение",
+    },
+    {
+      imageUrl: image6,
+      caption: "MAZDA КРЕДИТ ЛАЙТ",
+      doubleCaption: "Необыкновенно легкий кредит",
+    },
+  ];
   return (
     <>
-      <ImageSlider images={[image1, image2, image3, image4, image5, image6]} />
+      <ImageSlider images={images} />
       <Info />
       <EndlessProgress />
       <VideoConfig />

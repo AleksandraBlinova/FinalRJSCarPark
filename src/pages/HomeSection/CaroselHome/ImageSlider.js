@@ -10,14 +10,7 @@ import {
   Text,
 } from "./ImageSliderElements";
 
-const mainTexts = [
-  "MAZDA 6",
-  "MAZDA CX-5",
-  "СПЕЦИАЛЬНАЯ СЕРИЯ NOIR",
-  "ПО ЦЕНАМ 2022 ГОДА",
-  "НОВЫЙ MAZDA CX-9",
-  "MAZDA КРЕДИТ ЛАЙТ",
-];
+import "./ImageSlider.css";
 
 const Indicator = ({ currentSlide, amountSlides, nextSlide }) => {
   return (
@@ -60,14 +53,19 @@ const ImageSlider = ({
 
   return (
     <Wrapper {...props}>
-      {images.map((imageUrl, index) => (
+      {images.map((image, index) => (
         <Slide
           key={index}
           style={{
-            backgroundImage: `url(${imageUrl})`,
+            backgroundImage: `url(${image.imageUrl})`,
             marginLeft: index === 0 ? `-${currentSlide * 100}%` : undefined,
           }}
-        ></Slide>
+        >
+          <div className="image-slider-home-text-container">
+            <p>{image.doubleCaption}</p>
+            <h2>{image.caption}</h2>
+          </div>
+        </Slide>
       ))}
 
       <Gradient />
