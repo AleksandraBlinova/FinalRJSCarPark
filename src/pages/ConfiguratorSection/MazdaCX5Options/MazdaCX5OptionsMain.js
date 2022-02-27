@@ -25,8 +25,7 @@ const MazdaCX5OptionsMain = (props) => {
           <h2>ВЫБЕРИТЕ ДВИГАТЕЛЬ, КОМПЛЕКТАЦИЮ И ПАКЕТ</h2>
         </div>
         <div className="main-container-engine-cards-cx5">
-          <CardsEngine type="2.0 Skyactiv-G (150 л.с.)" />
-          <CardsEngine type="2.5 Skyactiv-G (194 л.с.)" />
+          <CardsEngine />
         </div>
         <div className="main-container-set-cards-cx5">
           <div

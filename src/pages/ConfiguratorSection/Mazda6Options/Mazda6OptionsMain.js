@@ -10,9 +10,11 @@ const Mazda6OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
   const [isShown, setIsShown] = useState(true);
   const [chosen, setChosen] = useState(0);
+
   const onHover = () => {
     setHover(!hover);
   };
+
   return (
     <>
       <div className="mazda6-options-main-container">
@@ -25,8 +27,7 @@ const Mazda6OptionsMain = (props) => {
           <h2>ВЫБЕРИТЕ ДВИГАТЕЛЬ, КОМПЛЕКТАЦИЮ И ПАКЕТ</h2>
         </div>
         <div className="main-container-engine-cards">
-          <CardsEngine6 type="2.0 Skyactiv-G (150 л.с.)" />
-          <CardsEngine6 type="2.5 Skyactiv-G (194 л.с.)" />
+          <CardsEngine6 />
         </div>
 
         <div className="main-container-set-cards">
