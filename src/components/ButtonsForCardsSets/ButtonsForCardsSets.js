@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
 import "./ButtonsForCardsSets.css";
+import { Link } from "react-router-dom";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   border: "2px solid #101010",
@@ -72,12 +73,14 @@ const ButtonsForCardsSets = (props) => {
         <ColorButton
           variant="outlined"
           className="buttons-for-cards-set-link-interior-butt"
+          href={props.pathInterior}
         >
           ИНТЕРЬЕР
         </ColorButton>
         <ColorButton
           variant="outlined"
           className="buttons-for-cards-set-link-exterior-butt"
+          href={props.pathExterior}
         >
           ЭКСТЕРЬЕР
         </ColorButton>

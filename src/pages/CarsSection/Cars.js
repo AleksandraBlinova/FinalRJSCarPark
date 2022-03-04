@@ -73,7 +73,7 @@ const Cars = (props) => {
           currentcar={currentcar}
         />
       )}
-      <Footer />
+      <NewFooter />
     </div>
   );
 };

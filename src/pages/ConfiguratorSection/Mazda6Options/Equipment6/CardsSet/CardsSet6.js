@@ -8,7 +8,10 @@ const CardsSet6 = (props) => {
     <div className="set-cards-item">
       <div className="set-cards-item-link">
         {props.isShown === true && props.chosen !== 0 && (
-          <ButtonsForCardsSets />
+          <ButtonsForCardsSets
+            pathInterior="/mazda6interior"
+            pathExterior="/mazda6exterior"
+          />
         )}
         <img className="set-cards-item-img" src={props.src} />
 
