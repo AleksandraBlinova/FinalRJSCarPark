@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
-import "./Mazda6Interior.css";
-import { NewFooter } from "../../../../components/New Footer/NewFooter";
-import PanelliumMazda6 from "./PanelliumMazda6/PanelliumMazda6";
+import "./Mazda6InteriorActive.css";
+import { NewFooter } from "../../../../../components/New Footer/NewFooter";
+import PanelliumMazda6 from "../PanelliumMazda6/PanelliumMazda6";
 import Fab from "@mui/material/Fab";
 import Box from "@mui/material/Box";
 
-const Mazda6Interior = () => {
+const Mazda6InteriorActive = () => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
   };
+
+  const [type, setType] = useState("active");
 
   const [activeButt, setActiveButt] = useState(0);
 
@@ -21,26 +23,29 @@ const Mazda6Interior = () => {
 
   return (
     <>
-      <div className="mazda6-interior-main-container">
-        <div className="mazda6-interior-main-container-header">
+      <div className="mazda6-interior-main-container-active">
+        <div className="mazda6-interior-main-container-header-active">
           <h3>ВЫБЕРИТЕ ЦВЕТ ИНТЕРЬЕРА</h3>
           <Link
             to="/mazda6config"
-            className="mazda6-interior-main-container-header-link"
+            className="mazda6-interior-main-container-header-link-active"
           >
             Закрыть {hover ? <MdClose className="" /> : <MdClose />}
           </Link>
         </div>
-        <div className="mazda6-interior-main-container-main-part">
-          <div className="mazda6-interior-main-container-main-part-panell">
-            <PanelliumMazda6 activeButt={activeButt} />
+        <div className="mazda6-interior-main-container-main-part-active">
+          <div className="mazda6-interior-main-container-main-part-panell-active">
+            <PanelliumMazda6 activeButt={activeButt} type={type} />
           </div>
-          <div className="mazda6-interior-main-container-main-part-colors">
-            <div className="colorsForPanelliumMazda6-container">
+          <div className="mazda6-interior-main-container-main-part-colors-active">
+            <div className="colorsForPanelliumMazda6-container-active">
               <Fab
                 size="medium"
                 style={{
                   backgroundColor: "#000",
+                  position: "relative",
+                  left: "50%",
+                  transform: "translate(-50%, 0)",
                 }}
                 aria-label="add"
                 onClick={() => handleButtChange(0)}
@@ -50,6 +55,9 @@ const Mazda6Interior = () => {
                 size="medium"
                 style={{
                   backgroundColor: "#5b3131",
+                  position: "relative",
+                  left: "50%",
+                  transform: "translate(-50%, 0)",
                 }}
                 aria-label="add"
                 onClick={() => handleButtChange(1)}
@@ -84,4 +92,4 @@ const Mazda6Interior = () => {
   );
 };
 
-export default Mazda6Interior;
+export default Mazda6InteriorActive;

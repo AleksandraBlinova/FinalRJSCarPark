@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
-import "./Mazda6Exterior.css";
-import { NewFooter } from "../../../../components/New Footer/NewFooter";
-import MainMazda63D from "./3dMazda6/MainMazda63D";
+import "./Mazda6ExteriorDrive.css";
+import { NewFooter } from "../../../../../components/New Footer/NewFooter";
 
 const Mazda6Exterior = () => {
   const [hover, setHover] = useState(false);
@@ -23,9 +22,7 @@ const Mazda6Exterior = () => {
             Закрыть {hover ? <MdClose className="" /> : <MdClose />}
           </Link>
         </div>
-        <div className="mazda6-exterior-main-container-main-part">
-          <MainMazda63D />
-        </div>
+        <div className="mazda6-exterior-main-container-main-part"></div>
         <div className="mazda6-equip-details-prices-container">
           <p className="mazda6-equip-details-prices-text">
             Цены действительны с 29 декабря 2021 года на автомобили 2021 года

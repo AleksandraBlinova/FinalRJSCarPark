@@ -1,10 +1,10 @@
-.mazda6-interior-main-container {
+.mazda6-interior-main-container-active {
   margin: 0 auto;
   padding: 0 25px;
   max-width: 1400px;
 }
 
-.mazda6-interior-main-container-header {
+.mazda6-interior-main-container-header-active {
   display: grid;
   grid-template: auto/repeat(12, 1fr);
   grid-column-gap: 25px;
@@ -12,13 +12,13 @@
   margin-bottom: 35px;
 }
 
-.mazda6-interior-main-container-header > h3 {
+.mazda6-interior-main-container-header-active > h3 {
   text-align: center;
   margin-top: 35px;
   grid-column: 5/9;
 }
 
-.mazda6-interior-main-container-header-link {
+.mazda6-interior-main-container-header-link-active {
   grid-column: 11/13;
   cursor: pointer;
   position: relative;
@@ -30,51 +30,52 @@
   padding-top: 1.5rem;
 }
 
-.mazda6-interior-main-container-main-part {
+.mazda6-interior-main-container-main-part-active {
   margin-bottom: 40px;
 }
 
-.mazda6-interior-main-container-main-part-colors {
+.mazda6-interior-main-container-main-part-colors-active {
   margin-bottom: 40px;
+  margin-top: 40px;
 }
-.colorsForPanelliumMazda6-container {
+.colorsForPanelliumMazda6-container-active {
   display: grid;
-  grid-template: auto/repeat(7, 1fr);
+  grid-template: auto/repeat(2, 1fr);
   grid-column-gap: 0px;
   justify-content: center;
   position: relative;
-  left: 40%;
-  margin-top: 40px;
+  margin: 0 auto;
+  width: 500px;
 }
 
 @media only screen and (max-width: 930px) {
-  .mazda6-interior-main-container-header > h3 {
+  .mazda6-interior-main-container-header-active > h3 {
     text-align: center;
     font-size: 25px;
   }
 }
 
 @media only screen and (max-width: 770px) {
-  .mazda6-interior-main-container-header > h3 {
+  .mazda6-interior-main-container-header-active > h3 {
     text-align: center;
     font-size: 20px;
     grid-column: 3/9;
   }
 
-  .mazda6-interior-main-container-header-link {
+  .mazda6-interior-main-container-header-link-active {
     grid-column: 9/13;
     font-size: 15px;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .mazda6-interior-main-container-header > h3 {
+  .mazda6-interior-main-container-header-active > h3 {
     text-align: center;
     font-size: 18px;
     grid-column: 3/9;
   }
 
-  .mazda6-interior-main-container-header-link {
+  .mazda6-interior-main-container-header-link-active {
     grid-column: 9/13;
     font-size: 12px;
   }

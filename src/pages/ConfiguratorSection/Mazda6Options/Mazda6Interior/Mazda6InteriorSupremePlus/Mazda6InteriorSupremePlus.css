@@ -1,0 +1,79 @@
+.mazda6-interior-main-container-supremeplus {
+  margin: 0 auto;
+  padding: 0 25px;
+  max-width: 1400px;
+}
+
+.mazda6-interior-main-container-header-supremeplus {
+  display: grid;
+  grid-template: auto/repeat(12, 1fr);
+  grid-column-gap: 25px;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.mazda6-interior-main-container-header-supremeplus > h3 {
+  text-align: center;
+  margin-top: 35px;
+  grid-column: 5/9;
+}
+
+.mazda6-interior-main-container-header-link-supremeplus {
+  grid-column: 11/13;
+  cursor: pointer;
+  position: relative;
+  color: #999;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 1px;
+  line-height: normal;
+  padding-top: 1.5rem;
+}
+
+.mazda6-interior-main-container-main-part-supremeplus {
+  margin-bottom: 40px;
+}
+
+.mazda6-interior-main-container-main-part-colors-supremeplus {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+.colorsForPanelliumMazda6-container-supremeplus {
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  width: 500px;
+}
+
+@media only screen and (max-width: 930px) {
+  .mazda6-interior-main-container-header-supremeplus > h3 {
+    text-align: center;
+    font-size: 25px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .mazda6-interior-main-container-header-supremeplus > h3 {
+    text-align: center;
+    font-size: 20px;
+    grid-column: 3/9;
+  }
+
+  .mazda6-interior-main-container-header-link-supremeplus {
+    grid-column: 9/13;
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .mazda6-interior-main-container-header-supremeplus > h3 {
+    text-align: center;
+    font-size: 18px;
+    grid-column: 3/9;
+  }
+
+  .mazda6-interior-main-container-header-link-supremeplus {
+    grid-column: 9/13;
+    font-size: 12px;
+  }
+}
