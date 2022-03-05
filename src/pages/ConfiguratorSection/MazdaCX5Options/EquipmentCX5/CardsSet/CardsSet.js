@@ -7,9 +7,29 @@ const CardsSet = (props) => {
   return (
     <div className="set-cards-item">
       <div className="set-cards-item-link">
-        {props.isShown === true && props.chosen !== 0 && (
-          <ButtonsForCardsSets />
-        )}
+        {props.isShown === true &&
+          props.chosen !== 0 &&
+          props.text === "DRIVE" && (
+            <ButtonsForCardsSets pathInterior="/mazdacx5interiordrive" />
+          )}
+
+        {props.isShown === true &&
+          props.chosen !== 0 &&
+          props.extratext === "light" && (
+            <ButtonsForCardsSets pathInterior="/mazdacx5interioractivelight" />
+          )}
+
+        {props.isShown === true &&
+          props.chosen !== 0 &&
+          props.extratext === "hard" && (
+            <ButtonsForCardsSets pathInterior="/mazdacx5interioractivehard" />
+          )}
+
+        {props.isShown === true &&
+          props.chosen !== 0 &&
+          props.text === "SUPREME" && (
+            <ButtonsForCardsSets pathInterior="/mazdacx5interiorsupreme" />
+          )}
         <img className="set-cards-item-img" src={props.src} />
         <div className="set-cards-item-info">
           <h5 className="set-cards-item-text"> {props.text}</h5>

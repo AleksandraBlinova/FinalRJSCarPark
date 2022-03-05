@@ -21,6 +21,10 @@ import Mazda6InteriorDrive from "./pages/ConfiguratorSection/Mazda6Options/Mazda
 import Mazda6InteriorActive from "./pages/ConfiguratorSection/Mazda6Options/Mazda6Interior/Mazda6InteriorActive/Mazda6InteriorActive";
 import Mazda6InteriorSupremePlus from "./pages/ConfiguratorSection/Mazda6Options/Mazda6Interior/Mazda6InteriorSupremePlus/Mazda6InteriorSupremePlus";
 import Mazda6ExteriorDrive from "./pages/ConfiguratorSection/Mazda6Options/Mazda6Exterior/Mazda6ExteriorDrive/Mazda6ExteriorDrive";
+import MazdaCX5InteriorDrive from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Interior/MazdaCX5InteriorDrive/MazdaCX5InteriorDrive";
+import MazdaCX5InteriorActiveLight from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Interior/MazdaCX5InteriorActiveLight/MazdaCX5InteriorActiveLight";
+import MazdaCX5InteriorActiveHard from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Interior/MazdaCX5InteriorActiveHard/MazdaCX5InteriorActiveHard";
+import MazdaCX5InteriorSupreme from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Interior/MazdaCX5InteriorSupreme/MazdaCX5InteriorSupreme";
 
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
@@ -55,6 +59,24 @@ function App() {
             component={Mazda6InteriorSupremePlus}
           />
           <Route path="/mazda6exteriordrive" component={Mazda6ExteriorDrive} />
+
+          <Route
+            path="/mazdacx5interiordrive"
+            component={MazdaCX5InteriorDrive}
+          />
+          <Route
+            path="/mazdacx5interioractivehard"
+            component={MazdaCX5InteriorActiveHard}
+          />
+          <Route
+            path="/mazdacx5interioractivelight"
+            component={MazdaCX5InteriorActiveLight}
+          />
+          <Route
+            path="/mazdacx5interiorsupreme"
+            component={MazdaCX5InteriorSupreme}
+          />
+
           <Route
             path="/mazdacx5equipdetails"
             component={MazdaCX5EquipDetails}

@@ -90,6 +90,7 @@ const MazdaCX5OptionsMain = (props) => {
                   src="../configurator/main-cards/4,05b3f90622f0a5.png"
                   path="/mazdacx5equipdetails"
                   number={1}
+                  extratext="light"
                 />
               </div>
             ) : (
@@ -101,6 +102,7 @@ const MazdaCX5OptionsMain = (props) => {
                   src="../configurator/main-cards/4,05b3f90622f0a5.png"
                   path="/mazdacx5equipdetails"
                   number={1}
+                  extratext="light"
                   isShown={isShown}
                   chosen={chosen}
                 />
@@ -130,6 +132,7 @@ const MazdaCX5OptionsMain = (props) => {
                   src="../configurator/main-cards/4,05b3f90622f0a5.png"
                   path="/mazdacx5equipdetails"
                   number={2}
+                  extratext="hard"
                 />
               </div>
             ) : (
@@ -141,6 +144,7 @@ const MazdaCX5OptionsMain = (props) => {
                   src="../configurator/main-cards/4,05b3f90622f0a5.png"
                   path="/mazdacx5equipdetails"
                   number={2}
+                  extratext="hard"
                   isShown={isShown}
                   chosen={chosen}
                 />
