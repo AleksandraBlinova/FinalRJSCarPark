@@ -25,6 +25,9 @@ import MazdaCX5InteriorDrive from "./pages/ConfiguratorSection/MazdaCX5Options/M
 import MazdaCX5InteriorActiveLight from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Interior/MazdaCX5InteriorActiveLight/MazdaCX5InteriorActiveLight";
 import MazdaCX5InteriorActiveHard from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Interior/MazdaCX5InteriorActiveHard/MazdaCX5InteriorActiveHard";
 import MazdaCX5InteriorSupreme from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Interior/MazdaCX5InteriorSupreme/MazdaCX5InteriorSupreme";
+import MazdaCX9InteriorSupreme from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaCX9Interior/MazdaCX9InteriorSupreme/MazdaCX9InteriorSupreme";
+import MazdaCX9InteriorActive from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaCX9Interior/MazdaCX9InteriorActive/MazdaCX9InteriorActive";
+import MazdaCX9InteriorExclusive from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaCX9Interior/MazdaCX9InteriorExclusive/MazdaCX9InteriorExclusive";
 
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
@@ -75,6 +78,19 @@ function App() {
           <Route
             path="/mazdacx5interiorsupreme"
             component={MazdaCX5InteriorSupreme}
+          />
+
+          <Route
+            path="/mazdacx9interioractive"
+            component={MazdaCX9InteriorActive}
+          />
+          <Route
+            path="/mazdacx5interiorexclusive"
+            component={MazdaCX9InteriorExclusive}
+          />
+          <Route
+            path="/mazdacx9interiorsupreme"
+            component={MazdaCX9InteriorSupreme}
           />
 
           <Route

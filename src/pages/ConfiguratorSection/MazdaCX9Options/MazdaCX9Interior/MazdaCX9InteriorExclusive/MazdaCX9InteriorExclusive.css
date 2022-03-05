@@ -1,0 +1,82 @@
+.mazdacx9-interior-main-container-exclusive {
+  margin: 0 auto;
+  padding: 0 25px;
+  max-width: 1400px;
+}
+
+.mazdacx9-interior-main-container-header-exclusive {
+  display: grid;
+  grid-template: auto/repeat(12, 1fr);
+  grid-column-gap: 25px;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.mazdacx9-interior-main-container-header-exclusive > h3 {
+  text-align: center;
+  margin-top: 35px;
+  grid-column: 5/9;
+}
+
+.mazdacx9-interior-main-container-header-link-exclusive {
+  grid-column: 11/13;
+  cursor: pointer;
+  position: relative;
+  color: #999;
+  font-weight: 6500;
+  text-decoration: none;
+  letter-spacing: 1px;
+  line-height: normal;
+  padding-top: 1.5rem;
+}
+
+.mazdacx9-interior-main-container-main-part-exclusive {
+  margin-bottom: 40px;
+}
+
+.mazdacx9-interior-main-container-main-part-colors-exclusive {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+.colorsForPanelliumMazdacx9-container-exclusive {
+  display: grid;
+  grid-template: auto/repeat(3, 1fr);
+  grid-column-gap: 0px;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  width: 500px;
+}
+
+@media only screen and (max-width: 930px) {
+  .mazdacx9-interior-main-container-header-exclusive > h3 {
+    text-align: center;
+    font-size: 25px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .mazdacx9-interior-main-container-header-exclusive > h3 {
+    text-align: center;
+    font-size: 20px;
+    grid-column: 3/9;
+  }
+
+  .mazdacx9-interior-main-container-header-link-exclusive {
+    grid-column: 9/13;
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .mazdacx9-interior-main-container-header-exclusive > h3 {
+    text-align: center;
+    font-size: 18px;
+    grid-column: 3/9;
+  }
+
+  .mazdacx9-interior-main-container-header-link-exclusive {
+    grid-column: 9/13;
+    font-size: 12px;
+  }
+}

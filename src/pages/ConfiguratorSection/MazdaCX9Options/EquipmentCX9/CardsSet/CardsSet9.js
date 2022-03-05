@@ -7,9 +7,21 @@ const CardsSet9 = (props) => {
   return (
     <div className="set-cards-item">
       <div className="set-cards-item-link">
-        {props.isShown === true && props.chosen !== 0 && (
-          <ButtonsForCardsSets />
-        )}
+        {props.isShown === true &&
+          props.chosen !== 0 &&
+          props.text === "ACTIVE" && (
+            <ButtonsForCardsSets pathInterior="/mazdacx9interioractive" />
+          )}
+        {props.isShown === true &&
+          props.chosen !== 0 &&
+          props.text === "EXCLUSIVE" && (
+            <ButtonsForCardsSets pathInterior="/mazdacx9interiorexclusive" />
+          )}
+        {props.isShown === true &&
+          props.chosen !== 0 &&
+          props.text === "SUPREME" && (
+            <ButtonsForCardsSets pathInterior="/mazdacx9interiorsupreme" />
+          )}
         <img className="set-cards-item-img" src={props.src} />
         <div className="set-cards-item-info">
           <h5 className="set-cards-item-text"> {props.text}</h5>
