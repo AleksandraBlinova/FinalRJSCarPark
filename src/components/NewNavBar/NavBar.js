@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+
 import { NavBtn, NavBtnLink } from "./Button";
 import { Link } from "react-router-dom";
 
@@ -39,83 +40,70 @@ function Navbar(props) {
   };
   if (!mountedComponent) return <div />;
   return (
-    <>
-      <ThemeProvider theme={themeMode}>
-        <GlobalStyles />
+    <ThemeProvider theme={themeMode}>
+      <GlobalStyles />
 
-        <nav className="navbar">
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
-          </div>
-          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            <img
-              src="favicon.ico"
-              style={{ width: 50, height: 50 }}
-              alt="logo"
-            />
-          </Link>
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link
-                to="/offers"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Предложения
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/models"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Модельный ряд
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/contacts"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Контакты
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link
-                to="/configurator"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Конфигуратор
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                to="/sign-up"
-                className="nav-links-mobile"
-                onClick={closeMobileMenu}
-              >
-                Sign Up
-              </Link>
-            </li>
-            {props.role === 0 && (
-              <NavBtn>
-                <NavBtnLink to="/signin">Войти</NavBtnLink>
-              </NavBtn>
-            )}
-            {(props.role === 1 || props.role === 2) && (
-              <NavBtn onClick={handleSubmit}>
-                <NavBtnLink to="/logout">Выйти</NavBtnLink>
-              </NavBtn>
-            )}
-          </ul>
-        </nav>
-      </ThemeProvider>
-    </>
+      <nav className="navbar">
+        <div className="menu-icon" onClick={handleClick}>
+          <i className={click ? "fas fa-times" : "fas fa-bars"} />
+        </div>
+        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+          <img src="favicon.ico" style={{ width: 50, height: 50 }} alt="logo" />
+        </Link>
+        <ul className={click ? "nav-menu active" : "nav-menu"}>
+          <li className="nav-item">
+            <Link to="/offers" className="nav-links" onClick={closeMobileMenu}>
+              Предложения
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/models" className="nav-links" onClick={closeMobileMenu}>
+              Модельный ряд
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/contacts"
+              className="nav-links"
+              onClick={closeMobileMenu}
+            >
+              Контакты
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/configurator"
+              className="nav-links"
+              onClick={closeMobileMenu}
+            >
+              Конфигуратор
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/sign-up"
+              className="nav-links-mobile"
+              onClick={closeMobileMenu}
+            >
+              Sign Up
+            </Link>
+          </li>
+          {props.role === 0 && (
+            <NavBtn>
+              <NavBtnLink to="/signin">Войти</NavBtnLink>
+            </NavBtn>
+          )}
+          {(props.role === 1 || props.role === 2) && (
+            <NavBtn onClick={handleSubmit}>
+              <NavBtnLink to="/logout">Выйти</NavBtnLink>
+            </NavBtn>
+          )}
+          <li className="nav-item-toggle">
+            <Toggle theme={theme} toggleTheme={themeToggler} />
+          </li>
+        </ul>
+      </nav>
+    </ThemeProvider>
   );
 }
 

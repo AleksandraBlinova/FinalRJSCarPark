@@ -23,18 +23,25 @@
 
 .nav-menu {
   display: grid;
-  grid-template-columns: repeat(6, auto);
+  grid-template-columns: repeat(7, auto);
   grid-gap: 10px;
   list-style: none;
   text-align: center;
-  width: 70vw;
+  width: 80vw;
   justify-content: end;
-  margin-right: 2rem;
+  margin-right: 3rem;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
+}
+
+.nav-item-toggle {
+  align-items: center;
+  display: flex;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
 }
 
 .nav-links {
