@@ -28,6 +28,12 @@
   letter-spacing: 1px;
   line-height: normal;
   padding-top: 1.5rem;
+  font-weight: 500;
+}
+
+.mazdacx5-interior-main-container-header-link-active-light:hover {
+  text-decoration: none;
+  color: black;
 }
 
 .mazdacx5-interior-main-container-main-part-active-light {

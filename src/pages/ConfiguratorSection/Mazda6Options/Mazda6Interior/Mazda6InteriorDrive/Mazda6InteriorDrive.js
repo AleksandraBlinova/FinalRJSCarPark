@@ -6,8 +6,9 @@ import { NewFooter } from "../../../../../components/New Footer/NewFooter";
 import PanelliumMazda6 from "../PanelliumMazda6/PanelliumMazda6";
 import Fab from "@mui/material/Fab";
 import Box from "@mui/material/Box";
+import TabsExterInterMazda6 from "../../Equipment6/TabsExterInterMazda6/TabsExterInterMazda6";
 
-const Mazda6InteriorDrive = () => {
+const Mazda6InteriorDrive = (props) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
@@ -19,6 +20,10 @@ const Mazda6InteriorDrive = () => {
   const handleButtChange = (newValue) => {
     setActiveButt(newValue);
   };
+
+  const [typeofsectionTabs, setTypeofsectionTabs] = useState(0);
+
+  const [linktoTabs, setLinktoTabs] = useState(props.location.propsSearch);
 
   return (
     <>

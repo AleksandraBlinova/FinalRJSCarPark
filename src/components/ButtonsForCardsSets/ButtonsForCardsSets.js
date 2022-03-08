@@ -77,6 +77,7 @@ const ButtonsForCardsSets = (props) => {
         >
           ИНТЕРЬЕР
         </ColorButton>
+
         <ColorButton
           variant="outlined"
           className="buttons-for-cards-set-link-exterior-butt"

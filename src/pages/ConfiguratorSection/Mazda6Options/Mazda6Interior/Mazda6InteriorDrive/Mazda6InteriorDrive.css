@@ -28,8 +28,12 @@
   letter-spacing: 1px;
   line-height: normal;
   padding-top: 1.5rem;
+  text-decoration: none;
 }
-
+.mazda6-interior-main-container-header-link-drive:hover {
+  text-decoration: none;
+  color: black;
+}
 .mazda6-interior-main-container-main-part-drive {
   margin-bottom: 40px;
 }

@@ -41,7 +41,7 @@ const PanelliumMazda6 = (props) => {
           </Pannellum>
         )}
 
-      {props.type === "supremeplus" && props.activeButt === 1 && (
+      {props.type === "supremeplus" && props.activeButt === 2 && (
         <Pannellum
           width="1350px"
           height="500px"

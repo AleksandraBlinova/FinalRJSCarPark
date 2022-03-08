@@ -42,7 +42,7 @@ const MazdaCX9InteriorSupreme = () => {
               <Fab
                 size="medium"
                 style={{
-                  backgroundColor: "#000",
+                  backgroundColor: "#222222",
                   position: "relative",
                   left: "50%",
                   transform: "translate(-50%, 0)",
@@ -54,7 +54,7 @@ const MazdaCX9InteriorSupreme = () => {
               <Fab
                 size="medium"
                 style={{
-                  background: "linear-gradient(to right,  #323232, #550923)",
+                  background: "linear-gradient(to right,  #e4e2d6, #554844)",
                   position: "relative",
                   left: "50%",
                   transform: "translate(-50%, 0)",
@@ -66,7 +66,7 @@ const MazdaCX9InteriorSupreme = () => {
               <Fab
                 size="medium"
                 style={{
-                  background: "linear-gradient(to right,  #fff, #704d2c)",
+                  background: "linear-gradient(to right,  #222222, #554844)",
                   position: "relative",
                   left: "50%",
                   transform: "translate(-50%, 0)",

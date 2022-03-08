@@ -20,7 +20,6 @@ import LegalInformation from "./pages/LegalInformationSection/LegalInformation";
 import Mazda6InteriorDrive from "./pages/ConfiguratorSection/Mazda6Options/Mazda6Interior/Mazda6InteriorDrive/Mazda6InteriorDrive";
 import Mazda6InteriorActive from "./pages/ConfiguratorSection/Mazda6Options/Mazda6Interior/Mazda6InteriorActive/Mazda6InteriorActive";
 import Mazda6InteriorSupremePlus from "./pages/ConfiguratorSection/Mazda6Options/Mazda6Interior/Mazda6InteriorSupremePlus/Mazda6InteriorSupremePlus";
-import Mazda6ExteriorDrive from "./pages/ConfiguratorSection/Mazda6Options/Mazda6Exterior/Mazda6ExteriorDrive/Mazda6ExteriorDrive";
 import MazdaCX5InteriorDrive from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Interior/MazdaCX5InteriorDrive/MazdaCX5InteriorDrive";
 import MazdaCX5InteriorActiveLight from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Interior/MazdaCX5InteriorActiveLight/MazdaCX5InteriorActiveLight";
 import MazdaCX5InteriorActiveHard from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Interior/MazdaCX5InteriorActiveHard/MazdaCX5InteriorActiveHard";
@@ -28,6 +27,10 @@ import MazdaCX5InteriorSupreme from "./pages/ConfiguratorSection/MazdaCX5Options
 import MazdaCX9InteriorSupreme from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaCX9Interior/MazdaCX9InteriorSupreme/MazdaCX9InteriorSupreme";
 import MazdaCX9InteriorActive from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaCX9Interior/MazdaCX9InteriorActive/MazdaCX9InteriorActive";
 import MazdaCX9InteriorExclusive from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaCX9Interior/MazdaCX9InteriorExclusive/MazdaCX9InteriorExclusive";
+
+import Mazda6Exterior from "./pages/ConfiguratorSection/Mazda6Options/Mazda6Exterior/Mazda6Exterior";
+import MazdaCX5Exterior from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Exterior/MazdaCX5Exterior";
+import MazdaCX9Exterior from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaCX9Exterior/MazdaCX9Exterior";
 
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
@@ -61,7 +64,7 @@ function App() {
             path="/mazda6interiorsupremeplus"
             component={Mazda6InteriorSupremePlus}
           />
-          <Route path="/mazda6exteriordrive" component={Mazda6ExteriorDrive} />
+          <Route path="/mazda6exterior" component={Mazda6Exterior} />
 
           <Route
             path="/mazdacx5interiordrive"
@@ -80,19 +83,21 @@ function App() {
             component={MazdaCX5InteriorSupreme}
           />
 
+          <Route path="/mazdacx5exterior" component={MazdaCX5Exterior} />
+
           <Route
             path="/mazdacx9interioractive"
             component={MazdaCX9InteriorActive}
           />
           <Route
-            path="/mazdacx5interiorexclusive"
+            path="/mazdacx9interiorexclusive"
             component={MazdaCX9InteriorExclusive}
           />
           <Route
             path="/mazdacx9interiorsupreme"
             component={MazdaCX9InteriorSupreme}
           />
-
+          <Route path="/mazdacx9exterior" component={MazdaCX9Exterior} />
           <Route
             path="/mazdacx5equipdetails"
             component={MazdaCX5EquipDetails}

@@ -28,6 +28,11 @@
   letter-spacing: 1px;
   line-height: normal;
   padding-top: 1.5rem;
+  font-weight: 500;
+}
+.mazdacx9-interior-main-container-header-link-supreme:hover {
+  text-decoration: none;
+  color: black;
 }
 
 .mazdacx9-interior-main-container-main-part-supreme {

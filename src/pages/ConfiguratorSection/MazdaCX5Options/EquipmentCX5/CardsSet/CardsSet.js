@@ -10,25 +10,37 @@ const CardsSet = (props) => {
         {props.isShown === true &&
           props.chosen !== 0 &&
           props.text === "DRIVE" && (
-            <ButtonsForCardsSets pathInterior="/mazdacx5interiordrive" />
+            <ButtonsForCardsSets
+              pathInterior="/mazdacx5interiordrive"
+              pathExterior="/mazdacx5exterior"
+            />
           )}
 
         {props.isShown === true &&
           props.chosen !== 0 &&
           props.extratext === "light" && (
-            <ButtonsForCardsSets pathInterior="/mazdacx5interioractivelight" />
+            <ButtonsForCardsSets
+              pathInterior="/mazdacx5interioractivelight"
+              pathExterior="/mazdacx5exterior"
+            />
           )}
 
         {props.isShown === true &&
           props.chosen !== 0 &&
           props.extratext === "hard" && (
-            <ButtonsForCardsSets pathInterior="/mazdacx5interioractivehard" />
+            <ButtonsForCardsSets
+              pathInterior="/mazdacx5interioractivehard"
+              pathExterior="/mazdacx5exterior"
+            />
           )}
 
         {props.isShown === true &&
           props.chosen !== 0 &&
           props.text === "SUPREME" && (
-            <ButtonsForCardsSets pathInterior="/mazdacx5interiorsupreme" />
+            <ButtonsForCardsSets
+              pathInterior="/mazdacx5interiorsupreme"
+              pathExterior="/mazdacx5exterior"
+            />
           )}
         <img className="set-cards-item-img" src={props.src} />
         <div className="set-cards-item-info">

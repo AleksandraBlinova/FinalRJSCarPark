@@ -30,6 +30,11 @@
   padding-top: 1.5rem;
 }
 
+.mazda6-interior-main-container-header-link-active:hover {
+  text-decoration: none;
+  color: black;
+}
+
 .mazda6-interior-main-container-main-part-active {
   margin-bottom: 40px;
 }

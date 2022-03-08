@@ -28,6 +28,11 @@
   letter-spacing: 1px;
   line-height: normal;
   padding-top: 1.5rem;
+  font-weight: 500;
+}
+.mazdacx5-interior-main-container-header-link-supreme {
+  text-decoration: none;
+  color: #000;
 }
 
 .mazdacx5-interior-main-container-main-part-supreme {

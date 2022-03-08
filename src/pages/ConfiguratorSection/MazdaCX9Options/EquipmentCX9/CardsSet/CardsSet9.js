@@ -10,17 +10,26 @@ const CardsSet9 = (props) => {
         {props.isShown === true &&
           props.chosen !== 0 &&
           props.text === "ACTIVE" && (
-            <ButtonsForCardsSets pathInterior="/mazdacx9interioractive" />
+            <ButtonsForCardsSets
+              pathInterior="/mazdacx9interioractive"
+              pathExterior="/mazdacx9exterior"
+            />
           )}
         {props.isShown === true &&
           props.chosen !== 0 &&
           props.text === "EXCLUSIVE" && (
-            <ButtonsForCardsSets pathInterior="/mazdacx9interiorexclusive" />
+            <ButtonsForCardsSets
+              pathInterior="/mazdacx9interiorexclusive"
+              pathExterior="/mazdacx9exterior"
+            />
           )}
         {props.isShown === true &&
           props.chosen !== 0 &&
           props.text === "SUPREME" && (
-            <ButtonsForCardsSets pathInterior="/mazdacx9interiorsupreme" />
+            <ButtonsForCardsSets
+              pathInterior="/mazdacx9interiorsupreme"
+              pathExterior="/mazdacx9exterior"
+            />
           )}
         <img className="set-cards-item-img" src={props.src} />
         <div className="set-cards-item-info">

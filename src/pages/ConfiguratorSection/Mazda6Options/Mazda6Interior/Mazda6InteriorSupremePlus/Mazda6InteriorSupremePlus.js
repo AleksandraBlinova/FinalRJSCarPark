@@ -14,7 +14,7 @@ const Mazda6InteriorSupremePlus = () => {
   };
   const [type, setType] = useState("supremeplus");
 
-  const [activeButt, setActiveButt] = useState(0);
+  const [activeButt, setActiveButt] = useState(2);
 
   const handleButtChange = (newValue) => {
     setActiveButt(newValue);
@@ -47,7 +47,7 @@ const Mazda6InteriorSupremePlus = () => {
                   transform: "translate(-50%, 0)",
                 }}
                 aria-label="add"
-                onClick={() => handleButtChange(1)}
+                onClick={() => handleButtChange(2)}
               ></Fab>
             </div>
           </div>

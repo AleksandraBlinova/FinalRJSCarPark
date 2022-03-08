@@ -1,0 +1,63 @@
+.mazdacx9-exterior-tabs-container {
+  width: 700px;
+  display: block;
+  margin: 0 auto;
+}
+
+.mazdacx9-exterior-main-container {
+  margin: 0 auto;
+  padding: 0 25px;
+  max-width: 1400px;
+}
+
+.mazdacx9-exterior-main-container-header {
+  display: grid;
+  grid-template: auto/repeat(12, 1fr);
+  grid-column-gap: 25px;
+  align-items: center;
+}
+
+.mazdacx9-exterior-main-container-header > h3 {
+  text-align: center;
+  margin-top: 35px;
+  grid-column: 5/9;
+}
+
+.mazdacx9-exterior-main-container-header-link {
+  grid-column: 11/13;
+  cursor: pointer;
+  position: relative;
+  color: #999;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 1px;
+  line-height: normal;
+  padding-top: 1.5rem;
+}
+
+.mazdacx9-exterior-main-container-header-link:hover {
+  text-decoration: none;
+  color: black;
+}
+.mazdacx9-exterior-main-container-main-part-photos {
+  margin: 0 auto;
+  width: 1000px;
+  height: 500px;
+  display: block;
+}
+
+.mazdacx9-exterior-main-container-main-part-photos > img {
+  width: 1000px;
+  height: 500px;
+}
+
+.mazdacx9-exterior-main-container-main-part-colors {
+  display: grid;
+  grid-template: auto/repeat(6, 1fr);
+  grid-column-gap: 10px;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  width: 700px;
+  padding-bottom: 20px;
+}

@@ -12,7 +12,7 @@ const CardsSet6 = (props) => {
           props.text === "DRIVE" && (
             <ButtonsForCardsSets
               pathInterior="/mazda6interiordrive"
-              pathExterior="/mazda6exteriordrive"
+              pathExterior="/mazda6exterior"
             />
           )}
         {props.isShown === true &&
@@ -20,7 +20,7 @@ const CardsSet6 = (props) => {
           props.text === "ACTIVE" && (
             <ButtonsForCardsSets
               pathInterior="/mazda6interioractive"
-              pathExterior="/mazda6exterioractive"
+              pathExterior="/mazda6exterior"
             />
           )}
         {props.isShown === true &&
@@ -28,7 +28,7 @@ const CardsSet6 = (props) => {
           props.text === "SUPREME PLUS" && (
             <ButtonsForCardsSets
               pathInterior="/mazda6interiorsupremeplus"
-              pathExterior="/mazda6exteriorsupremeplus"
+              pathExterior="/mazda6exterior"
             />
           )}
         <img className="set-cards-item-img" src={props.src} />
