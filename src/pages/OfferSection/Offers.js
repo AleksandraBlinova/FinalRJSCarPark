@@ -14,7 +14,7 @@ function Offers() {
               src="offer_m6_1800x900.jpg"
               text="MAZDA В КРЕДИТ ОТ 7900. Войдите в мир Mazda с выгодой"
               label="Подробнее"
-              path="https://www.mazda.ru/all-offers/mazda-v-kredit-ot/"
+              path="#"
             />
             <OfferSection
               src="july_1800x900_range.jpg"
@@ -26,12 +26,12 @@ function Offers() {
           <ul className="cards__items">
             <OfferSection
               src="all_offers_tradein_1800x900.jpg"
-              text="КРЕДИТ ДЛЯ ЛОЯЛЬНЫХ КЛИЕНТОВ"
+              text="Страхование автомобилей Mazda по разным программам: КАСКО, Mazda Драйв, Mazda Драйв Плюс, Mazda Мини Драйв"
               label="Подробнее"
-              path="https://www.mazda.ru/all-offers/credit-for-loyal/"
+              path="#"
             />
             <OfferSection
-              src="/noir/1noir_triple_hero_1800x900_update.jpg"
+              src="1noir_triple_hero_1800x900_update.jpg"
               text="СПЕЦИАЛЬНАЯ СЕРИЯ NOIR
                 MAZDA CX-9, MAZDA 6, MAZDA CX-5"
               label="Подробнее"

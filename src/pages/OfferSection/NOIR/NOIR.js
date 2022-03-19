@@ -2,6 +2,12 @@ import React, { useRef } from "react";
 import "./NOIR.css";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import exterior6 from "./noirImages/1m6_exterior_1800x900.jpg";
+import interior6 from "./noirImages/1m6_interior_1800x900.jpg";
+import exteriorcx5 from "./noirImages/1cx5_exterior_1800x900.jpg";
+import interiorcx5 from "./noirImages/1cx5_interior_1800x900_update.jpg";
+import exteriorcx9 from "./noirImages/1cx9_exterior_1800x900.jpg";
+import interiorcx9 from "./noirImages/1cx9_interior_1800x900_update.jpg";
 
 const NOIR = () => {
   const titleRef = useRef();
@@ -30,8 +36,8 @@ const NOIR = () => {
           </p>
         </div>
         <div className="mazda-noir-container-imgs-container">
-          <img src="1m6_exterior_1800x900.jpg" />
-          <img src="1m6_interior_1800x900.jpg" />
+          <img src={exterior6} />
+          <img src={interior6} />
         </div>
 
         <div className="mazda-noir-container-imgs-h6-container">
@@ -62,8 +68,8 @@ const NOIR = () => {
           </p>
         </div>
         <div className="mazda-noir-container-imgs-container">
-          <img src="1cx5_exterior_1800x900.jpg" />
-          <img src="1cx5_interior_1800x900_update.jpg" />
+          <img src={exteriorcx5} />
+          <img src={interiorcx5} />
         </div>
 
         <div className="mazda-noir-container-imgs-h6-container">
@@ -95,8 +101,8 @@ const NOIR = () => {
           </p>
         </div>
         <div className="mazda-noir-container-imgs-container">
-          <img src="1cx9_exterior_1800x900.jpg" />
-          <img src="1cx9_interior_1800x900_update.jpg" />
+          <img src={exteriorcx9} />
+          <img src={interiorcx9} />
         </div>
 
         <div className="mazda-noir-container-imgs-h6-container">
