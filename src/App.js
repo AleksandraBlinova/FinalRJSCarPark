@@ -32,6 +32,8 @@ import Mazda6Exterior from "./pages/ConfiguratorSection/Mazda6Options/Mazda6Exte
 import MazdaCX5Exterior from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaCX5Exterior/MazdaCX5Exterior";
 import MazdaCX9Exterior from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaCX9Exterior/MazdaCX9Exterior";
 
+import NOIR from "./pages/OfferSection/NOIR/NOIR";
+
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
 
@@ -106,6 +108,8 @@ function App() {
             path="/mazdacx9equipdetails"
             component={MazdaCX9EquipDetails}
           />
+
+          <Route path="/noir" component={NOIR} />
 
           <Route
             path="/models"

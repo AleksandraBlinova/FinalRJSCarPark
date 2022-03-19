@@ -1,0 +1,254 @@
+.noir-start-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  object-fit: contain;
+  margin-bottom: 90px;
+  font-family: inherit;
+  background: url(./1noir_triple_hero_1800x900_update.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.noir-start-container > h1 {
+  color: #fff;
+  text-align: center;
+}
+
+.noir-start-container > h5 {
+  color: #fff;
+  margin-bottom: 40px;
+  padding-top: 90px;
+  font-size: 18px;
+}
+
+.mazda-noir-container {
+  height: 115vh;
+  align-items: center;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+  font-family: inherit;
+}
+
+.mazda-noir-container > h2 {
+  color: #000;
+  text-align: center;
+}
+.mazda-noir-container-p-container {
+  width: 750px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+}
+.mazda-noir-container-p-container > p {
+  color: #000;
+  text-align: center;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.mazda-noir-container-imgs-container {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 0px;
+  padding-right: 8px;
+}
+
+.mazda-noir-container-imgs-container > img {
+  height: 378px;
+  width: auto;
+}
+
+.mazda-noir-container-imgs-container > img:hover {
+  transform: scale(1.01);
+  transition: transform 1.2s cubic-bezier(0.25, 0.86, 0.45, 0.94);
+}
+
+.mazda-noir-container-imgs-h6-container {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 0px;
+  text-align: center;
+  padding-top: 1rem;
+  font-family: inherit;
+  padding-bottom: 10px;
+}
+
+.mazda-noir-container-imgs-h6-container > h6 {
+  color: #000;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.mazda-noir-container-imgs-text-container {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 25px;
+  padding-top: 20px;
+  font-family: inherit;
+  padding-bottom: 40px;
+}
+
+.mazda-noir-container-imgs-text-container > p {
+  text-align: center;
+  font-size: 16px;
+  font-family: inherit;
+  color: #6e6e6e;
+  padding-right: 15px;
+}
+
+@media screen and (max-width: 1300px) {
+  .noir-start-container {
+    height: 80vh;
+  }
+  .mazda-noir-container {
+    height: 100vh;
+  }
+  .mazda-noir-container-imgs-container > img {
+    height: 290px;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .noir-start-container {
+    height: 70vh;
+  }
+  .mazda-noir-container-imgs-container > img {
+    height: 250px;
+    width: auto;
+  }
+
+  .mazda-noir-container {
+    height: 90vh;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .noir-start-container {
+    height: 60vh;
+  }
+  .mazda-noir-container-imgs-container > img {
+    height: 250px;
+    width: auto;
+  }
+  .mazda-noir-container-imgs-container > img {
+    height: 220px;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .mazda-noir-container-imgs-container > img {
+    height: 195px;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .noir-start-container {
+    height: 50vh;
+  }
+  .mazda-noir-container-imgs-container > img {
+    height: 170px;
+    width: auto;
+  }
+
+  .mazda-noir-container-p-container {
+    width: 550px;
+  }
+
+  .mazda-noir-container {
+    height: 85vh;
+  }
+}
+@media screen and (max-width: 700px) {
+  .noir-start-container {
+    height: 40vh;
+  }
+  .mazda-noir-container-imgs-container > img {
+    height: 145px;
+    width: auto;
+  }
+
+  .mazda-noir-container {
+    height: 80vh;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .noir-start-container {
+    background-image: url(./1mobile_hero_triple_480x852.jpg);
+    background-repeat: no-repeat;
+    background-size: 590px auto;
+    height: 100vh;
+  }
+  .noir-start-container > h1 {
+    font-size: 32px;
+  }
+
+  .noir-start-container > h5 {
+    font-size: 16px;
+  }
+
+  .mazda-noir-container {
+    height: 90vh;
+  }
+
+  .mazda-noir-container-imgs-container > img {
+    height: 100px;
+    width: auto;
+    padding-left: 10px;
+  }
+
+  .mazda-noir-container-p-container {
+    width: 350px;
+  }
+  .mazda-noir-container-p-container > p {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .mazda-noir-container-imgs-container > img {
+    height: 80px;
+    width: auto;
+    padding-left: 10px;
+  }
+  .mazda-noir-container {
+    height: 100vh;
+  }
+
+  .mazda-noir-container-p-container {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .mazda-noir-container-imgs-container > img {
+    height: 60px;
+    width: auto;
+    padding-left: 10px;
+  }
+
+  .mazda-noir-container {
+    height: 105vh;
+    padding: 0;
+  }
+
+  .mazda-noir-container-p-container {
+    width: 220px;
+    padding: 0;
+  }
+
+  .mazda-noir-container-imgs-h6-container > h6 {
+    font-size: 12px;
+  }
+
+  .mazda-noir-container-imgs-text-container > p {
+    font-size: 11px;
+  }
+}

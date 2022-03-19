@@ -48,6 +48,10 @@
   text-decoration: none;
 }
 
+.cards__item__link:hover {
+  text-decoration: none;
+}
+
 .cards__item__pic-wrap {
   position: relative;
   width: 100%;
@@ -98,6 +102,10 @@
   line-height: 24px;
 }
 
+.cards__item__text:hover {
+  text-decoration: none;
+  color: #920457;
+}
 @media only screen and (min-width: 1024px) {
   .cards__items {
     display: flex;
