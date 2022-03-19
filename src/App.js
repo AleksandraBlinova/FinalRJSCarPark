@@ -33,6 +33,7 @@ import MazdaCX5Exterior from "./pages/ConfiguratorSection/MazdaCX5Options/MazdaC
 import MazdaCX9Exterior from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaCX9Exterior/MazdaCX9Exterior";
 
 import NOIR from "./pages/OfferSection/NOIR/NOIR";
+import TradeIn from "./pages/OfferSection/TradeIn/TradeIn";
 
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
@@ -110,6 +111,8 @@ function App() {
           />
 
           <Route path="/noir" component={NOIR} />
+
+          <Route path="/tradeIn" component={TradeIn} />
 
           <Route
             path="/models"

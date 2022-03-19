@@ -20,7 +20,7 @@ function Offers() {
               src="july_1800x900_range.jpg"
               text="MAZDA ТРЕЙД-ИН"
               label="Подробнее"
-              path="https://www.mazda.ru/buying/trade-in/"
+              path="/tradeIn"
             />
           </ul>
           <ul className="cards__items">
