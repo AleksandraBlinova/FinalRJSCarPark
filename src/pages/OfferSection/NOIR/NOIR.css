@@ -33,6 +33,15 @@
   font-family: inherit;
 }
 
+.noir-start-container .noir-start-container-icon {
+  font-size: 70px;
+  color: rgb(255, 255, 255);
+}
+
+.noir-start-container .noir-start-container-icon:hover {
+  font-size: 80px;
+}
+
 .mazda-noir-container > h2 {
   color: #000;
   text-align: center;

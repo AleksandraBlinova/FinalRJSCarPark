@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./NOIR.css";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const NOIR = () => {
+  const titleRef = useRef();
+  function handleBackClick() {
+    titleRef.current.scrollIntoView({ behavior: "smooth" });
+  }
   return (
     <>
       <div className="noir-start-container">
         <h5>MAZDA 6, MAZDA CX-5 И MAZDA CX-9</h5>
         <h1>СПЕЦИАЛЬНАЯ СЕРИЯ NOIR</h1>
+
+        <KeyboardArrowDownIcon
+          onClick={handleBackClick}
+          className="noir-start-container-icon"
+        />
       </div>
       <div className="mazda-noir-container">
-        <h2>MAZDA 6 NOIR</h2>
+        <h2 ref={titleRef}>MAZDA 6 NOIR</h2>
         <div className="mazda-noir-container-p-container">
           <p>
             Темная, как ночное небо. Яркая, как свет звезд на нем. Специальная
