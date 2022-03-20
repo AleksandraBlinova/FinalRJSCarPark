@@ -8,7 +8,7 @@ import { styled } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
-  width: "62px",
+  width: "58px",
   height: "34px",
   padding: "8px",
 
