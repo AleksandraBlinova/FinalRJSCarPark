@@ -1,0 +1,87 @@
+.insurance-mini-drive-start-container {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  object-fit: contain;
+  margin-bottom: 10px;
+  font-family: inherit;
+  background: url(./insurance_minidrive_hero_1800x340.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  padding-left: 40px;
+  padding-top: 80px;
+}
+
+.insurance-mini-drive-main-container {
+  height: auto;
+  align-items: center;
+  margin: 0 auto;
+  padding-bottom: 0rem;
+  font-family: inherit;
+  text-align: center;
+  width: 1000px;
+}
+
+@media screen and (max-width: 1050px) {
+  .insurance-mini-drive-start-container {
+    height: 35vh;
+  }
+
+  .insurance-mini-drive-main-container {
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .insurance-mini-drive-start-container {
+    height: 30vh;
+  }
+
+  .insurance-mini-drive-main-container {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .insurance-mini-drive-start-container {
+    height: 25vh;
+    padding-top: 20px;
+  }
+
+  .insurance-mini-drive-start-container > h3 {
+    font-size: 20px;
+  }
+
+  .insurance-mini-drive-main-container {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .insurance-mini-drive-start-container {
+    height: 15vh;
+    padding-top: 20px;
+  }
+
+  .insurance-mini-drive-start-container > h3 {
+    font-size: 14px;
+  }
+
+  .insurance-mini-drive-main-container {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .insurance-mini-drive-start-container > h3 {
+    font-size: 10px;
+  }
+
+  .insurance-mini-drive-start-container {
+    height: 10vh;
+    padding-top: 5px;
+  }
+}

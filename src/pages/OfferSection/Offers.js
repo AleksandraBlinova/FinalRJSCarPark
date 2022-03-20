@@ -28,7 +28,7 @@ function Offers() {
               src="all_offers_tradein_1800x900.jpg"
               text="Страхование автомобилей Mazda по разным программам: КАСКО, Mazda Драйв, Mazda Драйв Плюс, Mazda Мини Драйв"
               label="Подробнее"
-              path="#"
+              path="/insurance"
             />
             <OfferSection
               src="1noir_triple_hero_1800x900_update.jpg"

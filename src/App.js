@@ -34,6 +34,9 @@ import MazdaCX9Exterior from "./pages/ConfiguratorSection/MazdaCX9Options/MazdaC
 
 import NOIR from "./pages/OfferSection/NOIR/NOIR";
 import TradeIn from "./pages/OfferSection/TradeIn/TradeIn";
+import Insurance from "./pages/OfferSection/Insurance/Insurance";
+import InsuranceDrive from "./pages/OfferSection/Insurance/InsuranceDrive/InsuranceDrive";
+import InsuranceMiniDrive from "./pages/OfferSection/Insurance/InsuranceMiniDrive/InsuranceMiniDrive";
 
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
@@ -113,6 +116,12 @@ function App() {
           <Route path="/noir" component={NOIR} />
 
           <Route path="/tradeIn" component={TradeIn} />
+
+          <Route path="/insurance" component={Insurance} />
+
+          <Route path="/insurancedrive" component={InsuranceDrive} />
+
+          <Route path="/insuranceminidrive" component={InsuranceMiniDrive} />
 
           <Route
             path="/models"

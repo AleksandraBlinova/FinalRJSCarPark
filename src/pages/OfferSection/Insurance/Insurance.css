@@ -1,0 +1,206 @@
+.insurance-start-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  object-fit: contain;
+  margin-bottom: 90px;
+  font-family: inherit;
+  background: url(./top_hero_1800x900_darker_smallcar.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  padding-left: 40px;
+}
+
+.insurance-start-container > h2 {
+  color: #fff;
+  text-align: left;
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+.insurance-start-container > p {
+  color: #fff;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+
+.insurance-main-container {
+  height: auto;
+  align-items: center;
+  margin: 0 auto;
+  padding-bottom: 0rem;
+  font-family: inherit;
+}
+
+.insurance-main-container > h2 {
+  color: #000;
+  text-align: center;
+  font-family: inherit;
+  margin-bottom: 40px;
+}
+.insurance-main-container-p-container {
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+.insurance-main-container-p-container > p {
+  color: #000;
+  text-align: center;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.insurance-main-container-drive {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 25px;
+  align-items: center;
+  color: #000;
+  padding-right: 30px;
+}
+
+.insurance-main-container-drive > img {
+  width: 760px;
+  height: 430px;
+}
+
+.insurance-main-container-mini-drive {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 25px;
+  align-items: center;
+  color: #000;
+  text-align: right;
+  padding-left: 40px;
+}
+
+.insurance-main-container-mini-drive > img {
+  width: 760px;
+  height: 430px;
+}
+
+@media screen and (max-width: 1300px) {
+  .insurance-main-container-drive > img {
+    width: 670px;
+    height: 420px;
+  }
+
+  .insurance-main-container-mini-drive > img {
+    width: 670px;
+    height: 420px;
+  }
+
+  .insurance-start-container {
+    height: 90vh;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .insurance-main-container-drive > img {
+    width: 570px;
+    height: 380px;
+  }
+
+  .insurance-main-container-mini-drive > img {
+    width: 570px;
+    height: 380px;
+  }
+  .insurance-start-container {
+    height: 80vh;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .insurance-main-container-drive > img {
+    width: 450px;
+    height: 280px;
+  }
+
+  .insurance-main-container-mini-drive > img {
+    width: 450px;
+    height: 280px;
+  }
+  .insurance-start-container {
+    height: 70vh;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .insurance-main-container-drive > img {
+    display: none;
+  }
+
+  .insurance-main-container-mini-drive > img {
+    display: none;
+  }
+
+  .insurance-start-container {
+    height: 60vh;
+  }
+  .insurance-main-container-drive {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 40px;
+    padding-left: 0;
+  }
+
+  .insurance-main-container-mini-drive {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 30px;
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .insurance-start-container {
+    height: 45vh;
+  }
+
+  .insurance-start-container > h2 {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .insurance-start-container > p {
+    color: #fff;
+    font-size: 12px;
+    padding-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .insurance-start-container {
+    height: 35vh;
+  }
+  .insurance-start-container > h2 {
+    padding-top: 20px;
+  }
+
+  .insurance-start-container {
+    background-size: 100% 100%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .insurance-start-container {
+    height: 30vh;
+  }
+
+  .insurance-start-container > h2 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .insurance-start-container > p {
+    color: #fff;
+    font-size: 10px;
+    padding-bottom: 0px;
+  }
+}

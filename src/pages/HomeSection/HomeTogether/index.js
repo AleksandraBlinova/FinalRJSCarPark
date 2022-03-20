@@ -33,7 +33,7 @@ const Home = () => {
     },
     {
       imageUrl: image4,
-      caption: "ПО ЦЕНАМ 2022 ГОДА",
+      caption: "ПО ЦЕНАМ 2021 ГОДА",
       doubleCaption: "Ограниченная партия",
     },
     {
