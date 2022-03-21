@@ -15,8 +15,7 @@ const HundredyearsConfig = () => {
       <img src={Image} className="hundred-image" />
       <p className="hundred-text">
         30 января 2020 года Mazda отпраздновала свой столетний юбилей. Узнайте
-        больше о легендарных автомобилях и людях, их создавших. Поделитесь своей
-        историей с Mazda и познакомьтесь с историями других владельцев.
+        больше о технологиях, используемых в легендарных автомобилях Mazda.
       </p>
       <div className="hundred-btns">
         <Link
