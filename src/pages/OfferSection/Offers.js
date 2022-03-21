@@ -12,9 +12,9 @@ function Offers() {
           <ul className="cards__items">
             <OfferSection
               src="offer_m6_1800x900.jpg"
-              text="MAZDA В КРЕДИТ ОТ 7900. Войдите в мир Mazda с выгодой"
+              text="Найдите ближайший дилерский центр в вашем городе!"
               label="Подробнее"
-              path="#"
+              path="/dealer"
             />
             <OfferSection
               src="july_1800x900_range.jpg"

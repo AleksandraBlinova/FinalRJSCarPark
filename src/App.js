@@ -37,6 +37,7 @@ import TradeIn from "./pages/OfferSection/TradeIn/TradeIn";
 import Insurance from "./pages/OfferSection/Insurance/Insurance";
 import InsuranceDrive from "./pages/OfferSection/Insurance/InsuranceDrive/InsuranceDrive";
 import InsuranceMiniDrive from "./pages/OfferSection/Insurance/InsuranceMiniDrive/InsuranceMiniDrive";
+import MazdaDealer from "./pages/OfferSection/MazdaDealer/MazdaDealer";
 
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
@@ -122,6 +123,8 @@ function App() {
           <Route path="/insurancedrive" component={InsuranceDrive} />
 
           <Route path="/insuranceminidrive" component={InsuranceMiniDrive} />
+
+          <Route path="/dealer" component={MazdaDealer} />
 
           <Route
             path="/models"

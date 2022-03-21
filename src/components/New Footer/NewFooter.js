@@ -10,7 +10,7 @@ export function NewFooter() {
           <Footer.Column>
             <Footer.Title>ПОЛЕЗНЫЕ ССЫЛКИ</Footer.Title>
             <Footer.Link href="#">Обратная связь</Footer.Link>
-            <Footer.Link href="#">Стать дилером</Footer.Link>
+            <Footer.Link href="/dealer">Поиск дилера</Footer.Link>
             <Footer.Link href="/contacts">Контакты</Footer.Link>
             <Footer.Link href="/legalinfo">Правовая информация</Footer.Link>
           </Footer.Column>

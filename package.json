@@ -53,6 +53,7 @@
     "react-theme-switch": "^0.1.7",
     "react-threesixty": "^2.0.8",
     "react-touch-carousel": "^0.10.2",
+    "react-yandex-maps": "^4.6.0",
     "redux": "^4.1.2",
     "styled-components": "^5.3.3",
     "video-react": "^0.14.1",
