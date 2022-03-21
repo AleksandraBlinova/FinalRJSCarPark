@@ -1,3 +1,31 @@
+.mazda-dealer-choose-city {
+  padding-top: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 30px;
+  height: 25vh;
+  width: 700px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mazda-dealer-choose-city-autocomplete {
+  display: block;
+  margin: 0 auto;
+  width: 700px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.mazda-dealer-choose-city > h3 {
+  color: #000;
+  text-align: center;
+  font-size: 26px;
+  padding-bottom: 40px;
+}
+
 .mazda-dealer-header {
   margin: 0 auto;
   align-items: center;

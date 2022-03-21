@@ -2,6 +2,9 @@ import React from "react";
 import "./MazdaDealer.css";
 import { YMaps, Map, Clusterer, Placemark } from "react-yandex-maps";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import { styled } from "@mui/material/styles";
 
 import POINTSMOSCOW from "./pointsMoscow";
 
@@ -12,22 +15,60 @@ const mapState = {
   controls: ["zoomControl", "fullscreenControl"],
 };
 
+const CustomAutocomplete = styled(Autocomplete)({
+  padding: "0px",
+  width: "400px",
+  margin: "0 auto",
+  "& .MuiButtonBase-root": { padding: "0px" },
+  "& label.Mui-focused": {
+    color: "black",
+  },
+  "& .MuiOutlinedInput-root": {
+    "&.Mui-focused fieldset": {
+      borderColor: "purple",
+    },
+  },
+});
+
 const MazdaDealer = () => {
   const [selectedPoint, setSelectedPoint] = React.useState();
   const onPlacemarkClick = (point) => () => {
     setSelectedPoint({ selectedPoint: point });
   };
+
+  const [valueLabel, setValueLabel] = React.useState("Москва");
+
+  const handleChangeLabel = (value) => {
+    setValueLabel(value.label);
+  };
+
+  const cities = [{ label: "Москва" }, { label: "Владимир" }];
   return (
     <>
+      <div className="mazda-dealer-choose-city">
+        <h3>Выберите город</h3>
+        <div className="mazda-dealer-choose-city-autocomplete">
+          <CustomAutocomplete
+            id="combo-box-demo"
+            options={cities}
+            size="medium"
+            defaultValue={cities[0].label.toString()}
+            onChange={(event, value) => handleChangeLabel(value)}
+            renderInput={(params) => (
+              <TextField {...params} value={valueLabel} label="Город" />
+            )}
+          />
+        </div>
+      </div>
       <div className="mazda-dealer-header">
-        <h3>Официальные дилеры Mazda в г. Москва</h3>
+        <h3>Официальные дилеры Mazda в г. {valueLabel}</h3>
       </div>
       <div className="mazda-dealer-map">
         <YMaps>
           <Map
             defaultState={mapState}
             width="100%"
-            height="500px"
+            height="400px"
             modules={["control.ZoomControl", "control.FullscreenControl"]}
           >
             {POINTSMOSCOW.map((point, index) => (
