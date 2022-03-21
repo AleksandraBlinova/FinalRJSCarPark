@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import { Document, Page } from "react-pdf";
 import { Link } from "react-router-dom";
 import { NewFooter } from "../../components/New Footer/NewFooter";
 import "./LegalInformation.css";
+import pdfFile from "./1.pdf";
+
 const LegalInformation = () => {
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+
   return (
     <>
       <div className="legal-info-main-container">
@@ -329,9 +339,14 @@ const LegalInformation = () => {
           <p>9.1. Адрес электронной почты: aleksa-blinova@mail.ru</p>
           <p>9.3. Контактный номер телефона: +7 499 270 03 32</p>
           <div className="legal-info-link-container">
-            <Link className="legal-info-link" to="#">
+            <a
+              className="legal-info-link"
+              href={pdfFile}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Приложение
-            </Link>
+            </a>
           </div>
         </div>
       </div>
