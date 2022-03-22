@@ -1,0 +1,19 @@
+.technologies-container-start {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.technologies-container-start > h2 {
+  color: #000;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.technologies-container-start-p {
+  width: 700px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}

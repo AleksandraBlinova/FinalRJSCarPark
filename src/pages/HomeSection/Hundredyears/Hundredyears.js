@@ -21,7 +21,7 @@ const HundredyearsConfig = () => {
         <Link
           onMouseEnter={onHover}
           onMouseLeave={onHover}
-          to="/configurator"
+          to="/technologies"
           style={{
             borderRadius: "50px",
             whiteSpace: "nowrap",

@@ -78,3 +78,34 @@
 .card-selected-point-p > a:hover {
   color: #000;
 }
+
+@media only screen and (max-width: 800px) {
+  .mazda-dealer-choose-city-autocomplete {
+    width: 400px;
+  }
+
+  .mazda-dealer-choose-city {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .mazda-dealer-choose-city-autocomplete {
+    width: 200px;
+  }
+
+  .mazda-dealer-choose-city {
+    width: 200px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .card-selected-point {
+    width: 200px;
+    height: 620px;
+    padding: 20px;
+  }
+  .mazda-dealer-map {
+    height: 200vh;
+  }
+}
