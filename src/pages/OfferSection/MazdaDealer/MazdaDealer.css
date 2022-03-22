@@ -45,11 +45,36 @@
 }
 .mazda-dealer-map {
   align-items: center;
-  height: 100vh;
+  height: 140vh;
   justify-content: center;
   text-align: center;
   display: block;
   margin: 0 auto;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.card-selected-point {
+  background-color: #fff;
+  border: 1px solid #cfcfcf;
+  display: block;
+  margin: 0 auto;
+  flex-direction: column;
+  width: 400px;
+  height: 405px;
+  padding: 30px;
+  transition: box-shadow 0.25s linear;
+  align-items: center;
+  text-align: center;
+}
+.card-selected-point-p {
+  color: #000;
+}
+
+.card-selected-point-p > a {
+  color: #000;
+}
+
+.card-selected-point-p > a:hover {
+  color: #000;
 }

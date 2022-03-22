@@ -49,7 +49,7 @@ const CustomAutocomplete = styled(Autocomplete)({
 const MazdaDealer = () => {
   const [selectedPoint, setSelectedPoint] = React.useState();
   const onPlacemarkClick = (point) => () => {
-    setSelectedPoint({ selectedPoint: point });
+    setSelectedPoint(point);
   };
 
   const [valueLabel, setValueLabel] = React.useState("Москва");
@@ -82,6 +82,14 @@ const MazdaDealer = () => {
       </div>
       <div className="mazda-dealer-header">
         <h3>Официальные дилеры Mazda в г. {valueLabel}</h3>
+        <p style={{ paddingTop: "40px", color: "black" }}>
+          Найдите ближайшего дилера при помощи карты, выбрав нужный город из
+          списка.
+        </p>
+        <p style={{ paddingTop: "0px", color: "black", marginTop: "0px" }}>
+          Для каждого дилера указаны название, адрес, контактный телефон и
+          веб-ресурс.
+        </p>
       </div>
       <div className="mazda-dealer-map">
         {valueLabel == "Москва" && (
@@ -111,14 +119,6 @@ const MazdaDealer = () => {
                   }}
                 />
               ))}
-              {selectedPoint && (
-                <div>
-                  <h2 style={{ color: "black", marginTop: "30px" }}>
-                    Выбранный дилерский центр: {selectedPoint.title}
-                  </h2>
-                  <p>{selectedPoint.descr}</p>
-                </div>
-              )}
             </Map>
           </YMaps>
         )}
@@ -150,14 +150,6 @@ const MazdaDealer = () => {
                   }}
                 />
               ))}
-              {selectedPoint && (
-                <div>
-                  <h2 style={{ color: "black", marginTop: "30px" }}>
-                    Выбранный дилерский центр: {selectedPoint.title}
-                  </h2>
-                  <p>{selectedPoint.descr}</p>
-                </div>
-              )}
             </Map>
           </YMaps>
         )}
@@ -189,16 +181,38 @@ const MazdaDealer = () => {
                   }}
                 />
               ))}
-              {selectedPoint && (
-                <div>
-                  <h2 style={{ color: "black", marginTop: "30px" }}>
-                    Выбранный дилерский центр: {selectedPoint.title}
-                  </h2>
-                  <p>{selectedPoint.descr}</p>
-                </div>
-              )}
             </Map>
           </YMaps>
+        )}
+
+        {selectedPoint && (
+          <div>
+            <h2
+              style={{
+                color: "black",
+                marginTop: "50px",
+                marginBottom: "70px",
+              }}
+            >
+              Выбранный дилерский центр:
+            </h2>
+            <div className="card-selected-point">
+              <h4 style={{ color: "black" }}>{selectedPoint.title}</h4>
+              <p style={{ color: "#999999" }}>
+                Адрес: &nbsp; {selectedPoint.descr}
+              </p>
+              <p
+                style={{ color: "black", fontSize: "16px", fontWeight: "500" }}
+              >
+                Контактный номер: &nbsp; {selectedPoint.number}
+              </p>
+              <p className="card-selected-point-p">
+                Веб-ресурс: &nbsp;
+                <a href={selectedPoint.website}>{selectedPoint.website}</a>
+              </p>
+              <img style={{ width: "80px" }} src="/favicon.ico" />
+            </div>
+          </div>
         )}
       </div>
       <NewFooter />
