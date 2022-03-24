@@ -39,7 +39,8 @@ const HundredyearsConfig = () => {
             transition: "all 0.2s ease-in-out",
           }}
         >
-          Узнать больше{hover ? <ArrowForward /> : <ArrowRight />}
+          Узнать больше
+          {hover ? <ArrowForward /> : <ArrowRight />}
         </Link>
       </div>
     </div>

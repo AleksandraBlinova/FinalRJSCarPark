@@ -12,9 +12,11 @@ export const Btn = styled.div`
 export const ArrowForward = styled(MdArrowForward)`
   margin-left: 8px;
   font-size: 20px;
+  margin-top: 4px;
 `;
 
 export const ArrowRight = styled(MdKeyboardArrowRight)`
   margin-left: 8px;
   font-size: 20px;
+  margin-top: 4px;
 `;
