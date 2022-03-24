@@ -11,9 +11,219 @@
   padding-bottom: 50px;
 }
 
+.technologies-main-container-mzd-left-text > p {
+  margin-bottom: 40px;
+  font-size: 15px;
+}
+
+.technologies-main-container-mzd-right-text > p {
+  margin-bottom: 40px;
+  font-size: 15px;
+}
+
+.technologies-main-container-mzd-left-text > h5 {
+  margin-bottom: 30px;
+}
+
+.technologies-main-container-mzd-right-text > h5 {
+  margin-bottom: 30px;
+}
+
 .technologies-container-start-p {
   width: 700px;
   text-align: center;
   margin: 0 auto;
   display: block;
+  padding-bottom: 30px;
+}
+
+.technologies-main-container-mzd-left {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 25px;
+  align-items: center;
+  color: #000;
+  padding-right: 30px;
+}
+
+.technologies-main-container-mzd-left > img {
+  width: 760px;
+  height: 600px;
+}
+
+.technologies-main-container-mzd-right {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 25px;
+  align-items: center;
+  color: #000;
+  text-align: right;
+  padding-left: 40px;
+}
+
+.technologies-main-container-mzd-right > img {
+  width: 760px;
+  height: 600px;
+}
+
+@media screen and (max-width: 1300px) {
+  .technologies-main-container-mzd-right > img {
+    width: 630px;
+    height: 450px;
+  }
+
+  .technologies-main-container-mzd-left > img {
+    width: 630px;
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .technologies-main-container-mzd-right > img {
+    width: 510px;
+    height: 330px;
+  }
+
+  .technologies-main-container-mzd-left > img {
+    width: 510px;
+    height: 330px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .technologies-main-container-mzd-right > img {
+    width: 430px;
+    height: 280px;
+  }
+
+  .technologies-main-container-mzd-left > img {
+    width: 430px;
+    height: 280px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .technologies-main-container-mzd-right {
+    grid-gap: 10px;
+    padding-left: 10px;
+  }
+
+  .technologies-main-container-mzd-left {
+    grid-gap: 10px;
+    padding-right: 10px;
+  }
+
+  .technologies-main-container-mzd-right > img {
+    width: 350px;
+    height: 250px;
+  }
+
+  .technologies-main-container-mzd-left > img {
+    width: 350px;
+    height: 250px;
+  }
+
+  .technologies-main-container-mzd-left-text > p {
+    font-size: 12px;
+  }
+
+  .technologies-main-container-mzd-right-text > p {
+    font-size: 12px;
+  }
+
+  .technologies-main-container-mzd-left-text > h5 {
+    font-size: 15px;
+  }
+
+  .technologies-main-container-mzd-right-text > h5 {
+    font-size: 15px;
+  }
+
+  .technologies-container-start-p {
+    width: 500px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .technologies-main-container-mzd-right {
+    grid-gap: 5px;
+    padding-left: 5px;
+  }
+
+  .technologies-main-container-mzd-left {
+    grid-gap: 5px;
+    padding-right: 5px;
+  }
+
+  .technologies-main-container-mzd-right > img {
+    width: 300px;
+    height: 270px;
+  }
+
+  .technologies-main-container-mzd-left > img {
+    width: 300px;
+    height: 270px;
+  }
+
+  .technologies-main-container-mzd-left-text {
+    margin-top: 30px;
+  }
+
+  .technologies-main-container-mzd-right-text {
+    margin-top: 30px;
+  }
+
+  .technologies-main-container-mzd-left-text > p {
+    font-size: 11px;
+  }
+
+  .technologies-main-container-mzd-right-text > p {
+    font-size: 11px;
+  }
+
+  .technologies-main-container-mzd-left-text > h5 {
+    font-size: 14px;
+  }
+
+  .technologies-main-container-mzd-right-text > h5 {
+    font-size: 14px;
+  }
+
+  .technologies-container-start-p {
+    width: 350px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 517px) {
+  .technologies-main-container-mzd-right > img {
+    display: none;
+  }
+
+  .technologies-main-container-mzd-left > img {
+    display: none;
+  }
+
+  .technologies-main-container-mzd-left-text {
+    text-align: center;
+  }
+
+  .technologies-main-container-mzd-right-text {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .technologies-container-start-p {
+    width: 250px;
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .technologies-container-start-p {
+    width: 180px;
+    font-size: 11px;
+  }
 }
