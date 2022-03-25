@@ -12,6 +12,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(24),
     minWidth: 220,
     marginTop: theme.spacing(2),
+    "@media only screen and (max-width: 660px)": {
+      marginLeft: "100px",
+    },
+
+    "@media only screen and (max-width: 450px)": {
+      marginLeft: "60px",
+      minWidth: "140px",
+    },
   },
   selectEmpty: {
     marginTop: theme.spacing(2.5),
@@ -36,10 +44,11 @@ function Model({
   useEffect(() => {
     axios({
       method: "GET",
-     
+
       url: "http://localhost:58475/api/models/",
       headers: {
-        "content-type": "application/json", withCredentials: true,
+        "content-type": "application/json",
+        withCredentials: true,
       },
     })
       .then((response) => {
@@ -62,7 +71,7 @@ function Model({
           onChange={handleChange}
         >
           {models.map((car, index) => (
-            <MenuItem key={index} value={car.model1, car.id}>
+            <MenuItem key={index} value={(car.model1, car.id)}>
               {car.model1}
             </MenuItem>
           ))}

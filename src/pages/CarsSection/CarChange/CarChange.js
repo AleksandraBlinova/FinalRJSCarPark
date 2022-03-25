@@ -95,7 +95,7 @@ function CarChange({ currentcar, editCar, titleRefCarsEdit }) {
 
   return (
     <React.Fragment>
-      <h1 ref={titleRefCarsEdit} className="h1">
+      <h1 ref={titleRefCarsEdit} className="car-change-container">
         Редактирование авто
       </h1>
       <div className="car-change">

@@ -83,7 +83,7 @@ function CarCreate(props) {
 
   return (
     <React.Fragment>
-      <h1 ref={props.titleRefCarsCreate} className="h1">
+      <h1 ref={props.titleRefCarsCreate} className="car-create-container">
         Добавление нового авто
       </h1>
       <div>

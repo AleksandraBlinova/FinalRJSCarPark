@@ -10,6 +10,9 @@ const BootstrapInput = withStyles((theme) => ({
     "label + &": {
       marginTop: theme.spacing(2.5),
       minWidth: 220,
+      "@media only screen and (max-width: 450px)": {
+        minWidth: "80px",
+      },
     },
   },
   input: {

@@ -8,57 +8,54 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const ColorButton = styled(Button)(({ theme }) => ({
-  border: "2px solid #101010",
-  borderRadius: "3px ",
-  width: "180px",
-  height: "41px",
-  color: "#fff",
-  lineHeight: "1",
-  fontSize: "14px",
-  fontFamily: "inherit",
-  marginTop: "14px",
-  backgroundColor: "#000",
-  fontWeight: "500",
+const ColorButtonCar = styled(Button)(({ theme }) => ({
+  "&.MuiButtonBase-root": {
+    border: "2px solid #101010",
+    borderRadius: "3px ",
+    width: "180px",
+    height: "41px",
+    color: "#fff",
+    lineHeight: "1",
+    fontSize: "14px",
+    fontFamily: "inherit",
+    marginTop: "14px",
+    fontWeight: "500",
+    backgroundColor: "#000",
+    "@media only screen and (max-width: 960px)": {
+      width: "160px",
+      height: "40px",
+      fontSize: "14px",
+      padding: "0 auto",
+      marginTop: "15px",
+    },
+
+    "@media only screen and (max-width: 769px)": {
+      width: "150px",
+      height: "40px",
+      fontSize: "12px",
+      padding: "0 auto",
+    },
+
+    "@media only screen and (max-width: 551px)": {
+      width: "120px",
+      height: "40px",
+      fontSize: "10px",
+      padding: "0 auto",
+      marginTop: "18px",
+      marginRight: "10px",
+    },
+
+    "@media only screen and (max-width: 350px)": {
+      width: "80px",
+      height: "36px",
+    },
+  },
   "&:hover": {
     backgroundColor: "#880000",
     color: "#fff",
     textDecoration: "none",
     border: "none",
     borderRadius: "3px ",
-  },
-  "@media only screen and (max-width: 1260px)": {
-    width: "110px",
-    height: "30px",
-    fontSize: "11px",
-    padding: "0 auto",
-    right: "8%",
-  },
-  "@media only screen and (max-width: 960px)": {
-    width: "90px",
-    height: "30px",
-    fontSize: "11px",
-    padding: "0 auto",
-  },
-
-  "@media only screen and (max-width: 769px)": {
-    width: "80px",
-    height: "30px",
-    fontSize: "11px",
-    padding: "0 auto",
-  },
-  "@media only screen and (max-width: 651px)": {
-    width: "60px",
-    height: "30px",
-    fontSize: "11px",
-    padding: "0 auto",
-  },
-
-  "@media only screen and (max-width: 551px)": {
-    width: "20px",
-    height: "15px",
-    fontSize: "8px",
-    padding: "0 auto",
   },
 }));
 
@@ -137,13 +134,13 @@ const Car = ({
           handleChangeSearch={(value) => setSearch(value)}
         />
 
-        <ColorButton
+        <ColorButtonCar
           onClick={(e) => {
             handleBackClickCarsCreate();
           }}
         >
           Добавить авто
-        </ColorButton>
+        </ColorButtonCar>
       </div>
       <Table
         search={search}

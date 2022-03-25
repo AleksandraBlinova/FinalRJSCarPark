@@ -10,6 +10,9 @@ const BootstrapInput = withStyles((theme) => ({
     "label + &": {
       marginTop: theme.spacing(2.5),
       minWidth: 220,
+      "@media only screen and (max-width: 450px)": {
+        minWidth: "80px",
+      },
     },
   },
   input: {
@@ -48,7 +51,11 @@ const Photo = ({ photo, setPhoto }) => {
       <div className="label">
         <FormControl value={photo} onChange={handleChange}>
           <InputLabel htmlFor="demo-customized-textbox">Фото</InputLabel>
-          <BootstrapInput id="demo-customized-textbox" type="file"  accept="image/*,.jpeg,.jpg"/>
+          <BootstrapInput
+            id="demo-customized-textbox"
+            type="file"
+            accept="image/*,.jpeg,.jpg"
+          />
           <FormHelperText>Путь расположения фото автомобиля</FormHelperText>
         </FormControl>
       </div>

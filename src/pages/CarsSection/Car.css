@@ -26,3 +26,9 @@
   grid-template: auto/repeat(2, auto);
   grid-column-gap: 5px;
 }
+
+@media only screen and (max-width: 769px) {
+  .car-component-search-add-btn-container {
+    grid-column-gap: 0px;
+  }
+}

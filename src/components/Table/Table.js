@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Table(props) {
   return (
     <div className="container-table">
-      <MDBTable>
+      <MDBTable autoWidth responsive>
         <MDBTableHead>
           <tr>
             <th>№ Автомобиля</th>
