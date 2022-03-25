@@ -58,7 +58,6 @@ const Cars = (props) => {
         cars={cars}
         setCars={setCars}
         removeCar={removeCar}
-        cars={cars}
         editCar={editCar}
         role={props.role}
       />
@@ -66,12 +65,7 @@ const Cars = (props) => {
         <CarCreate cars={cars} setCars={setCars} addCar={addCar} />
       )}
       {props.role === 2 && (
-        <CarChange
-          cars={cars}
-          editCar={updateCar}
-          cars={cars}
-          currentcar={currentcar}
-        />
+        <CarChange cars={cars} editCar={updateCar} currentcar={currentcar} />
       )}
       <NewFooter />
     </div>
