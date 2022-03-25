@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Price from "../CarChange/Price";
 import Model from "../CarChange/Model";
 import Photo from "../CarChange/Photo";
@@ -8,11 +8,11 @@ import "./CarChange.css";
 import axios from "axios";
 import Availability from "./Availability";
 
-function CarChange({ currentcar, editCar }) {
+function CarChange({ currentcar, editCar, titleRefCarsEdit }) {
   const [models, setModel] = useState([]);
   const [modelscar, setModelcar] = useState([]);
   const [colors, setColor] = useState([]);
-  const [currentModel, setCurrentModel] = useState('');
+  const [currentModel, setCurrentModel] = useState("");
   const [currentColor, setCurrentColor] = useState("");
   const [currentIdM, setCurrentModelId] = useState("");
   const [currentIdC, setCurrentColorId] = useState("");
@@ -21,7 +21,6 @@ function CarChange({ currentcar, editCar }) {
   const [currentReleaseYear, setCurrentReleaseYear] = useState("");
 
   const [car, setCar] = useState("");
- 
 
   useEffect(() => {
     setCar(currentcar);
@@ -33,10 +32,6 @@ function CarChange({ currentcar, editCar }) {
     setCurrentReleaseYear(currentcar.releaseYear);
     setCurrentAvail(currentcar.availability);
   }, [currentcar]);
-  
-  
-  
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,37 +43,37 @@ function CarChange({ currentcar, editCar }) {
       availability: currentAvail,
     };
 
-
     axios
       .put(`http://localhost:58475/api/cars/${currentcar.id}`, values, {
         withCredentials: true,
       })
       .then((response) => {
         const carForedit = {
-          id: currentcar.id, price: values.price,releaseYear: values.releaseYear, 
-          modelFkNavigation:{model1: currentModel},colorFkNavigation:{color1: currentColor}, modelid: values.modelFk, colorid: values.colorFk,availability: values.availability
-          };
-        
-        editCar(carForedit)
+          id: currentcar.id,
+          price: values.price,
+          releaseYear: values.releaseYear,
+          modelFkNavigation: { model1: currentModel },
+          colorFkNavigation: { color1: currentColor },
+          modelid: values.modelFk,
+          colorid: values.colorFk,
+          availability: values.availability,
+        };
+
+        editCar(carForedit);
       })
       .catch(console.error);
   };
-  
+
   const handleSetModel = (data) => {
     setModel(data);
   };
 
-  
   const handleSetCurrentModel = (data) => {
-   setCurrentModel(models.find(item=>item.id===data).model1);
-   //console.log(models.find(item=>item.id===data).model1);
-    
-    
+    setCurrentModel(models.find((item) => item.id === data).model1);
+    //console.log(models.find(item=>item.id===data).model1);
   };
   const handleSetCurrentModelId = (data) => {
-    setCurrentModelId(data)
-    
-    
+    setCurrentModelId(data);
   };
 
   const handleSetCurrentColor = (data) => {
@@ -100,7 +95,9 @@ function CarChange({ currentcar, editCar }) {
 
   return (
     <React.Fragment>
-      <h1 className="h1">Редактирование авто</h1>
+      <h1 ref={titleRefCarsEdit} className="h1">
+        Редактирование авто
+      </h1>
       <div className="car-change">
         <form className="form-container2" onSubmit={handleSubmit}>
           <div className="fields">
@@ -112,7 +109,6 @@ function CarChange({ currentcar, editCar }) {
               setModel={handleSetModel}
               currentIdM={currentIdM}
               setCurrentModelId={handleSetCurrentModelId}
-             
             />
 
             <Color

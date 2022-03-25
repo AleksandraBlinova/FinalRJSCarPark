@@ -49,8 +49,10 @@ function Table(props) {
                   <td>
                     {" "}
                     <button
-                      onClick={(e) => props.deleteItem(item.id)}
                       className="btn btn-danger"
+                      onClick={(e) => {
+                        props.deleteItem(item.id);
+                      }}
                     >
                       Удалить
                     </button>
@@ -60,7 +62,10 @@ function Table(props) {
                   <td>
                     {" "}
                     <button
-                      onClick={(e) => props.editCar(item)}
+                      onClick={(e) => {
+                        props.editCar(item);
+                        props.handleBackClickCarsEdit();
+                      }}
                       className="btn btn-dark mr-3"
                     >
                       Изменить

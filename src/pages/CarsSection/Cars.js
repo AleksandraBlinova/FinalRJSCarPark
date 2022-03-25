@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Cars.css";
 import Car from "./Car.js";
 import CarCreate from "../CarsSection/CarCreate/CarCreate";
@@ -51,7 +51,15 @@ const Cars = (props) => {
     ]);
     //методом slice возвращаем новый массив, содержащий наши измененные элементы и посылаем его в таблицу всех авто
   };
+  const titleRefCarsEdit = useRef();
+  function handleBackClickCarsEdit() {
+    titleRefCarsEdit.current.scrollIntoView({ behavior: "smooth" });
+  }
 
+  const titleRefCarsCreate = useRef();
+  function handleBackClickCarsCreate() {
+    titleRefCarsCreate.current.scrollIntoView({ behavior: "smooth" });
+  }
   return (
     <div>
       <Car
@@ -60,12 +68,24 @@ const Cars = (props) => {
         removeCar={removeCar}
         editCar={editCar}
         role={props.role}
+        handleBackClickCarsEdit={handleBackClickCarsEdit}
+        handleBackClickCarsCreate={handleBackClickCarsCreate}
       />
       {props.role === 2 && (
-        <CarCreate cars={cars} setCars={setCars} addCar={addCar} />
+        <CarCreate
+          cars={cars}
+          setCars={setCars}
+          addCar={addCar}
+          titleRefCarsCreate={titleRefCarsCreate}
+        />
       )}
       {props.role === 2 && (
-        <CarChange cars={cars} editCar={updateCar} currentcar={currentcar} />
+        <CarChange
+          cars={cars}
+          editCar={updateCar}
+          currentcar={currentcar}
+          titleRefCarsEdit={titleRefCarsEdit}
+        />
       )}
       <NewFooter />
     </div>

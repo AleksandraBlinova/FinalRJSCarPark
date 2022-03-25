@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import "./CarCreate.css";
 import Price from "./Price";
@@ -83,7 +83,9 @@ function CarCreate(props) {
 
   return (
     <React.Fragment>
-      <h1 className="h1">Добавление нового авто</h1>
+      <h1 ref={props.titleRefCarsCreate} className="h1">
+        Добавление нового авто
+      </h1>
       <div>
         <form className="form-container1" onSubmit={handleSubmit}>
           <div className="fields">
