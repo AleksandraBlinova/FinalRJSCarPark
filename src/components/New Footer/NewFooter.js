@@ -31,6 +31,11 @@ export function NewFooter() {
             </Footer.Link>
           </Footer.Column>
         </Footer.Row>
+        <p style={{ color: "red", textAlign: "center", marginTop: "30px" }}>
+          Данный сайт носит исключительно учебно-справочный характер (информация
+          взята с официального сайта Mazda Russia). Не является публичной
+          офертой. © 2022 Blinova Aleksandra. All rights reserved
+        </p>
       </Footer.Wrapper>
     </Footer>
   );
