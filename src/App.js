@@ -39,6 +39,7 @@ import InsuranceDrive from "./pages/OfferSection/Insurance/InsuranceDrive/Insura
 import InsuranceMiniDrive from "./pages/OfferSection/Insurance/InsuranceMiniDrive/InsuranceMiniDrive";
 import MazdaDealer from "./pages/OfferSection/MazdaDealer/MazdaDealer";
 import Technologies from "./pages/HomeSection/Hundredyears/Technologies/Technologies";
+import InsuranceCalculator from "./pages/OfferSection/Insurance/InsuranceCalculator/InsuranceCalculator";
 
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
@@ -128,6 +129,8 @@ function App() {
           <Route path="/dealer" component={MazdaDealer} />
 
           <Route path="/technologies" component={Technologies} />
+
+          <Route path="/insurancecalc" component={InsuranceCalculator} />
 
           <Route
             path="/models"

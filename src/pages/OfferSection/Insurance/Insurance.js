@@ -14,7 +14,7 @@ const Insurance = () => {
         <p>Специальные программы Mazda Страхование делают КАСКО доступным.</p>
         <p> Подберите программу, которая подходит именно Вам.</p>
         <Button
-          to="#"
+          href="/insurancecalc"
           style={{
             borderRadius: "50px",
             whiteSpace: "nowrap",
