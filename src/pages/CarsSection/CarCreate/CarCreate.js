@@ -25,11 +25,10 @@ function CarCreate(props) {
     e.preventDefault();
 
     const values = {
-      modelFk: currentIdM,
-      colorFk: currentIdC,
+      modelid: currentIdM,
+      colorid: currentIdC,
       price: price,
       releaseYear: releaseYear,
-      plantFk: 7,
       availability: availability,
       imageUrl: photo,
     };
@@ -51,7 +50,7 @@ function CarCreate(props) {
       })
       .catch(console.error);
     // axios({
-    //   url: "https://localhost:7831/api/cars/",
+    //   url: "https://localhost:44310/api/cars/",
     //   method: "post",
     //   headers: {
     //     withCredentials: true,

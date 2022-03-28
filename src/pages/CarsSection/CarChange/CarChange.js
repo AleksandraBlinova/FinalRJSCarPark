@@ -36,8 +36,8 @@ function CarChange({ currentcar, editCar, titleRefCarsEdit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const values = {
-      modelFk: currentIdM,
-      colorFk: currentIdC,
+      modelid: currentIdM,
+      colorid: currentIdC,
       price: currentPrice,
       releaseYear: currentReleaseYear,
       availability: currentAvail,
@@ -54,8 +54,8 @@ function CarChange({ currentcar, editCar, titleRefCarsEdit }) {
           releaseYear: values.releaseYear,
           model: { model1: currentModel },
           color: { color1: currentColor },
-          modelid: values.modelFk,
-          colorid: values.colorFk,
+          modelid: values.modelid,
+          colorid: values.colorid,
           availability: values.availability,
         };
 
