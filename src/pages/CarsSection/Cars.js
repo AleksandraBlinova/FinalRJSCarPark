@@ -33,10 +33,10 @@ const Cars = (props) => {
       id: car.id,
       price: car.price,
       releaseYear: car.releaseYear,
-      model1: car.modelFkNavigation.model1,
-      color1: car.colorFkNavigation.color1,
-      modelid: car.modelFkNavigation.id, //айдишник модели авто (нужно для оправки в серверную часть)
-      colorid: car.colorFkNavigation.id, //айдишник цвета авто (нужно для оправки в серверную часть)
+      model1: car.model.model1,
+      color1: car.color.color1,
+      modelid: car.model.id, //айдишник модели авто (нужно для оправки в серверную часть)
+      colorid: car.color.id, //айдишник цвета авто (нужно для оправки в серверную часть)
       availability: car.availability,
     });
   };

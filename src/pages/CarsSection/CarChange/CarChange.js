@@ -44,7 +44,7 @@ function CarChange({ currentcar, editCar, titleRefCarsEdit }) {
     };
 
     axios
-      .put(`http://localhost:58475/api/cars/${currentcar.id}`, values, {
+      .put(`http://localhost:7831/api/cars/${currentcar.id}`, values, {
         withCredentials: true,
       })
       .then((response) => {
@@ -52,8 +52,8 @@ function CarChange({ currentcar, editCar, titleRefCarsEdit }) {
           id: currentcar.id,
           price: values.price,
           releaseYear: values.releaseYear,
-          modelFkNavigation: { model1: currentModel },
-          colorFkNavigation: { color1: currentColor },
+          model: { model1: currentModel },
+          color: { color1: currentColor },
           modelid: values.modelFk,
           colorid: values.colorFk,
           availability: values.availability,

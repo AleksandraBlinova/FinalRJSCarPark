@@ -25,12 +25,9 @@ function Table(props) {
             .filter(
               (i) =>
                 i.price.toString().indexOf(props.search) !== -1 ||
-                i.modelFkNavigation.model1
-                  .toLocaleLowerCase()
-                  .indexOf(props.search) !== -1 ||
-                i.colorFkNavigation.color1
-                  .toLocaleLowerCase()
-                  .indexOf(props.search) !== -1
+                i.model.model1.toLocaleLowerCase().indexOf(props.search) !==
+                  -1 ||
+                i.color.color1.toLocaleLowerCase().indexOf(props.search) !== -1
             )
             .map((item) => (
               <tr key={item.id}>
@@ -38,8 +35,8 @@ function Table(props) {
                 <td>
                   <img src={item.imageUrl} />
                 </td>
-                <td>{item.modelFkNavigation.model1}</td>
-                <td>{item.colorFkNavigation.color1}</td>
+                <td>{item.model.model1}</td>
+                <td>{item.color.color1}</td>
                 <td>{item.price}</td>
                 <td>{item.releaseYear}</td>
 

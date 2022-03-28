@@ -43,7 +43,7 @@ function Color({
     axios({
       method: "GET",
 
-      url: "http://localhost:58475/api/colors/",
+      url: "http://localhost:7831/api/colors/",
       headers: {
         "content-type": "application/json",
         withCredentials: true,

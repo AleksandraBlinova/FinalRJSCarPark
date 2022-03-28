@@ -42,7 +42,7 @@ function CarCreate(props) {
     );
 
     axios
-      .post(`http://localhost:58475/api/cars/`, file, {
+      .post(`http://localhost:7831/api/cars/`, file, {
         withCredentials: true,
       })
       .then((response) => {
@@ -51,7 +51,7 @@ function CarCreate(props) {
       })
       .catch(console.error);
     // axios({
-    //   url: "https://localhost:44396/api/cars/",
+    //   url: "https://localhost:7831/api/cars/",
     //   method: "post",
     //   headers: {
     //     withCredentials: true,

@@ -45,7 +45,7 @@ function Model({
     axios({
       method: "GET",
 
-      url: "http://localhost:58475/api/models/",
+      url: "http://localhost:7831/api/models/",
       headers: {
         "content-type": "application/json",
         withCredentials: true,

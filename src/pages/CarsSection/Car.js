@@ -78,7 +78,7 @@ const Car = ({
     axios({
       //оправляем запрос на получение машинок
       method: "GET",
-      url: "http://localhost:58475/api/cars/",
+      url: "http://localhost:7831/api/cars/",
       headers: {
         "content-type": "application/json",
         withCredentials: true,
@@ -100,7 +100,7 @@ const Car = ({
     axios({
       //посылаем запрос
       method: "DELETE",
-      url: `http://localhost:58475/api/cars/${id}`,
+      url: `http://localhost:7831/api/cars/${id}`,
       headers: {
         "content-type": "application/json",
         withCredentials: true,

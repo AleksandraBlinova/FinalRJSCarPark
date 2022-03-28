@@ -28,7 +28,7 @@ function Navbar(props) {
     e.preventDefault();
 
     axios
-      .post("http://localhost:58475/api/Account/LogOff", {
+      .post("http://localhost:7831/api/Account/LogOff", {
         withCredentials: true,
       })
       .then((response) => {
