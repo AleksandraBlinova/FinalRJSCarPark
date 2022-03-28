@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Table.css";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 import { Link } from "react-router-dom";
@@ -9,8 +9,8 @@ function Table(props) {
       <MDBTable autoWidth responsive>
         <MDBTableHead>
           <tr>
-            <th>№ Автомобиля</th>
-            <th>Фото</th>
+            <th ref={props.titleRefCarsCreateToTable}>№ Автомобиля</th>
+            <th ref={props.titleRefCarsEditToTable}>Фото</th>
             <th>Модель</th>
             <th>Цвет</th>
             <th>Цена</th>

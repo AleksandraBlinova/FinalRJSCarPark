@@ -60,6 +60,16 @@ const Cars = (props) => {
   function handleBackClickCarsCreate() {
     titleRefCarsCreate.current.scrollIntoView({ behavior: "smooth" });
   }
+
+  const titleRefCarsEditToTable = useRef();
+  function handleBackClickCarsEditToTable() {
+    titleRefCarsEditToTable.current.scrollIntoView({ behavior: "smooth" });
+  }
+
+  const titleRefCarsCreateToTable = useRef();
+  function handleBackClickCarsCreateToTable() {
+    titleRefCarsCreateToTable.current.scrollIntoView({ behavior: "smooth" });
+  }
   return (
     <div>
       <Car
@@ -70,6 +80,8 @@ const Cars = (props) => {
         role={props.role}
         handleBackClickCarsEdit={handleBackClickCarsEdit}
         handleBackClickCarsCreate={handleBackClickCarsCreate}
+        titleRefCarsCreateToTable={titleRefCarsCreateToTable}
+        titleRefCarsEditToTable={titleRefCarsEditToTable}
       />
       {props.role === 2 && (
         <CarCreate
@@ -77,6 +89,7 @@ const Cars = (props) => {
           setCars={setCars}
           addCar={addCar}
           titleRefCarsCreate={titleRefCarsCreate}
+          handleBackClickCarsCreateToTable={handleBackClickCarsCreateToTable}
         />
       )}
       {props.role === 2 && (
@@ -85,6 +98,7 @@ const Cars = (props) => {
           editCar={updateCar}
           currentcar={currentcar}
           titleRefCarsEdit={titleRefCarsEdit}
+          handleBackClickCarsEditToTable={handleBackClickCarsEditToTable}
         />
       )}
       <NewFooter />

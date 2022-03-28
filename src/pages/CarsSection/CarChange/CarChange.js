@@ -8,7 +8,12 @@ import "./CarChange.css";
 import axios from "axios";
 import Availability from "./Availability";
 
-function CarChange({ currentcar, editCar, titleRefCarsEdit }) {
+function CarChange({
+  currentcar,
+  editCar,
+  titleRefCarsEdit,
+  handleBackClickCarsEditToTable,
+}) {
   const [models, setModel] = useState([]);
   const [modelscar, setModelcar] = useState([]);
   const [colors, setColor] = useState([]);
@@ -138,7 +143,13 @@ function CarChange({ currentcar, editCar, titleRefCarsEdit }) {
             />
 
             <div>
-              <button className="btn-1" type="submit">
+              <button
+                onClick={(e) => {
+                  handleBackClickCarsEditToTable();
+                }}
+                className="btn-1"
+                type="submit"
+              >
                 Применить
               </button>
             </div>

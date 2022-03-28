@@ -69,6 +69,8 @@ const Car = ({
   role, //роль (менеджер, гость или клиент)
   handleBackClickCarsEdit,
   handleBackClickCarsCreate,
+  titleRefCarsCreateToTable,
+  titleRefCarsEditToTable,
 }) => {
   const [loading, setLoading] = useState(false); //устанавливаем false для загрузочной полосы
   const [search, setSearch] = useState(""); //для поиска по машинкам
@@ -151,6 +153,8 @@ const Car = ({
         setcurrentCar={setcurrentCar}
         role={role}
         handleBackClickCarsEdit={handleBackClickCarsEdit}
+        titleRefCarsCreateToTable={titleRefCarsCreateToTable}
+        titleRefCarsEditToTable={titleRefCarsEditToTable}
       />
     </React.Fragment>
   );

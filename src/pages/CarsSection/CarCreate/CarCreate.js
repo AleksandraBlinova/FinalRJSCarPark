@@ -124,7 +124,13 @@ function CarCreate(props) {
 
             <Photo className="label" photo={photo} setPhoto={handleSetPhoto} />
             <div>
-              <button className="btn-2" type="submit">
+              <button
+                onClick={(e) => {
+                  props.handleBackClickCarsCreateToTable();
+                }}
+                className="btn-2"
+                type="submit"
+              >
                 Создать
               </button>
             </div>
