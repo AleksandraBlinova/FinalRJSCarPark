@@ -1,5 +1,6 @@
 table {
   width: 100%;
+  margin-top: 30px;
 }
 
 table th {
@@ -30,7 +31,7 @@ table td {
 }
 
 img {
-  width: 300px;
+  width: 100px;
   height: auto;
 }
 
