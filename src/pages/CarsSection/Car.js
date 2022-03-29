@@ -127,7 +127,7 @@ const Car = ({
   //Table - таблица с машинами
   return (
     <React.Fragment>
-      <h1 className="h1">Модельный ряд</h1>
+      <h1 className="h1">Автомобили в наличии</h1>
 
       {showLoading()}
       <div className="car-component-search-add-btn-container">

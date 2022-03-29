@@ -40,7 +40,7 @@ const Availability = ({ availability, setAvail }) => {
           value={availability}
           onChange={handleChange}
         >
-          <MenuItem value={true}>доступен</MenuItem>
+          <MenuItem value={true}>на складе</MenuItem>
           <MenuItem value={false}>отсутствует</MenuItem>
         </Select>
       </FormControl>

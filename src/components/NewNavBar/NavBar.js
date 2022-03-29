@@ -58,7 +58,7 @@ function Navbar(props) {
           </li>
           <li className="nav-item">
             <Link to="/models" className="nav-links" onClick={closeMobileMenu}>
-              Модельный ряд
+              Автомобили в наличии
             </Link>
           </li>
           <li className="nav-item">

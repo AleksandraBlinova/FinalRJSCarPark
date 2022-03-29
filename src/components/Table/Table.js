@@ -40,7 +40,7 @@ function Table(props) {
                 <td>{item.price}</td>
                 <td>{item.releaseYear}</td>
 
-                <td>{item.availability ? "доступен" : "отсутствует"}</td>
+                <td>{item.availability ? "на складе" : "отсутствует"}</td>
 
                 {props.role === 2 && (
                   <td>
