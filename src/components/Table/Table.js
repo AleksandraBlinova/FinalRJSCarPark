@@ -4,11 +4,6 @@ import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 import { Link } from "react-router-dom";
 
 function Table(props) {
-  console.log(props.data);
-  console.log(
-    " item.model.vehicleEquip.map((k) => k.speed)",
-    props.data.map((i) => i.model.vehicleEquip.map((k) => k.speed))
-  );
   return (
     <div className="container-table">
       <MDBTable autoWidth responsive>
@@ -41,7 +36,43 @@ function Table(props) {
                 i.price.toString().indexOf(props.search) !== -1 ||
                 i.model.model1.toLocaleLowerCase().indexOf(props.search) !==
                   -1 ||
-                i.color.color1.toLocaleLowerCase().indexOf(props.search) !== -1
+                i.color.color1.toLocaleLowerCase().indexOf(props.search) !==
+                  -1 ||
+                i.model.vehicleEquip
+                  .map((k) => k.speed)
+                  .toString()
+                  .indexOf(props.search) !== -1 ||
+                i.model.vehicleEquip
+                  .map((k) => k.hp)
+                  .toString()
+                  .indexOf(props.search) !== -1 ||
+                i.model.vehicleEquip
+                  .map((k) => k.torque)
+                  .toString()
+                  .indexOf(props.search) !== -1 ||
+                i.model.vehicleEquip
+                  .map((k) => k.accelerationTime)
+                  .toString()
+                  .indexOf(props.search) !== -1 ||
+                i.model.vehicleEquip
+                  .map((k) => k.equipType.toLocaleLowerCase())
+                  .indexOf(props.search) !== -1 ||
+                i.model.vehicleEquip
+                  .map((k) => k.mixedCycle)
+                  .toString()
+                  .indexOf(props.search) !== -1 ||
+                i.model.vehicleEquip
+                  .map((k) => k.trunkVolume)
+                  .toString()
+                  .indexOf(props.search) !== -1 ||
+                i.model.vehicleEquip
+                  .map((k) => k.fuelCapacity)
+                  .toString()
+                  .indexOf(props.search) !== -1 ||
+                i.model.vehicleEquip
+                  .map((k) => k.recommendedFuel.toLocaleLowerCase())
+                  .indexOf(props.search) !== -1 ||
+                i.availability.toString().indexOf(props.search) !== -1
             )
             .map((item) => (
               <tr key={item.id}>
