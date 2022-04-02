@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./CarCreate.css";
 import Price from "./Price";
@@ -49,19 +49,6 @@ function CarCreate(props) {
         props.addCar(response.data);
       })
       .catch(console.error);
-    // axios({
-    //   url: "https://localhost:44310/api/cars/",
-    //   method: "post",
-    //   headers: {
-    //     withCredentials: true,
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    //   data: file,
-    // })
-    //   .then((response) => {
-    //     props.addCar(response.data);
-    //   })
-    //   .catch(console.error);
   };
 
   const handleSetModel = (data) => {

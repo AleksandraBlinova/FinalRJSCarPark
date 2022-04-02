@@ -1,7 +1,7 @@
 import "./Car.css";
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import Table from "../../components/Table/Table";
+import TableCars from "../../components/Table/TableCars";
 import { TableSearch } from "../../components/Table/TableSearch";
 import PropTypes from "prop-types";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -144,7 +144,7 @@ const Car = ({
           Добавить авто
         </ColorButtonCar>
       </div>
-      <Table
+      <TableCars
         search={search}
         data={cars}
         deleteItem={deleteItem}

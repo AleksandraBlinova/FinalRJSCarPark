@@ -15,6 +15,7 @@
     "@mui/icons-material": "^5.4.4",
     "@mui/material": "^5.4.4",
     "@mui/styled-engine-sc": "^5.4.2",
+    "@mui/x-data-grid": "^5.7.0",
     "@react-md/icon": "^2.8.2",
     "@react-md/material-icons": "^2.8.2",
     "@testing-library/jest-dom": "^5.11.4",

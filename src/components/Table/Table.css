@@ -31,8 +31,32 @@ table td {
 }
 
 img {
-  width: 100px;
+  width: 300px;
   height: auto;
+}
+.css-65s1sd-MuiDataGrid-root .MuiDataGrid-row.Mui-selected{
+  background-color: #edecec !important;
+}
+
+.css-65s1sd-MuiDataGrid-root .MuiDataGrid-row.Mui-selected:hover{
+  background-color: #edecec !important;
+}
+
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked{
+  color: #202020 !important;
+
+}
+
+.css-65s1sd-MuiDataGrid-root .MuiDataGrid-columnHeader:focus{
+  outline: #202020 !important;
+}
+
+.css-65s1sd-MuiDataGrid-root .MuiDataGrid-cell:focus-within{
+  outline: #202020 !important;
+}
+
+.css-65s1sd-MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within{
+  outline: #202020 !important;
 }
 
 @media only screen and (max-width: 660px) {
