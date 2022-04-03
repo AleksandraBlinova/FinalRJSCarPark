@@ -5,21 +5,12 @@ table {
 
 table th {
   padding: 10px 15px;
-  color: #fff;
-  background-color: #202020;
+  
 }
 
 table td {
   padding: 10px 5px;
-  background-color: #fff;
-}
 
-.table-wrapper {
-  overflow-y: hidden;
-  overflow-x: auto;
-  max-width: 100%;
-  position: relative;
-  background: #bcbcbc;
 }
 
 .container-table {
@@ -29,36 +20,33 @@ table td {
   padding: 0 120px;
   margin: 0 auto;
 }
+.MuiSelect-icon {
+  top: calc(42% - 12px)!important;
+}
 
 img {
   width: 300px;
   height: auto;
 }
-.css-65s1sd-MuiDataGrid-root .MuiDataGrid-row.Mui-selected{
-  background-color: #edecec !important;
+
+.css-1q1u3t4-MuiTableRow-root.Mui-selected {
+  background-color: #DCDDE1!important ;
 }
 
-.css-65s1sd-MuiDataGrid-root .MuiDataGrid-row.Mui-selected:hover{
-  background-color: #edecec !important;
+.css-6hp17o-MuiList-root-MuiMenu-list{
+display: grid!important;
 }
 
-.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked{
-  color: #202020 !important;
-
+.css-16c50h-MuiInputBase-root-MuiTablePagination-select .MuiTablePagination-select{
+  padding-bottom: 13px!important;
 }
 
-.css-65s1sd-MuiDataGrid-root .MuiDataGrid-columnHeader:focus{
-  outline: #202020 !important;
+.css-11bfvty-MuiToolbar-root-MuiTablePagination-toolbar .MuiTablePagination-actions{
+  margin-bottom: 10px!important;
 }
-
-.css-65s1sd-MuiDataGrid-root .MuiDataGrid-cell:focus-within{
-  outline: #202020 !important;
+.css-10by3a5-MuiButtonBase-root-MuiMenuItem-root-MuiTablePagination-menuItem.Mui-selected {
+  background-color: #DCDDE1!important;
 }
-
-.css-65s1sd-MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within{
-  outline: #202020 !important;
-}
-
 @media only screen and (max-width: 660px) {
   img {
     width: 200px;

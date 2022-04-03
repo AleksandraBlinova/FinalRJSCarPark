@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
@@ -17,6 +17,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const DialogDetailedCar = (props) => {
+  console.log(props.carForEdit.model.model1);
   return (
     <Dialog
       fullScreen
@@ -44,14 +45,22 @@ const DialogDetailedCar = (props) => {
       </AppBar>
       <List>
         <ListItem>
-          <ListItemText primary="Phone ringtone" secondary="Titania" />
+          <img src={props.carForEdit.imageUrl} />
+        </ListItem>
+        <ListItem>
+          <ListItemText primary={props.carForEdit.model.model1} />
         </ListItem>
         <Divider />
         <ListItem>
-          <ListItemText
-            primary="Default notification ringtone"
-            secondary="Tethys"
-          />
+          <ListItemText primary={props.carForEdit.color.color1} />
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemText secondary={props.carForEdit.price} />
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemText secondary={props.carForEdit.releaseYear} />
         </ListItem>
       </List>
     </Dialog>
