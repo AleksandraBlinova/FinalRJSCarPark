@@ -29,16 +29,29 @@ const Cars = (props) => {
   const editCar = (car) => {
     //для загрузки в форму редактирования
 
-    setcurrentCar({
-      id: car.id,
-      price: car.price,
-      releaseYear: car.releaseYear,
-      model1: car.model.model1,
-      color1: car.color.color1,
-      modelid: car.model.id, //айдишник модели авто (нужно для оправки в серверную часть)
-      colorid: car.color.id, //айдишник цвета авто (нужно для оправки в серверную часть)
-      availability: car.availability,
-    });
+    if (car.model.id !== undefined || car.color.id !== undefined)
+      setcurrentCar({
+        id: car.id,
+        price: car.price,
+        releaseYear: car.releaseYear,
+        model1: car.model.model1,
+        color1: car.color.color1,
+        modelid: car.model.id, //айдишник модели авто (нужно для оправки в серверную часть)
+        colorid: car.color.id, //айдишник цвета авто (нужно для оправки в серверную часть)
+        availability: car.availability,
+      });
+
+    if (car.color.id === undefined || car.model.id === undefined)
+      setcurrentCar({
+        id: car.id,
+        price: car.price,
+        releaseYear: car.releaseYear,
+        model1: car.model.model1,
+        color1: car.color.color1,
+        modelid: car.modelid, //айдишник модели авто (нужно для оправки в серверную часть)
+        colorid: car.colorid, //айдишник цвета авто (нужно для оправки в серверную часть)
+        availability: car.availability,
+      });
   };
 
   const updateCar = (car) => {

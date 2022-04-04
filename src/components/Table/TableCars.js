@@ -158,7 +158,7 @@ const EnhancedTableToolbar = (props) => {
     setOpen(false);
   };
 
-  const { carForEdit } = props;
+  const carForEdit = props.carForEdit;
   const { carForDelete } = props;
   const { editCar } = props;
   const { handleBackClickCarsEdit } = props;
@@ -215,7 +215,6 @@ const EnhancedTableToolbar = (props) => {
               <DeleteIcon
                 onClick={() => {
                   deleteItem(carForDelete);
-                  console.log(carForDelete);
                 }}
               />
             </IconButton>
@@ -274,6 +273,7 @@ export default function TableCars(props) {
 
     setSelected(newSelected);
     setCarForEdit(row);
+
     setCarForDelete(row.id);
   };
 

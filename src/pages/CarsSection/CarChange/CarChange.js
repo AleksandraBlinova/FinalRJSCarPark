@@ -16,6 +16,7 @@ function CarChange({
 }) {
   const [models, setModel] = useState([]);
   const [modelscar, setModelcar] = useState([]);
+  const [colorscar, setColorcar] = useState([]);
   const [colors, setColor] = useState([]);
   const [currentModel, setCurrentModel] = useState("");
   const [currentColor, setCurrentColor] = useState("");
@@ -73,19 +74,22 @@ function CarChange({
     setModel(data);
   };
 
+  const handleSetColor = (data) => {
+    setColor(data);
+  };
   const handleSetCurrentModel = (data) => {
     setCurrentModel(models.find((item) => item.id === data).model1);
-    //console.log(models.find(item=>item.id===data).model1);
+  };
+
+  const handleSetCurrentColor = (data) => {
+    setCurrentColor(colors.find((item) => item.id === data).color1);
   };
   const handleSetCurrentModelId = (data) => {
     setCurrentModelId(data);
   };
 
-  const handleSetCurrentColor = (data) => {
-    setCurrentColor(data);
-  };
-  const handleSetColor = (data) => {
-    setColor(data);
+  const handleSetCurrentColorId = (data) => {
+    setCurrentColorId(data);
   };
 
   const handleSetCurrentPrice = (data) => {
@@ -123,7 +127,7 @@ function CarChange({
               colors={colors}
               setColor={handleSetColor}
               currentIdC={currentIdC}
-              setCurrentColorId={setCurrentColorId}
+              setCurrentColorId={handleSetCurrentColorId}
             />
             <ReleaseYear
               className="date"

@@ -36,6 +36,7 @@ function Color({
   const classes = useStyles();
 
   const handleChange = (event) => {
+    setCurrentColorId(event.target.value);
     setCurrentColor(event.target.value);
   };
 
@@ -56,6 +57,7 @@ function Color({
         console.log(error);
       });
   }, []);
+
   return (
     <div>
       <FormControl className={classes.formControl}>
@@ -64,11 +66,11 @@ function Color({
           labelId="demo-mutiple-name-label"
           id="demo-mutiple-name"
           input={<Input />}
-          value={currentColor}
+          value={currentIdC}
           onChange={handleChange}
         >
           {colors.map((car, index) => (
-            <MenuItem key={index} value={car.color1}>
+            <MenuItem key={index} value={car.id}>
               {car.color1}
             </MenuItem>
           ))}

@@ -17,7 +17,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const DialogDetailedCar = (props) => {
-  console.log(props.carForEdit.model.model1);
   return (
     <Dialog
       fullScreen
