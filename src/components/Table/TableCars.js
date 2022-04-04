@@ -321,6 +321,16 @@ export default function TableCars(props) {
                  rows.slice().sort(getComparator(order, orderBy)) */}
             {stableSort(props.data, getComparator(order, orderBy))
               .slice(page * props.dataPerPage, page * rowsPerPage + rowsPerPage)
+              .filter(
+                (i) =>
+                  i.price.toString().indexOf(props.search) !== -1 ||
+                  i.model.model1.toLocaleLowerCase().indexOf(props.search) !==
+                    -1 ||
+                  i.color.color1.toLocaleLowerCase().indexOf(props.search) !==
+                    -1 ||
+                  i.availability.toString().indexOf(props.search) !== -1 ||
+                  i.releaseYear.toString().indexOf(props.search) !== -1
+              )
               .map((row, index) => {
                 const isItemSelected = isSelected(row.id);
                 const labelId = `enhanced-table-checkbox-${index}`;
