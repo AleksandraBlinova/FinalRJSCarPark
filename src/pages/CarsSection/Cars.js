@@ -29,7 +29,7 @@ const Cars = (props) => {
   const editCar = (car) => {
     //для загрузки в форму редактирования
 
-    if (car.model.id !== undefined || car.color.id !== undefined)
+    if (car.model.id !== undefined || car.color.id !== undefined) {
       setcurrentCar({
         id: car.id,
         price: car.price,
@@ -40,8 +40,9 @@ const Cars = (props) => {
         colorid: car.color.id, //айдишник цвета авто (нужно для оправки в серверную часть)
         availability: car.availability,
       });
+    }
 
-    if (car.color.id === undefined || car.model.id === undefined)
+    if (car.color.id === undefined || car.model.id === undefined) {
       setcurrentCar({
         id: car.id,
         price: car.price,
@@ -52,6 +53,7 @@ const Cars = (props) => {
         colorid: car.colorid, //айдишник цвета авто (нужно для оправки в серверную часть)
         availability: car.availability,
       });
+    }
   };
 
   const updateCar = (car) => {
@@ -95,6 +97,7 @@ const Cars = (props) => {
         handleBackClickCarsCreate={handleBackClickCarsCreate}
         titleRefCarsCreateToTable={titleRefCarsCreateToTable}
         titleRefCarsEditToTable={titleRefCarsEditToTable}
+        currentcar={currentcar}
       />
       {props.role === 2 && (
         <CarCreate

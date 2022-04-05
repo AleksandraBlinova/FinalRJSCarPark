@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
@@ -10,13 +10,17 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
-import Button from "@mui/material/Button";
-
+import Box from "@mui/material/Box";
+import CardMedia from "@mui/material/CardMedia";
+import axios from "axios";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const DialogDetailedCar = (props) => {
+  console.log(props.carForEdit);
+  console.log(props.currentVechEquip);
+
   return (
     <Dialog
       fullScreen
@@ -29,7 +33,7 @@ const DialogDetailedCar = (props) => {
         style={{ backgroundColor: "#202020", height: "70px" }}
       >
         <Toolbar>
-          <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+          <Typography sx={{ margin: "0 auto" }} variant="h6" component="div">
             Полная информация о выбранном автомобиле
           </Typography>
           <IconButton
@@ -42,26 +46,346 @@ const DialogDetailedCar = (props) => {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <List>
-        <ListItem>
-          <img src={props.carForEdit.imageUrl} />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary={props.carForEdit.model.model1} />
-        </ListItem>
-        <Divider />
-        <ListItem>
-          <ListItemText primary={props.carForEdit.color.color1} />
-        </ListItem>
-        <Divider />
-        <ListItem>
-          <ListItemText secondary={props.carForEdit.price} />
-        </ListItem>
-        <Divider />
-        <ListItem>
-          <ListItemText secondary={props.carForEdit.releaseYear} />
-        </ListItem>
-      </List>
+
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: 760,
+          margin: "0 auto",
+          paddingTop: "30px",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "32px",
+            color: "black",
+            fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+            textAlign: "center",
+            fontWeight: "600",
+          }}
+        >
+          Информация об автомобиле Mazda {props.carForEdit.model.model1}
+        </Typography>
+        <List>
+          <ListItem>
+            <CardMedia
+              component="img"
+              height="650"
+              image={props.carForEdit.imageUrl}
+            />
+          </ListItem>
+          <Divider />
+
+          <ListItem>
+            <Typography
+              sx={{
+                fontSize: "18px",
+                color: "#4E4E50",
+                fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                paddingBottom: "5px",
+                fontWeight: "400",
+              }}
+            >
+              № автомобиля:&nbsp;&nbsp;
+            </Typography>
+            <h5> {props.carForEdit.id}</h5>
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <Typography
+              sx={{
+                fontSize: "18px",
+                color: "#4E4E50",
+                fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                paddingBottom: "5px",
+                fontWeight: "400",
+              }}
+            >
+              Модель:&nbsp;&nbsp;
+            </Typography>
+            <h5>{props.carForEdit.model.model1} </h5>
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <Typography
+              sx={{
+                fontSize: "18px",
+                color: "#4E4E50",
+                fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                paddingBottom: "5px",
+                fontWeight: "400",
+              }}
+            >
+              Цвет:&nbsp;&nbsp;
+            </Typography>
+            <h5> {props.carForEdit.color.color1}</h5>
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <Typography
+              sx={{
+                fontSize: "18px",
+                color: "#4E4E50",
+                fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                paddingBottom: "5px",
+                fontWeight: "400",
+              }}
+            >
+              Цена:&nbsp;&nbsp;
+            </Typography>
+            <h5> {props.carForEdit.price}</h5>
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <Typography
+              sx={{
+                fontSize: "18px",
+                color: "#4E4E50",
+                fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                paddingBottom: "5px",
+                fontWeight: "400",
+              }}
+            >
+              Год выпуска:&nbsp;&nbsp;
+            </Typography>
+            <h5>{props.carForEdit.releaseYear} </h5>
+          </ListItem>
+          <Divider />
+          {props.isCurrentVechEquipSet && (
+            <List>
+              <Typography
+                sx={{
+                  fontSize: "28px",
+                  color: "black",
+                  fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                  paddingBottom: "5px",
+                  textAlign: "center",
+                  fontWeight: "700",
+                }}
+              >
+                Технические характеристики
+              </Typography>
+              <Divider />
+              <Typography
+                sx={{
+                  fontSize: "22px",
+                  color: "black",
+                  fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                  paddingBottom: "5px",
+                  textAlign: "center",
+                  backgroundColor: "#999999",
+                }}
+              >
+                Двигатель
+              </Typography>
+              <Divider />
+              <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#4E4E50",
+                    fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                    paddingBottom: "5px",
+                    fontWeight: "400",
+                  }}
+                >
+                  Объем двигателя, л:&nbsp;&nbsp;
+                </Typography>
+                <h5>{props.currentVechEquip.equipType} </h5>
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#4E4E50",
+                    fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                    paddingBottom: "5px",
+                    fontWeight: "400",
+                  }}
+                >
+                  Мощность (л.с):&nbsp;&nbsp;
+                </Typography>
+                <h5> {props.currentVechEquip.hp}</h5>
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#4E4E50",
+                    fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                    paddingBottom: "5px",
+                    fontWeight: "400",
+                  }}
+                >
+                  Крутящийся момент, Hм:&nbsp;&nbsp;
+                </Typography>
+                <h5> {props.currentVechEquip.torque}</h5>
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#4E4E50",
+                    fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                    paddingBottom: "5px",
+                    fontWeight: "400",
+                  }}
+                >
+                  Трансмиссия: &nbsp;&nbsp;
+                </Typography>
+                <h5> </h5>
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#4E4E50",
+                    fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                    paddingBottom: "5px",
+                    fontWeight: "400",
+                  }}
+                >
+                  Привод: &nbsp;&nbsp;
+                </Typography>
+                <h5> </h5>
+              </ListItem>
+              <Divider />
+              <Typography
+                sx={{
+                  fontSize: "22px",
+                  color: "black",
+                  fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                  paddingBottom: "5px",
+                  textAlign: "center",
+                  backgroundColor: "#999999",
+                }}
+              >
+                Динамические показатели
+              </Typography>
+              <Divider />
+              <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#4E4E50",
+                    fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                    paddingBottom: "5px",
+                    fontWeight: "400",
+                  }}
+                >
+                  Максимальная скорость:&nbsp;&nbsp;
+                </Typography>
+                <h5> {props.currentVechEquip.speed}</h5>
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#4E4E50",
+                    fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                    paddingBottom: "5px",
+                    fontWeight: "400",
+                  }}
+                >
+                  Время разгона (от 0 до 100 км/ч):&nbsp;&nbsp;
+                </Typography>
+                <h5> {props.currentVechEquip.accelerationTime} </h5>
+              </ListItem>
+              <Divider />
+              <Typography
+                sx={{
+                  fontSize: "22px",
+                  color: "black",
+                  fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                  paddingBottom: "5px",
+                  textAlign: "center",
+                  backgroundColor: "#999999",
+                }}
+              >
+                Расход топлива, л/ 100 км
+              </Typography>
+              <Divider />
+              <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#4E4E50",
+                    fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                    paddingBottom: "5px",
+                    fontWeight: "400",
+                  }}
+                >
+                  Смешанный цикл:&nbsp;&nbsp;
+                </Typography>
+                <h5> {props.currentVechEquip.mixedCycle}</h5>
+              </ListItem>
+              <Divider />
+              <Typography
+                sx={{
+                  fontSize: "22px",
+                  color: "black",
+                  fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                  paddingBottom: "5px",
+                  textAlign: "center",
+                  backgroundColor: "#999999",
+                }}
+              >
+                Габаритные размеры, мм
+              </Typography>
+              <Divider />
+              <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#4E4E50",
+                    fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                    paddingBottom: "5px",
+                    fontWeight: "400",
+                  }}
+                >
+                  Объем багажника:&nbsp;&nbsp;
+                </Typography>
+                <h5> {props.currentVechEquip.trunkVolume} </h5>
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#4E4E50",
+                    fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                    paddingBottom: "5px",
+                    fontWeight: "400",
+                  }}
+                >
+                  Объем топливного бака, л:&nbsp;&nbsp;
+                </Typography>
+                <h5> {props.currentVechEquip.fuelCapacity} </h5>
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#4E4E50",
+                    fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                    paddingBottom: "5px",
+                    fontWeight: "400",
+                  }}
+                >
+                  Рекомендуемое топливо:&nbsp;&nbsp;
+                </Typography>
+                <h5> {props.currentVechEquip.recommendedFuel} </h5>
+              </ListItem>
+            </List>
+          )}
+        </List>
+      </Box>
     </Dialog>
   );
 };

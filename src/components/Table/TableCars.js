@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -23,6 +23,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import EditIcon from "@mui/icons-material/Edit";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
+import axios from "axios";
 import "./Table.css";
 import DialogDetailedCar from "./DialogDetailedCar";
 
@@ -163,6 +164,42 @@ const EnhancedTableToolbar = (props) => {
   const { editCar } = props;
   const { handleBackClickCarsEdit } = props;
   const { deleteItem } = props;
+  const [vechEquips, setVechEquips] = useState();
+  const [currentVechEquip, setCurrentVechEquips] = useState();
+  const [isCurrentVechEquipSet, setIsCurrentVechEquipSet] = useState(false);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `http://localhost:7831/api/vechEquip/`,
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setVechEquips(response.data);
+      })
+      .catch((error) => {
+        console.log(error); // если есть ошибки - выводим
+      });
+  }, []);
+
+  const handleSetCurrentVechEquip = () => {
+    if (carForEdit.modelid !== undefined) {
+      setCurrentVechEquips(
+        vechEquips.find((item) => item.modelId === carForEdit.modelid)
+      );
+      setIsCurrentVechEquipSet(true);
+    }
+
+    if (carForEdit.modelid === undefined) {
+      setCurrentVechEquips(
+        vechEquips.find((item) => item.modelId === carForEdit.model.id)
+      );
+      setIsCurrentVechEquipSet(true);
+    }
+  };
 
   return (
     <Toolbar
@@ -189,14 +226,21 @@ const EnhancedTableToolbar = (props) => {
         <>
           <Tooltip title="Info">
             <IconButton>
-              <InfoIcon onClick={handleClickOpen} />
+              <InfoIcon
+                onClick={() => {
+                  handleClickOpen();
+                  handleSetCurrentVechEquip();
+                }}
+              />
             </IconButton>
           </Tooltip>
           <DialogDetailedCar
             open={open}
             handleClickOpen={handleClickOpen}
             handleClose={handleClose}
+            currentVechEquip={currentVechEquip}
             carForEdit={carForEdit}
+            isCurrentVechEquipSet={isCurrentVechEquipSet}
           />
 
           <Tooltip title="Edit">
@@ -204,7 +248,6 @@ const EnhancedTableToolbar = (props) => {
               <EditIcon
                 onClick={() => {
                   editCar(carForEdit);
-
                   handleBackClickCarsEdit();
                 }}
               />
