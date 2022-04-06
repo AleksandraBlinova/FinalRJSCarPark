@@ -6,20 +6,20 @@ import Stack from "@mui/material/Stack";
 import "./ButtonsForCardsSets.css";
 import { Link } from "react-router-dom";
 
-const ColorButton = styled(Button)(({ theme }) => ({
-  border: "2px solid #101010",
+const ColorButtonForCardsSet = styled(Button)(({ theme }) => ({
+  border: "3px solid #101010",
   borderRadius: "3px ",
   width: "120px",
   height: "41px",
-  color: "#101010",
+  color: "primary",
   lineHeight: "1",
   fontSize: "14px",
   fontFamily: "inherit",
   padding: "0.75rem 1.25rem",
-  backgroundColor: "#fff",
+  background: "linear-gradient(0deg, #fff 0%, #999999 100%);",
   fontWeight: "500",
   "&:hover": {
-    backgroundColor: "#880000",
+    background: "#880000",
     color: "#fff",
     textDecoration: "none",
     border: "none",
@@ -29,8 +29,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
     width: "110px",
     height: "30px",
     fontSize: "11px",
-    padding: "0 auto",
-    right: "8%",
+    right: "20px",
   },
   "@media only screen and (max-width: 960px)": {
     width: "90px",
@@ -56,12 +55,13 @@ const ColorButton = styled(Button)(({ theme }) => ({
     width: "20px",
     height: "15px",
     fontSize: "8px",
-    padding: "0 auto",
   },
 }));
 
 const StackStyled = styled(Stack)(({ theme }) => ({
-  display: "flex",
+  display: "grid",
+  gridTemplateColumns: "repeat(2, auto)",
+  gridGap: "5px",
   alignItems: "center",
   justifyContent: "center",
 }));
@@ -70,21 +70,21 @@ const ButtonsForCardsSets = (props) => {
   return (
     <div className="buttons-for-cards-set-container">
       <StackStyled direction="row">
-        <ColorButton
+        <ColorButtonForCardsSet
           variant="outlined"
           className="buttons-for-cards-set-link-interior-butt"
           href={props.pathInterior}
         >
           ИНТЕРЬЕР
-        </ColorButton>
+        </ColorButtonForCardsSet>
 
-        <ColorButton
+        <ColorButtonForCardsSet
           variant="outlined"
           className="buttons-for-cards-set-link-exterior-butt"
           href={props.pathExterior}
         >
           ЭКСТЕРЬЕР
-        </ColorButton>
+        </ColorButtonForCardsSet>
       </StackStyled>
     </div>
   );

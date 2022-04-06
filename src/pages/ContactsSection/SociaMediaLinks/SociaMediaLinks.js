@@ -7,19 +7,13 @@ export default function SocialMediaLinks() {
     <>
       <div className="socmed_info">
         <Typography className="socmed_text">
-          Официальные группы Mazda открыты на
-          <a
-            href="https://www.facebook.com/MazdaRussia"
-            className="socmed_link"
-          >
-            Facebook
+          Официальные группы Mazda открыты в
+          <a href="https://ok.ru/mazda" className="socmed_link">
+            Одноклассниках
           </a>
           ,
-          <a
-            href="https://www.instagram.com/mazda_russia/"
-            className="socmed_link"
-          >
-            Instagram
+          <a href="https://vk.com/mazda" className="socmed_link">
+            Вконтакте
           </a>
           , а также на
           <a

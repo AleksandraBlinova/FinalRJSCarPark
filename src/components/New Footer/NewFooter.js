@@ -17,13 +17,13 @@ export function NewFooter() {
 
           <Footer.Column>
             <Footer.Title>СЛЕДИТЕ ЗА НАМИ</Footer.Title>
-            <Footer.Link href="https://www.facebook.com/MazdaRussia">
-              <Icon className="fab fa-facebook-f" />
-              Facebook
+            <Footer.Link href="https://ok.ru/mazda">
+              <Icon className="fab fa-odnoklassniki " />
+              Одноклассники
             </Footer.Link>
-            <Footer.Link href="https://www.instagram.com/mazda_russia/">
-              <Icon className="fab fa-instagram" />
-              Instagram
+            <Footer.Link href="https://vk.com/mazda">
+              <Icon className="fab fa-vk" />
+              Вконтакте
             </Footer.Link>
             <Footer.Link href="https://www.youtube.com/user/themazdarussia/feed?filter=2">
               <Icon className="fab fa-youtube" />

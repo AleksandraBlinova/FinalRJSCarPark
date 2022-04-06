@@ -18,9 +18,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const DialogDetailedCar = (props) => {
-  console.log(props.carForEdit);
-  console.log(props.currentVechEquip);
-
   return (
     <Dialog
       fullScreen
@@ -223,6 +220,7 @@ const DialogDetailedCar = (props) => {
                 </Typography>
                 <h5> {props.currentVechEquip.torque}</h5>
               </ListItem>
+
               <Divider />
               <ListItem>
                 <Typography
@@ -236,7 +234,7 @@ const DialogDetailedCar = (props) => {
                 >
                   Трансмиссия: &nbsp;&nbsp;
                 </Typography>
-                <h5> </h5>
+                <h5> {props.currentTransmissionSet.transmission1} </h5>
               </ListItem>
               <Divider />
               <ListItem>
@@ -251,8 +249,9 @@ const DialogDetailedCar = (props) => {
                 >
                   Привод: &nbsp;&nbsp;
                 </Typography>
-                <h5> </h5>
+                <h5> {props.currentDriveSet.drive1}</h5>
               </ListItem>
+
               <Divider />
               <Typography
                 sx={{

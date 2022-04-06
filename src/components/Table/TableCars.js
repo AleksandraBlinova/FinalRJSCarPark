@@ -184,6 +184,47 @@ const EnhancedTableToolbar = (props) => {
         console.log(error); // если есть ошибки - выводим
       });
   }, []);
+  const [drives, setDrives] = useState([]);
+  const [transmissions, setTransmissions] = useState([]);
+  var currentDrive;
+  var currentTransmission;
+
+  const [currentDriveSet, setcurrentDriveSet] = useState();
+  const [currentTransmissionSet, setcurrentTransmissionSet] = useState();
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `http://localhost:7831/api/drives/`,
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setDrives(response.data);
+      })
+      .catch((error) => {
+        console.log(error); // если есть ошибки - выводим
+      });
+  }, []);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `http://localhost:7831/api/transmissions/`,
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setTransmissions(response.data);
+      })
+      .catch((error) => {
+        console.log(error); // если есть ошибки - выводим
+      });
+  }, []);
 
   const handleSetCurrentVechEquip = () => {
     if (carForEdit.modelid !== undefined) {
@@ -191,13 +232,31 @@ const EnhancedTableToolbar = (props) => {
         vechEquips.find((item) => item.modelId === carForEdit.modelid)
       );
       setIsCurrentVechEquipSet(true);
+      // setCurrentDrive(drives.find((item) => item.id === carForEdit.driveId));
+      // setCurrentTransmission(
+      //   transmissions.find((item) => item.id === carForEdit.transmId)
+      // );
     }
+    console.log(carForEdit);
 
     if (carForEdit.modelid === undefined) {
       setCurrentVechEquips(
         vechEquips.find((item) => item.modelId === carForEdit.model.id)
       );
       setIsCurrentVechEquipSet(true);
+      currentTransmission = transmissions.find(
+        (item) =>
+          item.id.toString() ===
+          carForEdit.model.vehicleEquip.map((i) => i.transmId).toString()
+      );
+      setcurrentTransmissionSet(currentTransmission);
+
+      currentDrive = drives.find(
+        (item) =>
+          item.id.toString() ===
+          carForEdit.model.vehicleEquip.map((i) => i.driveId).toString()
+      );
+      setcurrentDriveSet(currentDrive);
     }
   };
 
@@ -241,6 +300,8 @@ const EnhancedTableToolbar = (props) => {
             currentVechEquip={currentVechEquip}
             carForEdit={carForEdit}
             isCurrentVechEquipSet={isCurrentVechEquipSet}
+            currentDriveSet={currentDriveSet}
+            currentTransmissionSet={currentTransmissionSet}
           />
 
           <Tooltip title="Edit">
