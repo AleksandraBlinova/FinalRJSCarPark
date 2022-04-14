@@ -74,7 +74,8 @@ const Car = ({
 }) => {
   const [loading, setLoading] = useState(false); //устанавливаем false для загрузочной полосы
   const [search, setSearch] = useState(""); //для поиска по машинкам
-
+  const [colors, setColors] = useState();
+  const [colorFlag, setColorFlag] = useState(false);
   useEffect(() => {
     setLoading(true); //устанавливаем true для загрузочной полосы
     axios({
@@ -93,6 +94,27 @@ const Car = ({
       .catch((error) => {
         console.log(error); // если есть ошибки - выводим
         setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios({
+      //оправляем запрос на получение машинок
+      method: "GET",
+      url: "http://localhost:7831/api/colors/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        //setColor(cars.find((item) => item.colorId === response.data.id));
+
+        setColors(response.data);
+        setColorFlag(true);
+      })
+      .catch((error) => {
+        console.log(error); // если есть ошибки - выводим
       });
   }, []);
 
@@ -147,6 +169,7 @@ const Car = ({
       <TableCars
         search={search}
         data={cars}
+        colors={colors}
         deleteItem={deleteItem}
         editCar={editCar}
         currentcar={currentcar}
@@ -155,6 +178,7 @@ const Car = ({
         handleBackClickCarsEdit={handleBackClickCarsEdit}
         titleRefCarsCreateToTable={titleRefCarsCreateToTable}
         titleRefCarsEditToTable={titleRefCarsEditToTable}
+        colorFlag={colorFlag}
       />
     </React.Fragment>
   );

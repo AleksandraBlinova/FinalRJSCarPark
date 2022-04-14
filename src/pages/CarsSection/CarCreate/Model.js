@@ -33,12 +33,45 @@ function Model({
   setCurrentModel,
   currentIdM,
   setCurrentModelId,
+  grades,
+  setGrades,
+  currentGrade,
+  setCurrentGrade,
+  currentIdGr,
+  setCurrentGradeId,
+  drives,
+  setDrives,
+  currentDrive,
+  setCurrentDrive,
+  currentIdDr,
+  setCurrentDriveId,
+  engines,
+  setEngines,
+  currentEngine,
+  setCurrentEngine,
+  currentIdEng,
+  setCurrentEngineId,
 }) {
   const classes = useStyles();
 
   const handleChange = (event) => {
     setCurrentModel(event.target.value);
     setCurrentModelId(event.target.value);
+  };
+
+  const handleChangeEngine = (event) => {
+    setCurrentEngine(event.target.value);
+    setCurrentEngineId(event.target.value);
+  };
+
+  const handleChangeGrade = (event) => {
+    setCurrentGrade(event.target.value);
+    setCurrentGradeId(event.target.value);
+  };
+
+  const handleChangeDrive = (event) => {
+    setCurrentDrive(event.target.value);
+    setCurrentDriveId(event.target.value);
   };
 
   useEffect(() => {
@@ -70,12 +103,48 @@ function Model({
           value={(currentModel, currentIdM)}
           onChange={handleChange}
         >
-          {models.map((car, index) => (
-            <MenuItem key={index} value={(car.model1, car.id)}>
-              {car.model1}
+          {models.map((model, index) => (
+            <MenuItem key={index} value={(model.model1, model.id)}>
+              {model.model1}
             </MenuItem>
           ))}
         </Select>
+      </FormControl>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-mutiple-name-label2">Тип двигателя</InputLabel>
+        <Select
+          labelId="demo-mutiple-name-label2"
+          id="demo-mutiple-name2"
+          input={<Input />}
+          value={(currentEngine, currentIdEng)}
+          onChange={handleChangeEngine}
+        >
+          {/* {engines.map((engine, index) => (
+            <MenuItem key={index} value={(engine.engine1, engine.id)}>
+              {engine.engine1}
+            </MenuItem>
+          ))} */}
+        </Select>
+      </FormControl>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-mutiple-name-label2">Класс</InputLabel>
+        <Select
+          labelId="demo-mutiple-name-label2"
+          id="demo-mutiple-name2"
+          input={<Input />}
+          value={(currentGrade, currentIdGr)}
+          onChange={handleChangeGrade}
+        ></Select>
+      </FormControl>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-mutiple-name-label2">Привод</InputLabel>
+        <Select
+          labelId="demo-mutiple-name-label2"
+          id="demo-mutiple-name2"
+          input={<Input />}
+          value={(currentDrive, currentIdDr)}
+          onChange={handleChangeDrive}
+        ></Select>
       </FormControl>
     </div>
   );

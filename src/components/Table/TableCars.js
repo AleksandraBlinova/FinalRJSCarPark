@@ -72,6 +72,18 @@ const headCells = [
     label: "Модель",
   },
   {
+    id: "grade",
+    label: "Класс",
+  },
+  {
+    id: "engine",
+    label: "Объем двигателя",
+  },
+  {
+    id: "drive",
+    label: "Привод",
+  },
+  {
     id: "color",
     label: "Цвет",
   },
@@ -82,6 +94,18 @@ const headCells = [
   {
     id: "releaseYear",
     label: "Год выпуска",
+  },
+  {
+    id: "warehouse",
+    label: "Склад",
+  },
+  {
+    id: "region",
+    label: "Регион",
+  },
+  {
+    id: "status",
+    label: "Статус",
   },
 ];
 
@@ -164,101 +188,6 @@ const EnhancedTableToolbar = (props) => {
   const { editCar } = props;
   const { handleBackClickCarsEdit } = props;
   const { deleteItem } = props;
-  const [vechEquips, setVechEquips] = useState();
-  const [currentVechEquip, setCurrentVechEquips] = useState();
-  const [isCurrentVechEquipSet, setIsCurrentVechEquipSet] = useState(false);
-
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `http://localhost:7831/api/vechEquip/`,
-      headers: {
-        "content-type": "application/json",
-        withCredentials: true,
-      },
-    })
-      .then((response) => {
-        setVechEquips(response.data);
-      })
-      .catch((error) => {
-        console.log(error); // если есть ошибки - выводим
-      });
-  }, []);
-  const [drives, setDrives] = useState([]);
-  const [transmissions, setTransmissions] = useState([]);
-  var currentDrive;
-  var currentTransmission;
-
-  const [currentDriveSet, setcurrentDriveSet] = useState();
-  const [currentTransmissionSet, setcurrentTransmissionSet] = useState();
-
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `http://localhost:7831/api/drives/`,
-      headers: {
-        "content-type": "application/json",
-        withCredentials: true,
-      },
-    })
-      .then((response) => {
-        setDrives(response.data);
-      })
-      .catch((error) => {
-        console.log(error); // если есть ошибки - выводим
-      });
-  }, []);
-
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `http://localhost:7831/api/transmissions/`,
-      headers: {
-        "content-type": "application/json",
-        withCredentials: true,
-      },
-    })
-      .then((response) => {
-        setTransmissions(response.data);
-      })
-      .catch((error) => {
-        console.log(error); // если есть ошибки - выводим
-      });
-  }, []);
-
-  const handleSetCurrentVechEquip = () => {
-    if (carForEdit.modelid !== undefined) {
-      setCurrentVechEquips(
-        vechEquips.find((item) => item.modelId === carForEdit.modelid)
-      );
-      setIsCurrentVechEquipSet(true);
-      // setCurrentDrive(drives.find((item) => item.id === carForEdit.driveId));
-      // setCurrentTransmission(
-      //   transmissions.find((item) => item.id === carForEdit.transmId)
-      // );
-    }
-    console.log(carForEdit);
-
-    if (carForEdit.modelid === undefined) {
-      setCurrentVechEquips(
-        vechEquips.find((item) => item.modelId === carForEdit.model.id)
-      );
-      setIsCurrentVechEquipSet(true);
-      currentTransmission = transmissions.find(
-        (item) =>
-          item.id.toString() ===
-          carForEdit.model.vehicleEquip.map((i) => i.transmId).toString()
-      );
-      setcurrentTransmissionSet(currentTransmission);
-
-      currentDrive = drives.find(
-        (item) =>
-          item.id.toString() ===
-          carForEdit.model.vehicleEquip.map((i) => i.driveId).toString()
-      );
-      setcurrentDriveSet(currentDrive);
-    }
-  };
 
   return (
     <Toolbar
@@ -288,7 +217,6 @@ const EnhancedTableToolbar = (props) => {
               <InfoIcon
                 onClick={() => {
                   handleClickOpen();
-                  handleSetCurrentVechEquip();
                 }}
               />
             </IconButton>
@@ -297,11 +225,7 @@ const EnhancedTableToolbar = (props) => {
             open={open}
             handleClickOpen={handleClickOpen}
             handleClose={handleClose}
-            currentVechEquip={currentVechEquip}
             carForEdit={carForEdit}
-            isCurrentVechEquipSet={isCurrentVechEquipSet}
-            currentDriveSet={currentDriveSet}
-            currentTransmissionSet={currentTransmissionSet}
           />
 
           <Tooltip title="Edit">
@@ -428,12 +352,23 @@ export default function TableCars(props) {
               .filter(
                 (i) =>
                   i.price.toString().indexOf(props.search) !== -1 ||
-                  i.model.model1.toLocaleLowerCase().indexOf(props.search) !==
-                    -1 ||
-                  i.color.color1.toLocaleLowerCase().indexOf(props.search) !==
-                    -1 ||
-                  i.availability.toString().indexOf(props.search) !== -1 ||
-                  i.releaseYear.toString().indexOf(props.search) !== -1
+                  // i.color.color1.toLocaleLowerCase().indexOf(props.search) !==
+                  //   -1 ||
+                  // i.model.model1.toLocaleLowerCase().indexOf(props.search) !==
+                  //   -1 ||
+                  // i.availability.toString().indexOf(props.search) !== -1 ||
+                  i.releaseYear.toString().indexOf(props.search) !== -1 // i.performance.grade.grade1
+                //   .toLocaleLowerCase()
+                //   .indexOf(props.search) !== -1 ||
+                // i.performance.engine.engine1
+                //   .toLocaleLowerCase()
+                //   .indexOf(props.search) !== -1 ||
+                // i.performance.drive.drive1
+                //   .toLocaleLowerCase()
+                //   .indexOf(props.search) !== -1 ||
+                // i.region.regionName
+                //   .toLocaleLowerCase()
+                //   .indexOf(props.search) !== -1
               )
               .map((row, index) => {
                 const isItemSelected = isSelected(row.id);
@@ -472,9 +407,25 @@ export default function TableCars(props) {
                       <img src={row.imageUrl} />
                     </TableCell>
                     <TableCell align="center">{row.model.model1}</TableCell>
-                    <TableCell align="center">{row.color.color1}</TableCell>
+                    <TableCell align="center">{row.grade.grade1}</TableCell>
+                    <TableCell align="center">{row.engine.engine1}</TableCell>
+                    <TableCell align="center"> {row.drive.drive1}</TableCell>
+                    {props.colorFlag === true && (
+                      <TableCell align="center">
+                        {props.colors.find((i) => i.id === row.colorId).color1}
+                      </TableCell>
+                    )}
+
                     <TableCell align="center">{row.price}</TableCell>
                     <TableCell align="center">{row.releaseYear}</TableCell>
+                    <TableCell align="center">
+                      {row.warehouse.warehouse1}
+                    </TableCell>
+                    <TableCell align="center">
+                      {row.warehouse.region.regionName}
+                    </TableCell>
+
+                    <TableCell align="center">{row.status}</TableCell>
                   </TableRow>
                 );
               })}

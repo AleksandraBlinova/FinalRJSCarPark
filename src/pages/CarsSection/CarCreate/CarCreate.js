@@ -12,6 +12,7 @@ import Availability from "./Availability";
 function CarCreate(props) {
   const [models, setModel] = useState([]);
   const [colors, setColor] = useState([]);
+
   const [currentModel, setCurrentModel] = useState("");
   const [currentColor, setCurrentColor] = useState("");
   const [price, setPrice] = useState("");
@@ -20,6 +21,16 @@ function CarCreate(props) {
   const [currentIdM, setCurrentModelId] = useState("");
   const [currentIdC, setCurrentColorId] = useState("");
   const [availability, setAvail] = useState("");
+
+  const [drives, setDrives] = useState(); //new
+  const [currentDrive, setCurrentDrive] = useState(""); //new
+  const [currentIdDr, setCurrentDriveId] = useState(""); //new
+  const [engines, setEngines] = useState(); //new
+  const [currentEngine, setCurrentEngine] = useState(""); //new
+  const [currentIdEng, setCurrentEngineId] = useState(""); //new
+  const [grades, setGrades] = useState(); //new
+  const [currentGrade, setCurrentGrade] = useState(""); //new
+  const [currentIdGr, setCurrentGradeId] = useState(""); //new
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,6 +94,24 @@ function CarCreate(props) {
               setCurrentModel={setCurrentModel}
               currentIdM={currentIdM}
               setCurrentModelId={setCurrentModelId}
+              grades={grades}
+              setGrades={setGrades}
+              currentGrade={currentGrade}
+              setCurrentGrade={setCurrentGrade}
+              currentIdGr={currentIdGr}
+              setCurrentGradeId={setCurrentGradeId}
+              drives={drives}
+              setDrives={setDrives}
+              currentDrive={currentDrive}
+              setCurrentDrive={setCurrentDrive}
+              currentIdDr={currentIdDr}
+              setCurrentDriveId={setCurrentDriveId}
+              engines={engines}
+              setEngines={setEngines}
+              currentEngine={currentEngine}
+              setCurrentEngine={setCurrentEngine}
+              currentIdEng={currentIdEng}
+              setCurrentEngineId={setCurrentEngineId}
             />
 
             <Color
