@@ -15,8 +15,7 @@ function CarChange({
   handleBackClickCarsEditToTable,
 }) {
   const [models, setModel] = useState([]);
-  const [modelscar, setModelcar] = useState([]);
-  const [colorscar, setColorcar] = useState([]);
+
   const [colors, setColor] = useState([]);
   const [currentModel, setCurrentModel] = useState("");
   const [currentColor, setCurrentColor] = useState("");
@@ -25,18 +24,33 @@ function CarChange({
   const [currentPrice, setCurrentPrice] = useState("");
   const [currentAvail, setCurrentAvail] = useState("");
   const [currentReleaseYear, setCurrentReleaseYear] = useState("");
+  const [loadFlag, setLoadFlag] = useState(false);
+  const [gmed, setGMED] = useState([]);
+  const [engines, setEngines] = useState([]);
+  const [grades, setGrades] = useState(); //new
+  const [currentEngine, setCurrentEngine] = useState(""); //new
+  const [currentIdEng, setCurrentEngineId] = useState(""); //new
+
+  const [currentGrade, setCurrentGrade] = useState(""); //new
+  const [currentIdGr, setCurrentGradeId] = useState(""); //new
+  const [currentPerformanceId, setCurrentPerformanceId] = useState(""); //new
 
   const [car, setCar] = useState("");
 
   useEffect(() => {
     setCar(currentcar);
+    console.log(currentcar);
     setCurrentModel(currentcar.model1);
     setCurrentModelId(currentcar.modelid);
     setCurrentColor(currentcar.color1);
     setCurrentColorId(currentcar.colorid);
     setCurrentPrice(currentcar.price);
     setCurrentReleaseYear(currentcar.releaseYear);
-    setCurrentAvail(currentcar.availability);
+    setCurrentAvail(currentcar.status);
+    setCurrentEngine(currentcar.engine1);
+    setCurrentEngineId(currentcar.engineid);
+    // setCurrentGrade(currentcar.garde1);
+    // setCurrentGradeId(currentcar.gradeid);
   }, [currentcar]);
 
   const handleSubmit = (e) => {
@@ -102,6 +116,50 @@ function CarChange({
     setCurrentAvail(data);
   };
 
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/gmed/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setGMED(response.data);
+        setModel(
+          response.data
+            .map((i) => i.model)
+            .reduce((o, c) => {
+              const exist = o.find(
+                (item) => item.id === c.id && item.model1 === c.model1
+              );
+              if (!exist) {
+                const options = models
+                  .filter(
+                    (item) => item.id === c.id && item.model1 === c.model1
+                  )
+                  .map((item) => item.option);
+                o.push({
+                  id: c.id,
+                  model1: c.model1,
+                  options: Array.from(new Set(options)),
+                });
+              }
+
+              return o;
+            }, [])
+        );
+        setEngines(response.data.map((i) => i.engine));
+        setGrades(response.data.map((i) => i.grade));
+
+        setLoadFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <React.Fragment>
       <h1 ref={titleRefCarsEdit} className="car-change-container">
@@ -118,6 +176,18 @@ function CarChange({
               setModel={handleSetModel}
               currentIdM={currentIdM}
               setCurrentModelId={handleSetCurrentModelId}
+              currentIdEng={currentIdEng}
+              loadFlag={loadFlag}
+              engines={engines}
+              gmed={gmed}
+              grades={grades}
+              setGrades={setGrades}
+              setCurrentEngineId={setCurrentEngineId}
+              setCurrentEngine={setCurrentEngine}
+              setEngines={setEngines}
+              setCurrentGrade={setCurrentGrade}
+              setCurrentGradeId={setCurrentGradeId}
+              currentIdGr={currentIdGr}
             />
 
             <Color

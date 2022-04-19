@@ -32,32 +32,110 @@ function Model({
   setCurrentModel,
   currentIdM,
   setCurrentModelId,
+  currentIdEng,
+  loadFlag,
+  engines,
+  gmed,
+  grades,
+  setGrades,
+  setCurrentEngineId,
+  setCurrentEngine,
+  setEngines,
+  setCurrentGrade,
+  setCurrentGradeId,
+  currentIdGr,
 }) {
   const classes = useStyles();
 
   const handleChange = (event) => {
     setCurrentModelId(event.target.value);
     setCurrentModel(event.target.value);
+    setEngines(
+      gmed
+        .filter((item) => item.modelId == event.target.value)
+        .map((i) => i.engine)
+        .reduce((o, c) => {
+          const exist = o.find(
+            (item) => item.id === c.id && item.engine1 === c.engine1
+          );
+          if (!exist) {
+            const options = engines
+              .filter((item) => item.id === c.id && item.engine1 === c.engine1)
+              .map((item) => item.option);
+
+            o.push({
+              id: c.id,
+              engine1: c.engine1,
+              options: Array.from(new Set(options)),
+            });
+          }
+
+          return o;
+        }, [])
+    );
   };
 
-  // useEffect(() => {
-  //   axios({
-  //     method: "GET",
+  const handleChangeEngine = (event) => {
+    setCurrentEngine(event.target.value);
+    setCurrentEngineId(event.target.value);
+    setGrades(
+      gmed
+        .filter(
+          (item) =>
+            item.engineId == event.target.value && item.modelId === currentIdM
+        )
+        .map((i) => i.grade)
+        .reduce((o, c) => {
+          const exist = o.find(
+            (item) => item.id === c.id && item.grade1 === c.grade1
+          );
+          if (!exist) {
+            const options = grades
+              .filter((item) => item.id === c.id && item.grade1 === c.grade1)
+              .map((item) => item.option);
 
-  //     url: "http://localhost:7831/api/models/",
-  //     headers: {
-  //       "content-type": "application/json",
-  //       withCredentials: true,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       setModel(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+            o.push({
+              id: c.id,
+              grade1: c.grade1,
+              options: Array.from(new Set(options)),
+            });
+          }
 
+          return o;
+        }, [])
+    );
+  };
+  const handleChangeGrade = (event) => {
+    setCurrentGrade(event.target.value);
+    setCurrentGradeId(event.target.value);
+
+    // setDrives(
+    //   drives.filter(
+    //     (m) =>
+    //       m.id ==
+    //       gmed
+    //         .filter(
+    //           (i) =>
+    //             i.modelId == currentIdM &&
+    //             i.engineId == currentIdEng &&
+    //             i.gradeId == event.target.value
+    //         )
+    //         .map((k) => k.driveId)
+    //   )
+    // );
+
+    // if (
+    //   gmed
+    //     .filter(
+    //       (i) =>
+    //         i.modelId == currentIdM &&
+    //         i.engineId == currentIdEng &&
+    //         i.gradeId == event.target.value
+    //     )
+    //     .map((k) => k.driveId).length == 2
+    // )
+    //   setDrives(originalDrives);
+  };
   return (
     <div>
       <FormControl className={classes.formControl}>
@@ -76,6 +154,44 @@ function Model({
           ))}
         </Select>
       </FormControl>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-mutiple-name-label2">Тип двигателя</InputLabel>
+        <Select
+          labelId="demo-mutiple-name-label2"
+          id="demo-mutiple-name2"
+          input={<Input />}
+          onChange={handleChangeEngine}
+          value={currentIdEng}
+        >
+          {loadFlag === true &&
+            currentIdM !== "" &&
+            engines.map((engine, index) => (
+              <MenuItem key={index} value={engine.id}>
+                {engine.engine1}
+              </MenuItem>
+            ))}
+        </Select>
+      </FormControl>
+      {/* <FormControl className={classes.formControl}>
+        <InputLabel id="demo-mutiple-name-label2">Класс</InputLabel>
+        <Select
+          labelId="demo-mutiple-name-label2"
+          id="demo-mutiple-name2"
+          input={<Input />}
+          onChange={handleChangeGrade}
+          value={currentIdGr}
+        >
+          {" "}
+          {loadFlag === true &&
+            currentIdM !== "" &&
+            currentIdEng !== "" &&
+            grades.map((grade, index) => (
+              <MenuItem key={index} value={grade.id}>
+                {grade.grade1}
+              </MenuItem>
+            ))}
+        </Select>
+      </FormControl> */}
     </div>
   );
 }

@@ -23,12 +23,16 @@ const Cars = (props) => {
     modelid: 0,
     colorid: 0,
     status: "",
+    engine1: "",
+    engineid: 0,
+    grade1: "",
+    gradeid: 0,
   };
   const [currentcar, setcurrentCar] = useState(initialFormState); //выбранная тачка
 
   const editCar = (car) => {
     //для загрузки в форму редактирования
-    console.log(car);
+
     if (car.model.id !== undefined || car.colorId !== undefined) {
       setcurrentCar({
         id: car.id,
@@ -39,6 +43,10 @@ const Cars = (props) => {
         modelid: car.model.id, //айдишник модели авто (нужно для оправки в серверную часть)
         colorid: car.colorId, //айдишник цвета авто (нужно для оправки в серверную часть)
         status: car.status,
+        engine1: car.engine.engine1,
+        engineid: car.engine.id,
+        // gradeid: car.grade.id,
+        // grade1: car.grade.grade1,
       });
     }
 
@@ -52,6 +60,10 @@ const Cars = (props) => {
         modelid: car.modelId, //айдишник модели авто (нужно для оправки в серверную часть)
         colorid: car.colorId, //айдишник цвета авто (нужно для оправки в серверную часть)
         status: car.status,
+        engine1: car.engine.engine1,
+        engineid: car.engineId,
+        // gradeid: car.gradeId,
+        // grade1: car.grade.grade1,
       });
     }
   };
