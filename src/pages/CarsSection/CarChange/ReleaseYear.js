@@ -39,8 +39,7 @@ const ReleaseYear = ({ releaseYear, setReleaseYear }) => {
           value={releaseYear}
           onChange={handleChange}
         >
-          <MenuItem value={2021}>2021</MenuItem>
-          <MenuItem value={2020}>2020</MenuItem>
+          <MenuItem value={2021}>2022</MenuItem>
         </Select>
       </FormControl>
     </div>

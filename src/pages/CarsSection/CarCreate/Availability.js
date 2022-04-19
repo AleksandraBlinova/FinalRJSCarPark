@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Availability = ({ availability, setAvail }) => {
+const Availability = ({ status, setAvail }) => {
   const classes = useStyles();
 
   const handleChange = (event) => {
@@ -33,15 +33,14 @@ const Availability = ({ availability, setAvail }) => {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Доступность</InputLabel>
+        <InputLabel id="demo-simple-select-label">Статус</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={availability}
+          value={status}
           onChange={handleChange}
         >
-          <MenuItem value={true}>на складе</MenuItem>
-          <MenuItem value={false}>отсутствует</MenuItem>
+          <MenuItem value="На складе">На складе</MenuItem>
         </Select>
       </FormControl>
     </div>

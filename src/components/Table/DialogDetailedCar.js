@@ -116,7 +116,7 @@ const DialogDetailedCar = (props) => {
             >
               Класс:&nbsp;&nbsp;
             </Typography>
-            <h5>{props.carForEdit.performance.grade.grade1} </h5>
+            <h5>{props.carForEdit.grade.grade1} </h5>
           </ListItem>
           <Divider />
           <ListItem>
@@ -131,7 +131,7 @@ const DialogDetailedCar = (props) => {
             >
               Цвет:&nbsp;&nbsp;
             </Typography>
-            <h5> {props.carForEdit.color.color1}</h5>
+            <h5> {props.carForEditColor}</h5>
           </ListItem>
           <Divider />
           <ListItem>
@@ -174,9 +174,24 @@ const DialogDetailedCar = (props) => {
                 fontWeight: "400",
               }}
             >
+              Склад нахождения автомобиля:&nbsp;&nbsp;
+            </Typography>
+            <h5>{props.carForEdit.warehouse.warehouse1} </h5>
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <Typography
+              sx={{
+                fontSize: "18px",
+                color: "#4E4E50",
+                fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                paddingBottom: "5px",
+                fontWeight: "400",
+              }}
+            >
               Регион нахождения автомобиля:&nbsp;&nbsp;
             </Typography>
-            <h5>{props.carForEdit.region.regionName} </h5>
+            <h5>{props.carForEdit.warehouse.region.regionName} </h5>
           </ListItem>
           <Divider />
 
@@ -219,7 +234,7 @@ const DialogDetailedCar = (props) => {
               >
                 Объем двигателя, л:&nbsp;&nbsp;
               </Typography>
-              <h5>{props.carForEdit.performance.engine.engine1} </h5>
+              <h5>{props.carForEdit.engine.engine1} </h5>
             </ListItem>
             <Divider />
             <ListItem>
@@ -280,7 +295,7 @@ const DialogDetailedCar = (props) => {
               >
                 Привод: &nbsp;&nbsp;
               </Typography>
-              <h5> {props.carForEdit.performance.drive.drive1}</h5>
+              <h5> {props.carForEdit.drive.drive1}</h5>
             </ListItem>
 
             <Divider />

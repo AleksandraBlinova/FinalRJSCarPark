@@ -44,8 +44,6 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -66,26 +64,32 @@ const headCells = [
   {
     id: "imageUrl",
     label: "Фото",
+    disableSorting: true,
   },
   {
     id: "model",
     label: "Модель",
+    disableSorting: true,
   },
   {
     id: "grade",
     label: "Класс",
+    disableSorting: true,
   },
   {
     id: "engine",
     label: "Объем двигателя",
+    disableSorting: true,
   },
   {
     id: "drive",
     label: "Привод",
+    disableSorting: true,
   },
   {
     id: "color",
     label: "Цвет",
+    disableSorting: true,
   },
   {
     id: "price",
@@ -98,11 +102,9 @@ const headCells = [
   {
     id: "warehouse",
     label: "Склад",
+    disableSorting: true,
   },
-  {
-    id: "region",
-    label: "Регион",
-  },
+
   {
     id: "status",
     label: "Статус",
@@ -143,18 +145,24 @@ function EnhancedTableHead(props) {
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : "asc"}
-              onClick={createSortHandler(headCell.id)}
-            >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <Box component="span" sx={visuallyHidden}>
-                  {order === "desc" ? "sorted descending" : "sorted ascending"}
-                </Box>
-              ) : null}
-            </TableSortLabel>
+            {headCell.disableSorting ? (
+              headCell.label
+            ) : (
+              <TableSortLabel
+                active={orderBy === headCell.id}
+                direction={orderBy === headCell.id ? order : "asc"}
+                onClick={createSortHandler(headCell.id)}
+              >
+                {headCell.label}
+                {orderBy === headCell.id ? (
+                  <Box component="span" sx={visuallyHidden}>
+                    {order === "desc"
+                      ? "sorted descending"
+                      : "sorted ascending"}
+                  </Box>
+                ) : null}
+              </TableSortLabel>
+            )}
           </TableCell>
         ))}
       </TableRow>
@@ -184,10 +192,11 @@ const EnhancedTableToolbar = (props) => {
   };
 
   const carForEdit = props.carForEdit;
-  const { carForDelete } = props;
+  const carForDelete = props.carForDelete;
   const { editCar } = props;
   const { handleBackClickCarsEdit } = props;
   const { deleteItem } = props;
+  const carForEditColor = props.carForEditColor;
 
   return (
     <Toolbar
@@ -226,6 +235,7 @@ const EnhancedTableToolbar = (props) => {
             handleClickOpen={handleClickOpen}
             handleClose={handleClose}
             carForEdit={carForEdit}
+            carForEditColor={carForEditColor}
           />
 
           <Tooltip title="Edit">
@@ -270,6 +280,7 @@ export default function TableCars(props) {
     setOrderBy(property);
   };
   const [carForEdit, setCarForEdit] = React.useState();
+  const [carForEditColor, setCarForEditColor] = React.useState();
   const [carForDelete, setCarForDelete] = React.useState();
 
   const handleSelectAllClick = (event) => {
@@ -301,6 +312,7 @@ export default function TableCars(props) {
 
     setSelected(newSelected);
     setCarForEdit(row);
+    setCarForEditColor(props.colors.find((i) => i.id === row.colorId).color1);
 
     setCarForDelete(row.id);
   };
@@ -329,6 +341,7 @@ export default function TableCars(props) {
       <EnhancedTableToolbar
         numSelected={selected.length}
         carForEdit={carForEdit}
+        carForEditColor={carForEditColor}
         carForDelete={carForDelete}
         editCar={props.editCar}
         handleBackClickCarsEdit={props.handleBackClickCarsEdit}
@@ -345,30 +358,24 @@ export default function TableCars(props) {
             rowCount={props.data.length}
           />
           <TableBody ref={props.titleRefCarsEditToTable}>
-            {/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                 rows.slice().sort(getComparator(order, orderBy)) */}
             {stableSort(props.data, getComparator(order, orderBy))
               .slice(page * props.dataPerPage, page * rowsPerPage + rowsPerPage)
               .filter(
                 (i) =>
                   i.price.toString().indexOf(props.search) !== -1 ||
-                  // i.color.color1.toLocaleLowerCase().indexOf(props.search) !==
-                  //   -1 ||
-                  // i.model.model1.toLocaleLowerCase().indexOf(props.search) !==
-                  //   -1 ||
-                  // i.availability.toString().indexOf(props.search) !== -1 ||
-                  i.releaseYear.toString().indexOf(props.search) !== -1 // i.performance.grade.grade1
-                //   .toLocaleLowerCase()
-                //   .indexOf(props.search) !== -1 ||
-                // i.performance.engine.engine1
-                //   .toLocaleLowerCase()
-                //   .indexOf(props.search) !== -1 ||
-                // i.performance.drive.drive1
-                //   .toLocaleLowerCase()
-                //   .indexOf(props.search) !== -1 ||
-                // i.region.regionName
-                //   .toLocaleLowerCase()
-                //   .indexOf(props.search) !== -1
+                  i.model.model1.toLocaleLowerCase().indexOf(props.search) !==
+                    -1 ||
+                  i.status.toLocaleLowerCase().indexOf(props.search) !== -1 ||
+                  i.releaseYear.toString().indexOf(props.search) !== -1 ||
+                  i.grade.grade1.toLocaleLowerCase().indexOf(props.search) !==
+                    -1 ||
+                  i.engine.engine1.toLocaleLowerCase().indexOf(props.search) !==
+                    -1 ||
+                  i.drive.drive1.toLocaleLowerCase().indexOf(props.search) !==
+                    -1 ||
+                  i.warehouse.warehouse1
+                    .toLocaleLowerCase()
+                    .indexOf(props.search) !== -1
               )
               .map((row, index) => {
                 const isItemSelected = isSelected(row.id);
@@ -420,9 +427,6 @@ export default function TableCars(props) {
                     <TableCell align="center">{row.releaseYear}</TableCell>
                     <TableCell align="center">
                       {row.warehouse.warehouse1}
-                    </TableCell>
-                    <TableCell align="center">
-                      {row.warehouse.region.regionName}
                     </TableCell>
 
                     <TableCell align="center">{row.status}</TableCell>

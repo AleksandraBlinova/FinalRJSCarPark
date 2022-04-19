@@ -15,7 +15,7 @@
   width: 600px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
   border-radius: 0px;
-  height: 830px;
+  height: 900px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 30px auto;
@@ -52,7 +52,7 @@
 @media only screen and (max-width: 660px) {
   .form-container1 {
     width: 400px;
-    height: 630px;
+    height: 890px;
   }
 
   .label {
@@ -68,7 +68,7 @@
 @media only screen and (max-width: 450px) {
   .form-container1 {
     width: 230px;
-    height: 730px;
+    height: 880px;
   }
 
   .btn-2 {
