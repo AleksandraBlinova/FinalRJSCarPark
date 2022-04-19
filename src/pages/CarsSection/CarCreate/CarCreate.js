@@ -12,6 +12,7 @@ import Availability from "./Availability";
 function CarCreate(props) {
   const [models, setModel] = useState([]);
   const [colors, setColor] = useState([]);
+  const [gmed, setGMED] = useState([]);
 
   const [currentModel, setCurrentModel] = useState("");
   const [currentColor, setCurrentColor] = useState("");
@@ -25,12 +26,14 @@ function CarCreate(props) {
   const [drives, setDrives] = useState(); //new
   const [currentDrive, setCurrentDrive] = useState(""); //new
   const [currentIdDr, setCurrentDriveId] = useState(""); //new
-  const [engines, setEngines] = useState(); //new
+  const [engines, setEngines] = useState([]);
   const [currentEngine, setCurrentEngine] = useState(""); //new
   const [currentIdEng, setCurrentEngineId] = useState(""); //new
   const [grades, setGrades] = useState(); //new
   const [currentGrade, setCurrentGrade] = useState(""); //new
   const [currentIdGr, setCurrentGradeId] = useState(""); //new
+  const [currentPerformanceId, setCurrentPerformanceId] = useState(""); //new
+  const [loadFlag, setLoadFlag] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,6 +81,50 @@ function CarCreate(props) {
     }
   };
 
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/gmed/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setGMED(response.data);
+        setModel(
+          response.data
+            .map((i) => i.model)
+            .reduce((o, c) => {
+              const exist = o.find(
+                (item) => item.id === c.id && item.model1 === c.model1
+              );
+              if (!exist) {
+                const options = models
+                  .filter(
+                    (item) => item.id === c.id && item.model1 === c.model1
+                  )
+                  .map((item) => item.option);
+                o.push({
+                  id: c.id,
+                  model1: c.model1,
+                  options: Array.from(new Set(options)),
+                });
+              }
+
+              return o;
+            }, [])
+        );
+        setEngines(response.data.map((i) => i.engine));
+        setGrades(response.data.map((i) => i.grade));
+
+        setLoadFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <React.Fragment>
       <h1 ref={props.titleRefCarsCreate} className="car-create-container">
@@ -112,6 +159,9 @@ function CarCreate(props) {
               setCurrentEngine={setCurrentEngine}
               currentIdEng={currentIdEng}
               setCurrentEngineId={setCurrentEngineId}
+              gmed={gmed}
+              setCurrentPerformanceId={setCurrentPerformanceId}
+              loadFlag={loadFlag}
             />
 
             <Color

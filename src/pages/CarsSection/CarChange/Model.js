@@ -40,23 +40,23 @@ function Model({
     setCurrentModel(event.target.value);
   };
 
-  useEffect(() => {
-    axios({
-      method: "GET",
+  // useEffect(() => {
+  //   axios({
+  //     method: "GET",
 
-      url: "http://localhost:7831/api/models/",
-      headers: {
-        "content-type": "application/json",
-        withCredentials: true,
-      },
-    })
-      .then((response) => {
-        setModel(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  //     url: "http://localhost:7831/api/models/",
+  //     headers: {
+  //       "content-type": "application/json",
+  //       withCredentials: true,
+  //     },
+  //   })
+  //     .then((response) => {
+  //       setModel(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   return (
     <div>

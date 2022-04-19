@@ -22,36 +22,36 @@ const Cars = (props) => {
     color1: "",
     modelid: 0,
     colorid: 0,
-    availability: "",
+    status: "",
   };
   const [currentcar, setcurrentCar] = useState(initialFormState); //выбранная тачка
 
   const editCar = (car) => {
     //для загрузки в форму редактирования
-
-    if (car.model.id !== undefined || car.color.id !== undefined) {
+    console.log(car);
+    if (car.model.id !== undefined || car.colorId !== undefined) {
       setcurrentCar({
         id: car.id,
         price: car.price,
         releaseYear: car.releaseYear,
-        // model1: car.model.model1,
-        color1: car.color.color1,
-        // modelid: car.model.id, //айдишник модели авто (нужно для оправки в серверную часть)
-        colorid: car.color.id, //айдишник цвета авто (нужно для оправки в серверную часть)
-        availability: car.availability,
+        model1: car.model.model1,
+        //color1: car.color.color1,
+        modelid: car.model.id, //айдишник модели авто (нужно для оправки в серверную часть)
+        colorid: car.colorId, //айдишник цвета авто (нужно для оправки в серверную часть)
+        status: car.status,
       });
     }
 
-    if (car.color.id === undefined || car.model.id === undefined) {
+    if (car.colorId === undefined || car.model.id === undefined) {
       setcurrentCar({
         id: car.id,
         price: car.price,
         releaseYear: car.releaseYear,
-        // model1: car.model.model1,
-        color1: car.color.color1,
-        // modelid: car.modelid, //айдишник модели авто (нужно для оправки в серверную часть)
-        colorid: car.colorid, //айдишник цвета авто (нужно для оправки в серверную часть)
-        availability: car.availability,
+        model1: car.model.model1,
+        // color1: car.color.color1,
+        modelid: car.modelId, //айдишник модели авто (нужно для оправки в серверную часть)
+        colorid: car.colorId, //айдишник цвета авто (нужно для оправки в серверную часть)
+        status: car.status,
       });
     }
   };
