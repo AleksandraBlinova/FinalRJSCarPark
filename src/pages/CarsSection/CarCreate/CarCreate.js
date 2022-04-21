@@ -8,6 +8,7 @@ import Color from "./Color";
 import ReleaseYear from "./ReleaseYear";
 import PropTypes from "prop-types";
 import Availability from "./Availability";
+import Warehouse from "./Warehouse";
 
 function CarCreate(props) {
   const [models, setModel] = useState([]);
@@ -36,6 +37,11 @@ function CarCreate(props) {
   const [loadFlag, setLoadFlag] = useState(false);
   const [loadWFlag, setLoadWFlag] = useState(false);
   const [originalDrives, setOriginalDrives] = useState(""); //new
+
+  const [warehouses, setWarehouses] = useState([]);
+  const [currentWarehouse, setCurrentWarehouse] = useState(""); //new
+  const [currentIdW, setCurrentWarehouseId] = useState(""); //new
+  const [loadWWFlag, setLoadWWFlag] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -147,6 +153,25 @@ function CarCreate(props) {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/warehouses/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setWarehouses(response.data);
+        setLoadWWFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <React.Fragment>
       <h1 ref={props.titleRefCarsCreate} className="car-create-container">
@@ -210,6 +235,15 @@ function CarCreate(props) {
               className="label"
               availability={availability}
               setAvail={handleSetAvail}
+            />
+            <Warehouse
+              warehouses={warehouses}
+              setWarehouses={setWarehouses}
+              loadWWFlag={loadWWFlag}
+              currentIdW={currentIdW}
+              currentWarehouse={currentWarehouse}
+              setCurrentWarehouse={setCurrentWarehouse}
+              setCurrentWarehouseId={setCurrentWarehouseId}
             />
 
             <Photo className="label" photo={photo} setPhoto={handleSetPhoto} />

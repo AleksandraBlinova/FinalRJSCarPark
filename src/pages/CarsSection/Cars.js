@@ -34,7 +34,7 @@ const Cars = (props) => {
 
   const editCar = (car) => {
     //для загрузки в форму редактирования
-
+    console.log("car", car);
     setcurrentCar({
       id: car.id,
       price: car.price,
