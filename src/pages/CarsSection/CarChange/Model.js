@@ -48,11 +48,11 @@ function Model({
   const classes = useStyles();
 
   const handleChange = (event) => {
-    setCurrentModelId(event.target.value);
-    setCurrentModel(event.target.value);
+    // setCurrentModelId(event.target.value);
+    // setCurrentModel(event.target.value);
     setEngines(
       gmed
-        .filter((item) => item.modelId == event.target.value)
+        .filter((item) => item.modelId == currentIdM)
         .map((i) => i.engine)
         .reduce((o, c) => {
           const exist = o.find(
@@ -74,15 +74,14 @@ function Model({
         }, [])
     );
   };
-
+  console.log("currentIdGr", currentIdGr);
   const handleChangeEngine = (event) => {
-    setCurrentEngine(event.target.value);
-    setCurrentEngineId(event.target.value);
+    // setCurrentEngine(event.target.value);
+    // setCurrentEngineId(event.target.value);
     setGrades(
       gmed
         .filter(
-          (item) =>
-            item.engineId == event.target.value && item.modelId === currentIdM
+          (item) => item.engineId == currentIdEng && item.modelId === currentIdM
         )
         .map((i) => i.grade)
         .reduce((o, c) => {
@@ -106,9 +105,8 @@ function Model({
     );
   };
   const handleChangeGrade = (event) => {
-    setCurrentGrade(event.target.value);
-    setCurrentGradeId(event.target.value);
-
+    // setCurrentGrade(event.target.value);
+    // setCurrentGradeId(event.target.value);
     // setDrives(
     //   drives.filter(
     //     (m) =>
@@ -123,7 +121,6 @@ function Model({
     //         .map((k) => k.driveId)
     //   )
     // );
-
     // if (
     //   gmed
     //     .filter(
@@ -136,6 +133,7 @@ function Model({
     // )
     //   setDrives(originalDrives);
   };
+  console.log("engines", engines);
   return (
     <div>
       <FormControl className={classes.formControl}>
@@ -168,6 +166,26 @@ function Model({
             engines.map((engine, index) => (
               <MenuItem key={index} value={engine.id}>
                 {engine.engine1}
+              </MenuItem>
+            ))}
+        </Select>
+      </FormControl>
+
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-mutiple-name-label2">Класс</InputLabel>
+        <Select
+          labelId="demo-mutiple-name-label2"
+          id="demo-mutiple-name2"
+          input={<Input />}
+          onChange={handleChangeGrade}
+          value={currentIdGr}
+        >
+          {loadFlag === true &&
+            currentIdM !== "" &&
+            currentIdEng !== "" &&
+            grades.map((grade, index) => (
+              <MenuItem key={index} value={grade.id}>
+                {grade.grade1}
               </MenuItem>
             ))}
         </Select>

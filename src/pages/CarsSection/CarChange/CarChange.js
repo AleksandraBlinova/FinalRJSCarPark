@@ -39,7 +39,7 @@ function CarChange({
 
   useEffect(() => {
     setCar(currentcar);
-    console.log(currentcar);
+
     setCurrentModel(currentcar.model1);
     setCurrentModelId(currentcar.modelid);
     setCurrentColor(currentcar.color1);
