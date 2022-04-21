@@ -7,6 +7,7 @@ import ReleaseYear from "../CarChange/ReleaseYear";
 import "./CarChange.css";
 import axios from "axios";
 import Availability from "./Availability";
+import Warehouse from "./Warehouse";
 
 function CarChange({
   currentcar,
@@ -39,6 +40,11 @@ function CarChange({
   const [currentDrive, setCurrentDrive] = useState(""); //new
   const [currentDriveId, setCurrentDriveId] = useState(""); //new
 
+  const [warehouses, setWarehouses] = useState([]);
+  const [currentWarehouse, setCurrentWarehouse] = useState(""); //new
+  const [currentIdW, setCurrentWarehouseId] = useState(""); //new
+  const [loadWWFlag, setLoadWWFlag] = useState(false);
+
   const [car, setCar] = useState("");
 
   useEffect(() => {
@@ -57,6 +63,8 @@ function CarChange({
     setCurrentGradeId(currentcar.gradeid);
     setCurrentDrive(currentcar.drive1);
     setCurrentDriveId(currentcar.driveid);
+    setCurrentWarehouse(currentcar.warehouse1);
+    setCurrentWarehouseId(currentcar.warehouseid);
   }, [currentcar]);
 
   const handleSubmit = (e) => {
@@ -66,7 +74,12 @@ function CarChange({
       colorid: currentIdC,
       price: currentPrice,
       releaseYear: currentReleaseYear,
-      availability: currentAvail,
+      status: currentAvail,
+      engineid: currentIdEng,
+      driveid: currentDriveId,
+      gradeid: currentIdGr,
+      performanceid: currentPerformanceId,
+      warehouseid: currentIdW,
     };
 
     axios
@@ -80,9 +93,14 @@ function CarChange({
           releaseYear: values.releaseYear,
           model: { model1: currentModel },
           color: { color1: currentColor },
+          engineid: values.engineid,
+          gradeid: values.gradeid,
+          driveid: values.driveid,
           modelid: values.modelid,
           colorid: values.colorid,
-          availability: values.availability,
+          status: values.status,
+          warehouseid: values.warehouseid,
+          performanceid: values.performanceid,
         };
 
         editCar(carForedit);
@@ -120,6 +138,10 @@ function CarChange({
   };
   const handleSetCurrentAvail = (data) => {
     setCurrentAvail(data);
+  };
+
+  const handleSetCurrentWarehouse = (data) => {
+    setCurrentWarehouse(data);
   };
 
   useEffect(() => {
@@ -186,6 +208,25 @@ function CarChange({
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/warehouses/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setWarehouses(response.data);
+        setLoadWWFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <React.Fragment>
       <h1 ref={titleRefCarsEdit} className="car-change-container">
@@ -218,6 +259,10 @@ function CarChange({
               drives={drives}
               setDrives={setDrives}
               originalDrives={originalDrives}
+              currentDriveId={currentDriveId}
+              currentDrive={currentDrive}
+              setCurrentDrive={setCurrentDrive}
+              setCurrentDriveId={setCurrentDriveId}
             />
 
             <Color
@@ -242,8 +287,17 @@ function CarChange({
             />
             <Availability
               className="label"
-              availability={currentAvail}
+              status={currentAvail}
               setAvailability={handleSetCurrentAvail}
+            />
+            <Warehouse
+              warehouses={warehouses}
+              setWarehouses={setWarehouses}
+              setCurrentWarehouse={handleSetCurrentWarehouse}
+              loadWWFlag={loadWWFlag}
+              currentIdW={currentIdW}
+              setCurrentWarehouseId={setCurrentWarehouseId}
+              currentWarehouse={currentWarehouse}
             />
 
             <div>

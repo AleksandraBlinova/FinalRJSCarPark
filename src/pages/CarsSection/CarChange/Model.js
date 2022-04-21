@@ -48,6 +48,10 @@ function Model({
   setDrives,
   drives,
   setCurrentPerformanceId,
+  currentDriveId,
+  currentDrive,
+  setCurrentDriveId,
+  setCurrentDrive,
 }) {
   const classes = useStyles();
 
@@ -216,6 +220,7 @@ function Model({
           id="demo-mutiple-name2"
           input={<Input />}
           onChange={handleChangeDrive}
+          value={currentDriveId}
         >
           {loadFlag === true &&
             currentIdM !== "" &&

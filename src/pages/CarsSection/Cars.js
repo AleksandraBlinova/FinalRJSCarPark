@@ -50,6 +50,8 @@ const Cars = (props) => {
       grade1: car.grade.grade1,
       drive1: car.drive.drive1,
       driveid: car.drive.id,
+      warehouseid: car.warehouse.id,
+      warehouse1: car.warehouse.warehouse1,
     });
   };
 

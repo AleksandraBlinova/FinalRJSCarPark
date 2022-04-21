@@ -22,7 +22,7 @@ function CarCreate(props) {
   const [releaseYear, setReleaseYear] = useState("");
   const [currentIdM, setCurrentModelId] = useState("");
   const [currentIdC, setCurrentColorId] = useState("");
-  const [availability, setAvail] = useState("");
+  const [status, setAvail] = useState("");
 
   const [drives, setDrives] = useState(); //new
   const [currentDrive, setCurrentDrive] = useState(""); //new
@@ -51,8 +51,13 @@ function CarCreate(props) {
       colorid: currentIdC,
       price: price,
       releaseYear: releaseYear,
-      availability: availability,
+      status: status,
       imageUrl: photo,
+      warehouseid: currentIdW,
+      engineid: currentIdEng,
+      driveid: currentIdDr,
+      gradeid: currentIdGr,
+      performanceid: currentPerformanceId,
     };
 
     const file = new FormData();
@@ -233,7 +238,7 @@ function CarCreate(props) {
 
             <Availability
               className="label"
-              availability={availability}
+              status={status}
               setAvail={handleSetAvail}
             />
             <Warehouse
