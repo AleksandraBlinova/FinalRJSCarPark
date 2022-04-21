@@ -27,6 +27,8 @@ const Cars = (props) => {
     engineid: 0,
     grade1: "",
     gradeid: 0,
+    drive1: "",
+    driveid: 0,
   };
   const [currentcar, setcurrentCar] = useState(initialFormState); //выбранная тачка
 
@@ -46,6 +48,8 @@ const Cars = (props) => {
       engineid: car.engine.id,
       gradeid: car.grade.id,
       grade1: car.grade.grade1,
+      drive1: car.drive.drive1,
+      driveid: car.drive.id,
     });
   };
 

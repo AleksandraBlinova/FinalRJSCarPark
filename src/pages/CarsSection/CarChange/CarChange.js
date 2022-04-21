@@ -30,16 +30,20 @@ function CarChange({
   const [grades, setGrades] = useState(); //new
   const [currentEngine, setCurrentEngine] = useState(""); //new
   const [currentIdEng, setCurrentEngineId] = useState(""); //new
-
+  const [drives, setDrives] = useState(); //new
   const [currentGrade, setCurrentGrade] = useState(""); //new
   const [currentIdGr, setCurrentGradeId] = useState(""); //new
   const [currentPerformanceId, setCurrentPerformanceId] = useState(""); //new
+  const [loadWFlag, setLoadWFlag] = useState(false);
+  const [originalDrives, setOriginalDrives] = useState(""); //new
+  const [currentDrive, setCurrentDrive] = useState(""); //new
+  const [currentDriveId, setCurrentDriveId] = useState(""); //new
 
   const [car, setCar] = useState("");
 
   useEffect(() => {
     setCar(currentcar);
-
+    console.log(currentcar);
     setCurrentModel(currentcar.model1);
     setCurrentModelId(currentcar.modelid);
     setCurrentColor(currentcar.color1);
@@ -51,6 +55,8 @@ function CarChange({
     setCurrentEngineId(currentcar.engineid);
     setCurrentGrade(currentcar.grade1);
     setCurrentGradeId(currentcar.gradeid);
+    setCurrentDrive(currentcar.drive1);
+    setCurrentDriveId(currentcar.driveid);
   }, [currentcar]);
 
   const handleSubmit = (e) => {
@@ -160,6 +166,26 @@ function CarChange({
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/drives/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setOriginalDrives(response.data);
+        setDrives(response.data);
+        setLoadWFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <React.Fragment>
       <h1 ref={titleRefCarsEdit} className="car-change-container">
@@ -188,6 +214,10 @@ function CarChange({
               setCurrentGrade={setCurrentGrade}
               setCurrentGradeId={setCurrentGradeId}
               currentIdGr={currentIdGr}
+              setCurrentPerformanceId={setCurrentPerformanceId}
+              drives={drives}
+              setDrives={setDrives}
+              originalDrives={originalDrives}
             />
 
             <Color

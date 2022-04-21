@@ -44,6 +44,10 @@ function Model({
   setCurrentGrade,
   setCurrentGradeId,
   currentIdGr,
+  originalDrives,
+  setDrives,
+  drives,
+  setCurrentPerformanceId,
 }) {
   const classes = useStyles();
 
@@ -74,7 +78,7 @@ function Model({
         }, [])
     );
   };
-  console.log("currentIdGr", currentIdGr);
+
   const handleChangeEngine = (event) => {
     // setCurrentEngine(event.target.value);
     // setCurrentEngineId(event.target.value);
@@ -107,33 +111,48 @@ function Model({
   const handleChangeGrade = (event) => {
     // setCurrentGrade(event.target.value);
     // setCurrentGradeId(event.target.value);
-    // setDrives(
-    //   drives.filter(
-    //     (m) =>
-    //       m.id ==
-    //       gmed
-    //         .filter(
-    //           (i) =>
-    //             i.modelId == currentIdM &&
-    //             i.engineId == currentIdEng &&
-    //             i.gradeId == event.target.value
-    //         )
-    //         .map((k) => k.driveId)
-    //   )
-    // );
-    // if (
-    //   gmed
-    //     .filter(
-    //       (i) =>
-    //         i.modelId == currentIdM &&
-    //         i.engineId == currentIdEng &&
-    //         i.gradeId == event.target.value
-    //     )
-    //     .map((k) => k.driveId).length == 2
-    // )
-    //   setDrives(originalDrives);
+    setDrives(
+      drives.filter(
+        (m) =>
+          m.id ==
+          gmed
+            .filter(
+              (i) =>
+                i.modelId == currentIdM &&
+                i.engineId == currentIdEng &&
+                i.gradeId == event.target.value
+            )
+            .map((k) => k.driveId)
+      )
+    );
+    if (
+      gmed
+        .filter(
+          (i) =>
+            i.modelId == currentIdM &&
+            i.engineId == currentIdEng &&
+            i.gradeId == event.target.value
+        )
+        .map((k) => k.driveId).length == 2
+    )
+      setDrives(originalDrives);
   };
-  console.log("engines", engines);
+  const handleChangeDrive = (event) => {
+    // setCurrentDrive(event.target.value);
+    // setCurrentDriveId(event.target.value);
+
+    setCurrentPerformanceId(
+      gmed
+        .filter(
+          (i) =>
+            i.modelId == currentIdM &&
+            i.engineId == currentIdEng &&
+            i.gradeId == currentIdGr &&
+            i.driveId == event.target.value
+        )
+        .map((k) => k.performance.map((o) => o.id))
+    );
+  };
   return (
     <div>
       <FormControl className={classes.formControl}>
@@ -186,6 +205,25 @@ function Model({
             grades.map((grade, index) => (
               <MenuItem key={index} value={grade.id}>
                 {grade.grade1}
+              </MenuItem>
+            ))}
+        </Select>
+      </FormControl>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-mutiple-name-label2">Привод</InputLabel>
+        <Select
+          labelId="demo-mutiple-name-label2"
+          id="demo-mutiple-name2"
+          input={<Input />}
+          onChange={handleChangeDrive}
+        >
+          {loadFlag === true &&
+            currentIdM !== "" &&
+            currentIdEng !== "" &&
+            currentIdGr !== "" &&
+            drives.map((drive, index) => (
+              <MenuItem key={index} value={drive.id}>
+                {drive.drive1}
               </MenuItem>
             ))}
         </Select>
