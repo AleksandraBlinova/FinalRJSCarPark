@@ -33,39 +33,39 @@ const Cars = (props) => {
   const editCar = (car) => {
     //для загрузки в форму редактирования
 
-    if (car.model.id !== undefined || car.colorId !== undefined) {
-      setcurrentCar({
-        id: car.id,
-        price: car.price,
-        releaseYear: car.releaseYear,
-        model1: car.model.model1,
-        //color1: car.color.color1,
-        modelid: car.model.id, //айдишник модели авто (нужно для оправки в серверную часть)
-        colorid: car.colorId, //айдишник цвета авто (нужно для оправки в серверную часть)
-        status: car.status,
-        engine1: car.engine.engine1,
-        engineid: car.engine.id,
-        // gradeid: car.grade.id,
-        // grade1: car.grade.grade1,
-      });
-    }
+    // if (car.model.id !== undefined || car.colorId !== undefined) {
+    setcurrentCar({
+      id: car.id,
+      price: car.price,
+      releaseYear: car.releaseYear,
+      model1: car.model.model1,
+      //color1: car.color.color1,
+      modelid: car.model.id, //айдишник модели авто (нужно для оправки в серверную часть)
+      colorid: car.colorId, //айдишник цвета авто (нужно для оправки в серверную часть)
+      status: car.status,
+      engine1: car.engine.engine1,
+      engineid: car.engine.id,
+      gradeid: car.grade.id,
+      grade1: car.grade.grade1,
+    });
+    // }
 
-    if (car.colorId === undefined || car.model.id === undefined) {
-      setcurrentCar({
-        id: car.id,
-        price: car.price,
-        releaseYear: car.releaseYear,
-        model1: car.model.model1,
-        // color1: car.color.color1,
-        modelid: car.modelId, //айдишник модели авто (нужно для оправки в серверную часть)
-        colorid: car.colorId, //айдишник цвета авто (нужно для оправки в серверную часть)
-        status: car.status,
-        engine1: car.engine.engine1,
-        engineid: car.engineId,
-        // gradeid: car.gradeId,
-        // grade1: car.grade.grade1,
-      });
-    }
+    // if (car.colorId === undefined || car.model.id === undefined) {
+    //   setcurrentCar({
+    //     id: car.id,
+    //     price: car.price,
+    //     releaseYear: car.releaseYear,
+    //     model1: car.model.model1,
+    //     // color1: car.color.color1,
+    //     modelid: car.modelId, //айдишник модели авто (нужно для оправки в серверную часть)
+    //     colorid: car.colorId, //айдишник цвета авто (нужно для оправки в серверную часть)
+    //     status: car.status,
+    //     engine1: car.engine.engine1,
+    //     engineid: car.engineId,
+    //     gradeid: car.gradeId,
+    //     grade1: car.grade.grade1,
+    //   });
+    // }
   };
 
   const updateCar = (car) => {

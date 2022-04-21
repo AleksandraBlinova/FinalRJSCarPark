@@ -172,26 +172,6 @@ function Model({
             ))}
         </Select>
       </FormControl>
-      {/* <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-name-label2">Класс</InputLabel>
-        <Select
-          labelId="demo-mutiple-name-label2"
-          id="demo-mutiple-name2"
-          input={<Input />}
-          onChange={handleChangeGrade}
-          value={currentIdGr}
-        >
-          {" "}
-          {loadFlag === true &&
-            currentIdM !== "" &&
-            currentIdEng !== "" &&
-            grades.map((grade, index) => (
-              <MenuItem key={index} value={grade.id}>
-                {grade.grade1}
-              </MenuItem>
-            ))}
-        </Select>
-      </FormControl> */}
     </div>
   );
 }

@@ -34,6 +34,8 @@ function CarCreate(props) {
   const [currentIdGr, setCurrentGradeId] = useState(""); //new
   const [currentPerformanceId, setCurrentPerformanceId] = useState(""); //new
   const [loadFlag, setLoadFlag] = useState(false);
+  const [loadWFlag, setLoadWFlag] = useState(false);
+  const [originalDrives, setOriginalDrives] = useState(""); //new
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -125,6 +127,26 @@ function CarCreate(props) {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/drives/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setOriginalDrives(response.data);
+        setDrives(response.data);
+        setLoadWFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <React.Fragment>
       <h1 ref={props.titleRefCarsCreate} className="car-create-container">
@@ -162,6 +184,8 @@ function CarCreate(props) {
               gmed={gmed}
               setCurrentPerformanceId={setCurrentPerformanceId}
               loadFlag={loadFlag}
+              loadWFlag={loadWFlag}
+              originalDrives={originalDrives}
             />
 
             <Color

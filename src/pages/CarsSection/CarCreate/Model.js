@@ -48,6 +48,8 @@ function Model({
   gmed,
   setCurrentPerformanceId,
   originalDrives,
+  drives,
+  setDrives,
 }) {
   const classes = useStyles();
   const handleChange = (event) => {
@@ -114,32 +116,32 @@ function Model({
     setCurrentGrade(event.target.value);
     setCurrentGradeId(event.target.value);
 
-    // setDrives(
-    //   drives.filter(
-    //     (m) =>
-    //       m.id ==
-    //       gmed
-    //         .filter(
-    //           (i) =>
-    //             i.modelId == currentIdM &&
-    //             i.engineId == currentIdEng &&
-    //             i.gradeId == event.target.value
-    //         )
-    //         .map((k) => k.driveId)
-    //   )
-    // );
+    setDrives(
+      drives.filter(
+        (m) =>
+          m.id ==
+          gmed
+            .filter(
+              (i) =>
+                i.modelId == currentIdM &&
+                i.engineId == currentIdEng &&
+                i.gradeId == event.target.value
+            )
+            .map((k) => k.driveId)
+      )
+    );
 
-    // if (
-    //   gmed
-    //     .filter(
-    //       (i) =>
-    //         i.modelId == currentIdM &&
-    //         i.engineId == currentIdEng &&
-    //         i.gradeId == event.target.value
-    //     )
-    //     .map((k) => k.driveId).length == 2
-    // )
-    //   setDrives(originalDrives);
+    if (
+      gmed
+        .filter(
+          (i) =>
+            i.modelId == currentIdM &&
+            i.engineId == currentIdEng &&
+            i.gradeId == event.target.value
+        )
+        .map((k) => k.driveId).length == 2
+    )
+      setDrives(originalDrives);
   };
 
   const handleChangeDrive = (event) => {
@@ -211,6 +213,25 @@ function Model({
             grades.map((grade, index) => (
               <MenuItem key={index} value={grade.id}>
                 {grade.grade1}
+              </MenuItem>
+            ))}
+        </Select>
+      </FormControl>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-mutiple-name-label2">Привод</InputLabel>
+        <Select
+          labelId="demo-mutiple-name-label2"
+          id="demo-mutiple-name2"
+          input={<Input />}
+          onChange={handleChangeDrive}
+        >
+          {loadFlag === true &&
+            currentIdM !== "" &&
+            currentIdEng !== "" &&
+            currentIdGr !== "" &&
+            drives.map((drive, index) => (
+              <MenuItem key={index} value={(drive.drive1, drive.id)}>
+                {drive.drive1}
               </MenuItem>
             ))}
         </Select>

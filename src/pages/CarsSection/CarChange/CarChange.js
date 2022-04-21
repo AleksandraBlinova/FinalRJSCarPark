@@ -49,8 +49,8 @@ function CarChange({
     setCurrentAvail(currentcar.status);
     setCurrentEngine(currentcar.engine1);
     setCurrentEngineId(currentcar.engineid);
-    // setCurrentGrade(currentcar.garde1);
-    // setCurrentGradeId(currentcar.gradeid);
+    setCurrentGrade(currentcar.grade1);
+    setCurrentGradeId(currentcar.gradeid);
   }, [currentcar]);
 
   const handleSubmit = (e) => {
