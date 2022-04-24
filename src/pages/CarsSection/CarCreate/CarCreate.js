@@ -72,7 +72,6 @@ function CarCreate(props) {
         withCredentials: true,
       })
       .then((response) => {
-        //console.log(response)
         props.addCar(response.data);
       })
       .catch(console.error);

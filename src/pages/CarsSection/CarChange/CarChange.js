@@ -49,7 +49,7 @@ function CarChange({
 
   useEffect(() => {
     setCar(currentcar);
-    console.log(currentcar);
+
     setCurrentModel(currentcar.model1);
     setCurrentModelId(currentcar.modelid);
     setCurrentColor(currentcar.color1);
@@ -84,7 +84,8 @@ function CarChange({
 
     axios
       .put(`http://localhost:7831/api/cars/${currentcar.id}`, values, {
-        withCredentials: true,
+        mode: "cors",
+        credentials: "include",
       })
       .then((response) => {
         const carForedit = {
@@ -93,6 +94,11 @@ function CarChange({
           releaseYear: values.releaseYear,
           model: { model1: currentModel },
           color: { color1: currentColor },
+          engine: { engine1: currentEngine },
+          grade: { grade1: currentGrade },
+          drive: { drive1: currentDrive },
+          warehouse: { warehouse1: currentWarehouse },
+
           engineid: values.engineid,
           gradeid: values.gradeid,
           driveid: values.driveid,
@@ -142,6 +148,18 @@ function CarChange({
 
   const handleSetCurrentWarehouse = (data) => {
     setCurrentWarehouse(data);
+  };
+
+  const handleSetCurrentEngine = (data) => {
+    setCurrentEngine(engines.find((item) => item.id === data).engine1);
+  };
+
+  const handleSetCurrentGrade = (data) => {
+    setCurrentGrade(grades.find((item) => item.id === data).grade1);
+  };
+
+  const handleSetCurrentDrive = (data) => {
+    setCurrentDrive(drives.find((item) => item.id === data).drive1);
   };
 
   useEffect(() => {
@@ -250,9 +268,9 @@ function CarChange({
               grades={grades}
               setGrades={setGrades}
               setCurrentEngineId={setCurrentEngineId}
-              setCurrentEngine={setCurrentEngine}
+              setCurrentEngine={handleSetCurrentEngine}
               setEngines={setEngines}
-              setCurrentGrade={setCurrentGrade}
+              setCurrentGrade={handleSetCurrentGrade}
               setCurrentGradeId={setCurrentGradeId}
               currentIdGr={currentIdGr}
               setCurrentPerformanceId={setCurrentPerformanceId}
@@ -261,7 +279,7 @@ function CarChange({
               originalDrives={originalDrives}
               currentDriveId={currentDriveId}
               currentDrive={currentDrive}
-              setCurrentDrive={setCurrentDrive}
+              setCurrentDrive={handleSetCurrentDrive}
               setCurrentDriveId={setCurrentDriveId}
             />
 

@@ -18,6 +18,47 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const DialogDetailedCar = (props) => {
+  const [regions, setRegions] = useState();
+  const [loadRFlag, setLoadRFlag] = useState(false);
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/regions/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setRegions(response.data);
+        setLoadRFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const [transms, setTransms] = useState();
+  const [loadTFlag, setLoadTFlag] = useState(false);
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/transm/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setTransms(response.data);
+        setLoadTFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <Dialog
       fullScreen
@@ -191,7 +232,12 @@ const DialogDetailedCar = (props) => {
             >
               Регион нахождения автомобиля:&nbsp;&nbsp;
             </Typography>
-            <h5>{props.carForEdit.warehouse.region.regionName} </h5>
+            <h5>
+              {loadRFlag !== false &&
+                regions.find(
+                  (item) => item.id === props.carForEdit.warehouse.regionId
+                ).regionName}
+            </h5>
           </ListItem>
           <Divider />
 
@@ -280,7 +326,13 @@ const DialogDetailedCar = (props) => {
               >
                 Трансмиссия: &nbsp;&nbsp;
               </Typography>
-              <h5>{props.carForEdit.performance.transm.transmission1} </h5>
+              <h5>
+                {" "}
+                {loadTFlag !== false &&
+                  transms.find(
+                    (item) => item.id === props.carForEdit.performance.transmId
+                  ).transmission1}
+              </h5>
             </ListItem>
             <Divider />
             <ListItem>

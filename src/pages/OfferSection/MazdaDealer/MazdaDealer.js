@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./MazdaDealer.css";
 import { YMaps, Map, Clusterer, Placemark } from "react-yandex-maps";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { styled } from "@mui/material/styles";
+import axios from "axios";
 
 import POINTSMOSCOW from "./pointsMoscow";
 import POINTSVLADIMIR from "./pointsVladimir";
@@ -51,7 +52,34 @@ const MazdaDealer = () => {
   const onPlacemarkClick = (point) => () => {
     setSelectedPoint(point);
   };
+  const [warehouses, setWarehouses] = useState([]);
+  const [currentWarehouse, setCurrentWarehouse] = useState(""); //new
+  const [currentIdW, setCurrentWarehouseId] = useState(""); //new
+  const [loadWWFlag, setLoadWWFlag] = useState(false);
+  useEffect(() => {
+    axios({
+      method: "GET",
 
+      url: "http://localhost:7831/api/warehouses/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setWarehouses(response.data);
+        setLoadWWFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  console.log(
+    warehouses
+      .filter((i) => i.region.regionName == "Москва")
+      .map((point, index) => point)
+  );
   const cities = ["Москва", "Владимир", "Санкт-Петербург"];
 
   const [valueLabel, setValueLabel] = React.useState("Москва");
@@ -104,25 +132,27 @@ const MazdaDealer = () => {
                 height="400px"
                 modules={["control.ZoomControl", "control.FullscreenControl"]}
               >
-                {POINTSMOSCOW.map((point, index) => (
-                  <Placemark
-                    key={index}
-                    modules={["geoObject.addon.balloon"]}
-                    geometry={point.coords}
-                    onClick={onPlacemarkClick(point)}
-                    options={{
-                      iconLayout: "default#image",
-                      iconImageHref: "/ic_pin_black.svg",
-                      iconImageSize: [30, 44],
-                      iconImageOffset: [-15, -44],
-                    }}
-                    properties={{
-                      balloonContentHeader: point.title,
-                      balloonContentBody: point.descr,
-                      balloonContentFooter: point.number,
-                    }}
-                  />
-                ))}
+                {warehouses
+                  .filter((i) => i.region.regionName == "Москва")
+                  .map((point, index) => (
+                    <Placemark
+                      key={index}
+                      modules={["geoObject.addon.balloon"]}
+                      geometry={[point.latitude, point.longitude]}
+                      onClick={onPlacemarkClick(point)}
+                      options={{
+                        iconLayout: "default#image",
+                        iconImageHref: "/ic_pin_black.svg",
+                        iconImageSize: [30, 44],
+                        iconImageOffset: [-15, -44],
+                      }}
+                      properties={{
+                        balloonContentHeader: point.warehouse1,
+                        balloonContentBody: point.address,
+                        balloonContentFooter: point.number,
+                      }}
+                    />
+                  ))}
               </Map>
             </YMaps>
           )}
@@ -135,25 +165,27 @@ const MazdaDealer = () => {
                 height="400px"
                 modules={["control.ZoomControl", "control.FullscreenControl"]}
               >
-                {POINTSVLADIMIR.map((point, index) => (
-                  <Placemark
-                    key={index}
-                    modules={["geoObject.addon.balloon"]}
-                    geometry={point.coords}
-                    onClick={onPlacemarkClick(point)}
-                    options={{
-                      iconLayout: "default#image",
-                      iconImageHref: "/ic_pin_black.svg",
-                      iconImageSize: [30, 44],
-                      iconImageOffset: [-15, -44],
-                    }}
-                    properties={{
-                      balloonContentHeader: point.title,
-                      balloonContentBody: point.descr,
-                      balloonContentFooter: point.number,
-                    }}
-                  />
-                ))}
+                {warehouses
+                  .filter((i) => i.region.regionName == "Владимир")
+                  .map((point, index) => (
+                    <Placemark
+                      key={index}
+                      modules={["geoObject.addon.balloon"]}
+                      geometry={[point.latitude, point.longitude]}
+                      onClick={onPlacemarkClick(point)}
+                      options={{
+                        iconLayout: "default#image",
+                        iconImageHref: "/ic_pin_black.svg",
+                        iconImageSize: [30, 44],
+                        iconImageOffset: [-15, -44],
+                      }}
+                      properties={{
+                        balloonContentHeader: point.warehouse1,
+                        balloonContentBody: point.address,
+                        balloonContentFooter: point.number,
+                      }}
+                    />
+                  ))}
               </Map>
             </YMaps>
           )}
@@ -166,25 +198,27 @@ const MazdaDealer = () => {
                 height="400px"
                 modules={["control.ZoomControl", "control.FullscreenControl"]}
               >
-                {POINTSSANTPET.map((point, index) => (
-                  <Placemark
-                    key={index}
-                    modules={["geoObject.addon.balloon"]}
-                    geometry={point.coords}
-                    onClick={onPlacemarkClick(point)}
-                    options={{
-                      iconLayout: "default#image",
-                      iconImageHref: "/ic_pin_black.svg",
-                      iconImageSize: [30, 44],
-                      iconImageOffset: [-15, -44],
-                    }}
-                    properties={{
-                      balloonContentHeader: point.title,
-                      balloonContentBody: point.descr,
-                      balloonContentFooter: point.number,
-                    }}
-                  />
-                ))}
+                {warehouses
+                  .filter((i) => i.region.regionName == "Санкт-Петербург")
+                  .map((point, index) => (
+                    <Placemark
+                      key={index}
+                      modules={["geoObject.addon.balloon"]}
+                      geometry={[point.latitude, point.longitude]}
+                      onClick={onPlacemarkClick(point)}
+                      options={{
+                        iconLayout: "default#image",
+                        iconImageHref: "/ic_pin_black.svg",
+                        iconImageSize: [30, 44],
+                        iconImageOffset: [-15, -44],
+                      }}
+                      properties={{
+                        balloonContentHeader: point.warehouse1,
+                        balloonContentBody: point.address,
+                        balloonContentFooter: point.number,
+                      }}
+                    />
+                  ))}
               </Map>
             </YMaps>
           )}
@@ -201,9 +235,9 @@ const MazdaDealer = () => {
                 Выбранный дилерский центр:
               </h2>
               <div className="card-selected-point">
-                <h4 style={{ color: "black" }}>{selectedPoint.title}</h4>
+                <h4 style={{ color: "black" }}>{selectedPoint.warehouse1}</h4>
                 <p style={{ color: "#999999" }}>
-                  Адрес: &nbsp; {selectedPoint.descr}
+                  Адрес: &nbsp; {selectedPoint.address}
                 </p>
                 <p
                   style={{
@@ -235,25 +269,27 @@ const MazdaDealer = () => {
                 height="400px"
                 modules={["control.ZoomControl", "control.FullscreenControl"]}
               >
-                {POINTSMOSCOW.map((point, index) => (
-                  <Placemark
-                    key={index}
-                    modules={["geoObject.addon.balloon"]}
-                    geometry={point.coords}
-                    onClick={onPlacemarkClick(point)}
-                    options={{
-                      iconLayout: "default#image",
-                      iconImageHref: "/ic_pin_black.svg",
-                      iconImageSize: [30, 44],
-                      iconImageOffset: [-15, -44],
-                    }}
-                    properties={{
-                      balloonContentHeader: point.title,
-                      balloonContentBody: point.descr,
-                      balloonContentFooter: point.number,
-                    }}
-                  />
-                ))}
+                {warehouses
+                  .filter((i) => i.region.regionName == "Москва")
+                  .map((point, index) => (
+                    <Placemark
+                      key={index}
+                      modules={["geoObject.addon.balloon"]}
+                      geometry={[point.latitude, point.longitude]}
+                      onClick={onPlacemarkClick(point)}
+                      options={{
+                        iconLayout: "default#image",
+                        iconImageHref: "/ic_pin_black.svg",
+                        iconImageSize: [30, 44],
+                        iconImageOffset: [-15, -44],
+                      }}
+                      properties={{
+                        balloonContentHeader: point.warehouse1,
+                        balloonContentBody: point.address,
+                        balloonContentFooter: point.number,
+                      }}
+                    />
+                  ))}
               </Map>
             </YMaps>
           )}
@@ -266,25 +302,27 @@ const MazdaDealer = () => {
                 height="400px"
                 modules={["control.ZoomControl", "control.FullscreenControl"]}
               >
-                {POINTSVLADIMIR.map((point, index) => (
-                  <Placemark
-                    key={index}
-                    modules={["geoObject.addon.balloon"]}
-                    geometry={point.coords}
-                    onClick={onPlacemarkClick(point)}
-                    options={{
-                      iconLayout: "default#image",
-                      iconImageHref: "/ic_pin_black.svg",
-                      iconImageSize: [30, 44],
-                      iconImageOffset: [-15, -44],
-                    }}
-                    properties={{
-                      balloonContentHeader: point.title,
-                      balloonContentBody: point.descr,
-                      balloonContentFooter: point.number,
-                    }}
-                  />
-                ))}
+                {warehouses
+                  .filter((i) => i.region.regionName == "Владимир")
+                  .map((point, index) => (
+                    <Placemark
+                      key={index}
+                      modules={["geoObject.addon.balloon"]}
+                      geometry={[point.latitude, point.longitude]}
+                      onClick={onPlacemarkClick(point)}
+                      options={{
+                        iconLayout: "default#image",
+                        iconImageHref: "/ic_pin_black.svg",
+                        iconImageSize: [30, 44],
+                        iconImageOffset: [-15, -44],
+                      }}
+                      properties={{
+                        balloonContentHeader: point.warehouse1,
+                        balloonContentBody: point.address,
+                        balloonContentFooter: point.number,
+                      }}
+                    />
+                  ))}
               </Map>
             </YMaps>
           )}
@@ -297,25 +335,27 @@ const MazdaDealer = () => {
                 height="400px"
                 modules={["control.ZoomControl", "control.FullscreenControl"]}
               >
-                {POINTSSANTPET.map((point, index) => (
-                  <Placemark
-                    key={index}
-                    modules={["geoObject.addon.balloon"]}
-                    geometry={point.coords}
-                    onClick={onPlacemarkClick(point)}
-                    options={{
-                      iconLayout: "default#image",
-                      iconImageHref: "/ic_pin_black.svg",
-                      iconImageSize: [30, 44],
-                      iconImageOffset: [-15, -44],
-                    }}
-                    properties={{
-                      balloonContentHeader: point.title,
-                      balloonContentBody: point.descr,
-                      balloonContentFooter: point.number,
-                    }}
-                  />
-                ))}
+                {warehouses
+                  .filter((i) => i.region.regionName == "Санкт-Петербург")
+                  .map((point, index) => (
+                    <Placemark
+                      key={index}
+                      modules={["geoObject.addon.balloon"]}
+                      geometry={[point.latitude, point.longitude]}
+                      onClick={onPlacemarkClick(point)}
+                      options={{
+                        iconLayout: "default#image",
+                        iconImageHref: "/ic_pin_black.svg",
+                        iconImageSize: [30, 44],
+                        iconImageOffset: [-15, -44],
+                      }}
+                      properties={{
+                        balloonContentHeader: point.warehouse1,
+                        balloonContentBody: point.address,
+                        balloonContentFooter: point.number,
+                      }}
+                    />
+                  ))}
               </Map>
             </YMaps>
           )}
@@ -332,9 +372,9 @@ const MazdaDealer = () => {
                 Выбранный дилерский центр:
               </h2>
               <div className="card-selected-point">
-                <h4 style={{ color: "black" }}>{selectedPoint.title}</h4>
+                <h4 style={{ color: "black" }}>{selectedPoint.warehouse1}</h4>
                 <p style={{ color: "#999999" }}>
-                  Адрес: &nbsp; {selectedPoint.descr}
+                  Адрес: &nbsp; {selectedPoint.address}
                 </p>
                 <p
                   style={{

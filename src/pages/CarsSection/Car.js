@@ -121,6 +121,7 @@ const Car = ({
   const deleteItem = (id) => {
     //удаление машинки
     //e.stopPropagation();
+
     axios({
       //посылаем запрос
       method: "DELETE",
