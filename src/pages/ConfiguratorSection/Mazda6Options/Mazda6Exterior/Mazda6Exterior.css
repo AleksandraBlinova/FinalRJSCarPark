@@ -61,3 +61,67 @@
   width: 700px;
   padding-bottom: 20px;
 }
+
+@media only screen and (max-width: 960px) {
+  .mazda6-exterior-main-container-main-part-photos > img {
+    width: 650px;
+    height: 350px;
+  }
+  .mazda6-exterior-main-container-main-part-photos {
+    width: 650px;
+    height: 350px;
+  }
+
+  .mazda6-exterior-main-container-main-part-colors {
+    
+    width: 600px;grid-column-gap: 6px;
+
+  }
+  
+}
+
+@media only screen and (max-width: 660px) {
+  .mazda6-exterior-main-container-main-part-photos > img {
+    width: 350px;
+    height: 200px;
+  }
+  .mazda6-exterior-main-container-main-part-photos {
+    width: 350px;
+    height: 200px;
+  }
+
+  .mazda6-exterior-main-container-main-part-colors {
+    
+    width: 300px;
+    grid-column-gap: 0px;
+
+  }
+  .mazda6-exterior-main-container-header {display: grid;
+    grid-template: auto/repeat(2, 1fr);
+    grid-column-gap: 5px;
+    align-items: center;}
+  
+}
+
+@media only screen and (max-width: 380px) {
+  .mazda6-exterior-main-container-main-part-photos > img {
+    width: 250px;
+    height: 150px;
+  }
+  .mazda6-exterior-main-container-main-part-photos {
+    width: 250px;
+    height: 150px;
+  }
+
+  .mazda6-exterior-main-container-main-part-colors {
+    
+    width: 250px;
+    grid-column-gap: 0px;
+
+  }
+  .mazda6-exterior-main-container-header {display: grid;
+    grid-template: auto/repeat(2, 1fr);
+    grid-column-gap: 5px;
+    align-items: center;}
+  
+}

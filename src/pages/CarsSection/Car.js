@@ -99,7 +99,6 @@ const Car = ({
 
   useEffect(() => {
     axios({
-      //оправляем запрос на получение машинок
       method: "GET",
       url: "http://localhost:7831/api/colors/",
       headers: {

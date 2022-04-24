@@ -1,20 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Mazda6OptionsMain.css";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
 import { MdArrowBack } from "react-icons/md";
 import CardsEngine6 from "./Equipment6/CardsEngine/CardsEngine6";
 import CardsSet6 from "./Equipment6/CardsSet/CardsSet6";
+import axios from "axios";
 
 const Mazda6OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
   const [isShown, setIsShown] = useState(true);
   const [chosen, setChosen] = useState(0);
+  const [gmed, setGMED] = useState([]);
+  const [models, setModels] = useState([]);
+  const [engines, setEngines] = useState([]);
+  const [grades, setGrades] = useState(); //new
+  const [loadFlag, setLoadFlag] = useState(false);
+  const [loadDflag, setLoadDFlag] = useState(false);
+  const [drives, setDrives] = useState(); //new
+  const [originalDrives, setOriginalDrives] = useState(""); //new
 
   const onHover = () => {
     setHover(!hover);
   };
+  useEffect(() => {
+    axios({
+      method: "GET",
 
+      url: "http://localhost:7831/api/gmed/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setGMED(response.data);
+        setModels(response.data.map((i) => i.model));
+        setEngines(response.data.map((i) => i.engine));
+        setGrades(response.data.map((i) => i.grade));
+
+        setLoadFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/drives/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setOriginalDrives(response.data);
+        setDrives(response.data);
+        setLoadDFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <>
       <div className="mazda6-options-main-container">
