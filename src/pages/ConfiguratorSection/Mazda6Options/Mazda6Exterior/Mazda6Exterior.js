@@ -23,7 +23,7 @@ const Mazda6Exterior = (props) => {
   };
   const [colors, setColors] = useState();
   const [colorFlag, setColorFlag] = useState(false);
-  const [activeButt, setActiveButt] = useState(0);
+  const [activeButt, setActiveButt] = useState(1);
   const handleButtChange = (newValue) => {
     setActiveButt(newValue);
   };
@@ -47,7 +47,6 @@ const Mazda6Exterior = (props) => {
         console.log(error); // если есть ошибки - выводим
       });
   }, []);
-  const [typeofsectionTabs, setTypeofsectionTabs] = useState(1);
 
   return (
     <>

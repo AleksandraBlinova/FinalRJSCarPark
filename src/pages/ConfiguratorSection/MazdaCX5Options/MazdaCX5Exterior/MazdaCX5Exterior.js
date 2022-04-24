@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "./MazdaCX5Exterior.css";
@@ -12,18 +12,40 @@ import mazdaCX5_exterior_eternal_blue from "./mazdaCX5ExteriorPhotos/mazdaCX5_ex
 import mazdaCX5_exterior_grey_metallic from "./mazdaCX5ExteriorPhotos/mazdaCX5_exterior_grey_metallic.jpg";
 import mazdaCX5_exterior_red_soul from "./mazdaCX5ExteriorPhotos/mazdaCX5_exterior_red_soul.jpg";
 import mazdaCX5_exterior_snowflake from "./mazdaCX5ExteriorPhotos/mazdaCX5_exterior_snowflake.jpg";
+import Tooltip from "@mui/material/Tooltip";
+import axios from "axios";
 
 const MazdaCX5Exterior = (props) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
   };
-  const [activeButt, setActiveButt] = useState(0);
+  const [activeButt, setActiveButt] = useState(1);
   const handleButtChange = (newValue) => {
     setActiveButt(newValue);
   };
   const [typeofsectionTabs, setTypeofsectionTabs] = useState(1);
-
+  const [colors, setColors] = useState();
+  const [colorFlag, setColorFlag] = useState(false);
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:7831/api/colorsModels/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setColors(
+          response.data.filter((item) => item.modelId == 2).map((c) => c.color)
+        );
+        setColorFlag(true);
+      })
+      .catch((error) => {
+        console.log(error); // если есть ошибки - выводим
+      });
+  }, []);
   return (
     <>
       <div className="mazdacx5-exterior-tabs-container"></div>
@@ -38,93 +60,32 @@ const MazdaCX5Exterior = (props) => {
           </Link>
         </div>
         <div className="mazdacx5-exterior-main-container-main-part-photos">
-          {activeButt === 0 && <img src={mazdaCX5_exterior_arctic_white} />}
-          {activeButt === 1 && <img src={mazdaCX5_exterior_black} />}
+          {activeButt === 1 && <img src={mazdaCX5_exterior_red_soul} />}
           {activeButt === 2 && <img src={mazdaCX5_exterior_deep_crystal} />}
-          {activeButt === 3 && <img src={mazdaCX5_exterior_eternal_blue} />}
-          {activeButt === 4 && <img src={mazdaCX5_exterior_grey_metallic} />}
-          {activeButt === 5 && <img src={mazdaCX5_exterior_red_soul} />}
-          {activeButt === 6 && <img src={mazdaCX5_exterior_snowflake} />}
+          {activeButt === 3 && <img src={mazdaCX5_exterior_arctic_white} />}
+          {activeButt === 4 && <img src={mazdaCX5_exterior_snowflake} />}
+          {activeButt === 5 && <img src={mazdaCX5_exterior_black} />}
+
+          {activeButt === 6 && <img src={mazdaCX5_exterior_eternal_blue} />}
+          {activeButt === 9 && <img src={mazdaCX5_exterior_grey_metallic} />}
         </div>
         <div className="mazdacx5-exterior-main-container-main-part-colors">
-          <Fab
-            size="medium"
-            style={{
-              backgroundColor: "#eff3f6",
-              position: "relative",
-              left: "50%",
-              transform: "translate(-50%, 0)",
-            }}
-            aria-label="add"
-            onClick={() => handleButtChange(0)}
-          ></Fab>
-          <Fab
-            size="medium"
-            style={{
-              backgroundColor: "#000",
-              position: "relative",
-              left: "50%",
-              transform: "translate(-50%, 0)",
-            }}
-            aria-label="add"
-            onClick={() => handleButtChange(1)}
-          ></Fab>
-          <Fab
-            size="medium"
-            style={{
-              backgroundColor: "#1d2842",
-              position: "relative",
-              left: "50%",
-              transform: "translate(-50%, 0)",
-            }}
-            aria-label="add"
-            onClick={() => handleButtChange(2)}
-          ></Fab>
-          <Fab
-            size="medium"
-            style={{
-              backgroundColor: "#334d68",
-              position: "relative",
-              left: "50%",
-              transform: "translate(-50%, 0)",
-            }}
-            aria-label="add"
-            onClick={() => handleButtChange(3)}
-          ></Fab>
-
-          <Fab
-            size="medium"
-            style={{
-              backgroundColor: "#505559",
-              position: "relative",
-              left: "50%",
-              transform: "translate(-50%, 0)",
-            }}
-            aria-label="add"
-            onClick={() => handleButtChange(4)}
-          ></Fab>
-          <Fab
-            size="medium"
-            style={{
-              backgroundColor: "#980a09",
-              position: "relative",
-              left: "50%",
-              transform: "translate(-50%, 0)",
-            }}
-            aria-label="add"
-            onClick={() => handleButtChange(5)}
-          ></Fab>
-          <Fab
-            size="medium"
-            style={{
-              backgroundColor: "#e2e2e2",
-              position: "relative",
-              left: "50%",
-              transform: "translate(-50%, 0)",
-            }}
-            aria-label="add"
-            onClick={() => handleButtChange(6)}
-          ></Fab>
+          {colorFlag == true &&
+            colors.map((color) => (
+              <Tooltip title={"+" + color.colorExtraCost} placement="top">
+                <Fab
+                  size="small"
+                  style={{
+                    position: "relative",
+                    left: "50%",
+                    transform: "translate(-50%, 0)",
+                    backgroundColor: color.colorView,
+                  }}
+                  aria-label="add"
+                  onClick={() => handleButtChange(color.id)}
+                ></Fab>
+              </Tooltip>
+            ))}
         </div>
         <div className="mazda6-equip-details-prices-container">
           <p className="mazda6-equip-details-prices-text">
