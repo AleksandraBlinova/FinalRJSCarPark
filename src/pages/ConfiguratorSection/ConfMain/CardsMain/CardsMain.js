@@ -17,7 +17,7 @@ const CardsMain = (props) => {
           text="MAZDA 6"
           path="/mazda6config"
           type="Седан"
-          price="от 1 843 000 ₽"
+          price="от 2 548 000 ₽"
         />
       </div>
       <div
@@ -31,7 +31,7 @@ const CardsMain = (props) => {
           src="../configurator/main-cards/cx-5_2020_blue.png"
           text="MAZDA CX-5"
           type="Кроссовер"
-          price="от 1 919 000 ₽"
+          price="от 2 645 000 ₽"
           path="/mazdacx5config"
         />
       </div>
@@ -46,7 +46,7 @@ const CardsMain = (props) => {
           src="../configurator/main-cards/mcx9.png"
           text="MAZDA CX-9"
           type="Кроссовер"
-          price="от 3 310 000 ₽"
+          price="от 4 585 000 ₽"
           path="/mazdacx9config"
         />
       </div>
