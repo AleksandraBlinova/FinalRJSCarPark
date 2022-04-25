@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./CardsMain.css";
 import Card from "./Card";
 
 const CardsMain = (props) => {
+  const [modelConfigId, setModelConfigId] = useState();
+
   return (
     <div className="cards-main-container">
       <div
