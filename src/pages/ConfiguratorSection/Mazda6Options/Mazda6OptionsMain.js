@@ -106,11 +106,19 @@ const Mazda6OptionsMain = (props) => {
           />
         </div>
         {active !== undefined && active === "2.0" && (
-          <div className="main-container-set-cards">
+          <div
+            className="main-container-set-cards"
+            onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
+            onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+          >
+            {/* {(isShown === true && chosen === 2) ||
+              (isShown === true && chosen === 3 && ( */}
             {/* <div
-              // onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
-              // onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-              className="main-container-set-cards-first-card"
+            // style={{
+            //   pointerEvents: "none",
+            //   opacity: "0.4",
+            //   transition: "all 0.2s ease-in-out",
+            // }}
             > */}
             {loadAEflag === true &&
               equipments.map((e) => (
@@ -121,44 +129,14 @@ const Mazda6OptionsMain = (props) => {
                   price={e.cost + " " + "₽"}
                   path="/mazda6equipdetails"
                   number={e.gradeId - 1}
+                  isShown={isShown}
+                  chosen={chosen}
                 />
               ))}
+            {/* </div> */}
+            {/* ))} */}
 
-            {/* {(isShown === true && chosen === 2) ||
-              (isShown === true && chosen === 3) ? ( */}
-            {/* <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  <CardsSet6
-                    type="AT 6 / 2WD"
-                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                    text="DRIVE"
-                    price="1 876 000 ₽"
-                    path="/mazda6equipdetails"
-                    number={0}
-                  />
-                </div>
-              ) : (
-                <div>
-                  <CardsSet6
-                    type="AT 6 / 2WD"
-                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                    text="DRIVE"
-                    price="1 876 000 ₽"
-                    path="/mazda6equipdetails"
-                    number={0}
-                    isShown={isShown}
-                    chosen={chosen}
-                  />
-                </div>
-              )}
-            </div>
-
-            <div
+            {/*<div
               className="main-container-set-cards-second-card"
               onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
               onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
@@ -235,8 +213,8 @@ const Mazda6OptionsMain = (props) => {
                 </div>
               )}
             </div> */}
-            {/* </div> */}
           </div>
+          // </div>
         )}
         {active !== undefined && active === "2.5" && (
           <div className="main-container-set-cards">
