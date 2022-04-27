@@ -38,23 +38,23 @@
 
 .set-cards-item-text {
   color: #000000;
-  font-size: 25px;
+  font-size: 22px;
   line-height: 24px;
   margin-top: 10px;
   text-align: center;
 }
 
-.set-cards-item-type {
-  color: #999;
+.set-cards-item-info .set-cards-item-type {
+  color: #999999;
   text-transform: none;
   margin: 0;
   line-height: 30px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   text-align: center;
 }
 
-.set-cards-item-price {
+.set-cards-item-info .set-cards-item-price {
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -65,15 +65,15 @@
 .set-cards-item-more-container {
   align-items: center;
 }
-.set-cards-item-more {
-  font-size: 15px;
+.set-cards-item-more-container .set-cards-item-more {
+  font-size: 16px;
   font-weight: 500;
   letter-spacing: 1px;
-  color: #807e7e;
+  color: #565656;
   text-align: center;
 }
 
-.set-cards-item-more:hover {
+.set-cards-item-more-container .set-cards-item-more:hover {
   color: #302f2f;
   text-decoration: none;
 }
@@ -97,13 +97,13 @@
     margin: 0 auto;
   }
 
-  .set-cards-item-text {
+  .set-cards-item-info .set-cards-item-text {
     font-size: 20px;
   }
-  .set-cards-item-type {
+  .set-cards-item-info .set-cards-item-type {
     font-size: 13px;
   }
-  .set-cards-item-price {
+  .set-cards-item-info .set-cards-item-price {
     font-size: 12px;
     color: #000;
   }
@@ -125,13 +125,13 @@
     height: auto;
     margin: 0 auto;
   }
-  .set-cards-item-text {
+  .set-cards-item-info .set-cards-item-text {
     font-size: 15px;
   }
-  .set-cards-item-type {
+  .set-cards-item-info .set-cards-item-type {
     font-size: 10px;
   }
-  .set-cards-item-price {
+  .set-cards-item-info .set-cards-item-price {
     font-size: 10px;
   }
 }
@@ -155,13 +155,13 @@
   .set-cards-item-img {
     display: none;
   }
-  .set-cards-item-text {
+  .set-cards-item-info .set-cards-item-text {
     font-size: 10px;
   }
-  .set-cards-item-type {
+  .set-cards-item-info .set-cards-item-type {
     font-size: 8px;
   }
-  .set-cards-item-price {
+  .set-cards-item-info .set-cards-item-price {
     font-size: 8px;
   }
 }
@@ -173,7 +173,7 @@
     width: 80px;
   }
 
-  .set-cards-item-more {
+  .set-cards-item-more-container .set-cards-item-more {
     font-size: 10px;
   }
 }

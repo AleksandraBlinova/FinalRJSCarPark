@@ -86,7 +86,6 @@ const Mazda6OptionsMain = (props) => {
   };
   const [equipments, setEquipments] = useState();
 
-  console.log(equipments);
   return (
     <>
       <div className="mazda6-options-main-container">
@@ -108,26 +107,26 @@ const Mazda6OptionsMain = (props) => {
         </div>
         {active !== undefined && active === "2.0" && (
           <div className="main-container-set-cards">
-            <div
+            {/* <div
               // onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
               // onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
               className="main-container-set-cards-first-card"
-            >
-              {loadAEflag === true &&
-                equipments.map((e) => (
-                  <CardsSet6
-                    type={"/" + " " + e.drive.drive1}
-                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                    text={e.grade.grade1.toUpperCase()}
-                    price={e.cost + " " + "₽"}
-                    path="/mazda6equipdetails"
-                    number={e.id - 1}
-                  />
-                ))}
+            > */}
+            {loadAEflag === true &&
+              equipments.map((e) => (
+                <CardsSet6
+                  type={e.drive.drive1}
+                  src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                  text={e.grade.grade1.toUpperCase()}
+                  price={e.cost + " " + "₽"}
+                  path="/mazda6equipdetails"
+                  number={e.gradeId - 1}
+                />
+              ))}
 
-              {/* {(isShown === true && chosen === 2) ||
+            {/* {(isShown === true && chosen === 2) ||
               (isShown === true && chosen === 3) ? ( */}
-              {/* <div
+            {/* <div
                   style={{
                     pointerEvents: "none",
                     opacity: "0.4",
@@ -236,12 +235,12 @@ const Mazda6OptionsMain = (props) => {
                 </div>
               )}
             </div> */}
-            </div>
+            {/* </div> */}
           </div>
         )}
         {active !== undefined && active === "2.5" && (
           <div className="main-container-set-cards">
-            <div
+            {/* <div
               className="main-container-set-cards-second-card"
               onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
               onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
@@ -317,7 +316,19 @@ const Mazda6OptionsMain = (props) => {
                   />
                 </div>
               )}
-            </div>
+            </div> */}
+
+            {loadAEflag === true &&
+              equipments.map((e) => (
+                <CardsSet6
+                  type={e.drive.drive1}
+                  src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                  text={e.grade.grade1.toUpperCase()}
+                  price={e.cost + " " + "₽"}
+                  path="/mazda6equipdetails"
+                  number={e.gradeId - 1}
+                />
+              ))}
           </div>
         )}
         <div className="prices-container">
