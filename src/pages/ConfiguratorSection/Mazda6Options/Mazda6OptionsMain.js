@@ -11,14 +11,13 @@ const Mazda6OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
   const [isShown, setIsShown] = useState(true);
   const [chosen, setChosen] = useState(0);
-  const [gmed, setGMED] = useState([]);
-  const [models, setModels] = useState([]);
+  const [ged, setGED] = useState([]);
+
   const [engines, setEngines] = useState([]);
+
   const [grades, setGrades] = useState(); //new
-  const [loadFlag, setLoadFlag] = useState(false);
+  const [loadEFlag, setLoadEFlag] = useState(false);
   const [loadDflag, setLoadDFlag] = useState(false);
-  const [drives, setDrives] = useState(); //new
-  const [originalDrives, setOriginalDrives] = useState(""); //new
 
   const onHover = () => {
     setHover(!hover);
@@ -27,44 +26,67 @@ const Mazda6OptionsMain = (props) => {
     axios({
       method: "GET",
 
-      url: "http://localhost:7831/api/gmed/",
+      url: "http://localhost:7831/api/ged/",
       headers: {
         "content-type": "application/json",
         withCredentials: true,
       },
     })
       .then((response) => {
-        setGMED(response.data);
-        setModels(response.data.map((i) => i.model));
-        setEngines(response.data.map((i) => i.engine));
-        setGrades(response.data.map((i) => i.grade));
+        setGED(response.data);
 
-        setLoadFlag(true);
+        setEngines(
+          response.data
+            .filter((item) => item.modelId == 1)
+            .map((i) => i.engine)
+            .reduce((o, c) => {
+              const exist = o.find(
+                (item) => item.id === c.id && item.engine1 === c.engine1
+              );
+              if (!exist) {
+                const options = response.data
+                  .filter(
+                    (item) => item.id === c.id && item.engine1 === c.engine1
+                  )
+                  .map((item) => item.option);
+
+                o.push({
+                  id: c.id,
+                  engine1: c.engine1,
+                  options: Array.from(new Set(options)),
+                });
+              }
+
+              return o;
+            }, [])
+        );
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-  useEffect(() => {
-    axios({
-      method: "GET",
+  const types = engines.map((i) => i.engine1);
 
-      url: "http://localhost:7831/api/drives/",
-      headers: {
-        "content-type": "application/json",
-        withCredentials: true,
-      },
-    })
-      .then((response) => {
-        setOriginalDrives(response.data);
-        setDrives(response.data);
-        setLoadDFlag(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const [active, setActive] = useState(types[0]);
+  const [activeEngineId, setActiveEngineId] = useState();
+  const [loadAEflag, setLoadAEFlag] = useState(false);
+
+  const handleChangeActive = (newActive) => {
+    setActive(newActive);
+    if (newActive === "2.0") {
+      setActiveEngineId(1);
+      setEquipments(ged.filter((i) => i.modelId === 1 && i.engineId === 1));
+      setLoadAEFlag(true);
+    } else {
+      setActiveEngineId(2);
+      setEquipments(ged.filter((i) => i.modelId === 1 && i.engineId === 2));
+      setLoadAEFlag(true);
+    }
+  };
+  const [equipments, setEquipments] = useState();
+
+  console.log(equipments);
   return (
     <>
       <div className="mazda6-options-main-container">
@@ -77,127 +99,227 @@ const Mazda6OptionsMain = (props) => {
           <h2>ВЫБЕРИТЕ ДВИГАТЕЛЬ, КОМПЛЕКТАЦИЮ И ПАКЕТ</h2>
         </div>
         <div className="main-container-engine-cards">
-          <CardsEngine6 />
+          <CardsEngine6
+            engines={engines}
+            types={types}
+            active={active}
+            setActive={handleChangeActive}
+          />
         </div>
+        {active !== undefined && active === "2.0" && (
+          <div className="main-container-set-cards">
+            <div
+              // onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
+              // onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+              className="main-container-set-cards-first-card"
+            >
+              {loadAEflag === true &&
+                equipments.map((e) => (
+                  <CardsSet6
+                    type={"/" + " " + e.drive.drive1}
+                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                    text={e.grade.grade1.toUpperCase()}
+                    price={e.cost + " " + "₽"}
+                    path="/mazda6equipdetails"
+                    number={e.id - 1}
+                  />
+                ))}
 
-        <div className="main-container-set-cards">
-          <div
-            onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
-            onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-            className="main-container-set-cards-first-card"
-          >
-            {(isShown === true && chosen === 2) ||
-            (isShown === true && chosen === 3) ? (
-              <div
-                style={{
-                  pointerEvents: "none",
-                  opacity: "0.4",
-                  transition: "all 0.2s ease-in-out",
-                }}
-              >
-                <CardsSet6
-                  type="AT 6 / 2WD"
-                  src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                  text="DRIVE"
-                  price="1 876 000 ₽"
-                  path="/mazda6equipdetails"
-                  number={0}
-                />
-              </div>
-            ) : (
-              <div>
-                <CardsSet6
-                  type="AT 6 / 2WD"
-                  src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                  text="DRIVE"
-                  price="1 876 000 ₽"
-                  path="/mazda6equipdetails"
-                  number={0}
-                  isShown={isShown}
-                  chosen={chosen}
-                />
-              </div>
-            )}
-          </div>
+              {/* {(isShown === true && chosen === 2) ||
+              (isShown === true && chosen === 3) ? ( */}
+              {/* <div
+                  style={{
+                    pointerEvents: "none",
+                    opacity: "0.4",
+                    transition: "all 0.2s ease-in-out",
+                  }}
+                >
+                  <CardsSet6
+                    type="AT 6 / 2WD"
+                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                    text="DRIVE"
+                    price="1 876 000 ₽"
+                    path="/mazda6equipdetails"
+                    number={0}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <CardsSet6
+                    type="AT 6 / 2WD"
+                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                    text="DRIVE"
+                    price="1 876 000 ₽"
+                    path="/mazda6equipdetails"
+                    number={0}
+                    isShown={isShown}
+                    chosen={chosen}
+                  />
+                </div>
+              )}
+            </div>
 
-          <div
-            className="main-container-set-cards-second-card"
-            onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
-            onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-          >
-            {(isShown === true && chosen === 1) ||
-            (isShown === true && chosen === 3) ? (
-              <div
-                style={{
-                  pointerEvents: "none",
-                  opacity: "0.4",
-                  transition: "all 0.2s ease-in-out",
-                }}
-              >
-                <CardsSet6
-                  type="AT 6 / 2WD"
-                  text="ACTIVE"
-                  price="1 990 000 ₽"
-                  src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                  path="/mazda6equipdetails"
-                  number={1}
-                />
-              </div>
-            ) : (
-              <div>
-                <CardsSet6
-                  type="AT 6 / 2WD"
-                  text="ACTIVE"
-                  price="1 990 000 ₽"
-                  src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                  path="/mazda6equipdetails"
-                  number={1}
-                  isShown={isShown}
-                  chosen={chosen}
-                />
-              </div>
-            )}
-          </div>
+            <div
+              className="main-container-set-cards-second-card"
+              onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
+              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+            >
+              {(isShown === true && chosen === 1) ||
+              (isShown === true && chosen === 3) ? (
+                <div
+                  style={{
+                    pointerEvents: "none",
+                    opacity: "0.4",
+                    transition: "all 0.2s ease-in-out",
+                  }}
+                >
+                  <CardsSet6
+                    type="AT 6 / 2WD"
+                    text="ACTIVE"
+                    price="1 990 000 ₽"
+                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                    path="/mazda6equipdetails"
+                    number={1}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <CardsSet6
+                    type="AT 6 / 2WD"
+                    text="ACTIVE"
+                    price="1 990 000 ₽"
+                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                    path="/mazda6equipdetails"
+                    number={1}
+                    isShown={isShown}
+                    chosen={chosen}
+                  />
+                </div>
+              )}
+            </div>
 
-          <div
-            onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
-            onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-            className="main-container-set-cards-third-card"
-          >
-            {(isShown === true && chosen === 2) ||
-            (isShown === true && chosen === 1) ? (
-              <div
-                style={{
-                  pointerEvents: "none",
-                  opacity: "0.4",
-                  transition: "all 0.2s ease-in-out",
-                }}
-              >
-                <CardsSet6
-                  type="AT 6 / 2WD"
-                  text="SUPREME PLUS"
-                  price="2 268 000 ₽"
-                  src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                  path="/mazda6equipdetails"
-                  number={2}
-                />
-              </div>
-            ) : (
-              <div>
-                <CardsSet6
-                  type="AT 6 / 2WD"
-                  text="SUPREME PLUS"
-                  price="2 268 000 ₽"
-                  src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                  path="/mazda6equipdetails"
-                  number={2}
-                  isShown={isShown}
-                  chosen={chosen}
-                />
-              </div>
-            )}
+            <div
+              onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
+              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+              className="main-container-set-cards-third-card"
+            >
+              {(isShown === true && chosen === 2) ||
+              (isShown === true && chosen === 1) ? (
+                <div
+                  style={{
+                    pointerEvents: "none",
+                    opacity: "0.4",
+                    transition: "all 0.2s ease-in-out",
+                  }}
+                >
+                  <CardsSet6
+                    type="AT 6 / 2WD"
+                    text="SUPREME PLUS"
+                    price="2 268 000 ₽"
+                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                    path="/mazda6equipdetails"
+                    number={2}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <CardsSet6
+                    type="AT 6 / 2WD"
+                    text="SUPREME PLUS"
+                    price="2 268 000 ₽"
+                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                    path="/mazda6equipdetails"
+                    number={2}
+                    isShown={isShown}
+                    chosen={chosen}
+                  />
+                </div>
+              )}
+            </div> */}
+            </div>
           </div>
-        </div>
+        )}
+        {active !== undefined && active === "2.5" && (
+          <div className="main-container-set-cards">
+            <div
+              className="main-container-set-cards-second-card"
+              onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
+              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+            >
+              {(isShown === true && chosen === 1) ||
+              (isShown === true && chosen === 3) ? (
+                <div
+                  style={{
+                    pointerEvents: "none",
+                    opacity: "0.4",
+                    transition: "all 0.2s ease-in-out",
+                  }}
+                >
+                  <CardsSet6
+                    type="AT 6 / 2WD"
+                    text="ACTIVE"
+                    price="1 990 000 ₽"
+                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                    path="/mazda6equipdetails"
+                    number={1}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <CardsSet6
+                    type="AT 6 / 2WD"
+                    text="ACTIVE"
+                    price="1 990 000 ₽"
+                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                    path="/mazda6equipdetails"
+                    number={1}
+                    isShown={isShown}
+                    chosen={chosen}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div
+              onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
+              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+              className="main-container-set-cards-third-card"
+            >
+              {(isShown === true && chosen === 2) ||
+              (isShown === true && chosen === 1) ? (
+                <div
+                  style={{
+                    pointerEvents: "none",
+                    opacity: "0.4",
+                    transition: "all 0.2s ease-in-out",
+                  }}
+                >
+                  <CardsSet6
+                    type="AT 6 / 2WD"
+                    text="SUPREME PLUS"
+                    price="2 268 000 ₽"
+                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                    path="/mazda6equipdetails"
+                    number={2}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <CardsSet6
+                    type="AT 6 / 2WD"
+                    text="SUPREME PLUS"
+                    price="2 268 000 ₽"
+                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                    path="/mazda6equipdetails"
+                    number={2}
+                    isShown={isShown}
+                    chosen={chosen}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        )}
         <div className="prices-container">
           <p className="prices-text-conf-main">
             Цены действительны с 29 декабря 2021 года на автомобили 2021 года
