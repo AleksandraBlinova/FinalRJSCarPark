@@ -61,19 +61,17 @@ const ButtonToggle = styled(BootstrapButton)`
 const ButtonGroup = styled.div`
   display: flex;
 `;
-const types = ["2.0 Skyactiv-G (150 л.с.)", "2.5 Skyactiv-G (194 л.с.)"];
 
 function CardsEngine(props) {
-  const [active, setActive] = useState(types[0]);
   return (
     <ButtonGroup>
-      {types.map((type) => (
+      {props.types.map((type) => (
         <div className="cards-item-engine-cx5">
           <ButtonToggle
             className="cards-item-link-engine-cx5"
             key={type}
-            active={active === type}
-            onClick={() => setActive(type)}
+            active={props.active === type}
+            onClick={() => props.setActive(type)}
             sx={{ color: "#fff" }}
           >
             <p className="cards-item-type-engine-cx5">{type}</p>

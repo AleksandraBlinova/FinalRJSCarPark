@@ -15,10 +15,6 @@ const Mazda6OptionsMain = (props) => {
 
   const [engines, setEngines] = useState([]);
 
-  const [grades, setGrades] = useState(); //new
-  const [loadEFlag, setLoadEFlag] = useState(false);
-  const [loadDflag, setLoadDFlag] = useState(false);
-
   const onHover = () => {
     setHover(!hover);
   };
