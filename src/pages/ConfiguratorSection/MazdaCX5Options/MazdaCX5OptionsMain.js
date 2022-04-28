@@ -125,7 +125,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"MT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
@@ -145,7 +145,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"MT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
@@ -183,7 +183,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
@@ -204,7 +204,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
@@ -243,7 +243,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
@@ -264,7 +264,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
@@ -303,7 +303,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
@@ -323,7 +323,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
@@ -365,7 +365,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
@@ -386,7 +386,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
@@ -425,7 +425,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
@@ -445,7 +445,7 @@ const MazdaCX5OptionsMain = (props) => {
                         return (
                           <CardsSet
                             type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
                             path="/mazdacx5equipdetails"
