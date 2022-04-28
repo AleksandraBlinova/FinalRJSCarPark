@@ -280,8 +280,8 @@ const Mazda6OptionsMain = (props) => {
           </div>
         )}
         {active !== undefined && active === "2.5" && (
-          <div className="main-container-set-cards">
-            {/* <div
+          <div className="main-container-set-cards-25">
+            <div
               className="main-container-set-cards-second-card"
               onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
               onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
@@ -295,27 +295,45 @@ const Mazda6OptionsMain = (props) => {
                     transition: "all 0.2s ease-in-out",
                   }}
                 >
-                  <CardsSet6
-                    type="AT 6 / 2WD"
-                    text="ACTIVE"
-                    price="1 990 000 ₽"
-                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                    path="/mazda6equipdetails"
-                    number={1}
-                  />
+                  {loadAEflag === true &&
+                    equipments.reduce((res, e) => {
+                      if (e.id == 5) {
+                        return (
+                          <CardsSet6
+                            type={e.drive.drive1}
+                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            text={e.grade.grade1.toUpperCase()}
+                            price={e.cost + " " + "₽"}
+                            path="/mazda6equipdetails"
+                            number={e.gradeId - 1}
+                          />
+                        );
+                      } else {
+                        return res;
+                      }
+                    }, "")}
                 </div>
               ) : (
                 <div>
-                  <CardsSet6
-                    type="AT 6 / 2WD"
-                    text="ACTIVE"
-                    price="1 990 000 ₽"
-                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                    path="/mazda6equipdetails"
-                    number={1}
-                    isShown={isShown}
-                    chosen={chosen}
-                  />
+                  {loadAEflag === true &&
+                    equipments.reduce((res, e) => {
+                      if (e.id == 5) {
+                        return (
+                          <CardsSet6
+                            type={e.drive.drive1}
+                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            text={e.grade.grade1.toUpperCase()}
+                            price={e.cost + " " + "₽"}
+                            path="/mazda6equipdetails"
+                            number={e.gradeId - 1}
+                            isShown={isShown}
+                            chosen={chosen}
+                          />
+                        );
+                      } else {
+                        return res;
+                      }
+                    }, "")}
                 </div>
               )}
             </div>
@@ -334,42 +352,48 @@ const Mazda6OptionsMain = (props) => {
                     transition: "all 0.2s ease-in-out",
                   }}
                 >
-                  <CardsSet6
-                    type="AT 6 / 2WD"
-                    text="SUPREME PLUS"
-                    price="2 268 000 ₽"
-                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                    path="/mazda6equipdetails"
-                    number={2}
-                  />
+                  {loadAEflag === true &&
+                    equipments.reduce((res, e) => {
+                      if (e.id == 6) {
+                        return (
+                          <CardsSet6
+                            type={e.drive.drive1}
+                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            text={e.grade.grade1.toUpperCase()}
+                            price={e.cost + " " + "₽"}
+                            path="/mazda6equipdetails"
+                            number={e.gradeId - 1}
+                          />
+                        );
+                      } else {
+                        return res;
+                      }
+                    }, "")}
                 </div>
               ) : (
                 <div>
-                  <CardsSet6
-                    type="AT 6 / 2WD"
-                    text="SUPREME PLUS"
-                    price="2 268 000 ₽"
-                    src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                    path="/mazda6equipdetails"
-                    number={2}
-                    isShown={isShown}
-                    chosen={chosen}
-                  />
+                  {loadAEflag === true &&
+                    equipments.reduce((res, e) => {
+                      if (e.id == 6) {
+                        return (
+                          <CardsSet6
+                            type={e.drive.drive1}
+                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                            text={e.grade.grade1.toUpperCase()}
+                            price={e.cost + " " + "₽"}
+                            path="/mazda6equipdetails"
+                            number={e.gradeId - 1}
+                            isShown={isShown}
+                            chosen={chosen}
+                          />
+                        );
+                      } else {
+                        return res;
+                      }
+                    }, "")}
                 </div>
               )}
-            </div> */}
-
-            {loadAEflag === true &&
-              equipments.map((e) => (
-                <CardsSet6
-                  type={e.drive.drive1}
-                  src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                  text={e.grade.grade1.toUpperCase()}
-                  price={e.cost + " " + "₽"}
-                  path="/mazda6equipdetails"
-                  number={e.gradeId - 1}
-                />
-              ))}
+            </div>
           </div>
         )}
         <div className="prices-container">

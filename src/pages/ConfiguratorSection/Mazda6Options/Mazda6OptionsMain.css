@@ -47,6 +47,15 @@
   max-width: 1000px;
 }
 
+.main-container-set-cards-25 {
+  margin: 0 auto;
+  display: grid;
+  grid-template: auto/repeat(2, 1fr);
+  grid-gap: 1rem;
+  padding: 1rem 0rem 0rem 0rem;
+  max-width: 730px;
+}
+
 @media only screen and (max-width: 1020px) {
   .mazda6-options-link {
     color: grey;
@@ -81,6 +90,10 @@
   .mazda6-options-main-container {
     padding: 0 10px;
   }
+  .main-container-set-cards-25 {
+   
+    max-width: 500px;
+  }
 }
 
 @media only screen and (max-width: 540px) {
@@ -101,6 +114,10 @@
   .mazda6-options-main-container {
     padding: 0 5px;
   }
+  .main-container-set-cards-25 {
+   
+    max-width: 400px;
+  }
 }
 
 @media only screen and (max-width: 330px) {
@@ -120,5 +137,9 @@
   }
   .mazda6-options-main-container {
     padding: 0 10px;
+  }
+  .main-container-set-cards-25 {
+   
+    max-width: 200px;
   }
 }
