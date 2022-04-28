@@ -126,7 +126,7 @@ const Mazda6OptionsMain = (props) => {
                       if (e.id == 1) {
                         return (
                           <CardsSet6
-                            type={e.drive.drive1}
+                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
@@ -146,7 +146,7 @@ const Mazda6OptionsMain = (props) => {
                       if (e.id == 1) {
                         return (
                           <CardsSet6
-                            type={e.drive.drive1}
+                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
@@ -183,7 +183,7 @@ const Mazda6OptionsMain = (props) => {
                       if (e.id == 2) {
                         return (
                           <CardsSet6
-                            type={e.drive.drive1}
+                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
@@ -203,7 +203,7 @@ const Mazda6OptionsMain = (props) => {
                       if (e.id == 2) {
                         return (
                           <CardsSet6
-                            type={e.drive.drive1}
+                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
@@ -240,7 +240,7 @@ const Mazda6OptionsMain = (props) => {
                       if (e.id == 4) {
                         return (
                           <CardsSet6
-                            type={e.drive.drive1}
+                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
@@ -260,7 +260,7 @@ const Mazda6OptionsMain = (props) => {
                       if (e.id == 4) {
                         return (
                           <CardsSet6
-                            type={e.drive.drive1}
+                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
@@ -300,7 +300,7 @@ const Mazda6OptionsMain = (props) => {
                       if (e.id == 5) {
                         return (
                           <CardsSet6
-                            type={e.drive.drive1}
+                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
@@ -320,7 +320,7 @@ const Mazda6OptionsMain = (props) => {
                       if (e.id == 5) {
                         return (
                           <CardsSet6
-                            type={e.drive.drive1}
+                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
@@ -357,7 +357,7 @@ const Mazda6OptionsMain = (props) => {
                       if (e.id == 6) {
                         return (
                           <CardsSet6
-                            type={e.drive.drive1}
+                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
@@ -377,7 +377,7 @@ const Mazda6OptionsMain = (props) => {
                       if (e.id == 6) {
                         return (
                           <CardsSet6
-                            type={e.drive.drive1}
+                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
