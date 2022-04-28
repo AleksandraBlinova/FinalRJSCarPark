@@ -6,6 +6,7 @@ import { NewFooter } from "../../../../components/New Footer/NewFooter";
 import Fab from "@mui/material/Fab";
 import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";
+import { styled } from "@mui/material/styles";
 import arctic_white_solid from "./mazda6ExteriorPhotos/arctic_white_solid.jpg";
 import mazda6Exterior_deep_blue_crystal_mica from "./mazda6ExteriorPhotos/mazda6Exterior_deep_blue_crystal_mica.jpg";
 import mazda6Exterior_jet_black_mica from "./mazda6ExteriorPhotos/mazda6Exterior_jet_black_mica.jpg";
@@ -15,7 +16,16 @@ import mazda6Exterior_soul_red_crystal_metallic from "./mazda6ExteriorPhotos/maz
 
 import TabsExterInterMazda6 from "../Equipment6/TabsExterInterMazda6/TabsExterInterMazda6";
 import axios from "axios";
-
+const FabButton = styled(Fab)({
+  "&:active": {
+    boxShadow: "none",
+    backgroundColor: "#b71c1c",
+    borderColor: "#b71c1c",
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 0.2rem #b71c1c",
+  },
+});
 const Mazda6Exterior = (props) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
@@ -84,7 +94,7 @@ const Mazda6Exterior = (props) => {
             colors.map((color) => (
               <Tooltip title={color.color1} placement="bottom">
                 <Tooltip title={"+" + color.colorExtraCost} placement="top">
-                  <Fab
+                  <FabButton
                     size="small"
                     style={{
                       position: "relative",
@@ -94,7 +104,7 @@ const Mazda6Exterior = (props) => {
                     }}
                     aria-label="add"
                     onClick={() => handleButtChange(color.id)}
-                  ></Fab>
+                  ></FabButton>
                 </Tooltip>
               </Tooltip>
             ))}

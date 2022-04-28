@@ -64,8 +64,8 @@ const Mazda6OptionsMain = (props) => {
 
   const types = engines.map((i) => i.engine1);
 
-  const [active, setActive] = useState(types[0]);
-  const [activeEngineId, setActiveEngineId] = useState();
+  const [active, setActive] = useState("");
+  const [activeEngineId, setActiveEngineId] = useState(1);
   const [loadAEflag, setLoadAEFlag] = useState(false);
 
   const handleChangeActive = (newActive) => {
@@ -81,7 +81,7 @@ const Mazda6OptionsMain = (props) => {
     }
   };
   const [equipments, setEquipments] = useState();
-
+  console.log(active);
   return (
     <>
       <div className="mazda6-options-main-container">
@@ -101,7 +101,7 @@ const Mazda6OptionsMain = (props) => {
             setActive={handleChangeActive}
           />
         </div>
-        {active !== undefined && active === "2.0" && (
+        {active === "2.0" && (
           <div className="main-container-set-cards">
             <div
               onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
@@ -275,7 +275,7 @@ const Mazda6OptionsMain = (props) => {
             </div>
           </div>
         )}
-        {active !== undefined && active === "2.5" && (
+        {active === "2.5" && (
           <div className="main-container-set-cards-25">
             <div
               className="main-container-set-cards-second-card"

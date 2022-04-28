@@ -65,7 +65,7 @@ const MazdaCX9OptionsMain = (props) => {
 
   const types = engines.map((i) => i.engine1);
 
-  const [active, setActive] = useState(types[0]);
+  const [active, setActive] = useState("");
   const [activeEngineId, setActiveEngineId] = useState();
   const [loadAEflag, setLoadAEFlag] = useState(false);
 

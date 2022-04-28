@@ -13,7 +13,18 @@ import mazdacx9_exterior_polymetal_grey from "./mazdaCX9ExteriorPhotos/mazdacx9_
 import mazdacx9_exterior_snowflake from "./mazdaCX9ExteriorPhotos/mazdacx9_exterior_snowflake.png";
 import mazdacx9_exterior_soul_red from "./mazdaCX9ExteriorPhotos/mazdacx9_exterior_soul_red.png";
 import axios from "axios";
+import { styled } from "@mui/material/styles";
 
+const FabButton = styled(Fab)({
+  "&:active": {
+    boxShadow: "none",
+    backgroundColor: "#b71c1c",
+    borderColor: "#b71c1c",
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 0.2rem #b71c1c",
+  },
+});
 const MazdaCX9Exterior = (props) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
@@ -72,7 +83,7 @@ const MazdaCX9Exterior = (props) => {
             colors.map((color) => (
               <Tooltip title={color.color1} placement="bottom">
                 <Tooltip title={"+" + color.colorExtraCost} placement="top">
-                  <Fab
+                  <FabButton
                     size="small"
                     style={{
                       position: "relative",
@@ -82,7 +93,7 @@ const MazdaCX9Exterior = (props) => {
                     }}
                     aria-label="add"
                     onClick={() => handleButtChange(color.id)}
-                  ></Fab>
+                  ></FabButton>
                 </Tooltip>
               </Tooltip>
             ))}
