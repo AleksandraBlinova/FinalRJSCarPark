@@ -128,7 +128,7 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
+                            path="/mazdacx5equipdetails"
                             number={e.gradeId - 1}
                           />
                         );
@@ -148,7 +148,7 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
+                            path="/mazdacx5equipdetails"
                             number={e.gradeId - 1}
                             isShown={isShown}
                             chosen={chosen}
@@ -186,7 +186,7 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
+                            path="/mazdacx5equipdetails"
                             number={e.gradeId - 1}
                             extratext="light"
                           />
@@ -207,7 +207,7 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
+                            path="/mazdacx5equipdetails"
                             number={e.gradeId - 1}
                             isShown={isShown}
                             chosen={chosen}
@@ -246,8 +246,8 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
+                            path="/mazdacx5equipdetails"
+                            number={e.gradeId}
                             extratext="hard"
                           />
                         );
@@ -267,8 +267,8 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
+                            path="/mazdacx5equipdetails"
+                            number={e.gradeId}
                             isShown={isShown}
                             chosen={chosen}
                             extratext="hard"
@@ -306,8 +306,8 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
+                            path="/mazdacx5equipdetails"
+                            number={e.gradeId - 3}
                           />
                         );
                       } else {
@@ -326,8 +326,8 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
+                            path="/mazdacx5equipdetails"
+                            number={e.gradeId - 3}
                             isShown={isShown}
                             chosen={chosen}
                           />
@@ -368,8 +368,8 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
+                            path="/mazdacx5equipdetails"
+                            number={e.gradeId}
                             extratext="hard"
                           />
                         );
@@ -389,8 +389,8 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
+                            path="/mazdacx5equipdetails"
+                            number={e.gradeId}
                             isShown={isShown}
                             chosen={chosen}
                             extratext="hard"
@@ -428,8 +428,8 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
+                            path="/mazdacx5equipdetails"
+                            number={e.gradeId - 3}
                           />
                         );
                       } else {
@@ -448,8 +448,8 @@ const MazdaCX5OptionsMain = (props) => {
                             src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
                             text={e.grade.grade1.toUpperCase()}
                             price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
+                            path="/mazdacx5equipdetails"
+                            number={e.gradeId - 3}
                             isShown={isShown}
                             chosen={chosen}
                           />
