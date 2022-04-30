@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
-import "./ExtraService6.css";
+import "./ExtraServiceCX5.css";
 import { NewFooter } from "../../../../components/New Footer/NewFooter";
-import ExtraServSet6 from "../ExtraServSet6/ExtraServSet6";
+import ExtraServSetCX5 from "../ExtraServSetCX5/ExtraServSetCX5";
 import axios from "axios";
 
-const ExtraService6 = () => {
+const ExtraServiceCX5 = () => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
@@ -25,7 +25,7 @@ const ExtraService6 = () => {
     })
       .then((response) => {
         setExtraServices(
-          response.data.filter((m) => m.modelId == 1).map((e) => e.extraServ)
+          response.data.filter((m) => m.modelId == 2).map((e) => e.extraServ)
         );
         setloadFlagExtraServices(true);
       })
@@ -36,7 +36,7 @@ const ExtraService6 = () => {
 
   return (
     <>
-      <div className="mazda6-extra-serv-main-container">
+      <div className="mazda6-extra-serv-main-container-cx5">
         <div className="mazda6-extra-serv-link-h2-container">
           <Link to="/mazda6config" className="mazda6-extra-serv-link">
             {hover ? <MdArrowBack className="" /> : <MdArrowBack />}
@@ -47,7 +47,7 @@ const ExtraService6 = () => {
         </div>
         <div className="main-container-set-cards-extra-serv">
           {loadFlagextraServices &&
-            extraServices.map((e) => <ExtraServSet6 e={e} />)}
+            extraServices.map((e) => <ExtraServSetCX5 e={e} />)}
         </div>
       </div>
       <NewFooter />
@@ -55,4 +55,4 @@ const ExtraService6 = () => {
   );
 };
 
-export default ExtraService6;
+export default ExtraServiceCX5;

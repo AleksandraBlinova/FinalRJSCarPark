@@ -2,6 +2,7 @@ import React from "react";
 import "./ChosenEquipmentCX5.css";
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const BootstrapButton = styled(Button)({
   borderColor: "#807e7e",
@@ -57,9 +58,11 @@ const ChosenEquipmentCX5 = (props) => {
             </span>
           </span>
           <span className="span-chosen-equip-button-container">
-            <BootstrapButton className="span-chosen-equip-button">
-              Продолжить
-            </BootstrapButton>
+            <Link to="/extraservcx5" className="span-chosen-equip-link">
+              <BootstrapButton className="span-chosen-equip-button">
+                Продолжить
+              </BootstrapButton>
+            </Link>
           </span>
         </span>
       )}

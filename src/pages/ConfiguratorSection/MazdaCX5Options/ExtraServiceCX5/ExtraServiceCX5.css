@@ -1,0 +1,43 @@
+.mazda6-extra-serv-main-container-cx5 {
+    margin: 0 auto;
+    padding: 0 25px;
+    max-width: 1220px;
+    height: 165vh;
+  }
+  
+  .mazda6-extra-serv-link {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  .mazda6-extra-serv-link:hover {
+    color: rgb(85, 25, 25);
+    font-size: 19px;
+    text-decoration: none;
+  }
+
+  .mazda6-extra-serv-link-h2-container {
+    display: grid;
+    grid-template: auto/repeat(12, 1fr);
+    grid-column-gap: 12px;
+    align-items: center;
+  
+    padding: 0 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .mazda6-extra-serv-link-h2-container > h2 {
+    font-size: 22px;
+    grid-column: 3/11;
+    text-align: center;
+  }
+  
+  .main-container-set-cards-extra-serv {
+    margin: 0 auto;
+    display: grid;
+    grid-template: auto/repeat(4, 1fr);
+    grid-gap: 3rem;
+    padding: 1rem 0rem 0rem 0rem;
+    max-width: 1000px;
+  }
