@@ -2,10 +2,25 @@ import React from "react";
 import "./CardsSet.css";
 import { Link } from "react-router-dom";
 import ButtonsForCardsSets from "../../../../../components/ButtonsForCardsSets/ButtonsForCardsSets";
+import { Button } from "@mui/material";
+import { styled } from "@mui/material/styles";
+
+const StyledButton = styled(Button)({
+  "&:active": {},
+  "&:focus": {
+    boxShadow: "0 0 0 0.2rem rgba(0,0,0,.5)",
+  },
+});
 
 const CardsSet9 = (props) => {
   return (
-    <div className="set-cards-item">
+    <StyledButton
+      className="set-cards-item"
+      onClick={() => {
+        props.handleChangeEquipment(props.chosenEquipmentCar);
+        props.handleClick();
+      }}
+    >
       <div className="set-cards-item-link">
         {props.isShown === true &&
           props.chosen !== 0 &&
@@ -47,7 +62,7 @@ const CardsSet9 = (props) => {
           </Link>
         </div>
       </div>
-    </div>
+    </StyledButton>
   );
 };
 

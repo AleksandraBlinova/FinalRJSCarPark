@@ -6,6 +6,8 @@ import { MdArrowBack } from "react-icons/md";
 import CardsEngine9 from "./EquipmentCX9/CardsEngine/CardsEngine9";
 import CardsSet9 from "./EquipmentCX9/CardsSet/CardsSet9";
 import axios from "axios";
+import ChosenEquipCX9 from "./EquipmentCX9/ChosenEquipCX9/ChosenEquipCX9";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 const MazdaCX9OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
@@ -78,7 +80,21 @@ const MazdaCX9OptionsMain = (props) => {
     }
   };
   const [equipments, setEquipments] = useState();
-  console.log(equipments);
+  const [chosenEquipmentCar, setChosenEquipmentCar] = useState();
+  const handleChangeEquipment = (newValue) => {
+    setChosenEquipmentCar(newValue);
+  };
+
+  const [open, setOpen] = useState(false);
+
+  function handleClick() {
+    setOpen((prev) => !prev);
+  }
+
+  function handleClickAway() {
+    setOpen(false);
+  }
+
   return (
     <>
       <div className="mazdacx9-options-main-container">
@@ -99,179 +115,211 @@ const MazdaCX9OptionsMain = (props) => {
           />
         </div>
         {active !== undefined && active === "2.5T" && (
-          <div className="main-container-set-cards-cx9">
-            <div
-              onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-              className="main-container-set-cards-first-card"
-            >
-              {(isShown === true && chosen === 2) ||
-              (isShown === true && chosen === 3) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 13) {
-                        return (
-                          <CardsSet9
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx9equipdetails"
-                            number={e.gradeId - 2}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 13) {
-                        return (
-                          <CardsSet9
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx9equipdetails"
-                            number={e.gradeId - 2}
-                            isShown={isShown}
-                            chosen={chosen}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
-            </div>
+          <ClickAwayListener onClickAway={handleClickAway}>
+            <div className="main-container-set-cards-cx9">
+              <div
+                onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+                className="main-container-set-cards-first-card"
+              >
+                {(isShown === true && chosen === 2) ||
+                (isShown === true && chosen === 3) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 13) {
+                          return (
+                            <CardsSet9
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx9equipdetails"
+                              number={e.gradeId - 2}
+                              handleChangeEquipment={handleChangeEquipment}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 13) {
+                          return (
+                            <CardsSet9
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx9equipdetails"
+                              number={e.gradeId - 2}
+                              isShown={isShown}
+                              chosen={chosen}
+                              handleChangeEquipment={handleChangeEquipment}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
 
-            <div
-              className="main-container-set-cards-second-card"
-              onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-            >
-              {(isShown === true && chosen === 1) ||
-              (isShown === true && chosen === 3) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 14) {
-                        return (
-                          <CardsSet9
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx9equipdetails"
-                            number={e.gradeId - 5}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 14) {
-                        return (
-                          <CardsSet9
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx9equipdetails"
-                            number={e.gradeId - 5}
-                            isShown={isShown}
-                            chosen={chosen}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
-            </div>
+              <div
+                className="main-container-set-cards-second-card"
+                onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+              >
+                {(isShown === true && chosen === 1) ||
+                (isShown === true && chosen === 3) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 14) {
+                          return (
+                            <CardsSet9
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx9equipdetails"
+                              number={e.gradeId - 5}
+                              handleChangeEquipment={handleChangeEquipment}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 14) {
+                          return (
+                            <CardsSet9
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx9equipdetails"
+                              number={e.gradeId - 5}
+                              isShown={isShown}
+                              chosen={chosen}
+                              handleChangeEquipment={handleChangeEquipment}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
 
-            <div
-              onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-              className="main-container-set-cards-third-card"
-            >
-              {(isShown === true && chosen === 2) ||
-              (isShown === true && chosen === 1) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 15) {
-                        return (
-                          <CardsSet9
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx9equipdetails"
-                            number={e.gradeId - 5}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 15) {
-                        return (
-                          <CardsSet9
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx9equipdetails"
-                            number={e.gradeId - 5}
-                            isShown={isShown}
-                            chosen={chosen}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
+              <div
+                onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+                className="main-container-set-cards-third-card"
+              >
+                {(isShown === true && chosen === 2) ||
+                (isShown === true && chosen === 1) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 15) {
+                          return (
+                            <CardsSet9
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx9equipdetails"
+                              number={e.gradeId - 5}
+                              handleChangeEquipment={handleChangeEquipment}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 15) {
+                          return (
+                            <CardsSet9
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/cx-9_machine-grey_tm46903.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx9equipdetails"
+                              number={e.gradeId - 5}
+                              isShown={isShown}
+                              chosen={chosen}
+                              handleChangeEquipment={handleChangeEquipment}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          </ClickAwayListener>
         )}
+        {chosenEquipmentCar !== undefined && open ? (
+          <ChosenEquipCX9
+            chosenEquipmentCar={chosenEquipmentCar}
+            handleClick={handleClick}
+          />
+        ) : null}
         <div className="prices-container">
           <p className="prices-text-conf-main">
             Цены действительны с 29 декабря 2021 года на автомобили 2021 года
