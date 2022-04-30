@@ -41,6 +41,8 @@ import MazdaDealer from "./pages/OfferSection/MazdaDealer/MazdaDealer";
 import Technologies from "./pages/HomeSection/Hundredyears/Technologies/Technologies";
 import InsuranceCalculator from "./pages/OfferSection/Insurance/InsuranceCalculator/InsuranceCalculator";
 
+import ExtraService6 from "./pages/ConfiguratorSection/Mazda6Options/ExtraService6/ExtraService6";
+
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
 
@@ -74,6 +76,8 @@ function App() {
             component={Mazda6InteriorSupremePlus}
           />
           <Route path="/mazda6exterior" component={Mazda6Exterior} />
+
+          <Route path="/extraserv6" component={ExtraService6} />
 
           <Route
             path="/mazdacx5interiordrive"

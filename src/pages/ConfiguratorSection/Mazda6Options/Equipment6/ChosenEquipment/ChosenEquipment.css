@@ -63,3 +63,9 @@
     width: 260px;
     flex-flow: column nowrap;
 }
+
+.span-chosen-equip-container .span-chosen-equip-button-container .span-chosen-equip-link{
+    text-align: none;
+    color: inherit
+}
+
