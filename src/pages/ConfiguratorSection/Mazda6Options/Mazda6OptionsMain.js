@@ -98,7 +98,7 @@ const Mazda6OptionsMain = (props) => {
   function handleClickAway() {
     setOpen(false);
   }
-  console.log(open);
+
   return (
     <>
       <div className="mazda6-options-main-container">

@@ -6,6 +6,8 @@ import { MdArrowBack } from "react-icons/md";
 import CardsEngine from "./EquipmentCX5/CardsEngine/CardsEngine";
 import CardsSet from "./EquipmentCX5/CardsSet/CardsSet";
 import axios from "axios";
+import ChosenEquipmentCX5 from "./EquipmentCX5/ChosenEquipmentCX5/ChosenEquipmentCX5";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 const MazdaCX5OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
@@ -82,7 +84,19 @@ const MazdaCX5OptionsMain = (props) => {
     }
   };
   const [equipments, setEquipments] = useState();
-  console.log(equipments);
+  const [chosenEquipmentCar, setChosenEquipmentCar] = useState();
+  const handleChangeEquipment = (newValue) => {
+    setChosenEquipmentCar(newValue);
+  };
+  const [open, setOpen] = useState(false);
+
+  function handleClick() {
+    setOpen((prev) => !prev);
+  }
+
+  function handleClickAway() {
+    setOpen(false);
+  }
   return (
     <>
       <div className="mazdacx5-options-main-container">
@@ -103,366 +117,424 @@ const MazdaCX5OptionsMain = (props) => {
           />
         </div>
         {active !== undefined && active === "2.0" && (
-          <div className="main-container-set-cards-cx5">
-            <div
-              onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-              className="main-container-set-cards-first-card"
-            >
-              {(isShown === true && chosen === 2) ||
-              (isShown === true && chosen === 3) ||
-              (isShown === true && chosen === 4) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 7) {
-                        return (
-                          <CardsSet
-                            type={"MT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId - 1}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 7) {
-                        return (
-                          <CardsSet
-                            type={"MT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId - 1}
-                            isShown={isShown}
-                            chosen={chosen}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
-            </div>
+          <ClickAwayListener onClickAway={handleClickAway}>
+            <div className="main-container-set-cards-cx5">
+              <div
+                onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+                className="main-container-set-cards-first-card"
+              >
+                {(isShown === true && chosen === 2) ||
+                (isShown === true && chosen === 3) ||
+                (isShown === true && chosen === 4) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 7) {
+                          return (
+                            <CardsSet
+                              type={"MT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId - 1}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 7) {
+                          return (
+                            <CardsSet
+                              type={"MT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId - 1}
+                              isShown={isShown}
+                              chosen={chosen}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
 
-            <div
-              className="main-container-set-cards-second-card"
-              onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-            >
-              {(isShown === true && chosen === 1) ||
-              (isShown === true && chosen === 3) ||
-              (isShown === true && chosen === 4) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 8) {
-                        return (
-                          <CardsSet
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId - 1}
-                            extratext="light"
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 8) {
-                        return (
-                          <CardsSet
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId - 1}
-                            isShown={isShown}
-                            chosen={chosen}
-                            extratext="light"
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
-            </div>
+              <div
+                className="main-container-set-cards-second-card"
+                onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+              >
+                {(isShown === true && chosen === 1) ||
+                (isShown === true && chosen === 3) ||
+                (isShown === true && chosen === 4) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 8) {
+                          return (
+                            <CardsSet
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId - 1}
+                              extratext="light"
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 8) {
+                          return (
+                            <CardsSet
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId - 1}
+                              isShown={isShown}
+                              chosen={chosen}
+                              extratext="light"
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
 
-            <div
-              onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-              className="main-container-set-cards-third-card"
-            >
-              {(isShown === true && chosen === 2) ||
-              (isShown === true && chosen === 4) ||
-              (isShown === true && chosen === 1) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 9) {
-                        return (
-                          <CardsSet
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId}
-                            extratext="hard"
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 9) {
-                        return (
-                          <CardsSet
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId}
-                            isShown={isShown}
-                            chosen={chosen}
-                            extratext="hard"
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
-            </div>
+              <div
+                onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+                className="main-container-set-cards-third-card"
+              >
+                {(isShown === true && chosen === 2) ||
+                (isShown === true && chosen === 4) ||
+                (isShown === true && chosen === 1) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 9) {
+                          return (
+                            <CardsSet
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId}
+                              extratext="hard"
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 9) {
+                          return (
+                            <CardsSet
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId}
+                              isShown={isShown}
+                              chosen={chosen}
+                              extratext="hard"
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
 
-            <div
-              onMouseEnter={(() => setIsShown(true), () => setChosen(4))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-              className="main-container-set-cards-third-card"
-            >
-              {(isShown === true && chosen === 2) ||
-              (isShown === true && chosen === 3) ||
-              (isShown === true && chosen === 1) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 10) {
-                        return (
-                          <CardsSet
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId - 3}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 10) {
-                        return (
-                          <CardsSet
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId - 3}
-                            isShown={isShown}
-                            chosen={chosen}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
+              <div
+                onMouseEnter={(() => setIsShown(true), () => setChosen(4))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+                className="main-container-set-cards-third-card"
+              >
+                {(isShown === true && chosen === 2) ||
+                (isShown === true && chosen === 3) ||
+                (isShown === true && chosen === 1) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 10) {
+                          return (
+                            <CardsSet
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId - 3}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 10) {
+                          return (
+                            <CardsSet
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId - 3}
+                              isShown={isShown}
+                              chosen={chosen}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          </ClickAwayListener>
         )}
 
         {active !== undefined && active === "2.5" && (
-          <div className="main-container-set-cards-cx5-25">
-            <div
-              onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-              className="main-container-set-cards-third-card"
-            >
-              {(isShown === true && chosen === 2) ||
-              (isShown === true && chosen === 4) ||
-              (isShown === true && chosen === 1) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 11) {
-                        return (
-                          <CardsSet
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId}
-                            extratext="hard"
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 11) {
-                        return (
-                          <CardsSet
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId}
-                            isShown={isShown}
-                            chosen={chosen}
-                            extratext="hard"
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
-            </div>
+          <ClickAwayListener onClickAway={handleClickAway}>
+            <div className="main-container-set-cards-cx5-25">
+              <div
+                onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+                className="main-container-set-cards-third-card"
+              >
+                {(isShown === true && chosen === 2) ||
+                (isShown === true && chosen === 4) ||
+                (isShown === true && chosen === 1) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 11) {
+                          return (
+                            <CardsSet
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId}
+                              extratext="hard"
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 11) {
+                          return (
+                            <CardsSet
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId}
+                              isShown={isShown}
+                              chosen={chosen}
+                              extratext="hard"
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
 
-            <div
-              onMouseEnter={(() => setIsShown(true), () => setChosen(4))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-              className="main-container-set-cards-third-card"
-            >
-              {(isShown === true && chosen === 2) ||
-              (isShown === true && chosen === 3) ||
-              (isShown === true && chosen === 1) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 12) {
-                        return (
-                          <CardsSet
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId - 3}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 12) {
-                        return (
-                          <CardsSet
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/4,05b3f90622f0a5.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazdacx5equipdetails"
-                            number={e.gradeId - 3}
-                            isShown={isShown}
-                            chosen={chosen}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
+              <div
+                onMouseEnter={(() => setIsShown(true), () => setChosen(4))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+                className="main-container-set-cards-third-card"
+              >
+                {(isShown === true && chosen === 2) ||
+                (isShown === true && chosen === 3) ||
+                (isShown === true && chosen === 1) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 12) {
+                          return (
+                            <CardsSet
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId - 3}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 12) {
+                          return (
+                            <CardsSet
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/4,05b3f90622f0a5.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazdacx5equipdetails"
+                              number={e.gradeId - 3}
+                              isShown={isShown}
+                              chosen={chosen}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                              chosenEquipmentCar={e}
+                              handleChangeEquipment={handleChangeEquipment}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          </ClickAwayListener>
         )}
+        {chosenEquipmentCar !== undefined && open ? (
+          <ChosenEquipmentCX5
+            chosenEquipmentCar={chosenEquipmentCar}
+            handleClick={handleClick}
+          />
+        ) : null}
         <div className="prices-container">
           <p className="prices-text-conf-main">
             Цены действительны с 29 декабря 2021 года на автомобили 2021 года
