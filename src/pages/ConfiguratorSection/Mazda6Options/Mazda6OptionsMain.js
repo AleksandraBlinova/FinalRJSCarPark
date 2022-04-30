@@ -6,6 +6,8 @@ import { MdArrowBack } from "react-icons/md";
 import CardsEngine6 from "./Equipment6/CardsEngine/CardsEngine6";
 import CardsSet6 from "./Equipment6/CardsSet/CardsSet6";
 import axios from "axios";
+import ChosenEquipment from "./Equipment6/ChosenEquipment/ChosenEquipment";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 const Mazda6OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
@@ -81,7 +83,22 @@ const Mazda6OptionsMain = (props) => {
     }
   };
   const [equipments, setEquipments] = useState();
-  console.log(active);
+
+  const [chosenEquipmentCar, setChosenEquipmentCar] = useState();
+  const handleChangeEquipment = (newValue) => {
+    setChosenEquipmentCar(newValue);
+  };
+
+  const [open, setOpen] = useState(false);
+
+  function handleClick() {
+    setOpen((prev) => !prev);
+  }
+
+  function handleClickAway() {
+    setOpen(false);
+  }
+  console.log(open);
   return (
     <>
       <div className="mazda6-options-main-container">
@@ -102,296 +119,358 @@ const Mazda6OptionsMain = (props) => {
           />
         </div>
         {active === "2.0" && (
-          <div className="main-container-set-cards">
-            <div
-              onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-              className="main-container-set-cards-first-card"
-            >
-              {(isShown === true && chosen === 2) ||
-              (isShown === true && chosen === 3) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 1) {
-                        return (
-                          <CardsSet6
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 1) {
-                        return (
-                          <CardsSet6
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
-                            isShown={isShown}
-                            chosen={chosen}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
-            </div>
+          <ClickAwayListener onClickAway={handleClickAway}>
+            <div className="main-container-set-cards">
+              <div
+                onMouseEnter={(() => setIsShown(true), () => setChosen(1))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+                className="main-container-set-cards-first-card"
+              >
+                {(isShown === true && chosen === 2) ||
+                (isShown === true && chosen === 3) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 1) {
+                          return (
+                            <CardsSet6
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazda6equipdetails"
+                              number={e.gradeId - 1}
+                              handleChangeEquipment={handleChangeEquipment}
+                              active={active}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 1) {
+                          return (
+                            <CardsSet6
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazda6equipdetails"
+                              number={e.gradeId - 1}
+                              isShown={isShown}
+                              chosen={chosen}
+                              handleChangeEquipment={handleChangeEquipment}
+                              active={active}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
 
-            <div
-              className="main-container-set-cards-second-card"
-              onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-            >
-              {(isShown === true && chosen === 1) ||
-              (isShown === true && chosen === 3) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 2) {
-                        return (
-                          <CardsSet6
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 2) {
-                        return (
-                          <CardsSet6
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
-                            isShown={isShown}
-                            chosen={chosen}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
-            </div>
+              <div
+                className="main-container-set-cards-second-card"
+                onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+              >
+                {(isShown === true && chosen === 1) ||
+                (isShown === true && chosen === 3) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 2) {
+                          return (
+                            <CardsSet6
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazda6equipdetails"
+                              number={e.gradeId - 1}
+                              handleChangeEquipment={handleChangeEquipment}
+                              active={active}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 2) {
+                          return (
+                            <CardsSet6
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazda6equipdetails"
+                              number={e.gradeId - 1}
+                              isShown={isShown}
+                              chosen={chosen}
+                              handleChangeEquipment={handleChangeEquipment}
+                              active={active}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
 
-            <div
-              onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-              className="main-container-set-cards-third-card"
-            >
-              {(isShown === true && chosen === 2) ||
-              (isShown === true && chosen === 1) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 4) {
-                        return (
-                          <CardsSet6
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 4) {
-                        return (
-                          <CardsSet6
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
-                            isShown={isShown}
-                            chosen={chosen}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
+              <div
+                onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+                className="main-container-set-cards-third-card"
+              >
+                {(isShown === true && chosen === 2) ||
+                (isShown === true && chosen === 1) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 4) {
+                          return (
+                            <CardsSet6
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazda6equipdetails"
+                              number={e.gradeId - 1}
+                              handleChangeEquipment={handleChangeEquipment}
+                              active={active}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 4) {
+                          return (
+                            <CardsSet6
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazda6equipdetails"
+                              number={e.gradeId - 1}
+                              isShown={isShown}
+                              chosen={chosen}
+                              handleChangeEquipment={handleChangeEquipment}
+                              active={active}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          </ClickAwayListener>
         )}
         {active === "2.5" && (
-          <div className="main-container-set-cards-25">
-            <div
-              className="main-container-set-cards-second-card"
-              onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-            >
-              {(isShown === true && chosen === 1) ||
-              (isShown === true && chosen === 3) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 5) {
-                        return (
-                          <CardsSet6
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 5) {
-                        return (
-                          <CardsSet6
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
-                            isShown={isShown}
-                            chosen={chosen}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
-            </div>
+          <ClickAwayListener onClickAway={handleClickAway}>
+            <div className="main-container-set-cards-25">
+              <div
+                className="main-container-set-cards-second-card"
+                onMouseEnter={(() => setIsShown(true), () => setChosen(2))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+              >
+                {(isShown === true && chosen === 1) ||
+                (isShown === true && chosen === 3) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 5) {
+                          return (
+                            <CardsSet6
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazda6equipdetails"
+                              number={e.gradeId - 1}
+                              handleChangeEquipment={handleChangeEquipment}
+                              active={active}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 5) {
+                          return (
+                            <CardsSet6
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazda6equipdetails"
+                              number={e.gradeId - 1}
+                              isShown={isShown}
+                              chosen={chosen}
+                              handleChangeEquipment={handleChangeEquipment}
+                              active={active}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
 
-            <div
-              onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
-              onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
-              className="main-container-set-cards-third-card"
-            >
-              {(isShown === true && chosen === 2) ||
-              (isShown === true && chosen === 1) ? (
-                <div
-                  style={{
-                    pointerEvents: "none",
-                    opacity: "0.4",
-                    transition: "all 0.2s ease-in-out",
-                  }}
-                >
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 6) {
-                        return (
-                          <CardsSet6
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              ) : (
-                <div>
-                  {loadAEflag === true &&
-                    equipments.reduce((res, e) => {
-                      if (e.id == 6) {
-                        return (
-                          <CardsSet6
-                            type={"AT 6" + " " + "/" + " " + e.drive.drive1}
-                            src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
-                            text={e.grade.grade1.toUpperCase()}
-                            price={e.cost + " " + "₽"}
-                            path="/mazda6equipdetails"
-                            number={e.gradeId - 1}
-                            isShown={isShown}
-                            chosen={chosen}
-                          />
-                        );
-                      } else {
-                        return res;
-                      }
-                    }, "")}
-                </div>
-              )}
+              <div
+                onMouseEnter={(() => setIsShown(true), () => setChosen(3))}
+                onMouseLeave={(() => setIsShown(false), () => setChosen(0))}
+                className="main-container-set-cards-third-card"
+              >
+                {(isShown === true && chosen === 2) ||
+                (isShown === true && chosen === 1) ? (
+                  <div
+                    style={{
+                      pointerEvents: "none",
+                      opacity: "0.4",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                  >
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 6) {
+                          return (
+                            <CardsSet6
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazda6equipdetails"
+                              number={e.gradeId - 1}
+                              handleChangeEquipment={handleChangeEquipment}
+                              active={active}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                ) : (
+                  <div>
+                    {loadAEflag === true &&
+                      equipments.reduce((res, e) => {
+                        if (e.id == 6) {
+                          return (
+                            <CardsSet6
+                              type={"AT 6" + " " + "/" + " " + e.drive.drive1}
+                              src="../configurator/main-cards/mazda6_soul-red_gcaf901.png"
+                              text={e.grade.grade1.toUpperCase()}
+                              price={e.cost + " " + "₽"}
+                              path="/mazda6equipdetails"
+                              number={e.gradeId - 1}
+                              isShown={isShown}
+                              chosen={chosen}
+                              handleChangeEquipment={handleChangeEquipment}
+                              active={active}
+                              chosenEquipmentCar={e}
+                              handleClickAway={handleClickAway}
+                              handleClick={handleClick}
+                            />
+                          );
+                        } else {
+                          return res;
+                        }
+                      }, "")}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          </ClickAwayListener>
         )}
+
+        {chosenEquipmentCar !== undefined && open ? (
+          <ChosenEquipment
+            chosenEquipmentCar={chosenEquipmentCar}
+            handleClick={handleClick}
+          />
+        ) : null}
+
         <div className="prices-container">
           <p className="prices-text-conf-main">
             Цены действительны с 29 декабря 2021 года на автомобили 2021 года
@@ -414,6 +493,7 @@ const Mazda6OptionsMain = (props) => {
           </p>
         </div>
       </div>
+
       <NewFooter />
     </>
   );
