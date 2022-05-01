@@ -38,6 +38,13 @@ const MazdaCX5Exterior = (props) => {
   const [typeofsectionTabs, setTypeofsectionTabs] = useState(1);
   const [colors, setColors] = useState();
   const [colorFlag, setColorFlag] = useState(false);
+
+  const [extreriorChosenColorForConfig, setextreriorChosenColorForConfig] =
+    useState();
+
+  const handleSetColorExterior = (newValue) => {
+    setextreriorChosenColorForConfig(newValue);
+  };
   useEffect(() => {
     axios({
       method: "GET",
@@ -64,7 +71,10 @@ const MazdaCX5Exterior = (props) => {
         <div className="mazdacx5-exterior-main-container-header">
           <h3>ВЫБЕРИТЕ ЦВЕТ КУЗОВА</h3>
           <Link
-            to="/mazdacx5config"
+            to={{
+              pathname: "/mazdacx5config",
+              propsSearch: extreriorChosenColorForConfig,
+            }}
             className="mazdacx5-exterior-main-container-header-link"
           >
             Закрыть {hover ? <MdClose className="" /> : <MdClose />}
@@ -94,7 +104,10 @@ const MazdaCX5Exterior = (props) => {
                       backgroundColor: color.colorView,
                     }}
                     aria-label="add"
-                    onClick={() => handleButtChange(color.id)}
+                    onClick={() => {
+                      handleButtChange(color.id);
+                      handleSetColorExterior(color);
+                    }}
                   ></FabButton>
                 </Tooltip>
               </Tooltip>

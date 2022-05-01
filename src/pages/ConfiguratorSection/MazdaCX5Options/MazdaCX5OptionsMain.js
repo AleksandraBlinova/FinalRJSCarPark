@@ -97,6 +97,11 @@ const MazdaCX5OptionsMain = (props) => {
   function handleClickAway() {
     setOpen(false);
   }
+
+  let [chosenColorExterior, setChosenColorExterior] = useState(
+    props.location.propsSearch
+  );
+  let [chosenColorInterior, setChosenColorInterior] = useState("");
   return (
     <>
       <div className="mazdacx5-options-main-container">

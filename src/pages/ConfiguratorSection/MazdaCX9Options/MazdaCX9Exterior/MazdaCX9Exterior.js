@@ -57,6 +57,13 @@ const MazdaCX9Exterior = (props) => {
         console.log(error); // если есть ошибки - выводим
       });
   }, []);
+
+  const [extreriorChosenColorForConfig, setextreriorChosenColorForConfig] =
+    useState();
+
+  const handleSetColorExterior = (newValue) => {
+    setextreriorChosenColorForConfig(newValue);
+  };
   return (
     <>
       <div className="mazdacx9-exterior-tabs-container"></div>
@@ -64,7 +71,10 @@ const MazdaCX9Exterior = (props) => {
         <div className="mazdacx9-exterior-main-container-header">
           <h3>ВЫБЕРИТЕ ЦВЕТ КУЗОВА</h3>
           <Link
-            to="/mazdacx9config"
+            to={{
+              pathname: "/mazdacx9config",
+              propsSearch: extreriorChosenColorForConfig,
+            }}
             className="mazdacx9-exterior-main-container-header-link"
           >
             Закрыть {hover ? <MdClose className="" /> : <MdClose />}
@@ -92,7 +102,10 @@ const MazdaCX9Exterior = (props) => {
                       backgroundColor: color.colorView,
                     }}
                     aria-label="add"
-                    onClick={() => handleButtChange(color.id)}
+                    onClick={() => {
+                      handleButtChange(color.id);
+                      handleSetColorExterior(color);
+                    }}
                   ></FabButton>
                 </Tooltip>
               </Tooltip>

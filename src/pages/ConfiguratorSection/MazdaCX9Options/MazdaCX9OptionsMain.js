@@ -95,6 +95,10 @@ const MazdaCX9OptionsMain = (props) => {
     setOpen(false);
   }
 
+  let [chosenColorExterior, setChosenColorExterior] = useState(
+    props.location.propsSearch
+  );
+  let [chosenColorInterior, setChosenColorInterior] = useState("");
   return (
     <>
       <div className="mazdacx9-options-main-container">

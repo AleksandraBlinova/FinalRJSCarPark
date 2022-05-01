@@ -38,6 +38,13 @@ const Mazda6Exterior = (props) => {
     setActiveButt(newValue);
   };
 
+  const [extreriorChosenColorForConfig, setextreriorChosenColorForConfig] =
+    useState();
+
+  const handleSetColorExterior = (newValue) => {
+    setextreriorChosenColorForConfig(newValue);
+  };
+
   useEffect(() => {
     axios({
       method: "GET",
@@ -65,7 +72,10 @@ const Mazda6Exterior = (props) => {
         <div className="mazda6-exterior-main-container-header">
           <h3>ВЫБЕРИТЕ ЦВЕТ КУЗОВА</h3>
           <Link
-            to="/mazda6config"
+            to={{
+              pathname: "/mazda6config",
+              propsSearch: extreriorChosenColorForConfig,
+            }}
             className="mazda6-exterior-main-container-header-link"
           >
             Закрыть {hover ? <MdClose className="" /> : <MdClose />}
@@ -103,7 +113,10 @@ const Mazda6Exterior = (props) => {
                       backgroundColor: color.colorView,
                     }}
                     aria-label="add"
-                    onClick={() => handleButtChange(color.id)}
+                    onClick={() => {
+                      handleButtChange(color.id);
+                      handleSetColorExterior(color);
+                    }}
                   ></FabButton>
                 </Tooltip>
               </Tooltip>
