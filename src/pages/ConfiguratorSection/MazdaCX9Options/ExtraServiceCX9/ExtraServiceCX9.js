@@ -5,6 +5,7 @@ import "./ExtraServiceCX9.css";
 import { NewFooter } from "../../../../components/New Footer/NewFooter";
 import ExtraServSetCX9 from "../ExtraServSetCX9/ExtraServSetCX9";
 import axios from "axios";
+import ChosenExtraServ from "../../Mazda6Options/ChosenExtraServ/ChosenExtraServ";
 
 const ExtraServiceCX9 = () => {
   const [hover, setHover] = useState(false);
@@ -34,11 +35,16 @@ const ExtraServiceCX9 = () => {
       });
   }, []);
 
+  const [chosenService, setChosenService] = useState();
+  const handleChangeChosenService = (newValue) => {
+    setChosenService(newValue);
+  };
+
   return (
     <>
       <div className="mazda6-extra-serv-main-container">
         <div className="mazda6-extra-serv-link-h2-container">
-          <Link to="/mazda6config" className="mazda6-extra-serv-link">
+          <Link to="/mazdacx9config" className="mazda6-extra-serv-link">
             {hover ? <MdArrowBack className="" /> : <MdArrowBack />}
             &nbsp; Назад
           </Link>
@@ -47,8 +53,16 @@ const ExtraServiceCX9 = () => {
         </div>
         <div className="main-container-set-cards-extra-serv">
           {loadFlagextraServices &&
-            extraServices.map((e) => <ExtraServSetCX9 e={e} />)}
+            extraServices.map((e) => (
+              <ExtraServSetCX9
+                e={e}
+                handleChangeChosenService={handleChangeChosenService}
+              />
+            ))}
         </div>
+        {chosenService !== undefined ? (
+          <ChosenExtraServ chosenService={chosenService} />
+        ) : null}
       </div>
       <NewFooter />
     </>

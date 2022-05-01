@@ -5,6 +5,7 @@ import "./ExtraService6.css";
 import { NewFooter } from "../../../../components/New Footer/NewFooter";
 import ExtraServSet6 from "../ExtraServSet6/ExtraServSet6";
 import axios from "axios";
+import ChosenExtraServ from "../ChosenExtraServ/ChosenExtraServ";
 
 const ExtraService6 = () => {
   const [hover, setHover] = useState(false);
@@ -34,6 +35,11 @@ const ExtraService6 = () => {
       });
   }, []);
 
+  const [chosenService, setChosenService] = useState();
+  const handleChangeChosenService = (newValue) => {
+    setChosenService(newValue);
+  };
+
   return (
     <>
       <div className="mazda6-extra-serv-main-container">
@@ -47,9 +53,18 @@ const ExtraService6 = () => {
         </div>
         <div className="main-container-set-cards-extra-serv">
           {loadFlagextraServices &&
-            extraServices.map((e) => <ExtraServSet6 e={e} />)}
+            extraServices.map((e) => (
+              <ExtraServSet6
+                e={e}
+                handleChangeChosenService={handleChangeChosenService}
+              />
+            ))}
         </div>
+        {chosenService !== undefined ? (
+          <ChosenExtraServ chosenService={chosenService} />
+        ) : null}
       </div>
+
       <NewFooter />
     </>
   );

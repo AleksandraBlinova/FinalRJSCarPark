@@ -17,7 +17,12 @@ const ExtraServSetCX5 = (props) => {
   return (
     <>
       {" "}
-      <StyledButton className="set-cards-item-extra-serv">
+      <StyledButton
+        className="set-cards-item-extra-serv"
+        onClick={() => {
+          props.handleChangeChosenService(props.e);
+        }}
+      >
         <div className="set-cards-item-link-extra-serv">
           <img
             className="set-cards-item-img-extra-serv"
