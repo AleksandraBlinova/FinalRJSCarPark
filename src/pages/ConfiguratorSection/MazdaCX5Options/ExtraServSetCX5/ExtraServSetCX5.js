@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 const StyledButton = styled(Button)({
+  boxShadow: "0 0 0 0.1rem rgba(0,0,0,.2)",
   "&:active": {},
   "&:focus": {
     boxShadow: "0 0 0 0.2rem rgba(0,0,0,.5)",
