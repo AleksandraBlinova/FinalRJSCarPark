@@ -75,8 +75,9 @@ const Mazda6InteriorSupremePlus = (props) => {
           <Link
             to={{
               pathname: "/mazda6config",
-              propsSearch: interiorChosenColorForConfig,
-              params: props.location.propsSearch,
+              component: interiorChosenColorForConfig,
+              params: props.location.params,
+              propsSearch: props.location.propsSearch,
             }}
             className="mazda6-interior-main-container-header-link-supremeplus"
           >

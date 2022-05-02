@@ -8,6 +8,8 @@ import CardsSet6 from "./Equipment6/CardsSet/CardsSet6";
 import axios from "axios";
 import ChosenEquipment from "./Equipment6/ChosenEquipment/ChosenEquipment";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
+import ChosenColorExterior from "./ChosenColorExterior/ChosenColorExterior";
+import ChosenColorInterior from "./ChosenColorInterior/ChosenColorInterior";
 
 const Mazda6OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
@@ -82,11 +84,24 @@ const Mazda6OptionsMain = (props) => {
       setLoadAEFlag(true);
     }
   };
+
+  let [chosenColorExterior, setChosenColorExterior] = useState(
+    props.location.propsSearch
+  );
+  let [chosenColorInterior, setChosenColorInterior] = useState(
+    props.location.component
+  );
+
+  let [chosenCarForConfig, setChosenCarForConfig] = useState(
+    props.location.params
+  );
   const [equipments, setEquipments] = useState();
 
   const [chosenEquipmentCar, setChosenEquipmentCar] = useState();
   const handleChangeEquipment = (newValue) => {
     setChosenEquipmentCar(newValue);
+    setChosenColorInterior(undefined);
+    setChosenColorExterior(undefined);
   };
 
   const [open, setOpen] = useState(false);
@@ -98,17 +113,6 @@ const Mazda6OptionsMain = (props) => {
   function handleClickAway() {
     setOpen(false);
   }
-
-  let [chosenColorExterior, setChosenColorExterior] = useState(
-    props.location.propsSearch
-  );
-  let [chosenColorInterior, setChosenColorInterior] = useState(
-    props.location.propsSearch
-  );
-
-  let [chosenCarForConfig, setChosenCarForConfig] = useState(
-    props.location.params
-  );
 
   return (
     <>
@@ -162,6 +166,8 @@ const Mazda6OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -189,6 +195,8 @@ const Mazda6OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -229,6 +237,8 @@ const Mazda6OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -256,6 +266,8 @@ const Mazda6OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -296,6 +308,8 @@ const Mazda6OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -323,6 +337,8 @@ const Mazda6OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -368,6 +384,8 @@ const Mazda6OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -395,6 +413,8 @@ const Mazda6OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -435,6 +455,8 @@ const Mazda6OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -462,6 +484,8 @@ const Mazda6OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -474,14 +498,26 @@ const Mazda6OptionsMain = (props) => {
             </div>
           </ClickAwayListener>
         )}
+        {chosenColorExterior !== undefined && (
+          <ChosenColorExterior chosenColorExterior={chosenColorExterior} />
+        )}
 
+        {chosenColorInterior !== undefined && (
+          <ChosenColorInterior chosenColorInterior={chosenColorInterior} />
+        )}
         {chosenEquipmentCar !== undefined && open ? (
           <ChosenEquipment
             chosenEquipmentCar={chosenEquipmentCar}
             handleClick={handleClick}
+            chosenColorExterior={chosenColorExterior}
+            chosenColorInterior={chosenColorInterior}
           />
         ) : (
-          <ChosenEquipment chosenEquipmentCar={chosenCarForConfig} />
+          <ChosenEquipment
+            chosenEquipmentCar={chosenCarForConfig}
+            chosenColorExterior={chosenColorExterior}
+            chosenColorInterior={chosenColorInterior}
+          />
         )}
 
         <div className="prices-container">

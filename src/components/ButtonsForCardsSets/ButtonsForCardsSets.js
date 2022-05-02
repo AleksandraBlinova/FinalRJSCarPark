@@ -75,7 +75,8 @@ const ButtonsForCardsSets = (props) => {
           className="buttons-for-cards-set-link-interior-butt"
           to={{
             pathname: props.pathInterior,
-            propsSearch: props.chosenEquipmentCar,
+            params: props.chosenEquipmentCar,
+            propsSearch: props.chosenColorExterior,
           }}
         >
           ИНТЕРЬЕР
@@ -86,7 +87,8 @@ const ButtonsForCardsSets = (props) => {
           className="buttons-for-cards-set-link-exterior-butt"
           to={{
             pathname: props.pathExterior,
-            propsSearch: props.chosenEquipmentCar,
+            params: props.chosenEquipmentCar,
+            component: props.chosenColorInterior,
           }}
         >
           ЭКСТЕРЬЕР

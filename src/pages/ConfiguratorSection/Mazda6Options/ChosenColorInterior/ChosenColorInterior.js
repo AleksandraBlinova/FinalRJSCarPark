@@ -1,8 +1,9 @@
 import React from "react";
-import "./ChosenExtraServ.css";
+import "./ChosenColorInterior.css";
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
+import { Fab } from "@mui/material";
 
 const BootstrapButton = styled(Button)({
   borderColor: "#807e7e",
@@ -36,32 +37,32 @@ const BootstrapButton = styled(Button)({
     color: "#673ab7",
   },
 });
-const ChosenExtraServ = (props) => {
+const ChosenColorInterior = (props) => {
   return (
     <>
-      {props.chosenService !== undefined && (
-        <span className="span-chosen-extra-serv-container">
-          <span className="span-chosen-extra-serv">
-            <span className="span-chosen-extra-serv-img-container">
-              <img src={props.chosenService.extraServImageUrl} />
-            </span>
-            <span className="span-chosen-extra-serv-text-container">
-              <h5>Выбранная услуга: {props.chosenService.extraServName}</h5>
-
-              <h4> Итог:&nbsp;{props.chosenService.extraServCost}&nbsp;₽</h4>
+      {props.chosenColorInterior !== undefined && (
+        <span className="span-chosen-color-interior-container">
+          <span className="span-chosen-color-interior">
+            <span className="span-chosen-color-interior-text-container">
+              <h5>
+                Выбранный цвет интерьера:{" "}
+                {props.chosenColorInterior.colorInterior1}
+              </h5>
+              <div className="span-chosen-color-interior-img-container">
+                <Fab
+                  style={{
+                    background: props.chosenColorInterior.colorInteriorView,
+                  }}
+                  size="small"
+                />
+              </div>
             </span>
           </span>
-          <span className="span-chosen-extra-serv-button-container">
-            <Link className="span-chosen-extra-serv-link">
-              <BootstrapButton className="span-chosen-extra-serv-button">
-                Продолжить
-              </BootstrapButton>
-            </Link>
-          </span>
+          <span className="span-chosen-color-interior-button-container"></span>
         </span>
       )}
     </>
   );
 };
 
-export default ChosenExtraServ;
+export default ChosenColorInterior;

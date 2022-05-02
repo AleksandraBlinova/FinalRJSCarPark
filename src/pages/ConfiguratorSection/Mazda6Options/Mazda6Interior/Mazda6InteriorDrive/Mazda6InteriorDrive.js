@@ -36,8 +36,6 @@ const Mazda6InteriorDrive = (props) => {
 
   const [typeofsectionTabs, setTypeofsectionTabs] = useState(0);
 
-  const [linktoTabs, setLinktoTabs] = useState(props.location.propsSearch);
-
   const [interiorColorChosen, setinteriorColorChosen] = useState();
 
   const [interiorColorChosenLOADFLAG, setinteriorColorChosenLOADFLAG] =
@@ -81,8 +79,9 @@ const Mazda6InteriorDrive = (props) => {
           <Link
             to={{
               pathname: "/mazda6config",
-              propsSearch: interiorChosenColorForConfig,
-              params: props.location.propsSearch,
+              component: interiorChosenColorForConfig,
+              params: props.location.params,
+              propsSearch: props.location.propsSearch,
             }}
             className="mazda6-interior-main-container-header-link-drive"
           >
