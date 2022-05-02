@@ -102,23 +102,24 @@ const Mazda6Exterior = (props) => {
         <div className="mazda6-exterior-main-container-main-part-colors">
           {colorFlag == true &&
             colors.map((color) => (
-              <Tooltip title={color.color1} placement="bottom">
-                <Tooltip title={"+" + color.colorExtraCost} placement="top">
-                  <FabButton
-                    size="small"
-                    style={{
-                      position: "relative",
-                      left: "50%",
-                      transform: "translate(-50%, 0)",
-                      backgroundColor: color.colorView,
-                    }}
-                    aria-label="add"
-                    onClick={() => {
-                      handleButtChange(color.id);
-                      handleSetColorExterior(color);
-                    }}
-                  ></FabButton>
-                </Tooltip>
+              <Tooltip
+                title={"+" + color.colorExtraCost + " " + color.color1}
+                placement="top"
+              >
+                <FabButton
+                  size="small"
+                  style={{
+                    position: "relative",
+                    left: "50%",
+                    transform: "translate(-50%, 0)",
+                    backgroundColor: color.colorView,
+                  }}
+                  aria-label="add"
+                  onClick={() => {
+                    handleButtChange(color.id);
+                    handleSetColorExterior(color);
+                  }}
+                ></FabButton>
               </Tooltip>
             ))}
         </div>

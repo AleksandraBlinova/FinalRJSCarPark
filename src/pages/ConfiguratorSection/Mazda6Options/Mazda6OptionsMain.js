@@ -102,9 +102,10 @@ const Mazda6OptionsMain = (props) => {
   let [chosenColorExterior, setChosenColorExterior] = useState(
     props.location.propsSearch
   );
-  let [chosenColorInterior, setChosenColorInterior] = useState("");
+  let [chosenColorInterior, setChosenColorInterior] = useState(
+    props.location.propsSearch
+  );
 
-  console.log("chosenColorExterior", chosenColorExterior);
   return (
     <>
       <div className="mazda6-options-main-container">

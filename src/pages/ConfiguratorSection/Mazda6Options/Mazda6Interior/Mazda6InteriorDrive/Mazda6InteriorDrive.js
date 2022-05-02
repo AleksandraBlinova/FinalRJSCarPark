@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "./Mazda6InteriorDrive.css";
@@ -7,7 +7,20 @@ import PanelliumMazda6 from "../PanelliumMazda6/PanelliumMazda6";
 import Fab from "@mui/material/Fab";
 import Box from "@mui/material/Box";
 import TabsExterInterMazda6 from "../../Equipment6/TabsExterInterMazda6/TabsExterInterMazda6";
+import axios from "axios";
+import Tooltip from "@mui/material/Tooltip";
+import { styled } from "@mui/material/styles";
 
+const FabButton = styled(Fab)({
+  "&:active": {
+    boxShadow: "none",
+    backgroundColor: "#b71c1c",
+    borderColor: "#b71c1c",
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 0.2rem #b71c1c",
+  },
+});
 const Mazda6InteriorDrive = (props) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
@@ -25,13 +38,51 @@ const Mazda6InteriorDrive = (props) => {
 
   const [linktoTabs, setLinktoTabs] = useState(props.location.propsSearch);
 
+  const [interiorColorChosen, setinteriorColorChosen] = useState();
+
+  const [interiorColorChosenLOADFLAG, setinteriorColorChosenLOADFLAG] =
+    useState(false);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/interiorcolors/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setinteriorColorChosen(
+          response.data
+            .filter((m) => m.modelId == 1 && m.gradeId == 1)
+            .map((e) => e.colorInterior)
+        );
+        setinteriorColorChosenLOADFLAG(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const [interiorChosenColorForConfig, setinteriorChosenColorForConfig] =
+    useState();
+
+  const handleSetColorInterior = (newValue) => {
+    setinteriorChosenColorForConfig(newValue);
+  };
+
   return (
     <>
       <div className="mazda6-interior-main-container-drive">
         <div className="mazda6-interior-main-container-header-drive">
           <h3>ВЫБЕРИТЕ ЦВЕТ ИНТЕРЬЕРА</h3>
           <Link
-            to="/mazda6config"
+            to={{
+              pathname: "/mazda6config",
+              propsSearch: interiorChosenColorForConfig,
+            }}
             className="mazda6-interior-main-container-header-link-drive"
           >
             Закрыть {hover ? <MdClose className="" /> : <MdClose />}
@@ -43,29 +94,25 @@ const Mazda6InteriorDrive = (props) => {
           </div>
           <div className="mazda6-interior-main-container-main-part-colors-drive">
             <div className="colorsForPanelliumMazda6-container-drive">
-              <Fab
-                size="medium"
-                style={{
-                  backgroundColor: "#000",
-                  position: "relative",
-                  left: "50%",
-                  transform: "translate(-50%, 0)",
-                }}
-                aria-label="add"
-                onClick={() => handleButtChange(0)}
-              ></Fab>
-
-              <Fab
-                size="medium"
-                style={{
-                  backgroundColor: "#5b3131",
-                  position: "relative",
-                  left: "50%",
-                  transform: "translate(-50%, 0)",
-                }}
-                aria-label="add"
-                onClick={() => handleButtChange(1)}
-              ></Fab>
+              {interiorColorChosenLOADFLAG &&
+                interiorColorChosen.map((i) => (
+                  <Tooltip title={i.colorInterior1} placement="bottom">
+                    <FabButton
+                      size="medium"
+                      style={{
+                        backgroundColor: i.colorInteriorView,
+                        position: "relative",
+                        left: "50%",
+                        transform: "translate(-50%, 0)",
+                      }}
+                      aria-label="add"
+                      onClick={() => {
+                        handleButtChange(i.id - 2);
+                        handleSetColorInterior(i);
+                      }}
+                    ></FabButton>
+                  </Tooltip>
+                ))}
             </div>
           </div>
         </div>
