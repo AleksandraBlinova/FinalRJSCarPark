@@ -12,7 +12,7 @@ const PanelliumMazdaCX9 = (props) => {
       {(props.type === "supreme" ||
         props.type === "active" ||
         props.type === "exclusive") &&
-        props.activeButt === 0 && (
+        props.activeButt === 5 && (
           <Pannellum
             width="1350px"
             height="500px"
@@ -31,7 +31,7 @@ const PanelliumMazdaCX9 = (props) => {
       {(props.type === "supreme" ||
         props.type === "active" ||
         props.type === "exclusive") &&
-        props.activeButt === 1 && (
+        props.activeButt === 9 && (
           <Pannellum
             width="1350px"
             height="500px"
@@ -50,7 +50,7 @@ const PanelliumMazdaCX9 = (props) => {
       {(props.type === "supreme" ||
         props.type === "active" ||
         props.type === "exclusive") &&
-        props.activeButt === 2 && (
+        props.activeButt === 10 && (
           <Pannellum
             width="1350px"
             height="500px"

@@ -48,7 +48,7 @@ const PanelliumMazdaCX5 = (props) => {
           </Pannellum>
         )}
 
-      {props.type === "supreme" && props.activeButt === 0 && (
+      {props.type === "supreme" && props.activeButt === 2 && (
         <Pannellum
           width="1350px"
           height="500px"
@@ -64,7 +64,7 @@ const PanelliumMazdaCX5 = (props) => {
         </Pannellum>
       )}
 
-      {props.type === "supreme" && props.activeButt === 1 && (
+      {props.type === "supreme" && props.activeButt === 7 && (
         <Pannellum
           width="1350px"
           height="500px"
@@ -80,7 +80,7 @@ const PanelliumMazdaCX5 = (props) => {
         </Pannellum>
       )}
 
-      {props.type === "supreme" && props.activeButt === 2 && (
+      {props.type === "supreme" && props.activeButt === 8 && (
         <Pannellum
           width="1350px"
           height="500px"

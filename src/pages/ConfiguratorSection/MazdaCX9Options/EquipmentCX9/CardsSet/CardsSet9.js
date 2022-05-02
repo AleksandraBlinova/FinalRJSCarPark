@@ -28,6 +28,7 @@ const CardsSet9 = (props) => {
             <ButtonsForCardsSets
               pathInterior="/mazdacx9interioractive"
               pathExterior="/mazdacx9exterior"
+              chosenEquipmentCar={props.chosenEquipmentCar}
             />
           )}
         {props.isShown === true &&
@@ -36,6 +37,7 @@ const CardsSet9 = (props) => {
             <ButtonsForCardsSets
               pathInterior="/mazdacx9interiorexclusive"
               pathExterior="/mazdacx9exterior"
+              chosenEquipmentCar={props.chosenEquipmentCar}
             />
           )}
         {props.isShown === true &&
@@ -44,6 +46,7 @@ const CardsSet9 = (props) => {
             <ButtonsForCardsSets
               pathInterior="/mazdacx9interiorsupreme"
               pathExterior="/mazdacx9exterior"
+              chosenEquipmentCar={props.chosenEquipmentCar}
             />
           )}
         <img className="set-cards-item-img" src={props.src} />

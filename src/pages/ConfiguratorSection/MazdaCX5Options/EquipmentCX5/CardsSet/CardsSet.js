@@ -27,6 +27,7 @@ const CardsSet = (props) => {
             <ButtonsForCardsSets
               pathInterior="/mazdacx5interiordrive"
               pathExterior="/mazdacx5exterior"
+              chosenEquipmentCar={props.chosenEquipmentCar}
             />
           )}
 
@@ -36,6 +37,7 @@ const CardsSet = (props) => {
             <ButtonsForCardsSets
               pathInterior="/mazdacx5interioractivelight"
               pathExterior="/mazdacx5exterior"
+              chosenEquipmentCar={props.chosenEquipmentCar}
             />
           )}
 
@@ -45,6 +47,7 @@ const CardsSet = (props) => {
             <ButtonsForCardsSets
               pathInterior="/mazdacx5interioractivehard"
               pathExterior="/mazdacx5exterior"
+              chosenEquipmentCar={props.chosenEquipmentCar}
             />
           )}
 
@@ -54,6 +57,7 @@ const CardsSet = (props) => {
             <ButtonsForCardsSets
               pathInterior="/mazdacx5interiorsupreme"
               pathExterior="/mazdacx5exterior"
+              chosenEquipmentCar={props.chosenEquipmentCar}
             />
           )}
         <img className="set-cards-item-img" src={props.src} />

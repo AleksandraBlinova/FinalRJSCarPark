@@ -14,7 +14,6 @@ import mazda6Exterior_machine_grey_metallic from "./mazda6ExteriorPhotos/mazda6E
 import mazda6Exterior_polymetal_grey_metallic from "./mazda6ExteriorPhotos/mazda6Exterior_polymetal_grey_metallic.jpg";
 import mazda6Exterior_soul_red_crystal_metallic from "./mazda6ExteriorPhotos/mazda6Exterior_soul_red_crystal_metallic.jpg";
 
-import TabsExterInterMazda6 from "../Equipment6/TabsExterInterMazda6/TabsExterInterMazda6";
 import axios from "axios";
 const FabButton = styled(Fab)({
   "&:active": {

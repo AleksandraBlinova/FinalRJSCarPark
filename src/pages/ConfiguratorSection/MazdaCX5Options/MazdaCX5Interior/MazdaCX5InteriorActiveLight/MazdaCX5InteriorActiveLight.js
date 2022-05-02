@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "./MazdaCX5InteriorActiveLight.css";
@@ -6,8 +6,22 @@ import { NewFooter } from "../../../../../components/New Footer/NewFooter";
 import PanelliumMazdaCX5 from "../PanelliumMazdaCX5/PanelliumMazdaCX5";
 import Fab from "@mui/material/Fab";
 import Box from "@mui/material/Box";
+import axios from "axios";
+import Tooltip from "@mui/material/Tooltip";
+import { styled } from "@mui/material/styles";
 
-const MazdaCX5InteriorActiveLight = () => {
+const FabButton = styled(Fab)({
+  "&:active": {
+    boxShadow: "none",
+    backgroundColor: "#b71c1c",
+    borderColor: "#b71c1c",
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 0.2rem #b71c1c",
+  },
+});
+
+const MazdaCX5InteriorActiveLight = (props) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
@@ -21,13 +35,52 @@ const MazdaCX5InteriorActiveLight = () => {
     setActiveButt(newValue);
   };
 
+  const [interiorColorChosen, setinteriorColorChosen] = useState();
+
+  const [interiorColorChosenLOADFLAG, setinteriorColorChosenLOADFLAG] =
+    useState(false);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/interiorcolors/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setinteriorColorChosen(
+          response.data
+            .filter((m) => m.modelId == 2 && m.gradeId == 2)
+            .map((e) => e.colorInterior)
+        );
+        setinteriorColorChosenLOADFLAG(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const [interiorChosenColorForConfig, setinteriorChosenColorForConfig] =
+    useState();
+
+  const handleSetColorInterior = (newValue) => {
+    setinteriorChosenColorForConfig(newValue);
+  };
+
   return (
     <>
       <div className="mazdacx5-interior-main-container-active-light">
         <div className="mazdacx5-interior-main-container-header-active-light">
           <h3>ВЫБЕРИТЕ ЦВЕТ ИНТЕРЬЕРА</h3>
           <Link
-            to="/mazdacx5config"
+            to={{
+              pathname: "/mazdacx5config",
+              propsSearch: interiorChosenColorForConfig,
+              params: props.location.propsSearch,
+            }}
             className="mazdacx5-interior-main-container-header-link-active-light"
           >
             Закрыть {hover ? <MdClose className="" /> : <MdClose />}
@@ -39,29 +92,25 @@ const MazdaCX5InteriorActiveLight = () => {
           </div>
           <div className="mazdacx5-interior-main-container-main-part-colors-active-light">
             <div className="colorsForPanelliumMazdacx5-container-active-light">
-              <Fab
-                size="medium"
-                style={{
-                  backgroundColor: "#242424",
-                  position: "relative",
-                  left: "50%",
-                  transform: "translate(-50%, 0)",
-                }}
-                aria-label="add"
-                onClick={() => handleButtChange(0)}
-              ></Fab>
-
-              <Fab
-                size="medium"
-                style={{
-                  background: "linear-gradient(to right,  #000, #99ad34)",
-                  position: "relative",
-                  left: "50%",
-                  transform: "translate(-50%, 0)",
-                }}
-                aria-label="add"
-                onClick={() => handleButtChange(1)}
-              ></Fab>
+              {interiorColorChosenLOADFLAG &&
+                interiorColorChosen.map((i) => (
+                  <Tooltip title={i.colorInterior1} placement="bottom">
+                    <FabButton
+                      size="medium"
+                      style={{
+                        backgroundColor: i.colorInteriorView,
+                        position: "relative",
+                        left: "50%",
+                        transform: "translate(-50%, 0)",
+                      }}
+                      aria-label="add"
+                      onClick={() => {
+                        handleButtChange(i.id - 5);
+                        handleSetColorInterior(i);
+                      }}
+                    ></FabButton>
+                  </Tooltip>
+                ))}
             </div>
           </div>
         </div>

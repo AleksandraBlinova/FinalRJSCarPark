@@ -98,7 +98,14 @@ const MazdaCX9OptionsMain = (props) => {
   let [chosenColorExterior, setChosenColorExterior] = useState(
     props.location.propsSearch
   );
-  let [chosenColorInterior, setChosenColorInterior] = useState("");
+  let [chosenColorInterior, setChosenColorInterior] = useState(
+    props.location.propsSearch
+  );
+
+  let [chosenCarForConfig, setChosenCarForConfig] = useState(
+    props.location.params
+  );
+
   return (
     <>
       <div className="mazdacx9-options-main-container">
@@ -323,7 +330,9 @@ const MazdaCX9OptionsMain = (props) => {
             chosenEquipmentCar={chosenEquipmentCar}
             handleClick={handleClick}
           />
-        ) : null}
+        ) : (
+          <ChosenEquipCX9 chosenEquipmentCar={chosenCarForConfig} />
+        )}
         <div className="prices-container">
           <p className="prices-text-conf-main">
             Цены действительны с 29 декабря 2021 года на автомобили 2021 года
