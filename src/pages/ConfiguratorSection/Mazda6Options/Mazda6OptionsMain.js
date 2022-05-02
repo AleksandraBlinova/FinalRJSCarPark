@@ -106,6 +106,10 @@ const Mazda6OptionsMain = (props) => {
     props.location.propsSearch
   );
 
+  let [chosenCarForConfig, setChosenCarForConfig] = useState(
+    props.location.params
+  );
+
   return (
     <>
       <div className="mazda6-options-main-container">
@@ -476,7 +480,9 @@ const Mazda6OptionsMain = (props) => {
             chosenEquipmentCar={chosenEquipmentCar}
             handleClick={handleClick}
           />
-        ) : null}
+        ) : (
+          <ChosenEquipment chosenEquipmentCar={chosenCarForConfig} />
+        )}
 
         <div className="prices-container">
           <p className="prices-text-conf-main">

@@ -82,6 +82,7 @@ const Mazda6InteriorDrive = (props) => {
             to={{
               pathname: "/mazda6config",
               propsSearch: interiorChosenColorForConfig,
+              params: props.location.propsSearch,
             }}
             className="mazda6-interior-main-container-header-link-drive"
           >

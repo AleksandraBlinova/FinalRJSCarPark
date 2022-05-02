@@ -21,7 +21,7 @@ const FabButton = styled(Fab)({
   },
 });
 
-const Mazda6InteriorActive = () => {
+const Mazda6InteriorActive = (props) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
@@ -79,6 +79,7 @@ const Mazda6InteriorActive = () => {
             to={{
               pathname: "/mazda6config",
               propsSearch: interiorChosenColorForConfig,
+              params: props.location.propsSearch,
             }}
             className="mazda6-interior-main-container-header-link-active"
           >

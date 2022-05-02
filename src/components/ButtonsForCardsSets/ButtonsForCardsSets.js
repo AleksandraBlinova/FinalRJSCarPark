@@ -6,16 +6,16 @@ import Stack from "@mui/material/Stack";
 import "./ButtonsForCardsSets.css";
 import { Link } from "react-router-dom";
 
-const ColorButtonForCardsSet = styled(Button)(({ theme }) => ({
-  border: "3px solid #101010",
+const ColorButtonForCardsSet = styled(Link)(({ theme }) => ({
+  border: "none",
   borderRadius: "3px ",
   width: "120px",
   height: "41px",
-  color: "primary",
+  color: "inherit",
   lineHeight: "1",
   fontSize: "14px",
   fontFamily: "inherit",
-  padding: "0.75rem 1.25rem",
+  padding: "0.75rem ",
   background: "linear-gradient(0deg, #fff 0%, #999999 100%);",
   fontWeight: "500",
   "&:hover": {
@@ -26,7 +26,7 @@ const ColorButtonForCardsSet = styled(Button)(({ theme }) => ({
     borderRadius: "3px ",
   },
   "@media only screen and (max-width: 1260px)": {
-    width: "110px",
+    width: "90px",
     height: "30px",
     fontSize: "11px",
     right: "20px",
@@ -45,16 +45,16 @@ const ColorButtonForCardsSet = styled(Button)(({ theme }) => ({
     padding: "0 auto",
   },
   "@media only screen and (max-width: 651px)": {
-    width: "60px",
+    width: "70px",
     height: "30px",
-    fontSize: "11px",
+    fontSize: "9px",
     padding: "0 auto",
   },
 
   "@media only screen and (max-width: 551px)": {
-    width: "20px",
+    width: "55px",
     height: "15px",
-    fontSize: "8px",
+    fontSize: "6px",
   },
 }));
 
@@ -73,7 +73,10 @@ const ButtonsForCardsSets = (props) => {
         <ColorButtonForCardsSet
           variant="outlined"
           className="buttons-for-cards-set-link-interior-butt"
-          href={props.pathInterior}
+          to={{
+            pathname: props.pathInterior,
+            propsSearch: props.chosenEquipmentCar,
+          }}
         >
           ИНТЕРЬЕР
         </ColorButtonForCardsSet>
@@ -81,7 +84,10 @@ const ButtonsForCardsSets = (props) => {
         <ColorButtonForCardsSet
           variant="outlined"
           className="buttons-for-cards-set-link-exterior-butt"
-          href={props.pathExterior}
+          to={{
+            pathname: props.pathExterior,
+            propsSearch: props.chosenEquipmentCar,
+          }}
         >
           ЭКСТЕРЬЕР
         </ColorButtonForCardsSet>
