@@ -40,7 +40,6 @@ const MazdaCX9InteriorExclusive = (props) => {
   const [interiorColorChosenLOADFLAG, setinteriorColorChosenLOADFLAG] =
     useState(false);
 
-  console.log(interiorColorChosen);
   useEffect(() => {
     axios({
       method: "GET",
@@ -99,7 +98,7 @@ const MazdaCX9InteriorExclusive = (props) => {
                     <FabButton
                       size="medium"
                       style={{
-                        backgroundColor: i.colorInteriorView,
+                        background: i.colorInteriorView,
                         position: "relative",
                         left: "50%",
                         transform: "translate(-50%, 0)",

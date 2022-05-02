@@ -97,7 +97,7 @@ const MazdaCX5InteriorSupreme = (props) => {
                     <FabButton
                       size="medium"
                       style={{
-                        backgroundColor: i.colorInteriorView,
+                        background: i.colorInteriorView,
                         position: "relative",
                         left: "50%",
                         transform: "translate(-50%, 0)",
