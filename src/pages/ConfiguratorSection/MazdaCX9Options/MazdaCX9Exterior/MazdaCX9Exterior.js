@@ -74,7 +74,8 @@ const MazdaCX9Exterior = (props) => {
             to={{
               pathname: "/mazdacx9config",
               propsSearch: extreriorChosenColorForConfig,
-              params: props.location.propsSearch,
+              params: props.location.params,
+              component: props.location.component,
             }}
             className="mazdacx9-exterior-main-container-header-link"
           >

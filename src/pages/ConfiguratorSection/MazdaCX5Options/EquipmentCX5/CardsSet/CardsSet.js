@@ -28,6 +28,8 @@ const CardsSet = (props) => {
               pathInterior="/mazdacx5interiordrive"
               pathExterior="/mazdacx5exterior"
               chosenEquipmentCar={props.chosenEquipmentCar}
+              chosenColorExterior={props.chosenColorExterior}
+              chosenColorInterior={props.chosenColorInterior}
             />
           )}
 
@@ -38,6 +40,8 @@ const CardsSet = (props) => {
               pathInterior="/mazdacx5interioractivelight"
               pathExterior="/mazdacx5exterior"
               chosenEquipmentCar={props.chosenEquipmentCar}
+              chosenColorExterior={props.chosenColorExterior}
+              chosenColorInterior={props.chosenColorInterior}
             />
           )}
 
@@ -48,6 +52,8 @@ const CardsSet = (props) => {
               pathInterior="/mazdacx5interioractivehard"
               pathExterior="/mazdacx5exterior"
               chosenEquipmentCar={props.chosenEquipmentCar}
+              chosenColorExterior={props.chosenColorExterior}
+              chosenColorInterior={props.chosenColorInterior}
             />
           )}
 
@@ -58,6 +64,8 @@ const CardsSet = (props) => {
               pathInterior="/mazdacx5interiorsupreme"
               pathExterior="/mazdacx5exterior"
               chosenEquipmentCar={props.chosenEquipmentCar}
+              chosenColorExterior={props.chosenColorExterior}
+              chosenColorInterior={props.chosenColorInterior}
             />
           )}
         <img className="set-cards-item-img" src={props.src} />

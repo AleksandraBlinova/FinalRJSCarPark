@@ -52,7 +52,41 @@ const ChosenEquipment = (props) => {
                 Mazda 6 &nbsp;
                 {props.chosenEquipmentCar.grade.grade1}
               </h6>
-              <h4> Итог:&nbsp;{props.chosenEquipmentCar.cost}&nbsp;₽</h4>
+              {props.chosenColorExterior !== undefined &&
+                props.chosenColorInterior == undefined && (
+                  <h4>
+                    Общий итог:&nbsp;
+                    {props.chosenEquipmentCar.cost +
+                      props.chosenColorExterior.colorExtraCost}
+                    &nbsp;₽
+                  </h4>
+                )}
+
+              {props.chosenColorExterior !== undefined &&
+                props.chosenColorInterior !== undefined && (
+                  <h4>
+                    Общий итог:&nbsp;
+                    {props.chosenEquipmentCar.cost +
+                      props.chosenColorExterior.colorExtraCost}
+                    &nbsp;₽
+                  </h4>
+                )}
+
+              {props.chosenColorExterior == undefined &&
+                props.chosenColorInterior !== undefined && (
+                  <h4>
+                    {" "}
+                    Общий итог:&nbsp;{props.chosenEquipmentCar.cost}&nbsp;₽
+                  </h4>
+                )}
+
+              {props.chosenColorExterior == undefined &&
+                props.chosenColorInterior == undefined && (
+                  <h4>
+                    {" "}
+                    Общий итог:&nbsp;{props.chosenEquipmentCar.cost}&nbsp;₽
+                  </h4>
+                )}
             </span>
           </span>
           <span className="span-chosen-equip-button-container">

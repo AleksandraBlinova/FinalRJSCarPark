@@ -8,6 +8,8 @@ import CardsSet from "./EquipmentCX5/CardsSet/CardsSet";
 import axios from "axios";
 import ChosenEquipmentCX5 from "./EquipmentCX5/ChosenEquipmentCX5/ChosenEquipmentCX5";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
+import ChosenColorInteriorCX5 from "./ChosenColorInteriorCX5/ChosenColorInteriorCX5";
+import ChosenColorExteriorCX5 from "./ChosenColorExteriorCX5/ChosenColorExteriorCX5";
 
 const MazdaCX5OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
@@ -83,10 +85,22 @@ const MazdaCX5OptionsMain = (props) => {
       setLoadAEFlag(true);
     }
   };
+  let [chosenColorExterior, setChosenColorExterior] = useState(
+    props.location.propsSearch
+  );
+  let [chosenColorInterior, setChosenColorInterior] = useState(
+    props.location.component
+  );
+
+  let [chosenCarForConfig, setChosenCarForConfig] = useState(
+    props.location.params
+  );
   const [equipments, setEquipments] = useState();
   const [chosenEquipmentCar, setChosenEquipmentCar] = useState();
   const handleChangeEquipment = (newValue) => {
     setChosenEquipmentCar(newValue);
+    setChosenColorInterior(undefined);
+    setChosenColorExterior(undefined);
   };
   const [open, setOpen] = useState(false);
 
@@ -97,17 +111,6 @@ const MazdaCX5OptionsMain = (props) => {
   function handleClickAway() {
     setOpen(false);
   }
-
-  let [chosenColorExterior, setChosenColorExterior] = useState(
-    props.location.propsSearch
-  );
-  let [chosenColorInterior, setChosenColorInterior] = useState(
-    props.location.propsSearch
-  );
-
-  let [chosenCarForConfig, setChosenCarForConfig] = useState(
-    props.location.params
-  );
 
   return (
     <>
@@ -161,6 +164,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -187,6 +192,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -228,6 +235,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -255,6 +264,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -296,6 +307,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -323,6 +336,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -363,6 +378,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -389,6 +406,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -436,6 +455,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -463,6 +484,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -503,6 +526,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -529,6 +554,8 @@ const MazdaCX5OptionsMain = (props) => {
                               handleClick={handleClick}
                               chosenEquipmentCar={e}
                               handleChangeEquipment={handleChangeEquipment}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -541,13 +568,27 @@ const MazdaCX5OptionsMain = (props) => {
             </div>
           </ClickAwayListener>
         )}
+
+        {chosenColorExterior !== undefined && (
+          <ChosenColorExteriorCX5 chosenColorExterior={chosenColorExterior} />
+        )}
+
+        {chosenColorInterior !== undefined && (
+          <ChosenColorInteriorCX5 chosenColorInterior={chosenColorInterior} />
+        )}
         {chosenEquipmentCar !== undefined && open ? (
           <ChosenEquipmentCX5
             chosenEquipmentCar={chosenEquipmentCar}
             handleClick={handleClick}
+            chosenColorExterior={chosenColorExterior}
+            chosenColorInterior={chosenColorInterior}
           />
         ) : (
-          <ChosenEquipmentCX5 chosenEquipmentCar={chosenCarForConfig} />
+          <ChosenEquipmentCX5
+            chosenEquipmentCar={chosenCarForConfig}
+            chosenColorExterior={chosenColorExterior}
+            chosenColorInterior={chosenColorInterior}
+          />
         )}
 
         <div className="prices-container">

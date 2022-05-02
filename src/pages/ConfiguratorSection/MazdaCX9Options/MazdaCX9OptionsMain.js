@@ -8,6 +8,8 @@ import CardsSet9 from "./EquipmentCX9/CardsSet/CardsSet9";
 import axios from "axios";
 import ChosenEquipCX9 from "./EquipmentCX9/ChosenEquipCX9/ChosenEquipCX9";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
+import ChosenColorExteriorCX9 from "./ChosenColorExteriorCX9/ChosenColorExteriorCX9";
+import ChosenColorInteriorCX9 from "./ChosenColorInteriorCX9/ChosenColorInteriorCX9";
 
 const MazdaCX9OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
@@ -79,10 +81,23 @@ const MazdaCX9OptionsMain = (props) => {
       setLoadAEFlag(true);
     }
   };
+
+  let [chosenColorExterior, setChosenColorExterior] = useState(
+    props.location.propsSearch
+  );
+  let [chosenColorInterior, setChosenColorInterior] = useState(
+    props.location.component
+  );
+
+  let [chosenCarForConfig, setChosenCarForConfig] = useState(
+    props.location.params
+  );
   const [equipments, setEquipments] = useState();
   const [chosenEquipmentCar, setChosenEquipmentCar] = useState();
   const handleChangeEquipment = (newValue) => {
     setChosenEquipmentCar(newValue);
+    setChosenColorInterior(undefined);
+    setChosenColorExterior(undefined);
   };
 
   const [open, setOpen] = useState(false);
@@ -94,17 +109,6 @@ const MazdaCX9OptionsMain = (props) => {
   function handleClickAway() {
     setOpen(false);
   }
-
-  let [chosenColorExterior, setChosenColorExterior] = useState(
-    props.location.propsSearch
-  );
-  let [chosenColorInterior, setChosenColorInterior] = useState(
-    props.location.propsSearch
-  );
-
-  let [chosenCarForConfig, setChosenCarForConfig] = useState(
-    props.location.params
-  );
 
   return (
     <>
@@ -157,6 +161,8 @@ const MazdaCX9OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -183,6 +189,8 @@ const MazdaCX9OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -222,6 +230,8 @@ const MazdaCX9OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -248,6 +258,8 @@ const MazdaCX9OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -287,6 +299,8 @@ const MazdaCX9OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -313,6 +327,8 @@ const MazdaCX9OptionsMain = (props) => {
                               chosenEquipmentCar={e}
                               handleClickAway={handleClickAway}
                               handleClick={handleClick}
+                              chosenColorExterior={chosenColorExterior}
+                              chosenColorInterior={chosenColorInterior}
                             />
                           );
                         } else {
@@ -325,14 +341,29 @@ const MazdaCX9OptionsMain = (props) => {
             </div>
           </ClickAwayListener>
         )}
+
+        {chosenColorExterior !== undefined && (
+          <ChosenColorExteriorCX9 chosenColorExterior={chosenColorExterior} />
+        )}
+
+        {chosenColorInterior !== undefined && (
+          <ChosenColorInteriorCX9 chosenColorInterior={chosenColorInterior} />
+        )}
         {chosenEquipmentCar !== undefined && open ? (
           <ChosenEquipCX9
             chosenEquipmentCar={chosenEquipmentCar}
             handleClick={handleClick}
+            chosenColorExterior={chosenColorExterior}
+            chosenColorInterior={chosenColorInterior}
           />
         ) : (
-          <ChosenEquipCX9 chosenEquipmentCar={chosenCarForConfig} />
+          <ChosenEquipCX9
+            chosenEquipmentCar={chosenCarForConfig}
+            chosenColorExterior={chosenColorExterior}
+            chosenColorInterior={chosenColorInterior}
+          />
         )}
+
         <div className="prices-container">
           <p className="prices-text-conf-main">
             Цены действительны с 29 декабря 2021 года на автомобили 2021 года

@@ -77,8 +77,9 @@ const MazdaCX5InteriorSupreme = (props) => {
           <Link
             to={{
               pathname: "/mazdacx5config",
-              propsSearch: interiorChosenColorForConfig,
-              params: props.location.propsSearch,
+              component: interiorChosenColorForConfig,
+              params: props.location.params,
+              propsSearch: props.location.propsSearch,
             }}
             className="mazdacx5-interior-main-container-header-link-supreme"
           >
