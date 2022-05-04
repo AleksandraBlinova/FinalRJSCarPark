@@ -2,7 +2,7 @@
     margin: 0 auto;
     padding: 0 25px;
     max-width: 1220px;
-    height: 260vh;
+    height: 340vh;
   }
   
   .mazda6-extra-serv-link {
@@ -40,4 +40,8 @@
     grid-gap: 3rem;
     padding: 1rem 0rem 0rem 0rem;
     max-width: 1000px;
+  }
+
+  .mazda6-extra-serv-main-container-cx5 .total-choice{
+    padding-top: 100px;
   }

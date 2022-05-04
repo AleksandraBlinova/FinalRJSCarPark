@@ -21,6 +21,7 @@ const ExtraServSetCX9 = (props) => {
         className="set-cards-item-extra-serv"
         onClick={() => {
           props.handleChangeChosenService(props.e);
+          props.handleClick();
         }}
       >
         <div className="set-cards-item-link-extra-serv">

@@ -54,7 +54,8 @@ const ChosenEquipmentCX5 = (props) => {
                 &nbsp;
                 {props.chosenEquipmentCar.drive.drive1}
               </h6>
-              {props.chosenColorExterior !== undefined &&
+              {props.chosenService == undefined &&
+                props.chosenColorExterior !== undefined &&
                 props.chosenColorInterior == undefined && (
                   <h4>
                     Общий итог:&nbsp;
@@ -64,17 +65,8 @@ const ChosenEquipmentCX5 = (props) => {
                   </h4>
                 )}
 
-              {props.chosenColorExterior !== undefined &&
-                props.chosenColorInterior !== undefined && (
-                  <h4>
-                    Общий итог:&nbsp;
-                    {props.chosenEquipmentCar.cost +
-                      props.chosenColorExterior.colorExtraCost}
-                    &nbsp;₽
-                  </h4>
-                )}
-
-              {props.chosenColorExterior == undefined &&
+              {props.chosenService == undefined &&
+                props.chosenColorExterior == undefined &&
                 props.chosenColorInterior !== undefined && (
                   <h4>
                     {" "}
@@ -82,21 +74,59 @@ const ChosenEquipmentCX5 = (props) => {
                   </h4>
                 )}
 
-              {props.chosenColorExterior == undefined &&
+              {props.chosenService == undefined &&
+                props.chosenColorExterior == undefined &&
                 props.chosenColorInterior == undefined && (
                   <h4>
                     {" "}
                     Общий итог:&nbsp;{props.chosenEquipmentCar.cost}&nbsp;₽
+                  </h4>
+                )}
+
+              {props.chosenService !== undefined &&
+                props.chosenColorExterior !== undefined &&
+                props.chosenColorInterior !== undefined && (
+                  <h4>
+                    {" "}
+                    Общий итог:&nbsp;
+                    {props.chosenEquipmentCar.cost +
+                      props.chosenColorExterior.colorExtraCost +
+                      props.chosenService.extraServCost}
+                    &nbsp;₽
+                  </h4>
+                )}
+
+              {props.chosenService == undefined &&
+                props.chosenColorExterior !== undefined &&
+                props.chosenColorInterior !== undefined && (
+                  <h4>
+                    {" "}
+                    Общий итог:&nbsp;
+                    {props.chosenEquipmentCar.cost +
+                      props.chosenColorExterior.colorExtraCost}
+                    &nbsp;₽
                   </h4>
                 )}
             </span>
           </span>
           <span className="span-chosen-equip-button-container">
-            <Link to="/extraservcx5" className="span-chosen-equip-link">
-              <BootstrapButton className="span-chosen-equip-button">
-                Продолжить
-              </BootstrapButton>
-            </Link>
+            {props.chosenEquipmentCar !== undefined &&
+              props.chosenColorExterior !== undefined &&
+              props.chosenColorInterior !== undefined && (
+                <Link
+                  to={{
+                    pathname: "/extraservcx5",
+                    params: props.chosenEquipmentCar,
+                    component: props.chosenColorInterior,
+                    propsSearch: props.chosenColorExterior,
+                  }}
+                  className="span-chosen-equip-link"
+                >
+                  <BootstrapButton className="span-chosen-equip-button">
+                    Продолжить
+                  </BootstrapButton>
+                </Link>
+              )}
           </span>
         </span>
       )}

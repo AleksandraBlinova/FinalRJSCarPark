@@ -39,7 +39,16 @@ const BootstrapButton = styled(Button)({
 const ChosenExtraServ = (props) => {
   return (
     <>
-      {props.chosenService !== undefined && (
+      {props.chosenService == "без выбора дополнительной услуги" && (
+        <span className="span-chosen-extra-serv-container">
+          <span className="span-chosen-extra-serv">
+            <span className="span-chosen-extra-serv-text-container">
+              <h5>Выбранная услуга: {props.chosenService}</h5>
+            </span>
+          </span>
+        </span>
+      )}
+      {props.chosenService !== "без выбора дополнительной услуги" && (
         <span className="span-chosen-extra-serv-container">
           <span className="span-chosen-extra-serv">
             <span className="span-chosen-extra-serv-img-container">
@@ -50,13 +59,6 @@ const ChosenExtraServ = (props) => {
 
               <h4> Итог:&nbsp;{props.chosenService.extraServCost}&nbsp;₽</h4>
             </span>
-          </span>
-          <span className="span-chosen-extra-serv-button-container">
-            <Link className="span-chosen-extra-serv-link">
-              <BootstrapButton className="span-chosen-extra-serv-button">
-                Продолжить
-              </BootstrapButton>
-            </Link>
           </span>
         </span>
       )}

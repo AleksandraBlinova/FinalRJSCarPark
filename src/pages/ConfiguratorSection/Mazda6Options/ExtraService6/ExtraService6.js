@@ -6,8 +6,12 @@ import { NewFooter } from "../../../../components/New Footer/NewFooter";
 import ExtraServSet6 from "../ExtraServSet6/ExtraServSet6";
 import axios from "axios";
 import ChosenExtraServ from "../ChosenExtraServ/ChosenExtraServ";
+import ChosenColorExterior from "../ChosenColorExterior/ChosenColorExterior";
+import ChosenColorInterior from "../ChosenColorInterior/ChosenColorInterior";
+import ChosenEquipment from "../Equipment6/ChosenEquipment/ChosenEquipment";
+import { ClickAwayListener } from "@mui/material";
 
-const ExtraService6 = () => {
+const ExtraService6 = (props) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
@@ -39,7 +43,15 @@ const ExtraService6 = () => {
   const handleChangeChosenService = (newValue) => {
     setChosenService(newValue);
   };
+  const [open, setOpen] = useState(false);
 
+  function handleClick() {
+    setOpen((prev) => !prev);
+  }
+
+  function handleClickAway() {
+    setOpen(false);
+  }
   return (
     <>
       <div className="mazda6-extra-serv-main-container">
@@ -51,18 +63,45 @@ const ExtraService6 = () => {
 
           <h2>ВЫБЕРИТЕ ДОПОЛНИТЕЛЬНУЮ УСЛУГУ</h2>
         </div>
-        <div className="main-container-set-cards-extra-serv">
-          {loadFlagextraServices &&
-            extraServices.map((e) => (
-              <ExtraServSet6
-                e={e}
-                handleChangeChosenService={handleChangeChosenService}
-              />
-            ))}
+        <ClickAwayListener onClickAway={handleClickAway}>
+          <div className="main-container-set-cards-extra-serv">
+            {loadFlagextraServices &&
+              extraServices.map((e) => (
+                <ExtraServSet6
+                  e={e}
+                  handleChangeChosenService={handleChangeChosenService}
+                  handleClick={handleClick}
+                />
+              ))}
+          </div>
+        </ClickAwayListener>
+        <div className="total-choice">
+          {props.location.propsSearch !== undefined && (
+            <ChosenColorExterior
+              chosenColorExterior={props.location.propsSearch}
+            />
+          )}
+
+          {props.location.component !== undefined && (
+            <ChosenColorInterior
+              chosenColorInterior={props.location.component}
+            />
+          )}
+
+          {chosenService !== undefined && open ? (
+            <ChosenExtraServ chosenService={chosenService} />
+          ) : (
+            <ChosenExtraServ chosenService="без выбора дополнительной услуги" />
+          )}
+          {props.location.params !== undefined && (
+            <ChosenEquipment
+              chosenEquipmentCar={props.location.params}
+              chosenColorExterior={props.location.propsSearch}
+              chosenColorInterior={props.location.component}
+              chosenService={chosenService}
+            />
+          )}
         </div>
-        {chosenService !== undefined ? (
-          <ChosenExtraServ chosenService={chosenService} />
-        ) : null}
       </div>
 
       <NewFooter />
