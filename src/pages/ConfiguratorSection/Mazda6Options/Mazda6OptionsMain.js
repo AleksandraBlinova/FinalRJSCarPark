@@ -19,6 +19,9 @@ const Mazda6OptionsMain = (props) => {
 
   const [engines, setEngines] = useState([]);
 
+  const [pathnameForExtraServ, setPathnameForExtraServ] =
+    useState("/extraserv6");
+
   const onHover = () => {
     setHover(!hover);
   };
@@ -511,12 +514,14 @@ const Mazda6OptionsMain = (props) => {
             handleClick={handleClick}
             chosenColorExterior={chosenColorExterior}
             chosenColorInterior={chosenColorInterior}
+            pathnameForExtraServ={pathnameForExtraServ}
           />
         ) : (
           <ChosenEquipment
             chosenEquipmentCar={chosenCarForConfig}
             chosenColorExterior={chosenColorExterior}
             chosenColorInterior={chosenColorInterior}
+            pathnameForExtraServ={pathnameForExtraServ}
           />
         )}
 

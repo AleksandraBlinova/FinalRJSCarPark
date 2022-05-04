@@ -44,6 +44,9 @@ import InsuranceCalculator from "./pages/OfferSection/Insurance/InsuranceCalcula
 import ExtraService6 from "./pages/ConfiguratorSection/Mazda6Options/ExtraService6/ExtraService6";
 import ExtraServiceCX5 from "./pages/ConfiguratorSection/MazdaCX5Options/ExtraServiceCX5/ExtraServiceCX5";
 import ExtraServiceCX9 from "./pages/ConfiguratorSection/MazdaCX9Options/ExtraServiceCX9/ExtraServiceCX9";
+import FinalEquipForApplic6 from "./pages/ConfiguratorSection/Mazda6Options/FinalEquipForApplic6/FinalEquipForApplic6";
+import FinalEquipForApplicCX5 from "./pages/ConfiguratorSection/MazdaCX5Options/FinalEquipForApplicCX5/FinalEquipForApplicCX5";
+import FinalEquipForApplicCX9 from "./pages/ConfiguratorSection/MazdaCX9Options/FinalEquipForApplicCX9/FinalEquipForApplicCX9";
 
 function App() {
   const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
@@ -80,6 +83,16 @@ function App() {
           <Route path="/mazda6exterior" component={Mazda6Exterior} />
 
           <Route path="/extraserv6" component={ExtraService6} />
+
+          <Route
+            path="/mazda6FinalEquipForApplic"
+            component={FinalEquipForApplic6}
+          />
+
+          <Route
+            path="/mazdacx5FinalEquipForApplic"
+            component={FinalEquipForApplicCX5}
+          />
           <Route path="/extraservcx5" component={ExtraServiceCX5} />
           <Route
             path="/mazdacx5interiordrive"
@@ -99,6 +112,11 @@ function App() {
           />
 
           <Route path="/mazdacx5exterior" component={MazdaCX5Exterior} />
+
+          <Route
+            path="/mazdacx9FinalEquipForApplic"
+            component={FinalEquipForApplicCX9}
+          />
           <Route path="/extraservcx9" component={ExtraServiceCX9} />
           <Route
             path="/mazdacx9interioractive"

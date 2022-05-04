@@ -110,6 +110,9 @@ const MazdaCX9OptionsMain = (props) => {
     setOpen(false);
   }
 
+  const [pathnameForExtraServ, setPathnameForExtraServ] =
+    useState("/extraservcx9");
+
   return (
     <>
       <div className="mazdacx9-options-main-container">
@@ -355,12 +358,14 @@ const MazdaCX9OptionsMain = (props) => {
             handleClick={handleClick}
             chosenColorExterior={chosenColorExterior}
             chosenColorInterior={chosenColorInterior}
+            pathnameForExtraServ={pathnameForExtraServ}
           />
         ) : (
           <ChosenEquipCX9
             chosenEquipmentCar={chosenCarForConfig}
             chosenColorExterior={chosenColorExterior}
             chosenColorInterior={chosenColorInterior}
+            pathnameForExtraServ={pathnameForExtraServ}
           />
         )}
 

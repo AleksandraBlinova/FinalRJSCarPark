@@ -113,10 +113,11 @@ const ChosenEquipment = (props) => {
               props.chosenColorInterior !== undefined && (
                 <Link
                   to={{
-                    pathname: "/extraserv6",
+                    pathname: props.pathnameForExtraServ,
                     params: props.chosenEquipmentCar,
                     component: props.chosenColorInterior,
                     propsSearch: props.chosenColorExterior,
+                    query: props.chosenService,
                   }}
                   className="span-chosen-equip-link"
                 >

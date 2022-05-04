@@ -53,6 +53,9 @@ const ExtraServiceCX5 = (props) => {
     setOpen(false);
   }
 
+  const [pathnameForExtraServ, setPathnameForExtraServ] = useState(
+    "/mazdacx5FinalEquipForApplic"
+  );
   return (
     <>
       <div className="mazda6-extra-serv-main-container-cx5">
@@ -100,6 +103,7 @@ const ExtraServiceCX5 = (props) => {
               chosenColorExterior={props.location.propsSearch}
               chosenColorInterior={props.location.component}
               chosenService={chosenService}
+              pathnameForExtraServ={pathnameForExtraServ}
             />
           )}
         </div>

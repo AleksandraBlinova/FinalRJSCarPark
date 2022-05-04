@@ -52,6 +52,10 @@ const ExtraService6 = (props) => {
   function handleClickAway() {
     setOpen(false);
   }
+
+  const [pathnameForExtraServ, setPathnameForExtraServ] = useState(
+    "/mazda6FinalEquipForApplic"
+  );
   return (
     <>
       <div className="mazda6-extra-serv-main-container">
@@ -99,6 +103,7 @@ const ExtraService6 = (props) => {
               chosenColorExterior={props.location.propsSearch}
               chosenColorInterior={props.location.component}
               chosenService={chosenService}
+              pathnameForExtraServ={pathnameForExtraServ}
             />
           )}
         </div>
