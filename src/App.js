@@ -54,11 +54,12 @@ function App() {
   const changeRole = (data) => {
     setRole(data);
   };
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUserEmail, setCurrentUserEmail] = useState();
 
-  const handleSetCurrentUser = (newValue) => {
-    setCurrentUser(newValue);
+  const handleSetCurrentUserEmail = (newValue) => {
+    setCurrentUserEmail(newValue);
   };
+
   return (
     <>
       <Router>
@@ -68,13 +69,17 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/offers" component={Offers} />
           <Route path="/contacts" component={Contacts} />
-          <Route path="/signin" component={form} />
+          <Route
+            path="/signin"
+            component={form}
+            handleSetCurrentUserEmail={handleSetCurrentUserEmail}
+          />
           <Route path="/legalinfo" component={LegalInformation} />
           <Route
             path="/configurator"
             component={ConfMain}
             role={role}
-            setRole={changeRole}
+            currentUserEmail={currentUserEmail}
           />
           <Route path="/mazda6config" component={Mazda6OptionsMain} />
           <Route path="/mazdacx5config" component={MazdaCX5OptionsMain} />
@@ -171,7 +176,13 @@ function App() {
           />
           <Route
             path="/login"
-            render={() => <FormL role={role} setRole={changeRole} />}
+            render={() => (
+              <FormL
+                role={role}
+                setRole={changeRole}
+                handleSetCurrentUserEmail={handleSetCurrentUserEmail}
+              />
+            )}
           />
           <Route path="/logout" component={FormLogOut} />
         </Switch>

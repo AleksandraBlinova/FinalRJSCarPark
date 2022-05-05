@@ -197,6 +197,7 @@ const EnhancedTableToolbar = (props) => {
   const { handleBackClickCarsEdit } = props;
   const { deleteItem } = props;
   const carForEditColor = props.carForEditColor;
+  const role = props.role;
 
   return (
     <Toolbar
@@ -237,7 +238,7 @@ const EnhancedTableToolbar = (props) => {
             carForEdit={carForEdit}
             carForEditColor={carForEditColor}
           />
-          {props.role === 2 && (
+          {role === 2 && (
             <>
               <Tooltip title="Edit">
                 <IconButton
@@ -349,6 +350,7 @@ export default function TableCars(props) {
         editCar={props.editCar}
         handleBackClickCarsEdit={props.handleBackClickCarsEdit}
         deleteItem={props.deleteItem}
+        role={props.role}
       />
       <TableContainer ref={props.titleRefCarsCreateToTable}>
         <Table aria-labelledby="tableTitle" size={dense ? "small" : "medium"}>

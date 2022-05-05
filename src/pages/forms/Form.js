@@ -5,7 +5,7 @@ import "./Form.css";
 import axios from "axios";
 import CloseIcon from "@mui/icons-material/Close";
 
-const Form = () => {
+const Form = (props) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [errors, setErrors] = useState([]);

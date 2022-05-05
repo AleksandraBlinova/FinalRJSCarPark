@@ -27,16 +27,14 @@ const FormL = (props) => {
         if (!response.data.error) {
           setLog(true);
           setNameofUser(response.data.message);
-          console.log(
-            response.data.message ===
-              "Выполнен вход пользователем: admin@mail.com"
-          );
+
           if (
             response.data.message ===
             "Выполнен вход пользователем: admin@mail.com"
           )
             props.setRole(2);
           else props.setRole(1);
+          props.handleSetCurrentUserEmail(email);
         }
       })
       .catch(console.error);
