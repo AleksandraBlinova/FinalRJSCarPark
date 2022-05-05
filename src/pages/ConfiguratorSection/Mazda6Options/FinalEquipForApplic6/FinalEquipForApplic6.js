@@ -524,8 +524,22 @@ const FinalEquipForApplic6 = (props) => {
               onChange={handleChangeInputEmail}
               value={value}
               required
-              error={value.length == 0 ? true : false}
-              helperText={value.length == 0 ? "Поле обязательно!" : ""}
+              error={
+                value.length == 0
+                  ? true
+                  : false ||
+                    (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+                      ? true
+                      : false)
+              }
+              helperText={
+                value.length == 0
+                  ? "Поле обязательно!"
+                  : "" ||
+                    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+                  ? "Поле заполнено неверно!"
+                  : ""
+              }
             ></CustomTextField>
           </div>
         </div>

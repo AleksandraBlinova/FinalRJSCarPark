@@ -87,6 +87,10 @@ const FinalEquipForApplicCX9 = (props) => {
       });
   }, []);
 
+  const [value, setValue] = useState(localStorage.getItem("CurrentUserEmail"));
+  const handleChangeInputEmail = (event) => {
+    setValue(event.target.value);
+  };
   return (
     <div>
       <div className="mazda6-options-main-container">
@@ -516,8 +520,25 @@ const FinalEquipForApplicCX9 = (props) => {
               label="Email пользователя"
               variant="outlined"
               sx={{ width: "40ch" }}
-              defaultValue={localStorage.getItem("CurrentUserEmail")}
+              onChange={handleChangeInputEmail}
+              value={value}
               required
+              error={
+                value.length == 0
+                  ? true
+                  : false ||
+                    (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+                      ? true
+                      : false)
+              }
+              helperText={
+                value.length == 0
+                  ? "Поле обязательно!"
+                  : "" ||
+                    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+                  ? "Поле заполнено неверно!"
+                  : ""
+              }
             ></CustomTextField>
           </div>
         </div>
