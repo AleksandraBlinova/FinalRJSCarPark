@@ -49,12 +49,16 @@ import FinalEquipForApplicCX5 from "./pages/ConfiguratorSection/MazdaCX5Options/
 import FinalEquipForApplicCX9 from "./pages/ConfiguratorSection/MazdaCX9Options/FinalEquipForApplicCX9/FinalEquipForApplicCX9";
 
 function App() {
-  const [role, setRole] = useState(2); // 0 - guest; 1 - client; 2 - admin
+  const [role, setRole] = useState(0); // 0 - guest; 1 - client; 2 - admin
 
   const changeRole = (data) => {
     setRole(data);
   };
+  const [currentUser, setCurrentUser] = useState();
 
+  const handleSetCurrentUser = (newValue) => {
+    setCurrentUser(newValue);
+  };
   return (
     <>
       <Router>

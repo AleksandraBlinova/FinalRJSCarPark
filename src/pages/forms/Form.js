@@ -3,6 +3,7 @@ import Formsignup from "./FormSignUp";
 import FormSuccess from "./FormSuccess";
 import "./Form.css";
 import axios from "axios";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -39,9 +40,7 @@ const Form = () => {
             alt="promo"
             className="form-img"
           />
-          <a href="/" className="close-btn">
-            x
-          </a>
+
           {!isSubmitted ? (
             <Formsignup submitForm={submitForm} />
           ) : (

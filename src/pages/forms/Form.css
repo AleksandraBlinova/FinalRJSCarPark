@@ -21,6 +21,12 @@ color:red;
     color: #fff;
     cursor: pointer;
   }
+
+  .close-btn:hover {
+   text-decoration: none;
+   color: #fff;
+   font-size: 2rem;
+  }
   
 
   .form-img {
@@ -49,7 +55,7 @@ color:red;
   }
   
   .form-content-right {
-    border-radius: 0 10px 10px 0;
+    
     position: relative;
     background: linear-gradient(90deg, rgb(15, 2, 2) 0%, rgb(17, 17, 17) 100%);
   }
@@ -161,4 +167,66 @@ color:red;
   .ErrorText{
     color: red;
     padding-top: 15px;
+  }
+
+  @media screen and (max-width: 1020px){
+
+    .form-container {
+      margin: 50px auto;
+      width: 600px;
+      height: 600px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    
+  }
+
+  @media screen and (max-width: 630px){
+
+    .form-container {
+      margin: 50px auto;
+      width: 400px;
+      height: 700px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .form-input::placeholder {
+      color: #595959;
+      font-size: 10px;
+    }
+    
+  }
+
+  @media screen and (max-width: 430px){
+
+    .form-container {
+      margin: 50px auto;
+      width: 250px;
+      height: 700px;
+      display: grid;
+    
+    }
+
+    .form-input::placeholder {
+      color: #595959;
+      font-size: 10px;
+    }
+
+    .form-content-right {
+     
+      position: relative;
+      background: linear-gradient(90deg, rgb(15, 2, 2) 0%, rgb(17, 17, 17) 100%);
+      width: 250px;
+    }
+
+    .form-img {
+      display: none;
+    }
+    
+    .form-img-2 {
+     display: none;
+    }
+   
+    
   }

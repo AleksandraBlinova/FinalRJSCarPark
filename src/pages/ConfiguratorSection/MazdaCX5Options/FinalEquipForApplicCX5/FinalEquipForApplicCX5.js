@@ -510,14 +510,6 @@ const FinalEquipForApplicCX5 = (props) => {
           </List>
         </div>
         <div className="application-sender-cx5">
-          <div>
-            <CustomTextField
-              id="outlined-basic"
-              label="Имя пользователя"
-              variant="outlined"
-              sx={{ width: "40ch" }}
-            />
-          </div>
           <div className="user-email-final-applic-cx5">
             <CustomTextField
               id="outlined-basic"

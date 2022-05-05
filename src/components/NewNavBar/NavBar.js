@@ -81,11 +81,11 @@ function Navbar(props) {
           </li>
           <li>
             <Link
-              to="/sign-up"
+              to="/signin"
               className="nav-links-mobile"
               onClick={closeMobileMenu}
             >
-              Sign Up
+              Регистрация
             </Link>
           </li>
           {props.role === 0 && (
