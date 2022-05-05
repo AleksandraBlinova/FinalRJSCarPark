@@ -25,7 +25,7 @@ function Navbar(props) {
 
   const [errors, setErrors] = useState([]);
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     axios
       .post("http://localhost:7831/api/Account/LogOff", {
@@ -34,7 +34,10 @@ function Navbar(props) {
       .then((response) => {
         typeof response.data.error !== "undefined" &&
           setErrors(response.data.error);
-        if (response.data.message === "Выполнен выход.") props.setRole(0);
+        if (response.data.message === "Выполнен выход.") {
+          props.setRole(0);
+          props.handleSetCurrentUserEmail("");
+        }
       })
       .catch(console.error);
   };
@@ -80,13 +83,30 @@ function Navbar(props) {
             </Link>
           </li>
           <li>
-            <Link
-              to="/signin"
-              className="nav-links-mobile"
-              onClick={closeMobileMenu}
-            >
-              Регистрация
-            </Link>
+            {props.role === 0 && (
+              <Link
+                to="/signin"
+                className="nav-links-mobile"
+                onClick={closeMobileMenu}
+              >
+                Регистрация
+              </Link>
+            )}
+          </li>
+          <li>
+            {" "}
+            {(props.role === 1 || props.role === 2) && (
+              <Link
+                to="/logout"
+                className="nav-links-mobile"
+                onClick={() => {
+                  closeMobileMenu();
+                  handleSubmit();
+                }}
+              >
+                Выйти
+              </Link>
+            )}
           </li>
           {props.role === 0 && (
             <NavBtn>

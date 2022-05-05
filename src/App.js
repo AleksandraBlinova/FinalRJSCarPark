@@ -54,33 +54,28 @@ function App() {
   const changeRole = (data) => {
     setRole(data);
   };
-  const [currentUserEmail, setCurrentUserEmail] = useState();
+  //const [currentUserEmail, setCurrentUserEmail] = useState();
 
   const handleSetCurrentUserEmail = (newValue) => {
-    setCurrentUserEmail(newValue);
+    localStorage.setItem("CurrentUserEmail", newValue.toString());
   };
 
   return (
     <>
       <Router>
-        <NavBar role={role} setRole={changeRole} />
+        <NavBar
+          role={role}
+          setRole={changeRole}
+          handleSetCurrentUserEmail={handleSetCurrentUserEmail}
+        />
 
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/offers" component={Offers} />
           <Route path="/contacts" component={Contacts} />
-          <Route
-            path="/signin"
-            component={form}
-            handleSetCurrentUserEmail={handleSetCurrentUserEmail}
-          />
+          <Route path="/signin" component={form} />
           <Route path="/legalinfo" component={LegalInformation} />
-          <Route
-            path="/configurator"
-            component={ConfMain}
-            role={role}
-            currentUserEmail={currentUserEmail}
-          />
+          <Route path="/configurator" component={ConfMain} role={role} />
           <Route path="/mazda6config" component={Mazda6OptionsMain} />
           <Route path="/mazdacx5config" component={MazdaCX5OptionsMain} />
           <Route path="/mazdacx9config" component={MazdaCX9OptionsMain} />

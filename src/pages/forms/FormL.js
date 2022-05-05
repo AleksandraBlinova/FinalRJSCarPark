@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import FormSignIn from "./FormSignIn";
 import FormSuccessLog from "./FormSuccessLog";
+import CloseIcon from "@mui/icons-material/Close";
 
 import "./Form.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const FormL = (props) => {
   const [isLog, setLog] = useState(false);
@@ -55,9 +57,7 @@ const FormL = (props) => {
           alt="promo"
           className="form-img"
         />
-        <a href="/" className="close-btn">
-          x
-        </a>
+
         {!isLog ? (
           <FormSignIn
             errors={errors}

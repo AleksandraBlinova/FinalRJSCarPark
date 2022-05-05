@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export function ButtonSlideMenu() {
   return (
     <Link to="#">
-      <button className="btn">Sign Up</button>
+      <button className="btn">Регистрация</button>
     </Link>
   );
 }

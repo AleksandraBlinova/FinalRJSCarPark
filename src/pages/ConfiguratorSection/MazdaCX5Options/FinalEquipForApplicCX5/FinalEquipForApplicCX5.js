@@ -516,7 +516,9 @@ const FinalEquipForApplicCX5 = (props) => {
               label="Email пользователя"
               variant="outlined"
               sx={{ width: "40ch" }}
-            />
+              defaultValue={localStorage.getItem("CurrentUserEmail")}
+              required
+            ></CustomTextField>
           </div>
         </div>
         <div className="button-sender-applic-cx5-container">

@@ -25,6 +25,7 @@ const Mazda6OptionsMain = (props) => {
   const onHover = () => {
     setHover(!hover);
   };
+
   useEffect(() => {
     axios({
       method: "GET",

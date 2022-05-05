@@ -86,6 +86,12 @@ const FinalEquipForApplic6 = (props) => {
       });
   }, []);
 
+  const [value, setValue] = useState(localStorage.getItem("CurrentUserEmail"));
+  const handleChangeInputEmail = (event) => {
+    setValue(event.target.value);
+  };
+
+  console.log(localStorage.getItem("CurrentUserEmail"));
   return (
     <div>
       <div className="mazda6-options-main-container">
@@ -515,7 +521,12 @@ const FinalEquipForApplic6 = (props) => {
               label="Email пользователя"
               variant="outlined"
               sx={{ width: "40ch" }}
-            />
+              onChange={handleChangeInputEmail}
+              value={value}
+              required
+              error={value.length == 0 ? true : false}
+              helperText={value.length == 0 ? "Поле обязательно!" : ""}
+            ></CustomTextField>
           </div>
         </div>
         <div className="button-sender-applic-6-container">
