@@ -90,7 +90,7 @@ function Navbar(props) {
           </li>
           {props.role === 0 && (
             <NavBtn>
-              <NavBtnLink to="/signin">Войти</NavBtnLink>
+              <NavBtnLink to="/signin">Регистрация</NavBtnLink>
             </NavBtn>
           )}
           {(props.role === 1 || props.role === 2) && (
