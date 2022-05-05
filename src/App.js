@@ -70,7 +70,12 @@ function App() {
           <Route path="/contacts" component={Contacts} />
           <Route path="/signin" component={form} />
           <Route path="/legalinfo" component={LegalInformation} />
-          <Route path="/configurator" component={ConfMain} />
+          <Route
+            path="/configurator"
+            component={ConfMain}
+            role={role}
+            setRole={changeRole}
+          />
           <Route path="/mazda6config" component={Mazda6OptionsMain} />
           <Route path="/mazdacx5config" component={MazdaCX5OptionsMain} />
           <Route path="/mazdacx9config" component={MazdaCX9OptionsMain} />

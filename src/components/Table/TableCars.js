@@ -237,26 +237,29 @@ const EnhancedTableToolbar = (props) => {
             carForEdit={carForEdit}
             carForEditColor={carForEditColor}
           />
-
-          <Tooltip title="Edit">
-            <IconButton
-              onClick={() => {
-                editCar(carForEdit);
-                handleBackClickCarsEdit();
-              }}
-            >
-              <EditIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Delete">
-            <IconButton
-              onClick={() => {
-                deleteItem(carForDelete);
-              }}
-            >
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
+          {props.role === 2 && (
+            <>
+              <Tooltip title="Edit">
+                <IconButton
+                  onClick={() => {
+                    editCar(carForEdit);
+                    handleBackClickCarsEdit();
+                  }}
+                >
+                  <EditIcon />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Delete">
+                <IconButton
+                  onClick={() => {
+                    deleteItem(carForDelete);
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Tooltip>
+            </>
+          )}
         </>
       )}
     </Toolbar>
