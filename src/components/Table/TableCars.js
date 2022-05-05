@@ -458,6 +458,7 @@ export default function TableCars(props) {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
+        labelRowsPerPage="Количество элементов на странице"
       />
     </div>
   );

@@ -5,7 +5,7 @@ export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
   height: 70px;
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 1040px) {
     display: none;
   }
 `;
