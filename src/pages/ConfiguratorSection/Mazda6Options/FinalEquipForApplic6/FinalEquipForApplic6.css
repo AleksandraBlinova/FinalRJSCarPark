@@ -1,3 +1,22 @@
 .final-data-mazda6{
-    
+    max-width: 700px;
+    margin: 0 auto;
+    display: block;
+    padding-top: 60px;
+}
+
+.application-sender{
+    padding-top: 100px;
+    margin: 0 auto;
+    display: block; 
+    max-width: 350px;
+    padding-bottom: 80px;
+}
+
+.application-sender .user-email-final-applic-6{
+    padding-top: 30px;
+}
+
+.button-sender-applic-6-container{
+    padding-bottom: 80px;
 }

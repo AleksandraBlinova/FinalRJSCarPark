@@ -9,6 +9,57 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 
+import Fab from "@mui/material/Fab";
+import TextField from "@mui/material/TextField";
+import { styled } from "@mui/material/styles";
+import { Button } from "@mui/material";
+
+const CustomTextField = styled(TextField)({
+  "& .MuiButtonBase-root": { padding: "0px" },
+  "& label.Mui-focused": {
+    color: "black",
+  },
+  "& .MuiOutlinedInput-root": {
+    "&.Mui-focused fieldset": {
+      borderColor: "purple",
+    },
+  },
+});
+
+const BootstrapButton = styled(Button)({
+  borderColor: "#807e7e",
+  boxShadow: "inset 0 0 0 2.5px #807e7e",
+  textTransform: "none",
+  fontSize: 20,
+  backgroundColor: "#0063cc",
+  color: "#450505",
+  padding: "15px 22px",
+  border: "1px solid",
+  lineHeight: 1.5,
+  borderRadius: "0px",
+  width: "25ch",
+  height: "40px",
+  float: "right",
+  fontFamily: [
+    "-apple-system",
+    "BlinkMacSystemFont",
+    '"Segoe UI"',
+    "Roboto",
+    '"Helvetica Neue"',
+    "Arial",
+    "sans-serif",
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(","),
+  "&:hover": {
+    borderColor: "#7e57c2",
+    boxShadow: "inset 0 0 0 2.5px #7e57c2",
+    transition: "all 0.2s",
+    textDecoration: "none",
+    color: "#673ab7",
+  },
+});
 const FinalEquipForApplicCX5 = (props) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
@@ -47,7 +98,7 @@ const FinalEquipForApplicCX5 = (props) => {
 
           <h2>ПРОВЕРЬТЕ ПРАВИЛЬНОСТЬ ВЫБРАННЫХ ДАННЫХ</h2>
         </div>
-        <div className="final-data-mazda6">
+        <div className="final-data-mazda-cx5">
           <List>
             <ListItem>
               <Typography
@@ -95,8 +146,13 @@ const FinalEquipForApplicCX5 = (props) => {
               <h5>
                 {" "}
                 {props.location.propsSearch.color1}&nbsp;&nbsp;
-                {props.location.propsSearch.colorExtraCost}&nbsp;₽
+                {props.location.propsSearch.colorExtraCost}
+                &nbsp;₽&nbsp;&nbsp;&nbsp;&nbsp;
               </h5>
+              <Fab
+                size="small"
+                style={{ background: props.location.propsSearch.colorView }}
+              />
             </ListItem>
 
             <Divider />
@@ -113,6 +169,13 @@ const FinalEquipForApplicCX5 = (props) => {
                 Цвет интерьера:&nbsp;&nbsp;
               </Typography>
               <h5> {props.location.component.colorInterior1}</h5>
+              &nbsp;&nbsp;&nbsp;&nbsp;{" "}
+              <Fab
+                size="small"
+                style={{
+                  background: props.location.component.colorInteriorView,
+                }}
+              />
             </ListItem>
 
             <Divider />
@@ -445,6 +508,29 @@ const FinalEquipForApplicCX5 = (props) => {
               </ListItem>
             </List>
           </List>
+        </div>
+        <div className="application-sender-cx5">
+          <div>
+            <CustomTextField
+              id="outlined-basic"
+              label="Имя пользователя"
+              variant="outlined"
+              sx={{ width: "40ch" }}
+            />
+          </div>
+          <div className="user-email-final-applic-cx5">
+            <CustomTextField
+              id="outlined-basic"
+              label="Email пользователя"
+              variant="outlined"
+              sx={{ width: "40ch" }}
+            />
+          </div>
+        </div>
+        <div className="button-sender-applic-cx5-container">
+          <BootstrapButton className="className=button-sender-applic-cx5">
+            Отправить заявку
+          </BootstrapButton>
         </div>
       </div>{" "}
       <NewFooter />
