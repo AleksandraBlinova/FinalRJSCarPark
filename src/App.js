@@ -49,16 +49,17 @@ import FinalEquipForApplicCX5 from "./pages/ConfiguratorSection/MazdaCX5Options/
 import FinalEquipForApplicCX9 from "./pages/ConfiguratorSection/MazdaCX9Options/FinalEquipForApplicCX9/FinalEquipForApplicCX9";
 
 function App() {
-  const [role, setRole] = useState(0); // 0 - guest; 1 - client; 2 - admin
+  const [role, setRole] = useState(localStorage.getItem("role")); // 0 - guest; 1 - client; 2 - admin
 
   const changeRole = (data) => {
     setRole(data);
   };
-  //const [currentUserEmail, setCurrentUserEmail] = useState();
 
   const handleSetCurrentUserEmail = (newValue) => {
     localStorage.setItem("CurrentUserEmail", newValue.toString());
   };
+
+  const [isLog, setLog] = useState(localStorage.getItem("isLog") === "true");
 
   return (
     <>
@@ -67,6 +68,8 @@ function App() {
           role={role}
           setRole={changeRole}
           handleSetCurrentUserEmail={handleSetCurrentUserEmail}
+          isLog={isLog}
+          setLog={setLog}
         />
 
         <Switch>
@@ -176,6 +179,8 @@ function App() {
                 role={role}
                 setRole={changeRole}
                 handleSetCurrentUserEmail={handleSetCurrentUserEmail}
+                setLog={setLog}
+                isLog={isLog}
               />
             )}
           />

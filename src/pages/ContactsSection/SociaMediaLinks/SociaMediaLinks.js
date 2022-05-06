@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./SociaMediaLinks.css";
 import { Typography } from "antd";
+import { Link } from "react-router-dom";
 
 export default function SocialMediaLinks() {
   return (
@@ -8,20 +9,20 @@ export default function SocialMediaLinks() {
       <div className="socmed_info">
         <Typography className="socmed_text">
           Официальные группы Mazda открыты в
-          <a href="https://ok.ru/mazda" className="socmed_link">
+          <Link to="https://ok.ru/mazda" className="socmed_link">
             Одноклассниках
-          </a>
+          </Link>
           ,
-          <a href="https://vk.com/mazda" className="socmed_link">
+          <Link to="https://vk.com/mazda" className="socmed_link">
             Вконтакте
-          </a>
+          </Link>
           , а также на
-          <a
-            href="https://www.youtube.com/user/themazdarussia/feed?filter=2"
+          <Link
+            to="https://www.youtube.com/user/themazdarussia/feed?filter=2"
             className="socmed_link"
           >
             Youtube
-          </a>
+          </Link>
           . Здесь можно найти последние новости Mazda, обсуждения, конкурсы,
           голосования, фотографии, видео и многое другое. Добро пожаловать!
         </Typography>

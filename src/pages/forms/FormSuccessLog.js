@@ -1,15 +1,14 @@
-import React from 'react'
-import './Form.css'
+import React from "react";
+import "./Form.css";
 
-const FormSuccessLog = ({NameofUser}) => {
-    console.log(NameofUser)
-    return (
-        <div className="form-content-right">
-        <div className="form-success">{NameofUser}
-        </div>
-        
-        </div>
-    )
-}
+const FormSuccessLog = ({ NameofUser }) => {
+  return (
+    <div className="form-content-right">
+      <div className="form-success">
+        Выполнен вход пользователем <h4>{NameofUser}</h4>
+      </div>
+    </div>
+  );
+};
 
-export default FormSuccessLog
+export default FormSuccessLog;

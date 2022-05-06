@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./FeedbackLink.css";
+import { Link } from "react-router-dom";
 
 export default function FeedbackLink() {
   return (
@@ -8,9 +9,9 @@ export default function FeedbackLink() {
         <p className="feedback_text">
           Если вам неудобно звонить на инфо-линию Mazda, есть возможность задать
           вопрос на интересующие вас темы о Mazda, заполнив форму
-          <a href="#" className="feedback_link">
+          <Link to="#" className="feedback_link">
             «Обратная связь»
-          </a>
+          </Link>
           .
         </p>
       </div>

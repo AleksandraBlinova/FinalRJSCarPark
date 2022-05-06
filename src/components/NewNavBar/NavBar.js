@@ -25,8 +25,6 @@ function Navbar(props) {
 
   const [errors, setErrors] = useState([]);
   const handleSubmit = (e) => {
-    // e.preventDefault();
-
     axios
       .post("http://localhost:7831/api/Account/LogOff", {
         withCredentials: true,
@@ -37,10 +35,15 @@ function Navbar(props) {
         if (response.data.message === "Выполнен выход.") {
           props.setRole(0);
           props.handleSetCurrentUserEmail("");
+          props.setLog(false);
+          localStorage.setItem("isLog", false);
+          localStorage.setItem("role", 0);
         }
       })
       .catch(console.error);
   };
+
+  console.log(props.role);
   if (!mountedComponent) return <div />;
   return (
     <ThemeProvider theme={themeMode}>
@@ -83,7 +86,7 @@ function Navbar(props) {
             </Link>
           </li>
           <li>
-            {props.role === 0 && (
+            {props.isLog == false && props.role == 0 && (
               <Link
                 to="/signin"
                 className="nav-links-mobile"
@@ -95,7 +98,7 @@ function Navbar(props) {
           </li>
           <li>
             {" "}
-            {(props.role === 1 || props.role === 2) && (
+            {props.isLog == true && (props.role == 1 || props.role == 2) && (
               <Link
                 to="/logout"
                 className="nav-links-mobile"
@@ -108,12 +111,12 @@ function Navbar(props) {
               </Link>
             )}
           </li>
-          {props.role === 0 && (
+          {props.isLog == false && props.role == 0 && (
             <NavBtn>
               <NavBtnLink to="/signin">Регистрация</NavBtnLink>
             </NavBtn>
           )}
-          {(props.role === 1 || props.role === 2) && (
+          {props.isLog == true && (props.role == 1 || props.role == 2) && (
             <NavBtn onClick={handleSubmit}>
               <NavBtnLink to="/logout">Выйти</NavBtnLink>
             </NavBtn>

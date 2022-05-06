@@ -8,7 +8,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const FormL = (props) => {
-  const [isLog, setLog] = useState(false);
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,16 +26,21 @@ const FormL = (props) => {
           setErrors(response.data.error);
 
         if (!response.data.error) {
-          setLog(true);
+          props.setLog(true);
           setNameofUser(response.data.message);
+          localStorage.setItem("isLog", true);
+          props.handleSetCurrentUserEmail(email);
 
           if (
             response.data.message ===
             "Выполнен вход пользователем: admin@mail.com"
-          )
+          ) {
             props.setRole(2);
-          else props.setRole(1);
-          props.handleSetCurrentUserEmail(email);
+            localStorage.setItem("role", 2);
+          } else {
+            props.setRole(1);
+            localStorage.setItem("role", 1);
+          }
         }
       })
       .catch(console.error);
@@ -58,7 +62,7 @@ const FormL = (props) => {
           className="form-img"
         />
 
-        {!isLog ? (
+        {!props.isLog ? (
           <FormSignIn
             errors={errors}
             setErrors={setErrors}
@@ -68,7 +72,9 @@ const FormL = (props) => {
             setEmail={handleSetEmaill}
           />
         ) : (
-          <FormSuccessLog NameofUser={NameofUser} />
+          <FormSuccessLog
+            NameofUser={localStorage.getItem("CurrentUserEmail")}
+          />
         )}
       </div>
     </div>
