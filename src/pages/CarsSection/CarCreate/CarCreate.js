@@ -9,19 +9,23 @@ import ReleaseYear from "./ReleaseYear";
 import PropTypes from "prop-types";
 import Availability from "./Availability";
 import Warehouse from "./Warehouse";
+import ColorInterior from "./ColorInterior";
 
 function CarCreate(props) {
   const [models, setModel] = useState([]);
   const [colors, setColor] = useState([]);
+  const [colorsInterior, setColorInterior] = useState([]);
   const [gmed, setGMED] = useState([]);
 
   const [currentModel, setCurrentModel] = useState("");
   const [currentColor, setCurrentColor] = useState("");
+  const [currentColorInterior, setCurrentColorInterior] = useState("");
   const [price, setPrice] = useState("");
   const [photo, setPhoto] = useState("");
   const [releaseYear, setReleaseYear] = useState("");
   const [currentIdM, setCurrentModelId] = useState("");
   const [currentIdC, setCurrentColorId] = useState("");
+  const [currentIdCInterior, setCurrentColorIdInterior] = useState("");
   const [status, setAvail] = useState("");
 
   const [drives, setDrives] = useState(); //new
@@ -58,6 +62,7 @@ function CarCreate(props) {
       driveid: currentIdDr,
       gradeid: currentIdGr,
       performanceid: currentPerformanceId,
+      colorInteriorId: currentIdCInterior,
     };
 
     const file = new FormData();
@@ -82,6 +87,10 @@ function CarCreate(props) {
   };
   const handleSetColor = (data) => {
     setColor(data);
+  };
+
+  const handleSetColorInterior = (data) => {
+    setColorInterior(data);
   };
   const handleSetAvail = (data) => {
     setAvail(data);
@@ -176,6 +185,23 @@ function CarCreate(props) {
         console.log(error);
       });
   }, []);
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:7831/api/interiorcolors/",
+
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setColorInterior(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <React.Fragment>
       <h1 ref={props.titleRefCarsCreate} className="car-create-container">
@@ -215,6 +241,8 @@ function CarCreate(props) {
               loadFlag={loadFlag}
               loadWFlag={loadWFlag}
               originalDrives={originalDrives}
+              colorsInterior={colorsInterior}
+              setColorInterior={setColorInterior}
             />
 
             <Color
@@ -227,6 +255,17 @@ function CarCreate(props) {
               setCurrentColorId={setCurrentColorId}
             />
 
+            <ColorInterior
+              className="combobox"
+              colorsInterior={colorsInterior}
+              setColorInterior={handleSetColorInterior}
+              currentColorInterior={currentColorInterior}
+              setCurrentColorInterior={setCurrentColorInterior}
+              currentIdCInterior={currentIdCInterior}
+              setCurrentColorIdInterior={setCurrentColorIdInterior}
+              currentIdM={currentIdM}
+              currentIdGr={currentIdGr}
+            />
             <ReleaseYear
               className="date"
               releaseYear={releaseYear}

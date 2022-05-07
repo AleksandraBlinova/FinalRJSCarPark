@@ -86,12 +86,98 @@ const FinalEquipForApplic6 = (props) => {
       });
   }, []);
 
+  const [performance, setPerformance] = useState();
+  const [loadPFlag, setLoadPFlag] = useState(false);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+
+      url: "http://localhost:7831/api/performances/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setPerformance(
+          response.data.find(
+            (item) =>
+              item.id == props.location.params.performance.map((h) => h.id)
+          )
+        );
+        setLoadPFlag(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const [value, setValue] = useState(localStorage.getItem("CurrentUserEmail"));
   const handleChangeInputEmail = (event) => {
     setValue(event.target.value);
   };
 
-  console.log(localStorage.getItem("CurrentUserEmail"));
+  //ПОСЫЛАЕМ НОВУЮ КОНФИГУРАЦИЮ НА СЕРВЕР
+  //ПОСЫЛАЕМ НОВУЮ КОНФИГУРАЦИЮ НА СЕРВЕР
+  //ПОСЫЛАЕМ НОВУЮ КОНФИГУРАЦИЮ НА СЕРВЕР
+
+  const [cars, setCars] = useState([]); //все машины
+  const addCar = (car) => setCars([...cars, car]); // добавить машину ко всем машинам
+
+  useEffect(() => {
+    axios({
+      //оправляем запрос на получение машинок
+      method: "GET",
+      url: "http://localhost:7831/api/cars/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setCars(response.data); //используем метод setCars для подгрузки авто в таблицу
+      })
+      .catch((error) => {
+        console.log(error); // если есть ошибки - выводим
+      });
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const values = {
+      modelid: 1,
+      colorid: props.location.propsSearch.id,
+      colorInteriorId: props.location.component.id,
+      price: props.location.params.cost,
+      releaseYear: 2022,
+      status: "Отдан в производство",
+      //imageUrl: photo,//надо вернуть
+      engineid: props.location.params.engine.engineId,
+      driveid: props.location.params.drive.driveId,
+      gradeid: props.location.params.grade.gradeId,
+      performanceid: performance.id,
+      extraServiceId: props.location.query.id,
+      clientEmail: value,
+    };
+
+    const file = new FormData();
+    // file.append("imageUrl", photo);//надо вернуть
+
+    Object.entries({ ...values }).map(([key, value]) =>
+      file.append(key, value)
+    );
+
+    axios
+      .post(`http://localhost:7831/api/cars/`, file, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        addCar(response.data);
+      })
+      .catch(console.error);
+  };
   return (
     <div>
       <div className="mazda6-options-main-container">
@@ -515,6 +601,7 @@ const FinalEquipForApplic6 = (props) => {
           </List>
         </div>
         <div className="application-sender">
+          <h2>ПЕРСОНАЛЬНЫЕ ДАННЫЕ</h2>
           <div className="user-email-final-applic-6">
             <CustomTextField
               id="outlined-basic"
@@ -544,7 +631,11 @@ const FinalEquipForApplic6 = (props) => {
           </div>
         </div>
         <div className="button-sender-applic-6-container">
-          <BootstrapButton className="className=button-sender-applic-6">
+          <BootstrapButton
+            className="className=button-sender-applic-6"
+            onClick={handleSubmit}
+            type="submit"
+          >
             Отправить заявку
           </BootstrapButton>
         </div>

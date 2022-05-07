@@ -25,58 +25,45 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Color({
-  setColor,
-  colors,
-  setCurrentColor,
-  currentColor,
-  currentIdC,
-  setCurrentColorId,
+function ColorInterior({
+  setColorInterior,
+  colorsInterior,
+  setCurrentColorInterior,
+  currentColorInterior,
+  currentIdCInterior,
+  setCurrentColorIdInterior,
+  currentIdM,
+  currentIdGr,
 }) {
   const classes = useStyles();
 
   const handleChange = (event) => {
-    setCurrentColor(event.target.value);
-    setCurrentColorId(event.target.value);
+    setCurrentColorInterior(event.target.value);
+    setCurrentColorIdInterior(event.target.value);
   };
 
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: "http://localhost:7831/api/colors/",
-
-      headers: {
-        "content-type": "application/json",
-        withCredentials: true,
-      },
-    })
-      .then((response) => {
-        setColor(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-name-label">Цвет экстерьера</InputLabel>
+        <InputLabel id="demo-mutiple-name-label">Цвет интерьера</InputLabel>
         <Select
           labelId="demo-mutiple-name-label"
           id="demo-mutiple-name"
           input={<Input />}
-          value={(currentColor, currentIdC)}
+          value={(currentColorInterior, currentIdCInterior)}
           onChange={handleChange}
         >
-          {colors.map((car, index) => (
-            <MenuItem key={index} value={(car.color1, car.id)}>
-              {car.color1}
-            </MenuItem>
-          ))}
+          {currentIdGr !== "" &&
+            currentIdM !== "" &&
+            colorsInterior.map((car, index) => (
+              <MenuItem key={index} value={(car.colorInterior1, car.id)}>
+                {car.colorInterior1}
+              </MenuItem>
+            ))}
         </Select>
       </FormControl>
     </div>
   );
 }
 
-export default Color;
+export default ColorInterior;

@@ -49,7 +49,7 @@ function CarChange({
 
   useEffect(() => {
     setCar(currentcar);
-
+    console.log(currentcar);
     setCurrentModel(currentcar.model1);
     setCurrentModelId(currentcar.modelid);
     setCurrentColor(currentcar.color1);
@@ -81,7 +81,7 @@ function CarChange({
       performanceid: currentPerformanceId,
       warehouseid: currentIdW,
     };
-
+    console.log("values", values);
     axios
       .put(`http://localhost:7831/api/cars/${currentcar.id}`, values, {
         mode: "cors",

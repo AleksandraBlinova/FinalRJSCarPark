@@ -50,6 +50,8 @@ function Model({
   originalDrives,
   drives,
   setDrives,
+  setColorInterior,
+  colorsInterior,
 }) {
   const classes = useStyles();
   const handleChange = (event) => {
@@ -129,6 +131,15 @@ function Model({
             )
             .map((k) => k.driveId)
       )
+    );
+
+    setColorInterior(
+      colorsInterior
+        .filter(
+          (item) =>
+            item.modelId == currentIdM && item.gradeId == event.target.value
+        )
+        .map((k) => k.colorInterior)
     );
 
     if (

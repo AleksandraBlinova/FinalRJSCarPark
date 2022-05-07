@@ -170,9 +170,25 @@ const DialogDetailedCar = (props) => {
                 fontWeight: "400",
               }}
             >
-              Цвет:&nbsp;&nbsp;
+              Цвет экстерьера:&nbsp;&nbsp;
             </Typography>
             <h5> {props.carForEditColor}</h5>
+          </ListItem>
+
+          <Divider />
+          <ListItem>
+            <Typography
+              sx={{
+                fontSize: "18px",
+                color: "#4E4E50",
+                fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                paddingBottom: "5px",
+                fontWeight: "400",
+              }}
+            >
+              Цвет интерьера:&nbsp;&nbsp;
+            </Typography>
+            <h5> {props.carForEditColorInterior}</h5>
           </ListItem>
           <Divider />
           <ListItem>

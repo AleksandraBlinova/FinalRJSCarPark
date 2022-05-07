@@ -11,8 +11,10 @@
     display: block; 
     max-width: 350px;
     padding-bottom: 80px;
+   
 }
 
+.application-sender>h2{ text-align: center; padding-bottom: 30px;}
 
 .button-sender-applic-6-container{
     padding-bottom: 80px;

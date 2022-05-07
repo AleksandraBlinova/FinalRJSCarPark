@@ -75,11 +75,6 @@ const MazdaDealer = () => {
       });
   }, []);
 
-  console.log(
-    warehouses
-      .filter((i) => i.region.regionName == "Москва")
-      .map((point, index) => point)
-  );
   const cities = ["Москва", "Владимир", "Санкт-Петербург"];
 
   const [valueLabel, setValueLabel] = React.useState("Москва");

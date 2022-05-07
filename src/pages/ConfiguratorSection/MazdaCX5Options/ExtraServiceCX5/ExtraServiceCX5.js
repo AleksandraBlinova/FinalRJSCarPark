@@ -30,7 +30,9 @@ const ExtraServiceCX5 = (props) => {
     })
       .then((response) => {
         setExtraServices(
-          response.data.filter((m) => m.modelId == 2).map((e) => e.extraServ)
+          response.data
+            .filter((m) => m.modelId == 2 && m.extraServ.id !== 14)
+            .map((e) => e.extraServ)
         );
         setloadFlagExtraServices(true);
       })

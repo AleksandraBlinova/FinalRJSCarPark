@@ -26,6 +26,7 @@ import { visuallyHidden } from "@mui/utils";
 import axios from "axios";
 import "./Table.css";
 import DialogDetailedCar from "./DialogDetailedCar";
+import { Fab } from "@mui/material";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -88,7 +89,13 @@ const headCells = [
   },
   {
     id: "color",
-    label: "Цвет",
+    label: "Цвет экстерьера",
+    disableSorting: true,
+  },
+
+  {
+    id: "colorInterior",
+    label: "Цвет интерьера",
     disableSorting: true,
   },
   {
@@ -197,6 +204,7 @@ const EnhancedTableToolbar = (props) => {
   const { handleBackClickCarsEdit } = props;
   const { deleteItem } = props;
   const carForEditColor = props.carForEditColor;
+  const carForEditColorInterior = props.carForEditColorInterior;
   const role = props.role;
 
   return (
@@ -237,8 +245,9 @@ const EnhancedTableToolbar = (props) => {
             handleClose={handleClose}
             carForEdit={carForEdit}
             carForEditColor={carForEditColor}
+            carForEditColorInterior={carForEditColorInterior}
           />
-          {role === 2 && (
+          {role == 2 && (
             <>
               <Tooltip title="Edit">
                 <IconButton
@@ -285,6 +294,8 @@ export default function TableCars(props) {
   };
   const [carForEdit, setCarForEdit] = React.useState();
   const [carForEditColor, setCarForEditColor] = React.useState();
+  const [carForEditColorInterior, setCarForEditColorInterior] =
+    React.useState();
   const [carForDelete, setCarForDelete] = React.useState();
 
   const handleSelectAllClick = (event) => {
@@ -317,6 +328,10 @@ export default function TableCars(props) {
     setSelected(newSelected);
     setCarForEdit(row);
     setCarForEditColor(props.colors.find((i) => i.id === row.colorId).color1);
+    setCarForEditColorInterior(
+      props.colorsInterior.find((i) => i.id === row.colorInteriorId)
+        .colorInterior1
+    );
 
     setCarForDelete(row.id);
   };
@@ -346,6 +361,7 @@ export default function TableCars(props) {
         numSelected={selected.length}
         carForEdit={carForEdit}
         carForEditColor={carForEditColor}
+        carForEditColorInterior={carForEditColorInterior}
         carForDelete={carForDelete}
         editCar={props.editCar}
         handleBackClickCarsEdit={props.handleBackClickCarsEdit}
@@ -425,6 +441,36 @@ export default function TableCars(props) {
                     {props.colorFlag === true && (
                       <TableCell align="center">
                         {props.colors.find((i) => i.id === row.colorId).color1}
+                        <div>
+                          <Fab
+                            size="small"
+                            style={{
+                              background: props.colors.find(
+                                (i) => i.id === row.colorId
+                              ).colorView,
+                            }}
+                          />
+                        </div>
+                      </TableCell>
+                    )}
+
+                    {props.colorInFlag === true && (
+                      <TableCell align="center">
+                        {
+                          props.colorsInterior.find(
+                            (i) => i.id === row.colorInteriorId
+                          ).colorInterior1
+                        }
+                        <div>
+                          <Fab
+                            size="small"
+                            style={{
+                              background: props.colorsInterior.find(
+                                (i) => i.id === row.colorInteriorId
+                              ).colorInteriorView,
+                            }}
+                          />
+                        </div>
                       </TableCell>
                     )}
 

@@ -75,7 +75,9 @@ const Car = ({
   const [loading, setLoading] = useState(false); //устанавливаем false для загрузочной полосы
   const [search, setSearch] = useState(""); //для поиска по машинкам
   const [colors, setColors] = useState();
+  const [colorsInterior, setColorsInterior] = useState();
   const [colorFlag, setColorFlag] = useState(false);
+  const [colorInFlag, setColorInFlag] = useState(false);
   useEffect(() => {
     setLoading(true); //устанавливаем true для загрузочной полосы
     axios({
@@ -107,10 +109,26 @@ const Car = ({
       },
     })
       .then((response) => {
-        //setColor(cars.find((item) => item.colorId === response.data.id));
-
         setColors(response.data);
         setColorFlag(true);
+      })
+      .catch((error) => {
+        console.log(error); // если есть ошибки - выводим
+      });
+  }, []);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:7831/api/colorsinterior/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setColorsInterior(response.data);
+        setColorInFlag(true);
       })
       .catch((error) => {
         console.log(error); // если есть ошибки - выводим
@@ -157,14 +175,15 @@ const Car = ({
           search={search}
           handleChangeSearch={(value) => setSearch(value)}
         />
-
-        <ColorButtonCar
-          onClick={(e) => {
-            handleBackClickCarsCreate();
-          }}
-        >
-          Добавить авто
-        </ColorButtonCar>
+        {role == 2 && (
+          <ColorButtonCar
+            onClick={(e) => {
+              handleBackClickCarsCreate();
+            }}
+          >
+            Добавить авто
+          </ColorButtonCar>
+        )}
       </div>
       <TableCars
         search={search}
@@ -179,6 +198,8 @@ const Car = ({
         titleRefCarsCreateToTable={titleRefCarsCreateToTable}
         titleRefCarsEditToTable={titleRefCarsEditToTable}
         colorFlag={colorFlag}
+        colorInFlag={colorInFlag}
+        colorsInterior={colorsInterior}
       />
     </React.Fragment>
   );

@@ -43,7 +43,6 @@ function Navbar(props) {
       .catch(console.error);
   };
 
-  console.log(props.role);
   if (!mountedComponent) return <div />;
   return (
     <ThemeProvider theme={themeMode}>

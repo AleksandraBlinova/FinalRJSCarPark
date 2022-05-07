@@ -29,6 +29,8 @@ const Cars = (props) => {
     gradeid: 0,
     drive1: "",
     driveid: 0,
+    colorInteriorId: 0,
+    colorInterior: "",
   };
   const [currentcar, setcurrentCar] = useState(initialFormState); //выбранная тачка
 
@@ -52,6 +54,7 @@ const Cars = (props) => {
       driveid: car.drive.id,
       warehouseid: car.warehouse.id,
       warehouse1: car.warehouse.warehouse1,
+      colorinteriorid: car.colorInteriorId,
     });
   };
 
@@ -98,7 +101,7 @@ const Cars = (props) => {
         titleRefCarsEditToTable={titleRefCarsEditToTable}
         currentcar={currentcar}
       />
-      {props.role === 2 && (
+      {props.role == 2 && (
         <CarCreate
           cars={cars}
           setCars={setCars}
@@ -107,7 +110,7 @@ const Cars = (props) => {
           handleBackClickCarsCreateToTable={handleBackClickCarsCreateToTable}
         />
       )}
-      {props.role === 2 && (
+      {props.role == 2 && (
         <CarChange
           cars={cars}
           editCar={updateCar}
