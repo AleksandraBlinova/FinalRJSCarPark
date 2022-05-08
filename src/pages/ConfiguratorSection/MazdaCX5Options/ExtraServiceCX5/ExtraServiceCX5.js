@@ -77,6 +77,7 @@ const ExtraServiceCX5 = (props) => {
                   e={e}
                   handleChangeChosenService={handleChangeChosenService}
                   handleClick={handleClick}
+                  key={e.id}
                 />
               ))}
           </div>

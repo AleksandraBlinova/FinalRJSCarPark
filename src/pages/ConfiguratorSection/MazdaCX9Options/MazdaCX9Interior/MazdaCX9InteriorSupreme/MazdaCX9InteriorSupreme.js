@@ -95,7 +95,11 @@ const MazdaCX9InteriorSupreme = (props) => {
             <div className="colorsForPanelliumMazdacx9-container-supreme">
               {interiorColorChosenLOADFLAG &&
                 interiorColorChosen.map((i) => (
-                  <Tooltip title={i.colorInterior1} placement="bottom">
+                  <Tooltip
+                    title={i.colorInterior1}
+                    placement="bottom"
+                    key={i.id}
+                  >
                     <FabButton
                       size="medium"
                       style={{

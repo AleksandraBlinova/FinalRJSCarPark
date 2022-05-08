@@ -78,6 +78,15 @@ const Car = ({
   const [colorsInterior, setColorsInterior] = useState();
   const [colorFlag, setColorFlag] = useState(false);
   const [colorInFlag, setColorInFlag] = useState(false);
+
+  const [gmedpOfCars, setGMEDPOfCars] = useState();
+  const [GMEDPOfCarsFlag, setGMEDPOfCarsFlag] = useState(false);
+
+  const [drivesOfCars, setDrivesOfCars] = useState();
+  const [DOfCarsFlag, setDOfCarsFlag] = useState(false);
+
+  const [warehousessOfCars, setWarehousesOfCars] = useState();
+  const [WOfCarsFlag, setWOfCarsFlag] = useState(false);
   useEffect(() => {
     setLoading(true); //устанавливаем true для загрузочной полосы
     axios({
@@ -90,12 +99,70 @@ const Car = ({
       },
     })
       .then((response) => {
-        setCars(response.data); //используем метод setCars для подгрузки авто в таблицу
+        setCars(
+          response.data.filter((i) => i.status !== "Отдан в производство")
+        );
+
+        //используем метод setCars для подгрузки авто в таблицу
         setLoading(false); //устанавливаем false для загрузочной полосы (она больше не нужна)
       })
       .catch((error) => {
         console.log(error); // если есть ошибки - выводим
         setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:7831/api/gmed/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setGMEDPOfCars(response.data);
+        setGMEDPOfCarsFlag(true);
+      })
+      .catch((error) => {
+        console.log(error); // если есть ошибки - выводим
+      });
+  }, []);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:7831/api/drives/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setDrivesOfCars(response.data);
+        setDOfCarsFlag(true);
+      })
+      .catch((error) => {
+        console.log(error); // если есть ошибки - выводим
+      });
+  }, []);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:7831/api/warehouses/",
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setWarehousesOfCars(response.data);
+        setWOfCarsFlag(true);
+      })
+      .catch((error) => {
+        console.log(error); // если есть ошибки - выводим
       });
   }, []);
 
@@ -200,6 +267,12 @@ const Car = ({
         colorFlag={colorFlag}
         colorInFlag={colorInFlag}
         colorsInterior={colorsInterior}
+        gmedpOfCars={gmedpOfCars}
+        GMEDPOfCarsFlag={GMEDPOfCarsFlag}
+        DOfCarsFlag={DOfCarsFlag}
+        drivesOfCars={drivesOfCars}
+        warehousessOfCars={warehousessOfCars}
+        WOfCarsFlag={WOfCarsFlag}
       />
     </React.Fragment>
   );

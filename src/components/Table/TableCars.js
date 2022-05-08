@@ -206,6 +206,11 @@ const EnhancedTableToolbar = (props) => {
   const carForEditColor = props.carForEditColor;
   const carForEditColorInterior = props.carForEditColorInterior;
   const role = props.role;
+  const carForEditModel = props.carForEditModel;
+  const carForEditEngine = props.carForEditEngine;
+  const carForEditGrade = props.carForEditGrade;
+  const carForEditDrive = props.carForEditDrive;
+  const carForEditWarehouse = props.carForEditWarehouse;
 
   return (
     <Toolbar
@@ -246,13 +251,25 @@ const EnhancedTableToolbar = (props) => {
             carForEdit={carForEdit}
             carForEditColor={carForEditColor}
             carForEditColorInterior={carForEditColorInterior}
+            carForEditModel={carForEditModel}
+            carForEditEngine={carForEditEngine}
+            carForEditGrade={carForEditGrade}
+            carForEditDrive={carForEditDrive}
+            carForEditWarehouse={carForEditWarehouse}
           />
           {role == 2 && (
             <>
               <Tooltip title="Edit">
                 <IconButton
                   onClick={() => {
-                    editCar(carForEdit);
+                    editCar(
+                      carForEdit,
+                      carForEditModel,
+                      carForEditEngine,
+                      carForEditGrade,
+                      carForEditDrive,
+                      carForEditWarehouse
+                    );
                     handleBackClickCarsEdit();
                   }}
                 >
@@ -287,6 +304,7 @@ export default function TableCars(props) {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -296,8 +314,13 @@ export default function TableCars(props) {
   const [carForEditColor, setCarForEditColor] = React.useState();
   const [carForEditColorInterior, setCarForEditColorInterior] =
     React.useState();
-  const [carForDelete, setCarForDelete] = React.useState();
 
+  const [carForEditModel, setCarForEditModel] = React.useState();
+  const [carForEditEngine, setCarForEditEngine] = React.useState();
+  const [carForEditGrade, setCarForEditGrade] = React.useState();
+  const [carForEditDrive, setCarForEditDrive] = React.useState();
+  const [carForEditWarehouse, setCarForEditWarehouse] = React.useState();
+  const [carForDelete, setCarForDelete] = React.useState();
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
       const newSelecteds = props.data.map((n) => n.id);
@@ -328,6 +351,23 @@ export default function TableCars(props) {
     setSelected(newSelected);
     setCarForEdit(row);
     setCarForEditColor(props.colors.find((i) => i.id === row.colorId).color1);
+    setCarForEditModel(
+      props.gmedpOfCars.find((i) => i.modelId == row.modelId).model.model1
+    );
+
+    setCarForEditEngine(
+      props.gmedpOfCars.find((i) => i.engineId == row.engineId).engine.engine1
+    );
+    setCarForEditGrade(
+      props.gmedpOfCars.find((i) => i.gradeId == row.gradeId).grade.grade1
+    );
+    setCarForEditDrive(
+      props.drivesOfCars.find((i) => i.id == row.driveId).drive1
+    );
+
+    setCarForEditWarehouse(
+      props.warehousessOfCars.find((i) => i.id == row.warehouseId)
+    );
     setCarForEditColorInterior(
       props.colorsInterior.find((i) => i.id === row.colorInteriorId)
         .colorInterior1
@@ -367,6 +407,11 @@ export default function TableCars(props) {
         handleBackClickCarsEdit={props.handleBackClickCarsEdit}
         deleteItem={props.deleteItem}
         role={props.role}
+        carForEditModel={carForEditModel}
+        carForEditEngine={carForEditEngine}
+        carForEditGrade={carForEditGrade}
+        carForEditDrive={carForEditDrive}
+        carForEditWarehouse={carForEditWarehouse}
       />
       <TableContainer ref={props.titleRefCarsCreateToTable}>
         <Table aria-labelledby="tableTitle" size={dense ? "small" : "medium"}>
@@ -384,19 +429,8 @@ export default function TableCars(props) {
               .filter(
                 (i) =>
                   i.price.toString().indexOf(props.search) !== -1 ||
-                  i.model.model1.toLocaleLowerCase().indexOf(props.search) !==
-                    -1 ||
                   i.status.toLocaleLowerCase().indexOf(props.search) !== -1 ||
-                  i.releaseYear.toString().indexOf(props.search) !== -1 ||
-                  i.grade.grade1.toLocaleLowerCase().indexOf(props.search) !==
-                    -1 ||
-                  i.engine.engine1.toLocaleLowerCase().indexOf(props.search) !==
-                    -1 ||
-                  i.drive.drive1.toLocaleLowerCase().indexOf(props.search) !==
-                    -1 ||
-                  i.warehouse.warehouse1
-                    .toLocaleLowerCase()
-                    .indexOf(props.search) !== -1
+                  i.releaseYear.toString().indexOf(props.search) !== -1
               )
               .map((row, index) => {
                 const isItemSelected = isSelected(row.id);
@@ -434,10 +468,41 @@ export default function TableCars(props) {
                     <TableCell align="center">
                       <img src={row.imageUrl} />
                     </TableCell>
-                    <TableCell align="center">{row.model.model1}</TableCell>
-                    <TableCell align="center">{row.grade.grade1}</TableCell>
-                    <TableCell align="center">{row.engine.engine1}</TableCell>
-                    <TableCell align="center"> {row.drive.drive1}</TableCell>
+                    {props.GMEDPOfCarsFlag === true && (
+                      <TableCell align="center">
+                        {
+                          props.gmedpOfCars.find(
+                            (i) => i.modelId == row.modelId
+                          ).model.model1
+                        }
+                      </TableCell>
+                    )}
+                    {props.GMEDPOfCarsFlag === true && (
+                      <TableCell align="center">
+                        {
+                          props.gmedpOfCars.find(
+                            (i) => i.engineId == row.engineId
+                          ).engine.engine1
+                        }
+                      </TableCell>
+                    )}
+                    {props.GMEDPOfCarsFlag === true && (
+                      <TableCell align="center">
+                        {
+                          props.gmedpOfCars.find(
+                            (i) => i.gradeId == row.gradeId
+                          ).grade.grade1
+                        }
+                      </TableCell>
+                    )}
+                    {props.DOfCarsFlag == true && (
+                      <TableCell align="center">
+                        {
+                          props.drivesOfCars.find((i) => i.id == row.driveId)
+                            .drive1
+                        }
+                      </TableCell>
+                    )}
                     {props.colorFlag === true && (
                       <TableCell align="center">
                         {props.colors.find((i) => i.id === row.colorId).color1}
@@ -476,9 +541,16 @@ export default function TableCars(props) {
 
                     <TableCell align="center">{row.price}</TableCell>
                     <TableCell align="center">{row.releaseYear}</TableCell>
-                    <TableCell align="center">
-                      {row.warehouse.warehouse1}
-                    </TableCell>
+
+                    {props.WOfCarsFlag == true && (
+                      <TableCell align="center">
+                        {
+                          props.warehousessOfCars.find(
+                            (i) => i.id == row.warehouseId
+                          ).warehouse1
+                        }
+                      </TableCell>
+                    )}
 
                     <TableCell align="center">{row.status}</TableCell>
                   </TableRow>
@@ -487,7 +559,7 @@ export default function TableCars(props) {
             {emptyRows > 0 && (
               <TableRow
                 style={{
-                  height: (dense ? 33 : 53) * emptyRows,
+                  height: (dense ? 5 : 5) * emptyRows,
                 }}
               >
                 <TableCell colSpan={6} />

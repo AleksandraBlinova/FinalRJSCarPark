@@ -106,6 +106,7 @@ const Mazda6Exterior = (props) => {
               <Tooltip
                 title={"+" + color.colorExtraCost + " " + color.color1}
                 placement="top"
+                key={color.id}
               >
                 <FabButton
                   size="small"

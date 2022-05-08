@@ -14,6 +14,8 @@ function CarChange({
   editCar,
   titleRefCarsEdit,
   handleBackClickCarsEditToTable,
+  setCurrentPerformanceId,
+  currentPerformanceId,
 }) {
   const [models, setModel] = useState([]);
 
@@ -34,7 +36,7 @@ function CarChange({
   const [drives, setDrives] = useState(); //new
   const [currentGrade, setCurrentGrade] = useState(""); //new
   const [currentIdGr, setCurrentGradeId] = useState(""); //new
-  const [currentPerformanceId, setCurrentPerformanceId] = useState(""); //new
+
   const [loadWFlag, setLoadWFlag] = useState(false);
   const [originalDrives, setOriginalDrives] = useState(""); //new
   const [currentDrive, setCurrentDrive] = useState(""); //new
@@ -49,7 +51,6 @@ function CarChange({
 
   useEffect(() => {
     setCar(currentcar);
-    console.log(currentcar);
     setCurrentModel(currentcar.model1);
     setCurrentModelId(currentcar.modelid);
     setCurrentColor(currentcar.color1);
@@ -65,6 +66,7 @@ function CarChange({
     setCurrentDriveId(currentcar.driveid);
     setCurrentWarehouse(currentcar.warehouse1);
     setCurrentWarehouseId(currentcar.warehouseid);
+    setCurrentPerformanceId(currentcar.performanceid);
   }, [currentcar]);
 
   const handleSubmit = (e) => {
@@ -86,6 +88,8 @@ function CarChange({
       .put(`http://localhost:7831/api/cars/${currentcar.id}`, values, {
         mode: "cors",
         credentials: "include",
+        withCredentials: true,
+        "content-type": "application/json",
       })
       .then((response) => {
         const carForedit = {
@@ -98,7 +102,6 @@ function CarChange({
           grade: { grade1: currentGrade },
           drive: { drive1: currentDrive },
           warehouse: { warehouse1: currentWarehouse },
-
           engineid: values.engineid,
           gradeid: values.gradeid,
           driveid: values.driveid,

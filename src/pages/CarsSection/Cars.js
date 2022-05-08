@@ -31,30 +31,33 @@ const Cars = (props) => {
     driveid: 0,
     colorInteriorId: 0,
     colorInterior: "",
+    performanceId: 0,
   };
   const [currentcar, setcurrentCar] = useState(initialFormState); //выбранная тачка
 
-  const editCar = (car) => {
-    //для загрузки в форму редактирования
+  const [currentPerformanceId, setCurrentPerformanceId] = useState(""); //new
 
+  const editCar = (car, model1, engine1, grade1, drive1, warehouse) => {
+    //для загрузки в форму редактирования
+    console.log(car);
     setcurrentCar({
       id: car.id,
       price: car.price,
       releaseYear: car.releaseYear,
-      model1: car.model.model1,
-      //color1: car.color.color1,
-      modelid: car.model.id, //айдишник модели авто (нужно для оправки в серверную часть)
+      modelid: car.modelId, //айдишник модели авто (нужно для оправки в серверную часть)
       colorid: car.colorId, //айдишник цвета авто (нужно для оправки в серверную часть)
       status: car.status,
-      engine1: car.engine.engine1,
-      engineid: car.engine.id,
-      gradeid: car.grade.id,
-      grade1: car.grade.grade1,
-      drive1: car.drive.drive1,
-      driveid: car.drive.id,
-      warehouseid: car.warehouse.id,
-      warehouse1: car.warehouse.warehouse1,
+      engineid: car.engineId,
+      gradeid: car.gradeId,
+      grade1: grade1,
+      drive1: drive1,
+      model1: model1,
+      engine1: engine1,
+      driveid: car.driveId,
+      warehouseid: warehouse.id,
+      warehouse1: warehouse.warehouse1,
       colorinteriorid: car.colorInteriorId,
+      performanceid: car.performanceId,
     });
   };
 
@@ -100,6 +103,8 @@ const Cars = (props) => {
         titleRefCarsCreateToTable={titleRefCarsCreateToTable}
         titleRefCarsEditToTable={titleRefCarsEditToTable}
         currentcar={currentcar}
+        setCurrentPerformanceId={setCurrentPerformanceId}
+        currentPerformanceId={currentPerformanceId}
       />
       {props.role == 2 && (
         <CarCreate
@@ -117,6 +122,8 @@ const Cars = (props) => {
           currentcar={currentcar}
           titleRefCarsEdit={titleRefCarsEdit}
           handleBackClickCarsEditToTable={handleBackClickCarsEditToTable}
+          setCurrentPerformanceId={setCurrentPerformanceId}
+          currentPerformanceId={currentPerformanceId}
         />
       )}
       <NewFooter />

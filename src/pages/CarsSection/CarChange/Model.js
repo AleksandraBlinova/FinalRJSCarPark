@@ -56,8 +56,6 @@ function Model({
   const classes = useStyles();
 
   const handleChange = (event) => {
-    // setCurrentModelId(event.target.value);
-    // setCurrentModel(event.target.value);
     setEngines(
       gmed
         .filter((item) => item.modelId == currentIdM)
@@ -84,8 +82,6 @@ function Model({
   };
 
   const handleChangeEngine = (event) => {
-    // setCurrentEngine(event.target.value);
-    // setCurrentEngineId(event.target.value);
     setGrades(
       gmed
         .filter(
@@ -113,8 +109,6 @@ function Model({
     );
   };
   const handleChangeGrade = (event) => {
-    // setCurrentGrade(event.target.value);
-    // setCurrentGradeId(event.target.value);
     setDrives(
       drives.filter(
         (m) =>
@@ -142,9 +136,6 @@ function Model({
       setDrives(originalDrives);
   };
   const handleChangeDrive = (event) => {
-    // setCurrentDrive(event.target.value);
-    // setCurrentDriveId(event.target.value);
-
     setCurrentPerformanceId(
       gmed
         .filter(

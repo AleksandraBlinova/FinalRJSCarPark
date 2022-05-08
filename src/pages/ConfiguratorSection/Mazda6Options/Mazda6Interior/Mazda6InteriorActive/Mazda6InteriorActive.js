@@ -95,7 +95,11 @@ const Mazda6InteriorActive = (props) => {
             <div className="colorsForPanelliumMazda6-container-active">
               {interiorColorChosenLOADFLAG &&
                 interiorColorChosen.map((i) => (
-                  <Tooltip title={i.colorInterior1} placement="bottom">
+                  <Tooltip
+                    title={i.colorInterior1}
+                    placement="bottom"
+                    key={i.id}
+                  >
                     <FabButton
                       size="medium"
                       style={{

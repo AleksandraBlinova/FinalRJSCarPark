@@ -102,7 +102,7 @@ const DialogDetailedCar = (props) => {
             fontWeight: "600",
           }}
         >
-          Информация об автомобиле Mazda {props.carForEdit.model.model1}
+          Информация об автомобиле Mazda {props.carForEditModel}
         </Typography>
         <List>
           <ListItem>
@@ -141,7 +141,7 @@ const DialogDetailedCar = (props) => {
             >
               Модель:&nbsp;&nbsp;
             </Typography>
-            <h5>{props.carForEdit.model.model1} </h5>
+            <h5>{props.carForEditModel} </h5>
           </ListItem>
 
           <Divider />
@@ -157,7 +157,7 @@ const DialogDetailedCar = (props) => {
             >
               Класс:&nbsp;&nbsp;
             </Typography>
-            <h5>{props.carForEdit.grade.grade1} </h5>
+            <h5>{props.carForEditGrade} </h5>
           </ListItem>
           <Divider />
           <ListItem>
@@ -233,7 +233,7 @@ const DialogDetailedCar = (props) => {
             >
               Склад нахождения автомобиля:&nbsp;&nbsp;
             </Typography>
-            <h5>{props.carForEdit.warehouse.warehouse1} </h5>
+            <h5>{props.carForEditWarehouse.warehouse1} </h5>
           </ListItem>
           <Divider />
           <ListItem>
@@ -248,12 +248,7 @@ const DialogDetailedCar = (props) => {
             >
               Регион нахождения автомобиля:&nbsp;&nbsp;
             </Typography>
-            <h5>
-              {loadRFlag !== false &&
-                regions.find(
-                  (item) => item.id === props.carForEdit.warehouse.regionId
-                ).regionName}
-            </h5>
+            <h5>{props.carForEditWarehouse.region.regionName}</h5>
           </ListItem>
           <Divider />
 
@@ -296,7 +291,7 @@ const DialogDetailedCar = (props) => {
               >
                 Объем двигателя, л:&nbsp;&nbsp;
               </Typography>
-              <h5>{props.carForEdit.engine.engine1} </h5>
+              <h5>{props.carForEditEngine} </h5>
             </ListItem>
             <Divider />
             <ListItem>
@@ -363,7 +358,7 @@ const DialogDetailedCar = (props) => {
               >
                 Привод: &nbsp;&nbsp;
               </Typography>
-              <h5> {props.carForEdit.drive.drive1}</h5>
+              <h5> {props.carForEditDrive}</h5>
             </ListItem>
 
             <Divider />

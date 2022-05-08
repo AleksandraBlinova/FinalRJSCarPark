@@ -93,7 +93,11 @@ const MazdaCX5InteriorDrive = (props) => {
             <div className="colorsForPanelliumMazdacx5-container-drive">
               {interiorColorChosenLOADFLAG &&
                 interiorColorChosen.map((i) => (
-                  <Tooltip title={i.colorInterior1} placement="bottom">
+                  <Tooltip
+                    title={i.colorInterior1}
+                    placement="bottom"
+                    key={i.id}
+                  >
                     <FabButton
                       size="medium"
                       style={{

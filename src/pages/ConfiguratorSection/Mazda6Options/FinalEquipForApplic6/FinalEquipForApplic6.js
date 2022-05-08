@@ -12,6 +12,12 @@ import Fab from "@mui/material/Fab";
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import Collapse from "@mui/material/Collapse";
 
 const CustomTextField = styled(TextField)({
   "& .MuiButtonBase-root": { padding: "0px" },
@@ -59,6 +65,7 @@ const BootstrapButton = styled(Button)({
     color: "#673ab7",
   },
 });
+
 const FinalEquipForApplic6 = (props) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
@@ -118,66 +125,45 @@ const FinalEquipForApplic6 = (props) => {
     setValue(event.target.value);
   };
 
+  const [responseStatus, setResponseStatus] = useState();
+  const [responseStatusFlag, setResponseStatusFlag] = useState(false);
+
   //ПОСЫЛАЕМ НОВУЮ КОНФИГУРАЦИЮ НА СЕРВЕР
   //ПОСЫЛАЕМ НОВУЮ КОНФИГУРАЦИЮ НА СЕРВЕР
   //ПОСЫЛАЕМ НОВУЮ КОНФИГУРАЦИЮ НА СЕРВЕР
+  let extraServiceChosenId;
+  const [open, setOpen] = React.useState(true);
 
-  const [cars, setCars] = useState([]); //все машины
-  const addCar = (car) => setCars([...cars, car]); // добавить машину ко всем машинам
-
-  useEffect(() => {
-    axios({
-      //оправляем запрос на получение машинок
-      method: "GET",
-      url: "http://localhost:7831/api/cars/",
-      headers: {
-        "content-type": "application/json",
-        withCredentials: true,
-      },
-    })
-      .then((response) => {
-        setCars(response.data); //используем метод setCars для подгрузки авто в таблицу
-      })
-      .catch((error) => {
-        console.log(error); // если есть ошибки - выводим
-      });
-  }, []);
-
+  if (props.location.query == undefined) extraServiceChosenId = 14;
+  else extraServiceChosenId = props.location.query.id;
   const handleSubmit = (e) => {
-    e.preventDefault();
-
     const values = {
-      modelid: 1,
-      colorid: props.location.propsSearch.id,
+      modelId: 1,
+      colorId: props.location.propsSearch.id,
       colorInteriorId: props.location.component.id,
       price: props.location.params.cost,
       releaseYear: 2022,
       status: "Отдан в производство",
-      //imageUrl: photo,//надо вернуть
-      engineid: props.location.params.engine.engineId,
-      driveid: props.location.params.drive.driveId,
-      gradeid: props.location.params.grade.gradeId,
-      performanceid: performance.id,
-      extraServiceId: props.location.query.id,
+      engineId: props.location.params.engineId,
+      driveId: props.location.params.driveId,
+      gradeId: props.location.params.gradeId,
+      performanceId: performance.id,
+      extraServiceId: extraServiceChosenId,
       clientEmail: value,
     };
 
-    const file = new FormData();
-    // file.append("imageUrl", photo);//надо вернуть
-
-    Object.entries({ ...values }).map(([key, value]) =>
-      file.append(key, value)
-    );
-
     axios
-      .post(`http://localhost:7831/api/cars/`, file, {
+      .post("http://localhost:7831/api/carconfig/", values, {
         withCredentials: true,
       })
       .then((response) => {
-        addCar(response.data);
+        setResponseStatus(response.status);
+        setResponseStatusFlag(true);
+        setOpen(true);
       })
       .catch(console.error);
   };
+
   return (
     <div>
       <div className="mazda6-options-main-container">
@@ -638,6 +624,32 @@ const FinalEquipForApplic6 = (props) => {
           >
             Отправить заявку
           </BootstrapButton>
+        </div>
+        <div className="response-status">
+          {responseStatusFlag == true && responseStatus == 200 && (
+            <>
+              <Collapse in={open}>
+                <Alert
+                  action={
+                    <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        setOpen(false);
+                      }}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  }
+                  sx={{ mb: 2 }}
+                >
+                  Статус заявки
+                  <AlertTitle>Заявка успешно отправлена!</AlertTitle>
+                </Alert>
+              </Collapse>
+            </>
+          )}
         </div>
       </div>{" "}
       <NewFooter />
