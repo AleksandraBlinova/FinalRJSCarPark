@@ -194,9 +194,13 @@ function Navbar(props) {
             </li>
           )}
 
-          {props.role == 1 && (
+          {props.isLog == true && props.role == 1 && (
             <li className="nav-item">
-              <Link to="#" className="nav-links" onClick={closeMobileMenu}>
+              <Link
+                to="/myconfig"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
                 Мои конфигурации
               </Link>
             </li>
