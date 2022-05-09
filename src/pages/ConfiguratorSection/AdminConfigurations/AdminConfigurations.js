@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "./ClientConfigurations.css";
+import "./AdminConfigurations.css";
 import axios from "axios";
-import TableClientConfig from "./TableClientConfig";
+import TableAdminConfig from "./TableAdminConfig";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
 
-const ClientConfigurations = () => {
-  const [myCarsConfig, setMyCarsConfig] = useState();
+const AdminConfigurations = () => {
+  const [сarsConfig, setCarsConfig] = useState();
 
   const [loading, setLoading] = useState(false); //устанавливаем false для загрузочной полосы
-
-  const [currentEmail, setcurrentEmail] = useState(
-    localStorage.getItem("CurrentUserEmail")
-  );
-
-  const [myCarsConfigFlag, setMyCarsConfigFlag] = useState(false);
+  const [сarsConfigFlag, setCarsConfigFlag] = useState(false);
 
   const [colors, setColors] = useState();
   const [colorsInterior, setColorsInterior] = useState();
@@ -37,10 +32,14 @@ const ClientConfigurations = () => {
       },
     })
       .then((response) => {
-        setMyCarsConfig(
-          response.data.filter((i) => i.clientEmail == currentEmail)
+        setCarsConfig(
+          response.data.filter(
+            (i) =>
+              i.status == "Отдан в производство" ||
+              i.status == "В процессе производства"
+          )
         );
-        setMyCarsConfigFlag(true);
+        setCarsConfigFlag(true);
       })
       .catch((error) => {
         console.log(error); // если есть ошибки - выводим
@@ -121,12 +120,12 @@ const ClientConfigurations = () => {
 
   return (
     <>
-      <div className="client-config-container">
-        <h1 className="h1">Мои конфигурации</h1>
-        {myCarsConfigFlag == true && (
+      <div className="admin-config-container">
+        <h1 className="h1">Конфигурации клиентов</h1>
+        {сarsConfigFlag == true && (
           <div>
-            <TableClientConfig
-              myCarsConfig={myCarsConfig}
+            <TableAdminConfig
+              сarsConfig={сarsConfig}
               colors={colors}
               colorFlag={colorFlag}
               colorInFlag={colorInFlag}
@@ -144,4 +143,4 @@ const ClientConfigurations = () => {
   );
 };
 
-export default ClientConfigurations;
+export default AdminConfigurations;

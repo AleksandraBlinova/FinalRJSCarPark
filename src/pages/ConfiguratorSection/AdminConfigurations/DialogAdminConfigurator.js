@@ -17,7 +17,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const DialogClientConfigurator = (props) => {
+const DialogAdminConfigurator = (props) => {
   const [transms, setTransms] = useState();
   const [loadTFlag, setLoadTFlag] = useState(false);
   useEffect(() => {
@@ -98,6 +98,22 @@ const DialogClientConfigurator = (props) => {
               № автомобиля:&nbsp;&nbsp;
             </Typography>
             <h5> {props.carForEdit.id}</h5>
+          </ListItem>
+
+          <Divider />
+          <ListItem>
+            <Typography
+              sx={{
+                fontSize: "18px",
+                color: "#4E4E50",
+                fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                paddingBottom: "5px",
+                fontWeight: "400",
+              }}
+            >
+              Закреплен за клиентом:&nbsp;&nbsp;
+            </Typography>
+            <h5>{props.carForEdit.clientEmail} </h5>
           </ListItem>
           <Divider />
           <ListItem>
@@ -438,4 +454,4 @@ const DialogClientConfigurator = (props) => {
     </Dialog>
   );
 };
-export default DialogClientConfigurator;
+export default DialogAdminConfigurator;

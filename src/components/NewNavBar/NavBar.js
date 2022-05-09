@@ -188,7 +188,11 @@ function Navbar(props) {
           </li>
           {props.isLog == true && props.role == 2 && (
             <li className="nav-item">
-              <Link to="#" className="nav-links" onClick={closeMobileMenu}>
+              <Link
+                to="/adminconfig"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
                 Конфигурации
               </Link>
             </li>
