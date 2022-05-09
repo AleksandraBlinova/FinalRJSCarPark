@@ -72,6 +72,7 @@ const FinalEquipForApplic6 = (props) => {
     setHover(!hover);
   };
 
+  const [log, setLog] = useState(localStorage.getItem("isLog"));
   const [transms, setTransms] = useState();
   const [loadTFlag, setLoadTFlag] = useState(false);
   useEffect(() => {
@@ -586,71 +587,76 @@ const FinalEquipForApplic6 = (props) => {
             </List>
           </List>
         </div>
-        <div className="application-sender">
-          <h2>ПЕРСОНАЛЬНЫЕ ДАННЫЕ</h2>
-          <div className="user-email-final-applic-6">
-            <CustomTextField
-              id="outlined-basic"
-              label="Email пользователя"
-              variant="outlined"
-              sx={{ width: "40ch" }}
-              onChange={handleChangeInputEmail}
-              value={value}
-              required
-              error={
-                value.length == 0
-                  ? true
-                  : false ||
-                    (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+
+        {log == "true" && (
+          <>
+            <div className="application-sender">
+              <h2>ПЕРСОНАЛЬНЫЕ ДАННЫЕ</h2>
+              <div className="user-email-final-applic-6">
+                <CustomTextField
+                  id="outlined-basic"
+                  label="Email пользователя"
+                  variant="outlined"
+                  sx={{ width: "40ch" }}
+                  onChange={handleChangeInputEmail}
+                  value={value}
+                  required
+                  error={
+                    value.length == 0
                       ? true
-                      : false)
-              }
-              helperText={
-                value.length == 0
-                  ? "Поле обязательно!"
-                  : "" ||
-                    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
-                  ? "Поле заполнено неверно!"
-                  : ""
-              }
-            ></CustomTextField>
-          </div>
-        </div>
-        <div className="button-sender-applic-6-container">
-          <BootstrapButton
-            className="className=button-sender-applic-6"
-            onClick={handleSubmit}
-            type="submit"
-          >
-            Отправить заявку
-          </BootstrapButton>
-        </div>
-        <div className="response-status">
-          {responseStatusFlag == true && responseStatus == 200 && (
-            <>
-              <Collapse in={open}>
-                <Alert
-                  action={
-                    <IconButton
-                      aria-label="close"
-                      color="inherit"
-                      size="small"
-                      onClick={() => {
-                        setOpen(false);
-                      }}
-                    >
-                      <CloseIcon fontSize="inherit" />
-                    </IconButton>
+                      : false ||
+                        (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+                          ? true
+                          : false)
                   }
-                  sx={{ mb: 2 }}
-                >
-                  Статус заявки
-                  <AlertTitle>Заявка успешно отправлена!</AlertTitle>
-                </Alert>
-              </Collapse>
-            </>
-          )}
-        </div>
+                  helperText={
+                    value.length == 0
+                      ? "Поле обязательно!"
+                      : "" ||
+                        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+                      ? "Поле заполнено неверно!"
+                      : ""
+                  }
+                ></CustomTextField>
+              </div>
+            </div>
+            <div className="button-sender-applic-6-container">
+              <BootstrapButton
+                className="className=button-sender-applic-6"
+                onClick={handleSubmit}
+                type="submit"
+              >
+                Отправить заявку
+              </BootstrapButton>
+            </div>
+            <div className="response-status">
+              {responseStatusFlag == true && responseStatus == 200 && (
+                <>
+                  <Collapse in={open}>
+                    <Alert
+                      action={
+                        <IconButton
+                          aria-label="close"
+                          color="inherit"
+                          size="small"
+                          onClick={() => {
+                            setOpen(false);
+                          }}
+                        >
+                          <CloseIcon fontSize="inherit" />
+                        </IconButton>
+                      }
+                      sx={{ mb: 2 }}
+                    >
+                      Статус заявки
+                      <AlertTitle>Заявка успешно отправлена!</AlertTitle>
+                    </Alert>
+                  </Collapse>
+                </>
+              )}
+            </div>
+          </>
+        )}
       </div>{" "}
       <NewFooter />
     </div>

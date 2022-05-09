@@ -9,10 +9,99 @@ import { lightTheme, darkTheme } from "../SwitchTheme/Themes";
 import { useDarkMode } from "../SwitchTheme/useDarkMode";
 import { GlobalStyles } from "../../components/SwitchTheme/GlobalStyles";
 
+import PropTypes from "prop-types";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import Typography from "@mui/material/Typography";
+
 import axios from "axios";
 
 import "./Navbar.css";
 import { ButtonSlideMenu } from "./ButtonSlideMenu";
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  "& .MuiDialogContent-root": {
+    padding: theme.spacing(2),
+  },
+  "& .MuiDialogActions-root": {
+    padding: theme.spacing(1),
+  },
+  "& .MuiIconButton-root": {
+    padding: "0px",
+  },
+}));
+
+const BootstrapButton = styled(Button)({
+  borderColor: "#807e7e",
+  boxShadow: "inset 0 0 0 1.5px #807e7e",
+  textTransform: "none",
+  fontSize: 20,
+  width: "25ch",
+  backgroundColor: "#0063cc",
+  color: "#450505",
+  padding: "15px 22px",
+  border: "0.5px solid",
+  lineHeight: 1.5,
+  borderRadius: "0px",
+  float: "right",
+  textDecoration: "none",
+  fontFamily: [
+    "-apple-system",
+    "BlinkMacSystemFont",
+    '"Segoe UI"',
+    "Roboto",
+    '"Helvetica Neue"',
+    "Arial",
+    "sans-serif",
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(","),
+  "&:hover": {
+    borderColor: "#7e57c2",
+    boxShadow: "inset 0 0 0 2.5px #7e57c2",
+    transition: "all 0.2s",
+    textDecoration: "none",
+    color: "#673ab7",
+  },
+});
+
+const BootstrapLink = styled(Link)({ color: "#000" });
+
+const BootstrapDialogTitle = (props) => {
+  const { children, onClose, ...other } = props;
+
+  return (
+    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+      {children}
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            position: "absolute",
+            float: "right",
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </DialogTitle>
+  );
+};
+
+BootstrapDialogTitle.propTypes = {
+  children: PropTypes.node,
+  onClose: PropTypes.func.isRequired,
+};
 
 function Navbar(props) {
   const [click, setClick] = useState(false);
@@ -41,6 +130,16 @@ function Navbar(props) {
         }
       })
       .catch(console.error);
+  };
+
+  const [openDialogConfig, setOpenDialogConfig] = useState(false);
+
+  const handleSetDialogConfigClose = () => {
+    setOpenDialogConfig(false);
+  };
+
+  const handleSetOpenDialogConfig = () => {
+    setOpenDialogConfig(true);
   };
 
   if (!mountedComponent) return <div />;
@@ -79,11 +178,29 @@ function Navbar(props) {
             <Link
               to="/configurator"
               className="nav-links"
-              onClick={closeMobileMenu}
+              onClick={() => {
+                closeMobileMenu();
+                handleSetOpenDialogConfig(true);
+              }}
             >
               Конфигуратор
             </Link>
           </li>
+          {props.isLog == true && props.role == 2 && (
+            <li className="nav-item">
+              <Link to="#" className="nav-links" onClick={closeMobileMenu}>
+                Конфигурации
+              </Link>
+            </li>
+          )}
+
+          {props.role == 1 && (
+            <li className="nav-item">
+              <Link to="#" className="nav-links" onClick={closeMobileMenu}>
+                Мои конфигурации
+              </Link>
+            </li>
+          )}
           <li>
             {props.isLog == false && props.role == 0 && (
               <Link
@@ -125,6 +242,42 @@ function Navbar(props) {
           </li>
         </ul>
       </nav>
+      {props.role == 0 && props.isLog == false && (
+        <div>
+          <BootstrapDialog
+            onClose={handleSetDialogConfigClose}
+            aria-labelledby="customized-dialog-title"
+            open={openDialogConfig}
+          >
+            <BootstrapDialogTitle
+              id="customized-dialog-title"
+              onClose={handleSetDialogConfigClose}
+            >
+              ИНФОРМАЦИЯ ДЛЯ КЛИЕНТОВ MAZDA
+            </BootstrapDialogTitle>
+            <DialogContent dividers>
+              <Typography
+                sx={{
+                  fontSize: "18px",
+                  color: "black",
+                  fontFamily: "Tahoma, Geneva, Verdana, sans-serif",
+                  paddingBottom: "5px",
+                  fontWeight: "600",
+                }}
+                gutterBottom
+              >
+                Оставить заявку на сформированнную конфигурацию можно только
+                после авторизации!
+              </Typography>
+              <BootstrapLink to="/signin">
+                <BootstrapButton autoFocus onClick={handleSetDialogConfigClose}>
+                  Выполнить авторизацию
+                </BootstrapButton>
+              </BootstrapLink>
+            </DialogContent>
+          </BootstrapDialog>
+        </div>
+      )}
     </ThemeProvider>
   );
 }
