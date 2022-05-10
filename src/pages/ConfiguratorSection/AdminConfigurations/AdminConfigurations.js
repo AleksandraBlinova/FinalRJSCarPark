@@ -21,6 +21,22 @@ const AdminConfigurations = () => {
   const [drivesOfCars, setDrivesOfCars] = useState();
   const [DOfCarsFlag, setDOfCarsFlag] = useState(false);
 
+  // const initialFormState = {
+  //   //для начального отображения для формы добавления авто
+  //   id: null,
+  //   status: "",
+  // };
+  // const [currentCarStatus, setcurrentCarStatus] = useState(initialFormState); //выбранная тачка
+
+  // const editCar = (car) => {
+  //   //для загрузки в форму редактирования
+  //   console.log(car);
+  //   setcurrentCarStatus({
+  //     id: car.id,
+  //     status: car.status,
+  //   });
+  // };
+
   useEffect(() => {
     axios({
       //оправляем запрос на получение машинок
@@ -36,7 +52,8 @@ const AdminConfigurations = () => {
           response.data.filter(
             (i) =>
               i.status == "Отдан в производство" ||
-              i.status == "В процессе производства"
+              i.status == "В процессе производства" ||
+              i.status == "На рассмотрении"
           )
         );
         setCarsConfigFlag(true);
@@ -45,6 +62,17 @@ const AdminConfigurations = () => {
         console.log(error); // если есть ошибки - выводим
       });
   }, []);
+
+  // const updateCar = (car) => {
+  //   //метод обновления таблицы автомобилей
+  //   const index = сarsConfig.findIndex((i) => i.id === car.id); //находим машинку, которую получили (измененную) по индексу
+  //   setCarsConfig([
+  //     ...сarsConfig.slice(0, index),
+  //     Object.assign({}, сarsConfig[index], { ...car }),
+  //     ...сarsConfig.slice(index + 1),
+  //   ]);
+  //   //методом slice возвращаем новый массив, содержащий наши измененные элементы и посылаем его в таблицу всех авто
+  // };
 
   useEffect(() => {
     axios({

@@ -9,6 +9,8 @@ import { lightTheme, darkTheme } from "../SwitchTheme/Themes";
 import { useDarkMode } from "../SwitchTheme/useDarkMode";
 import { GlobalStyles } from "../../components/SwitchTheme/GlobalStyles";
 
+import Badge from "@mui/material/Badge";
+
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";

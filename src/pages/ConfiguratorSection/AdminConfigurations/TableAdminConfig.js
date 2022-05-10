@@ -250,6 +250,20 @@ const EnhancedTableToolbar = (props) => {
             carForEditDrive={carForEditDrive}
             carForEditWarehouse={carForEditWarehouse}
           />
+          {role == 2 && (
+            <>
+              <Tooltip title="Edit">
+                <IconButton
+                // onClick={() => {
+                //   editCar(carForEdit);
+                //   handleBackClickCarsEdit();
+                // }}
+                >
+                  <EditIcon />
+                </IconButton>
+              </Tooltip>
+            </>
+          )}
         </>
       )}
     </Toolbar>

@@ -100,11 +100,13 @@ const Car = ({
     })
       .then((response) => {
         setCars(
-          response.data.filter((i) => i.status !== "Отдан в производство")
+          response.data.filter(
+            (i) =>
+              i.status !== "Отдан в производство" &&
+              i.status !== "В процессе производства" &&
+              i.status !== "На рассмотрении"
+          )
         );
-
-        //используем метод setCars для подгрузки авто в таблицу
-        setLoading(false); //устанавливаем false для загрузочной полосы (она больше не нужна)
       })
       .catch((error) => {
         console.log(error); // если есть ошибки - выводим
@@ -124,6 +126,8 @@ const Car = ({
       .then((response) => {
         setGMEDPOfCars(response.data);
         setGMEDPOfCarsFlag(true);
+        //используем метод setCars для подгрузки авто в таблицу
+        setLoading(false); //устанавливаем false для загрузочной полосы (она больше не нужна)
       })
       .catch((error) => {
         console.log(error); // если есть ошибки - выводим
