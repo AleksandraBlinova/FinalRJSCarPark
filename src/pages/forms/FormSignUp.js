@@ -15,7 +15,7 @@ const Formsignup = ({ submitForm }) => {
         <h1>Регистрация</h1>
         <div className="form-inputs">
           <label htmlFor="username" className="form-label">
-            Имя пользователя
+            Имя пользователя*
           </label>
           <input
             type="text"
@@ -31,7 +31,7 @@ const Formsignup = ({ submitForm }) => {
 
         <div className="form-inputs">
           <label htmlFor="email" className="form-label">
-            Email
+            Email*
           </label>
           <input
             type="email"
@@ -46,7 +46,7 @@ const Formsignup = ({ submitForm }) => {
 
         <div className="form-inputs">
           <label htmlFor="password" className="form-label">
-            Пароль
+            Пароль*
           </label>
           <input
             type="password"
@@ -61,7 +61,7 @@ const Formsignup = ({ submitForm }) => {
 
         <div className="form-inputs">
           <label htmlFor="password2" className="form-label">
-            Подтверждение пароля
+            Подтверждение пароля*
           </label>
           <input
             type="password"
