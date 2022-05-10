@@ -82,7 +82,7 @@ const DialogAdminConfigurator = (props) => {
             fontWeight: "600",
           }}
         >
-          Информация об автомобиле Mazda {props.carForEditModel}
+          Информация об автомобиле Mazda {props.carForEditModel.model1}
         </Typography>
         <List>
           <ListItem>
@@ -128,7 +128,7 @@ const DialogAdminConfigurator = (props) => {
             >
               Модель:&nbsp;&nbsp;
             </Typography>
-            <h5>{props.carForEditModel} </h5>
+            <h5>{props.carForEditModel.model1} </h5>
           </ListItem>
 
           <Divider />
@@ -144,7 +144,7 @@ const DialogAdminConfigurator = (props) => {
             >
               Класс:&nbsp;&nbsp;
             </Typography>
-            <h5>{props.carForEditGrade} </h5>
+            <h5>{props.carForEditGrade.grade1} </h5>
           </ListItem>
           <Divider />
           <ListItem>
@@ -159,7 +159,7 @@ const DialogAdminConfigurator = (props) => {
             >
               Цвет экстерьера:&nbsp;&nbsp;
             </Typography>
-            <h5> {props.carForEditColor}</h5>
+            <h5> {props.carForEditColor.color1}</h5>
           </ListItem>
 
           <Divider />
@@ -175,7 +175,7 @@ const DialogAdminConfigurator = (props) => {
             >
               Цвет интерьера:&nbsp;&nbsp;
             </Typography>
-            <h5> {props.carForEditColorInterior}</h5>
+            <h5> {props.carForEditColorInterior.colorInterior1}</h5>
           </ListItem>
           <Divider />
           <ListItem>
@@ -249,7 +249,7 @@ const DialogAdminConfigurator = (props) => {
               >
                 Объем двигателя, л:&nbsp;&nbsp;
               </Typography>
-              <h5>{props.carForEditEngine} </h5>
+              <h5>{props.carForEditEngine.engine1} </h5>
             </ListItem>
             <Divider />
             <ListItem>
@@ -316,7 +316,7 @@ const DialogAdminConfigurator = (props) => {
               >
                 Привод: &nbsp;&nbsp;
               </Typography>
-              <h5> {props.carForEditDrive}</h5>
+              <h5> {props.carForEditDrive.drive1}</h5>
             </ListItem>
 
             <Divider />

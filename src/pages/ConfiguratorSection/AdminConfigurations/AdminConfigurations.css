@@ -3,3 +3,26 @@
     margin: 0 auto;
     padding: 30px 30px;
 }
+
+.admin-configs-h1 {
+    padding-top: 7rem;
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .admin-configs-change {
+    margin-bottom: 50px;
+  }
+
+  .admin-configs-form-container {
+    width: 600px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+    height: 250px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px auto;
+    color: rgb(12, 11, 11);
+    top: 50%;
+    background: rgba(119, 111, 111, 0.1);
+  }

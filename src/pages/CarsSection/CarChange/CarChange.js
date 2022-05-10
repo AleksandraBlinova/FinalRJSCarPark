@@ -251,7 +251,7 @@ function CarChange({
   return (
     <React.Fragment>
       <h1 ref={titleRefCarsEdit} className="car-change-container">
-        Редактирование авто
+        Редактирование автомобиля
       </h1>
       <div className="car-change">
         <form className="form-container2" onSubmit={handleSubmit}>

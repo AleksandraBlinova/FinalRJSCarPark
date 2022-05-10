@@ -193,8 +193,8 @@ const EnhancedTableToolbar = (props) => {
 
   const carForEdit = props.carForEdit;
   const carForDelete = props.carForDelete;
-  const { editCar } = props;
-  const { handleBackClickCarsEdit } = props;
+  const editCar = props.editCar;
+  const { handleBackClickCarsEditStatusToTable } = props;
   const { deleteItem } = props;
   const carForEditColor = props.carForEditColor;
   const carForEditColorInterior = props.carForEditColorInterior;
@@ -203,8 +203,8 @@ const EnhancedTableToolbar = (props) => {
   const carForEditEngine = props.carForEditEngine;
   const carForEditGrade = props.carForEditGrade;
   const carForEditDrive = props.carForEditDrive;
-  const carForEditWarehouse = props.carForEditWarehouse;
 
+  console.log(carForEdit);
   return (
     <Toolbar
       sx={{
@@ -248,15 +248,22 @@ const EnhancedTableToolbar = (props) => {
             carForEditEngine={carForEditEngine}
             carForEditGrade={carForEditGrade}
             carForEditDrive={carForEditDrive}
-            carForEditWarehouse={carForEditWarehouse}
           />
 
           <Tooltip title="Изменить">
             <IconButton
-            // onClick={() => {
-            //   editCar(carForEdit);
-            //   handleBackClickCarsEdit();
-            // }}
+              onClick={() => {
+                editCar(
+                  carForEdit,
+                  carForEditColor,
+                  carForEditColorInterior,
+                  carForEditModel,
+                  carForEditEngine,
+                  carForEditGrade,
+                  carForEditDrive
+                );
+                handleBackClickCarsEditStatusToTable();
+              }}
             >
               <EditIcon />
             </IconButton>
@@ -324,24 +331,21 @@ export default function TableAdminConfig(props) {
 
     setSelected(newSelected);
     setCarForEdit(row);
-    setCarForEditColor(props.colors.find((i) => i.id === row.colorId).color1);
+    setCarForEditColor(props.colors.find((i) => i.id === row.colorId));
     setCarForEditModel(
-      props.gmedpOfCars.find((i) => i.modelId == row.modelId).model.model1
+      props.gmedpOfCars.find((i) => i.modelId == row.modelId).model
     );
 
     setCarForEditEngine(
-      props.gmedpOfCars.find((i) => i.engineId == row.engineId).engine.engine1
+      props.gmedpOfCars.find((i) => i.engineId == row.engineId).engine
     );
     setCarForEditGrade(
-      props.gmedpOfCars.find((i) => i.gradeId == row.gradeId).grade.grade1
+      props.gmedpOfCars.find((i) => i.gradeId == row.gradeId).grade
     );
-    setCarForEditDrive(
-      props.drivesOfCars.find((i) => i.id == row.driveId).drive1
-    );
+    setCarForEditDrive(props.drivesOfCars.find((i) => i.id == row.driveId));
 
     setCarForEditColorInterior(
       props.colorsInterior.find((i) => i.id === row.colorInteriorId)
-        .colorInterior1
     );
 
     setCarForDelete(row.id);
@@ -380,6 +384,10 @@ export default function TableAdminConfig(props) {
         carForEditEngine={carForEditEngine}
         carForEditGrade={carForEditGrade}
         carForEditDrive={carForEditDrive}
+        editCar={props.editCar}
+        handleBackClickCarsEditStatusToTable={
+          props.handleBackClickCarsEditStatusToTable
+        }
       />
       <TableContainer>
         <Table aria-labelledby="tableTitle" size={dense ? "small" : "medium"}>

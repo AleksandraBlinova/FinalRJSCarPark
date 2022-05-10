@@ -33,7 +33,7 @@ const Availability = ({ status, setAvailability }) => {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Доступность</InputLabel>
+        <InputLabel id="demo-simple-select-label">Статус</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
