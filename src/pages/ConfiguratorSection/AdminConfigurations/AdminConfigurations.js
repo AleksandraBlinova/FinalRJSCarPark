@@ -3,6 +3,7 @@ import "./AdminConfigurations.css";
 import axios from "axios";
 import TableAdminConfig from "./TableAdminConfig";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 const AdminConfigurations = () => {
   const [сarsConfig, setCarsConfig] = useState();
@@ -38,6 +39,7 @@ const AdminConfigurations = () => {
   // };
 
   useEffect(() => {
+    setLoading(true); //устанавливаем true для загрузочной полосы
     axios({
       //оправляем запрос на получение машинок
       method: "GET",
@@ -86,6 +88,7 @@ const AdminConfigurations = () => {
       .then((response) => {
         setGMEDPOfCars(response.data);
         setGMEDPOfCarsFlag(true);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error); // если есть ошибки - выводим
@@ -146,10 +149,19 @@ const AdminConfigurations = () => {
       });
   }, []);
 
+  const showLoading = () =>
+    //показать загрузочную полосу (компонент LinearProgress material ui)
+    loading ? (
+      <div>
+        <LinearProgress color="secondary" />
+      </div>
+    ) : null;
+
   return (
     <>
       <div className="admin-config-container">
         <h1 className="h1">Конфигурации клиентов</h1>
+        {showLoading()}
         {сarsConfigFlag == true && (
           <div>
             <TableAdminConfig

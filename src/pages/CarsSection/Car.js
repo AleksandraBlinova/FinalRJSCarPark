@@ -110,7 +110,6 @@ const Car = ({
       })
       .catch((error) => {
         console.log(error); // если есть ошибки - выводим
-        setLoading(false);
       });
   }, []);
 

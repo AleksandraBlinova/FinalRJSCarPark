@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ClientConfigurations.css";
 import axios from "axios";
 import TableClientConfig from "./TableClientConfig";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import { NewFooter } from "../../../components/New Footer/NewFooter";
 
 const ClientConfigurations = () => {
@@ -27,6 +28,7 @@ const ClientConfigurations = () => {
   const [DOfCarsFlag, setDOfCarsFlag] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios({
       //оправляем запрос на получение машинок
       method: "GET",
@@ -59,6 +61,7 @@ const ClientConfigurations = () => {
       .then((response) => {
         setGMEDPOfCars(response.data);
         setGMEDPOfCarsFlag(true);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error); // если есть ошибки - выводим
@@ -118,11 +121,19 @@ const ClientConfigurations = () => {
         console.log(error); // если есть ошибки - выводим
       });
   }, []);
+  const showLoading = () =>
+    //показать загрузочную полосу (компонент LinearProgress material ui)
+    loading ? (
+      <div>
+        <LinearProgress color="secondary" />
+      </div>
+    ) : null;
 
   return (
     <>
       <div className="client-config-container">
         <h1 className="h1">Мои конфигурации</h1>
+        {showLoading()}
         {myCarsConfigFlag == true && (
           <div>
             <TableClientConfig
