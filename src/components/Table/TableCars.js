@@ -235,7 +235,7 @@ const EnhancedTableToolbar = (props) => {
 
       {numSelected === 1 && (
         <>
-          <Tooltip title="Info">
+          <Tooltip title="Информация">
             <IconButton
               onClick={() => {
                 handleClickOpen();
@@ -259,7 +259,7 @@ const EnhancedTableToolbar = (props) => {
           />
           {role == 2 && (
             <>
-              <Tooltip title="Edit">
+              <Tooltip title="Изменить">
                 <IconButton
                   onClick={() => {
                     editCar(
@@ -276,7 +276,7 @@ const EnhancedTableToolbar = (props) => {
                   <EditIcon />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="Delete">
+              <Tooltip title="Удалить">
                 <IconButton
                   onClick={() => {
                     deleteItem(carForDelete);

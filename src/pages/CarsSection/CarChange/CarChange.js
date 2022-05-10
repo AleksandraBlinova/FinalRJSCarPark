@@ -83,7 +83,7 @@ function CarChange({
       performanceid: currentPerformanceId,
       warehouseid: currentIdW,
     };
-    console.log("values", values);
+
     axios
       .put(`http://localhost:7831/api/cars/${currentcar.id}`, values, {
         mode: "cors",

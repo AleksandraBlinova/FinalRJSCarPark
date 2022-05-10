@@ -226,7 +226,7 @@ const EnhancedTableToolbar = (props) => {
 
       {numSelected === 1 && (
         <>
-          <Tooltip title="Info">
+          <Tooltip title="Информация">
             <IconButton
               onClick={() => {
                 handleClickOpen();
