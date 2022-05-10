@@ -99,7 +99,9 @@ const AdminConfigurations = () => {
             (i) =>
               i.status == "Отдан в производство" ||
               i.status == "В процессе производства" ||
-              i.status == "На рассмотрении"
+              i.status == "На рассмотрении" ||
+              i.status == "Произведен" ||
+              i.status == "Ожидает клиента"
           )
         );
         setCarsConfigFlag(true);

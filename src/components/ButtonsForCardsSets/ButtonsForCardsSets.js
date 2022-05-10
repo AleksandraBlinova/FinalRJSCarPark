@@ -11,7 +11,7 @@ const ColorButtonForCardsSet = styled(Link)(({ theme }) => ({
   borderRadius: "3px ",
   width: "120px",
   height: "41px",
-  color: "inherit",
+  color: "#000",
   lineHeight: "1",
   fontSize: "14px",
   fontFamily: "inherit",
