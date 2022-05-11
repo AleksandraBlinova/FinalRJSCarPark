@@ -144,7 +144,7 @@ const FinalEquipForApplic6 = (props) => {
       colorInteriorId: props.location.component.id,
       price: props.location.params.cost,
       releaseYear: 2022,
-      status: "Отдан в производство",
+      status: "На рассмотрении",
       engineId: props.location.params.engineId,
       driveId: props.location.params.driveId,
       gradeId: props.location.params.gradeId,
