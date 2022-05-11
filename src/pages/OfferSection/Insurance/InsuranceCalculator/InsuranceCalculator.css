@@ -1,8 +1,10 @@
 .insurance-calc-start-container {
-  margin-top: 50px;
+  margin : 0 auto;
   align-items: center;
   text-align: center;
   justify-content: center;
+  padding-top: 50px;
+  
 }
 
 .insurance-calc-start-container > h2 {
@@ -15,11 +17,65 @@
   display: grid;
   grid-template-columns: repeat(5, auto);
   grid-gap: 1px;
-  margin-top: 80px;
+  padding-top: 80px;
   justify-items: center;
+  padding-bottom: 40px;
 }
 
 .insurance-calc-region-container > h4 {
   color: #000;
   padding-top: 20px;
 }
+
+.insurance-calc-car-container{
+  
+  padding-top: 40px;
+  justify-items: center;
+  padding-bottom: 40px;
+  display: grid; 
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 2px;
+  
+}
+
+
+.insurance-calc-car-container-h4 {
+  color: #000;
+  padding-top: 40px;
+  justify-items: center;
+  text-align: center;
+}
+
+.insurance-calc-car-container-checkboxes{
+  display: grid; grid-template-columns: repeat(9, auto);
+  grid-gap: 2px;
+  padding-top: 25px;
+}
+
+
+.images-ins{
+  padding-top: 40px;
+}
+
+.images-ins>img{
+  width: 400px;
+}
+
+.images-ins>p{
+ padding-top: 30px;
+  font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgb(119, 117, 117);
+    font-weight: 500;
+}
+
+.images-ins>h4{
+  padding-top: 30px;
+  font-size: 35px;
+  text-transform: uppercase;
+  text-align: center;
+  color:#000;
+  font-weight: 500;
+ }
+

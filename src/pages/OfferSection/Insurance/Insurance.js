@@ -13,15 +13,15 @@ const Insurance = () => {
         <h2>СТРАХОВОЙ КАЛЬКУЛЯТОР</h2>
         <p>Специальные программы Mazda Страхование делают КАСКО доступным.</p>
         <p> Подберите программу, которая подходит именно Вам.</p>
-        <Button
-          href="/insurancecalc"
+        <Link
+          to="/insurancecalc"
           style={{
             borderRadius: "50px",
             whiteSpace: "nowrap",
             outline: "none",
             backgroundColor: "#fff ",
             borderColor: "black",
-            fontSize: "16px",
+            fontSize: "20px",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -33,7 +33,7 @@ const Insurance = () => {
           }}
         >
           Рассчитать страховку
-        </Button>
+        </Link>
       </div>
       <div className="insurance-main-container">
         <h2>КАСКО ДЛЯ ВАШЕЙ MAZDA С ВЫГОДОЙ</h2>
