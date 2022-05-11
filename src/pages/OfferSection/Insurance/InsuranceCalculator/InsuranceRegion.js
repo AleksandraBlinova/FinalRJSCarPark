@@ -20,12 +20,6 @@ const CustomAutocomplete = styled(Autocomplete)({
   },
 });
 const InsuranceRegion = (props) => {
-  const cities = ["Москва", "Владимир", "Санкт-Петербург"];
-
-  const [valueLabel, setValueLabel] = React.useState("Москва");
-
-  const [value, setValue] = React.useState(cities[0]);
-
   return (
     <div className="insurance-calc-region-container">
       <>
@@ -33,15 +27,15 @@ const InsuranceRegion = (props) => {
         <h4>ВАШ РЕГИОН</h4>
         <CustomAutocomplete
           id="controllable-states-demo"
-          options={cities}
+          options={props.cities}
           size="medium"
-          value={value}
+          value={props.value}
           onChange={(event, newValue) => {
-            setValue(newValue);
+            props.setValue(newValue);
           }}
-          inputValue={valueLabel}
+          inputValue={props.valueLabel}
           onInputChange={(event, newInputValue) => {
-            setValueLabel(newInputValue);
+            props.setValueLabel(newInputValue);
           }}
           renderInput={(params) => <TextField {...params} label="Город" />}
         />

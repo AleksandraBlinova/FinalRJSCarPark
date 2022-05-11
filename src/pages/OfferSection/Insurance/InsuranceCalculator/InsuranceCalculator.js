@@ -4,6 +4,7 @@ import { NewFooter } from "../../../../components/New Footer/NewFooter";
 
 import InsuranceRegion from "./InsuranceRegion";
 import InsuranceCar from "./InsuranceCar";
+import InsuranceCards from "./InsuranceCards";
 
 import axios from "axios";
 const InsuranceCalculator = () => {
@@ -27,6 +28,8 @@ const InsuranceCalculator = () => {
 
   const [loadIncDriveFlag, setLoadIncDriveFlag] = useState(false);
 
+  const [currentCost, setCurrentCost] = useState();
+  const [currentCostFlag, setCurrentCostFlag] = useState(false);
   useEffect(() => {
     axios({
       method: "GET",
@@ -93,7 +96,12 @@ const InsuranceCalculator = () => {
       });
   }, []);
 
-  console.log(drivesInsurance);
+  const cities = ["Москва", "Владимир", "Санкт-Петербург"];
+
+  const [valueLabel, setValueLabel] = React.useState("Москва");
+
+  const [value, setValue] = React.useState(cities[0]);
+
   return (
     <>
       <div className="insurance-calc-start-container">
@@ -101,7 +109,13 @@ const InsuranceCalculator = () => {
       </div>
 
       <div className="insurance-calc-choose-car-container">
-        <InsuranceRegion />
+        <InsuranceRegion
+          cities={cities}
+          value={value}
+          setValue={setValue}
+          valueLabel={valueLabel}
+          setValueLabel={setValueLabel}
+        />
         <InsuranceCar
           modelsInsurance={modelsInsurance}
           enginesInsurance={enginesInsurance}
@@ -131,6 +145,17 @@ const InsuranceCalculator = () => {
           setCurrenEngine={setCurrenEngine}
           setCurrenDrive={setCurrenDrive}
           setCurrenGrade={setCurrenGrade}
+          currentCost={currentCost}
+          setCurrentCost={setCurrentCost}
+          currentCostFlag={currentCostFlag}
+          setCurrentCostFlag={setCurrentCostFlag}
+        />
+
+        <InsuranceCards
+          currentCost={currentCost}
+          currentIdM={currentIdM}
+          valueLabel={valueLabel}
+          currentCostFlag={currentCostFlag}
         />
       </div>
       <NewFooter />

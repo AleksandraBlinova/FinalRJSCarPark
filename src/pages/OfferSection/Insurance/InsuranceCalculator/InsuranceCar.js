@@ -50,9 +50,6 @@ const InsuranceCar = (props) => {
     setActiveButt(newValue);
   };
 
-  const [currentCost, setCurrentCost] = useState();
-  const [currentCostFlag, setCurrentCostFlag] = useState(false);
-
   const [curMId, setCurMId] = useState();
   const [curENId, setCurENId] = useState();
   const [curGRId, setCurGRId] = useState();
@@ -66,7 +63,7 @@ const InsuranceCar = (props) => {
     props.setCurrentDriveId("");
     props.setCurrentGradeId("");
     props.setCurrenEngine("");
-    setCurrentCost("");
+    props.setCurrentCost("");
     props.setCurrenGrade("");
     props.setCurrenDrive("");
     props.setEnginesInsurance(
@@ -100,7 +97,7 @@ const InsuranceCar = (props) => {
 
     props.setCurrentDriveId("");
     props.setCurrentGradeId("");
-    setCurrentCost("");
+    props.setCurrentCost("");
     props.setCurrenGrade("");
     props.setCurrenDrive("");
     props.setGradesInsurance(
@@ -133,7 +130,7 @@ const InsuranceCar = (props) => {
     props.setCurrenGrade(event.target.value);
     props.setCurrentGradeId(event.target.value);
     props.setCurrentDriveId("");
-    setCurrentCost("");
+    props.setCurrentCost("");
     props.setCurrenDrive("");
 
     props.setCurrenDrive(
@@ -151,20 +148,6 @@ const InsuranceCar = (props) => {
       )
     );
 
-    console.log(
-      props.drivesInsurance.filter(
-        (m) =>
-          m.id ==
-          props.gmedIns
-            .filter(
-              (i) =>
-                i.modelId == props.currentIdM &&
-                i.engineId == props.currentIdEng &&
-                i.gradeId == event.target.value
-            )
-            .map((k) => k.driveId)
-      )
-    );
     if (
       props.gmedIns
         .filter(
@@ -180,7 +163,7 @@ const InsuranceCar = (props) => {
 
   const handleChangeDrive = (event) => {
     props.setCurrentDriveId(event.target.value);
-    setCurrentCost(
+    props.setCurrentCost(
       props.gmedIns
         .filter(
           (i) =>
@@ -191,9 +174,9 @@ const InsuranceCar = (props) => {
         )
         .map((c) => c.cost)
     );
-    setCurrentCostFlag(true);
+    props.setCurrentCostFlag(true);
   };
-  console.log(props.currentDrive);
+
   return (
     <div>
       <Divider />
@@ -348,8 +331,10 @@ const InsuranceCar = (props) => {
           {activeButt == 3 && <img src={cx9_machinegrey_tm46903} />}
           {activeButt !== 0 && <p>Стоимость конфигурации</p>}
           {activeButt !== 0 &&
-            currentCostFlag !== false &&
-            currentCost.length !== 0 && <h4>{currentCost} &nbsp;&nbsp;₽</h4>}
+            props.currentCostFlag !== false &&
+            props.currentCost.length !== 0 && (
+              <h4>{props.currentCost} &nbsp;&nbsp;₽</h4>
+            )}
         </div>
       </div>
     </div>
