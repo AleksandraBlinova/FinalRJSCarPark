@@ -395,6 +395,7 @@ export default function TableCars(props) {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - props.data.length) : 0;
 
+  console.log(props.data);
   return (
     <div className="container-table ">
       <EnhancedTableToolbar

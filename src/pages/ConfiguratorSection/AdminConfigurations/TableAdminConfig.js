@@ -204,7 +204,6 @@ const EnhancedTableToolbar = (props) => {
   const carForEditGrade = props.carForEditGrade;
   const carForEditDrive = props.carForEditDrive;
 
-  console.log(carForEdit);
   return (
     <Toolbar
       sx={{

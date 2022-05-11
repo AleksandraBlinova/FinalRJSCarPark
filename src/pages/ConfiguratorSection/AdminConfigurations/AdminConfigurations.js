@@ -80,8 +80,6 @@ const AdminConfigurations = () => {
     //методом slice возвращаем новый массив, содержащий наши измененные элементы и посылаем его в таблицу всех авто
   };
 
-  console.log(currentCarStatus);
-
   useEffect(() => {
     setLoading(true); //устанавливаем true для загрузочной полосы
     axios({
