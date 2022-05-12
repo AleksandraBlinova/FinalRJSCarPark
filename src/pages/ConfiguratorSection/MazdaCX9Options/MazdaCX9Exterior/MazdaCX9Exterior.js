@@ -94,7 +94,7 @@ const MazdaCX9Exterior = (props) => {
           {colorFlag == true &&
             colors.map((color) => (
               <Tooltip
-                title={"+" + color.colorExtraCost + " " + color.color1}
+                title={"+" + color.colorExtraCost + "₽" + " " + color.color1}
                 placement="bottom"
                 key={color.id}
               >
