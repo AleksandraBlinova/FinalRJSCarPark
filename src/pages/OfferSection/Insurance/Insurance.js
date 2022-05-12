@@ -54,15 +54,15 @@ const Insurance = () => {
               гарантирует страховое возмещение по основным рискам.
             </p>
 
-            <Button
-              href="/insurancedrive"
+            <Link
+              to="/insurancedrive"
               style={{
                 borderRadius: "50px",
                 whiteSpace: "nowrap",
                 outline: "none",
                 backgroundColor: "#000",
                 borderColor: "black",
-                fontSize: "16px",
+                fontSize: "20px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -75,7 +75,7 @@ const Insurance = () => {
               }}
             >
               Узнать больше
-            </Button>
+            </Link>
           </div>
         </div>
 
@@ -90,15 +90,15 @@ const Insurance = () => {
               автомобиля, не влияет на тариф.
             </p>
 
-            <Button
-              href="/insuranceminidrive"
+            <Link
+              to="/insuranceminidrive"
               style={{
                 borderRadius: "50px",
                 whiteSpace: "nowrap",
                 outline: "none",
                 backgroundColor: "#000",
                 borderColor: "black",
-                fontSize: "16px",
+                fontSize: "20px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -111,7 +111,7 @@ const Insurance = () => {
               }}
             >
               Узнать больше
-            </Button>
+            </Link>
           </div>
           <img src={mazdaminidriveinsurance} />
         </div>
