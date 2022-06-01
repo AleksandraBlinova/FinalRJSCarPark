@@ -20,6 +20,24 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Collapse from "@mui/material/Collapse";
+import SendIcon from "@mui/icons-material/Send";
+import ScreenShareIcon from "@mui/icons-material/ScreenShare";
+import {
+  VKShareButton,
+  VKIcon,
+  TelegramShareButton,
+  WhatsappShareButton,
+  ViberShareButton,
+  OKShareButton,
+  TelegramIcon,
+  WhatsappIcon,
+  OKIcon,
+  ViberIcon,
+  MailruShareButton,
+  EmailShareButton,
+  MailruIcon,
+  EmailIcon,
+} from "react-share";
 
 const CustomTextField = styled(TextField)({
   "& .MuiButtonBase-root": { padding: "0px" },
@@ -72,6 +90,7 @@ const FinalEquipForApplicCX5 = (props) => {
   const onHover = () => {
     setHover(!hover);
   };
+  const mySharedUrl = "http://localhost:3000/configforsocmedia";
 
   const [transms, setTransms] = useState();
   const [loadTFlag, setLoadTFlag] = useState(false);
@@ -584,6 +603,27 @@ const FinalEquipForApplicCX5 = (props) => {
               </ListItem>
             </List>
           </List>
+          <div className="button-share-friend-container-6">
+            <VKShareButton url={mySharedUrl}>
+              <VKIcon size={36} round={true} />
+            </VKShareButton>
+
+            <WhatsappShareButton url={mySharedUrl}>
+              <WhatsappIcon size={36} round={true} />
+            </WhatsappShareButton>
+
+            <OKShareButton url={mySharedUrl}>
+              <OKIcon size={36} round={true} />
+            </OKShareButton>
+
+            <TelegramShareButton url={mySharedUrl}>
+              <TelegramIcon size={36} round={true} />
+            </TelegramShareButton>
+
+            <EmailShareButton url={mySharedUrl}>
+              <EmailIcon size={36} round={true} />
+            </EmailShareButton>
+          </div>
         </div>
         {log == "true" && (
           <>
@@ -622,6 +662,7 @@ const FinalEquipForApplicCX5 = (props) => {
                 className="className=button-sender-applic-cx5"
                 onClick={handleSubmit}
                 type="submit"
+                endIcon={<SendIcon />}
               >
                 Отправить заявку
               </BootstrapButton>

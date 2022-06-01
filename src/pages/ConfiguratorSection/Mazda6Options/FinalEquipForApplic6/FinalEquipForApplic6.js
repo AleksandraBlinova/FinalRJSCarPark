@@ -18,6 +18,24 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Collapse from "@mui/material/Collapse";
+import SendIcon from "@mui/icons-material/Send";
+import ScreenShareIcon from "@mui/icons-material/ScreenShare";
+import {
+  VKShareButton,
+  VKIcon,
+  TelegramShareButton,
+  WhatsappShareButton,
+  ViberShareButton,
+  OKShareButton,
+  TelegramIcon,
+  WhatsappIcon,
+  OKIcon,
+  ViberIcon,
+  MailruShareButton,
+  EmailShareButton,
+  MailruIcon,
+  EmailIcon,
+} from "react-share";
 
 const CustomTextField = styled(TextField)({
   "& .MuiButtonBase-root": { padding: "0px" },
@@ -75,6 +93,8 @@ const FinalEquipForApplic6 = (props) => {
   const [log, setLog] = useState(localStorage.getItem("isLog"));
   const [transms, setTransms] = useState();
   const [loadTFlag, setLoadTFlag] = useState(false);
+
+  const mySharedUrl = "http://localhost:3000/configforsocmedia";
   useEffect(() => {
     axios({
       method: "GET",
@@ -586,6 +606,27 @@ const FinalEquipForApplic6 = (props) => {
               </ListItem>
             </List>
           </List>
+          <div className="button-share-friend-container-6">
+            <VKShareButton url={mySharedUrl}>
+              <VKIcon size={36} round={true} />
+            </VKShareButton>
+
+            <WhatsappShareButton url={mySharedUrl}>
+              <WhatsappIcon size={36} round={true} />
+            </WhatsappShareButton>
+
+            <OKShareButton url={mySharedUrl}>
+              <OKIcon size={36} round={true} />
+            </OKShareButton>
+
+            <TelegramShareButton url={mySharedUrl}>
+              <TelegramIcon size={36} round={true} />
+            </TelegramShareButton>
+
+            <EmailShareButton url={mySharedUrl}>
+              <EmailIcon size={36} round={true} />
+            </EmailShareButton>
+          </div>
         </div>
 
         {log == "true" && (
@@ -620,11 +661,13 @@ const FinalEquipForApplic6 = (props) => {
                 ></CustomTextField>
               </div>
             </div>
+
             <div className="button-sender-applic-6-container">
               <BootstrapButton
                 className="className=button-sender-applic-6"
                 onClick={handleSubmit}
                 type="submit"
+                endIcon={<SendIcon />}
               >
                 Отправить заявку
               </BootstrapButton>

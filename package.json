@@ -53,6 +53,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "react-scroll": "^1.8.4",
+    "react-share": "^4.4.0",
     "react-sprite-animator": "^2.0.2",
     "react-spritesheet": "^1.0.1",
     "react-theme-switch": "^0.1.7",

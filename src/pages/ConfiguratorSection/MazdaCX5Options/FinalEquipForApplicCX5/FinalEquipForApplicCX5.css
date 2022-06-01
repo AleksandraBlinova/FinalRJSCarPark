@@ -3,6 +3,7 @@
     margin: 0 auto;
     display: block;
     padding-top: 60px;
+    height: 190vh;
 }
 
 .application-sender-cx5{
@@ -12,7 +13,11 @@
     max-width: 350px;
     padding-bottom: 80px;
 }
-
+.button-share-friend-container-6{
+    padding-top: 50px;
+    padding-bottom: 10px;
+    float: right;
+}
 
 .button-sender-applic-cx5-container{
     padding-bottom: 80px;

@@ -3,6 +3,7 @@
     margin: 0 auto;
     display: block;
     padding-top: 60px;
+    height: 190vh;
 }
 
 .application-sender-cx9{
@@ -13,6 +14,11 @@
     padding-bottom: 80px;
 }
 
+.button-share-friend-container-6{
+    padding-top: 50px;
+    padding-bottom: 10px;
+    float: right;
+}
 
 
 .button-sender-applic-cx9-container{

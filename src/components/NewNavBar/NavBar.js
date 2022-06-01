@@ -188,6 +188,19 @@ function Navbar(props) {
               Конфигуратор
             </Link>
           </li>
+
+          <li className="nav-item">
+            <Link
+              to="/configforsocmedia"
+              className="nav-links"
+              onClick={() => {
+                closeMobileMenu();
+                handleSetOpenDialogConfig(true);
+              }}
+            >
+              Другу
+            </Link>
+          </li>
           {props.isLog == true && props.role == 2 && (
             <li className="nav-item">
               <Link
