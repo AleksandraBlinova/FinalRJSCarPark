@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useParams } from "react";
 import { Link } from "react-router-dom";
 import { NewFooter } from "../../components/New Footer/NewFooter";
 import ListItem from "@mui/material/ListItem";
@@ -6,25 +6,16 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import Fab from "@mui/material/Fab";
-import TextField from "@mui/material/TextField";
-import { styled } from "@mui/material/styles";
-import { Button } from "@mui/material";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
-import Collapse from "@mui/material/Collapse";
-import { MdArrowBack } from "react-icons/md";
 import axios from "axios";
 import "./ConfigForSocMedia.css";
 
 const ConfigForSocMedia = (props) => {
   const [clientConfig, setClientConfig] = useState();
   const [clientConfigFlag, setClientConfigFlag] = useState(false);
-  const [clientConfigGuid, setClientConfigGuid] = useState(
-    "56648260-754f-4f09-b256-a73124f12c21"
-  );
+
+  const params = window.location.href;
+
+  const [clientConfigGuid, setClientConfigGuid] = useState(params.slice(40));
 
   const [clientConfigPerformance, setClientConfigPerformance] = useState();
   const [clientConfigPerformanceFlag, setClientConfigPerformanceFlag] =

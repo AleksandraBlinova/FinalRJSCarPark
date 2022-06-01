@@ -28,6 +28,23 @@ import "./TableClientConfig.css";
 import { Fab } from "@mui/material";
 import DialogClientConfigurator from "./DialogClientConfigurator";
 
+import {
+  VKShareButton,
+  VKIcon,
+  TelegramShareButton,
+  WhatsappShareButton,
+  ViberShareButton,
+  OKShareButton,
+  TelegramIcon,
+  WhatsappIcon,
+  OKIcon,
+  ViberIcon,
+  MailruShareButton,
+  EmailShareButton,
+  MailruIcon,
+  EmailIcon,
+} from "react-share";
+
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -248,6 +265,41 @@ const EnhancedTableToolbar = (props) => {
             carForEditDrive={carForEditDrive}
             carForEditWarehouse={carForEditWarehouse}
           />
+
+          <VKShareButton
+            url={`http://localhost:3000/configforsocmedia/${carForEdit.configFriendNumber}`}
+            style={{ paddingRight: "10px" }}
+          >
+            <VKIcon size={24} round={true} />
+          </VKShareButton>
+
+          <WhatsappShareButton
+            url={`http://localhost:3000/configforsocmedia/${carForEdit.configFriendNumber}`}
+            style={{ paddingRight: "10px" }}
+          >
+            <WhatsappIcon size={24} round={true} />
+          </WhatsappShareButton>
+
+          <OKShareButton
+            url={`http://localhost:3000/configforsocmedia/${carForEdit.configFriendNumber}`}
+            style={{ paddingRight: "10px" }}
+          >
+            <OKIcon size={24} round={true} />
+          </OKShareButton>
+
+          <TelegramShareButton
+            url={`http://localhost:3000/configforsocmedia/${carForEdit.configFriendNumber}`}
+            style={{ paddingRight: "10px" }}
+          >
+            <TelegramIcon size={24} round={true} />
+          </TelegramShareButton>
+
+          <EmailShareButton
+            url={`http://localhost:3000/configforsocmedia/${carForEdit.configFriendNumber}`}
+            style={{ paddingRight: "10px" }}
+          >
+            <EmailIcon size={24} round={true} />
+          </EmailShareButton>
         </>
       )}
     </Toolbar>

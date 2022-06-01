@@ -90,7 +90,6 @@ const FinalEquipForApplicCX5 = (props) => {
   const onHover = () => {
     setHover(!hover);
   };
-  const mySharedUrl = "http://localhost:3000/configforsocmedia";
 
   const [transms, setTransms] = useState();
   const [loadTFlag, setLoadTFlag] = useState(false);
@@ -146,6 +145,20 @@ const FinalEquipForApplicCX5 = (props) => {
   }, []);
   const [responseStatus, setResponseStatus] = useState();
   const [responseStatusFlag, setResponseStatusFlag] = useState(false);
+
+  const [chosenConfigGuid, setChosenConfigGuid] = useState(
+    ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+      (
+        c ^
+        (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+      ).toString(16)
+    )
+  );
+
+  const [mySharedUrl, setMySharedURL] = useState(
+    `http://localhost:3000/configforsocmedia/${chosenConfigGuid}`
+  );
+
   const [log, setLog] = useState(localStorage.getItem("isLog"));
   //ПОСЫЛАЕМ НОВУЮ КОНФИГУРАЦИЮ НА СЕРВЕР
   //ПОСЫЛАЕМ НОВУЮ КОНФИГУРАЦИЮ НА СЕРВЕР
@@ -169,6 +182,7 @@ const FinalEquipForApplicCX5 = (props) => {
       performanceId: performance.id,
       extraServiceId: extraServiceChosenId,
       clientEmail: value,
+      configFriendNumber: chosenConfigGuid,
     };
 
     axios
@@ -181,6 +195,35 @@ const FinalEquipForApplicCX5 = (props) => {
         setOpen(true);
       })
       .catch(console.error);
+  };
+
+  const [alreadySentF, setAlreadySentF] = useState(false);
+  const handleSubmitClientConfig = (e) => {
+    const values = {
+      modelId: 1,
+      colorId: props.location.propsSearch.id,
+      colorInteriorId: props.location.component.id,
+      price: props.location.params.cost,
+      releaseYear: 2022,
+      status: "Конфигурация пользователя",
+      engineId: props.location.params.engineId,
+      driveId: props.location.params.driveId,
+      gradeId: props.location.params.gradeId,
+      performanceId: performance.id,
+      extraServiceId: extraServiceChosenId,
+      clientEmail: value,
+      configFriendNumber: chosenConfigGuid,
+    };
+    if (alreadySentF == false) {
+      axios
+        .post("http://localhost:7831/api/carconfig/", values, {
+          withCredentials: true,
+        })
+        .then((response) => {
+          setAlreadySentF(true);
+        })
+        .catch(console.error);
+    }
   };
   return (
     <div>
@@ -604,23 +647,42 @@ const FinalEquipForApplicCX5 = (props) => {
             </List>
           </List>
           <div className="button-share-friend-container-6">
-            <VKShareButton url={mySharedUrl}>
+            <VKShareButton
+              url={mySharedUrl}
+              onClick={handleSubmitClientConfig}
+              style={{ paddingRight: "10px" }}
+            >
               <VKIcon size={36} round={true} />
             </VKShareButton>
 
-            <WhatsappShareButton url={mySharedUrl}>
+            <WhatsappShareButton
+              url={mySharedUrl}
+              onClick={handleSubmitClientConfig}
+              style={{ paddingRight: "10px" }}
+            >
               <WhatsappIcon size={36} round={true} />
             </WhatsappShareButton>
 
-            <OKShareButton url={mySharedUrl}>
+            <OKShareButton
+              url={mySharedUrl}
+              onClick={handleSubmitClientConfig}
+              style={{ paddingRight: "10px" }}
+            >
               <OKIcon size={36} round={true} />
             </OKShareButton>
 
-            <TelegramShareButton url={mySharedUrl}>
+            <TelegramShareButton
+              url={mySharedUrl}
+              onClick={handleSubmitClientConfig}
+              style={{ paddingRight: "10px" }}
+            >
               <TelegramIcon size={36} round={true} />
             </TelegramShareButton>
 
-            <EmailShareButton url={mySharedUrl}>
+            <EmailShareButton
+              url={mySharedUrl}
+              onClick={handleSubmitClientConfig}
+            >
               <EmailIcon size={36} round={true} />
             </EmailShareButton>
           </div>
