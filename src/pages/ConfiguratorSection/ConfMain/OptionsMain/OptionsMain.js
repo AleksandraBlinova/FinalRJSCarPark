@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./OptionsMain.css";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
@@ -6,6 +6,11 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CardsMain from "../CardsMain/CardsMain";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -48,6 +53,29 @@ const OptionsMain = (props) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const titleRefCarsEdit = useRef();
+  function handleBackClickCarsEdit() {
+    titleRefCarsEdit.current.scrollIntoView({ behavior: "smooth" });
+  }
+
+  const titleRefCarsCreate = useRef();
+  function handleBackClickCarsCreate() {
+    titleRefCarsCreate.current.scrollIntoView({ behavior: "smooth" });
+  }
+
+  const titleRefCarsEditToTable = useRef();
+  function handleBackClickCarsEditToTable() {
+    titleRefCarsEditToTable.current.scrollIntoView({ behavior: "smooth" });
+  }
+
+  const titleRefCarsCreateToTable = useRef();
+  function handleBackClickCarsCreateToTable() {
+    titleRefCarsCreateToTable.current.scrollIntoView({ behavior: "smooth" });
+  }
+
+  const [currentRole, setCurrentRole] = useState(localStorage.getItem("role"));
+
   return (
     <div className="options-main-container">
       <Box sx={{ width: "100%" }}>
@@ -80,14 +108,64 @@ const OptionsMain = (props) => {
             />
           </Tabs>
         </Box>
+        {currentRole == 2 && (
+          <Tooltip
+            title="Добавить модель"
+            ref={titleRefCarsCreateToTable}
+            style={{ float: "right" }}
+          >
+            <IconButton
+              onClick={() => {
+                handleBackClickCarsCreate();
+              }}
+            >
+              <AddIcon style={{ fontSize: "30px" }} />
+            </IconButton>
+          </Tooltip>
+        )}
+
         <TabPanel value={value} index={0}>
-          <CardsMain />
+          <CardsMain
+            titleRefCarsCreate={titleRefCarsCreate}
+            handleBackClickCarsCreate={handleBackClickCarsCreate}
+            titleRefCarsEdit={titleRefCarsEdit}
+            handleBackClickCarsEdit={handleBackClickCarsEdit}
+            titleRefCarsCreateToTable={titleRefCarsCreateToTable}
+            titleRefCarsEditToTable={titleRefCarsEditToTable}
+            handleBackClickCarsCreateToTable={handleBackClickCarsCreateToTable}
+            handleBackClickCarsEditToTable={handleBackClickCarsEditToTable}
+            currentRole={currentRole}
+          />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <CardsMain disabled={disabled} status={statusSedan} />
+          <CardsMain
+            disabled={disabled}
+            status={statusSedan}
+            titleRefCarsCreate={titleRefCarsCreate}
+            handleBackClickCarsCreate={handleBackClickCarsCreate}
+            titleRefCarsEdit={titleRefCarsEdit}
+            handleBackClickCarsEdit={handleBackClickCarsEdit}
+            titleRefCarsCreateToTable={titleRefCarsCreateToTable}
+            titleRefCarsEditToTable={titleRefCarsEditToTable}
+            handleBackClickCarsCreateToTable={handleBackClickCarsCreateToTable}
+            handleBackClickCarsEditToTable={handleBackClickCarsEditToTable}
+            currentRole={currentRole}
+          />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <CardsMain status={statusCrossover} disabled={disabled} />
+          <CardsMain
+            status={statusCrossover}
+            disabled={disabled}
+            titleRefCarsCreate={titleRefCarsCreate}
+            handleBackClickCarsCreate={handleBackClickCarsCreate}
+            titleRefCarsEdit={titleRefCarsEdit}
+            handleBackClickCarsEdit={handleBackClickCarsEdit}
+            titleRefCarsCreateToTable={titleRefCarsCreateToTable}
+            titleRefCarsEditToTable={titleRefCarsEditToTable}
+            handleBackClickCarsCreateToTable={handleBackClickCarsCreateToTable}
+            handleBackClickCarsEditToTable={handleBackClickCarsEditToTable}
+            currentRole={currentRole}
+          />
         </TabPanel>
       </Box>
     </div>

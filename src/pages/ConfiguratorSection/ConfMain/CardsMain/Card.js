@@ -1,6 +1,10 @@
 import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 const Card = (props) => {
   return (

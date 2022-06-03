@@ -3,9 +3,70 @@
   display: grid;
   grid-template: auto/repeat(3, 1fr);
   grid-gap: 1.5rem;
-  padding: 1rem 0rem 0rem 0rem;
+  padding: 3.5rem 0rem 0rem 0rem;
   max-width: 1200px;
 }
+
+
+.add-model{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding-top: 120px;
+}
+
+
+
+.edit-model{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding-top: 120px;
+}
+
+
+
+.form-container-cards-main-edit {
+  width: 600px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0px;
+  height: 500px;
+  margin: 30px auto;
+  color: rgb(12, 11, 11);
+  padding-top: 20px;
+  background: rgba(119, 111, 111, 0.1);
+}
+
+
+
+.form-container-cards-main-add{
+  width: 600px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0px;
+  height: 500px;
+  margin: 30px auto;
+  color: rgb(12, 11, 11);
+  padding-top: 20px;
+  background: rgba(119, 111, 111, 0.1);
+}
+
+
+.car-change-container-cards-main-edit {
+  padding-top: 2rem;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.car-change-container-cards-main-add {
+  padding-top: 2rem;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+  display: block;
+}
+
 
 @media screen and (max-width: 1024px) {
   .cards-main-container {
