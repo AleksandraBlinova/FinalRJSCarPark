@@ -57,6 +57,24 @@ const CardsMain = (props) => {
   const [modelsLoading, setModelsLoading] = useState(false);
 
   const paths = ["/mazda6config", "/mazdacx5config", "/mazdacx9config"];
+
+  const [currentModel, setCurrentModel] = useState("");
+
+  const handleChangeCurrentModel = (event) => {
+    setCurrentModel(event.target.value);
+  };
+
+  const [currentStartPrice, setCurrentStartPrice] = useState();
+
+  const handleChangeCurrentStartPrice = (event) => {
+    setCurrentStartPrice(event.target.value);
+  };
+
+  const [currentType, setCurrentType] = useState();
+
+  const handleChangeCurrentType = (event) => {
+    setCurrentType(event.target.value);
+  };
   useEffect(() => {
     setModelsLoading(true); //устанавливаем true для загрузочной полосы
     axios({
@@ -78,6 +96,72 @@ const CardsMain = (props) => {
       });
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const values = {
+      model1: currentModel,
+      startPrice: currentStartPrice,
+      typeId: currentType,
+    };
+
+    axios
+      .post(`http://localhost:7831/api/allmodels/`, values, {
+        withCredentials: true,
+      })
+      .then((response) => {})
+      .catch(console.error);
+  };
+
+  const initialFormState = {
+    model1: "",
+    startPrice: "",
+    typeId: "",
+  };
+
+  const [currentmodelModel, setCurrentmodelModel] = useState(initialFormState);
+
+  const editModel = (model) => {
+    //для загрузки в форму редактирования
+
+    setCurrentmodelModel({
+      model1: model.map((m) => m.model1).toString(),
+      startPrice: parseInt(model.map((m) => m.startPrice)),
+      typeId: parseInt(model.map((m) => m.typeId)),
+      id: parseInt(model.map((i) => i.id)),
+    });
+  };
+
+  useEffect(() => {
+    setCurrentmodelModel(currentmodelModel);
+    setCurrentModel(currentmodelModel.model1);
+    setCurrentStartPrice(currentmodelModel.startPrice);
+    setCurrentType(currentmodelModel.typeId);
+  }, [currentmodelModel]);
+
+  const handleSubmitEdit = (e) => {
+    const values = {
+      model1: currentModel,
+      startPrice: currentStartPrice,
+      typeId: currentType,
+    };
+
+    axios
+      .put(
+        `http://localhost:7831/api/allmodels/${currentmodelModel.id}`,
+        values,
+        {
+          mode: "cors",
+          credentials: "include",
+          withCredentials: true,
+          "content-type": "application/json",
+        }
+      )
+      .then((response) => {
+        console.log("OK");
+      })
+      .catch(console.error);
+  };
   return (
     <>
       <div className="cards-main-container">
@@ -97,6 +181,7 @@ const CardsMain = (props) => {
               <IconButton
                 onClick={() => {
                   props.handleBackClickCarsEdit();
+                  editModel(models.filter((e) => e.id == 1));
                 }}
               >
                 <EditIcon />
@@ -137,6 +222,7 @@ const CardsMain = (props) => {
               <IconButton
                 onClick={() => {
                   props.handleBackClickCarsEdit();
+                  editModel(models.filter((e) => e.id == 2));
                 }}
               >
                 <EditIcon />
@@ -177,6 +263,7 @@ const CardsMain = (props) => {
               <IconButton
                 onClick={() => {
                   props.handleBackClickCarsEdit();
+                  editModel(models.filter((e) => e.id == 3));
                 }}
               >
                 <EditIcon />
@@ -200,6 +287,47 @@ const CardsMain = (props) => {
               }
             }, "")}
         </div>
+
+        {/* <div
+          style={
+            props.disabled && props.status === "sedan"
+              ? { pointerEvents: "none", opacity: "0.4" }
+              : {}
+          }
+        >
+          {props.currentRole == 2 && (
+            <Tooltip
+              ref={props.titleRefCarsEditToTable}
+              title="Изменить"
+              style={{ float: "right" }}
+            >
+              <IconButton
+                onClick={() => {
+                  props.handleBackClickCarsEdit();
+                  editModel(models.filter((e) => e.id == 4));
+                }}
+              >
+                <EditIcon />
+              </IconButton>
+            </Tooltip>
+          )}
+          {modelsFlag === true &&
+            models.reduce((res, e) => {
+              if (e.id == 4) {
+                return (
+                  <Card
+                    src={e.pictureUrl}
+                    text={"MAZDA" + " " + e.model1}
+                    path={paths[2]}
+                    type={e.type.type1}
+                    price={"от " + e.startPrice + " ₽"}
+                  />
+                );
+              } else {
+                return res;
+              }
+            }, "")}
+        </div> */}
       </div>
 
       {props.currentRole == 2 && (
@@ -207,7 +335,10 @@ const CardsMain = (props) => {
           <div className="add-model">
             <h2 ref={props.titleRefCarsCreate}>Добавление модели</h2>
             <div className="car-change-container-cards-main-add">
-              <form className="form-container-cards-main-add">
+              <form
+                className="form-container-cards-main-add"
+                onSubmit={handleSubmit}
+              >
                 <div className="fields">
                   <div>
                     {" "}
@@ -216,8 +347,8 @@ const CardsMain = (props) => {
                         Модель{" "}
                       </InputLabel>
                       <BootstrapInput
-                        // onChange={handleChange}
-                        // value={price}
+                        onChange={handleChangeCurrentModel}
+                        value={currentModel}
                         id="demo-customized-textbox"
                       />
                       <FormHelperText>Модель</FormHelperText>
@@ -229,8 +360,8 @@ const CardsMain = (props) => {
                         Тип модели{" "}
                       </InputLabel>
                       <BootstrapInput
-                        // onChange={handleChange}
-                        // value={price}
+                        onChange={handleChangeCurrentType}
+                        value={currentType}
                         id="demo-customized-textbox"
                       />
                       <FormHelperText> Тип модели</FormHelperText>
@@ -242,8 +373,8 @@ const CardsMain = (props) => {
                         Стартовая цена{" "}
                       </InputLabel>
                       <BootstrapInput
-                        // onChange={handleChange}
-                        // value={price}
+                        onChange={handleChangeCurrentStartPrice}
+                        value={currentStartPrice}
                         id="demo-customized-textbox"
                       />
                       <FormHelperText> Стартовая цена</FormHelperText>
@@ -255,7 +386,7 @@ const CardsMain = (props) => {
                         props.handleBackClickCarsCreateToTable();
                       }}
                       className="btn-2"
-                      // type="submit"
+                      type="submit"
                     >
                       Применить
                     </button>
@@ -268,7 +399,10 @@ const CardsMain = (props) => {
           <div className="edit-model">
             <h2 ref={props.titleRefCarsEdit}>Изменение модели</h2>
             <div className="car-change-container-cards-main-edit">
-              <form className="form-container-cards-main-edit">
+              <form
+                className="form-container-cards-main-edit"
+                onSubmit={handleSubmitEdit}
+              >
                 <div className="fields">
                   <div>
                     {" "}
@@ -277,8 +411,8 @@ const CardsMain = (props) => {
                         Модель{" "}
                       </InputLabel>
                       <BootstrapInput
-                        // onChange={handleChange}
-                        // value={price}
+                        onChange={handleChangeCurrentModel}
+                        value={currentModel}
                         id="demo-customized-textbox"
                       />
                       <FormHelperText>Модель</FormHelperText>
@@ -290,8 +424,8 @@ const CardsMain = (props) => {
                         Тип модели{" "}
                       </InputLabel>
                       <BootstrapInput
-                        // onChange={handleChange}
-                        // value={price}
+                        onChange={handleChangeCurrentType}
+                        value={currentType}
                         id="demo-customized-textbox"
                       />
                       <FormHelperText> Тип модели</FormHelperText>
@@ -303,8 +437,8 @@ const CardsMain = (props) => {
                         Стартовая цена{" "}
                       </InputLabel>
                       <BootstrapInput
-                        // onChange={handleChange}
-                        // value={price}
+                        onChange={handleChangeCurrentStartPrice}
+                        value={currentStartPrice}
                         id="demo-customized-textbox"
                       />
                       <FormHelperText> Стартовая цена</FormHelperText>
@@ -316,7 +450,7 @@ const CardsMain = (props) => {
                         props.handleBackClickCarsEditToTable();
                       }}
                       className="btn-2"
-                      //type="submit"
+                      type="submit"
                     >
                       Применить
                     </button>
