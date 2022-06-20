@@ -1,0 +1,51 @@
+.add-model-new-config{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding-top: 120px;
+  }
+
+  .form-container-cards-main-add-new-config{
+    width: 1000px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+    height: 900px;
+    margin: 30px auto;
+    color: rgb(12, 11, 11);
+    padding-top: 20px;
+    background: rgba(119, 111, 111, 0.1);
+  }
+
+  .car-change-container-cards-main-add-new-config {
+    padding-top: 2rem;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .fields-new-config {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(230px, 1fr));
+  }
+
+  .btn-new-config {
+    background: linear-gradient(#000, #640f66);
+    padding: 9px 18px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 40px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    float: right;
+    border-radius: 4px;
+  }
+
+
+  .css-1q60rmi-MuiAutocomplete-endAdornment{
+    top: 6px!important
+  }
+ 

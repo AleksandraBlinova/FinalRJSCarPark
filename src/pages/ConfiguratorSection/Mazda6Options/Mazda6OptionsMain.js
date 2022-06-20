@@ -10,6 +10,12 @@ import ChosenEquipment from "./Equipment6/ChosenEquipment/ChosenEquipment";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import ChosenColorExterior from "./ChosenColorExterior/ChosenColorExterior";
 import ChosenColorInterior from "./ChosenColorInterior/ChosenColorInterior";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
+import Mazda6FormNewConfigGED from "./Mazda6FormNewConfigGED";
 
 const Mazda6OptionsMain = (props) => {
   const [hover, setHover] = useState(false);
@@ -17,7 +23,10 @@ const Mazda6OptionsMain = (props) => {
   const [chosen, setChosen] = useState(0);
   const [ged, setGED] = useState([]);
 
+  const [gedF, setGEDF] = useState(false);
   const [engines, setEngines] = useState([]);
+
+  const [currentRole, setCurrentRole] = useState(localStorage.getItem("role"));
 
   const [pathnameForExtraServ, setPathnameForExtraServ] =
     useState("/extraserv6");
@@ -38,7 +47,7 @@ const Mazda6OptionsMain = (props) => {
     })
       .then((response) => {
         setGED(response.data);
-
+        setGEDF(true);
         setEngines(
           response.data
             .filter((item) => item.modelId == 1)
@@ -118,6 +127,224 @@ const Mazda6OptionsMain = (props) => {
     setOpen(false);
   }
 
+  const [grades, setGrades] = useState(); //new
+  const [currentEngine, setCurrentEngine] = useState(""); //new
+  const [currentIdEng, setCurrentEngineId] = useState(""); //new
+  const [drives, setDrives] = useState(); //new
+  const [currentGrade, setCurrentGrade] = useState(""); //new
+  const [currentIdGr, setCurrentGradeId] = useState(""); //new
+  const [currentIdM, setCurrentModelId] = useState(1); //new
+  const [loadWFlag, setLoadWFlag] = useState(false);
+  const [originalDrives, setOriginalDrives] = useState(""); //new
+  const [currentDrive, setCurrentDrive] = useState(""); //new
+  const [currentDriveId, setCurrentDriveId] = useState(""); //new
+
+  const [currentPerformanceId, setCurrentPerformanceId] = useState(""); //new
+  const [currentPerformance, setCurrentPerformance] = useState(""); //new
+  const [currentPerformanceF, setCurrentPerformanceF] = useState(false); //new
+
+  const [transm, setTransm] = useState(""); //new
+  const [currentTransm, setCurrentTransm] = useState(""); //new
+  const [currentTransmId, setCurrentTransmId] = useState(""); //new
+  const [currentTransmF, setCurrentTransmF] = useState(false); //new
+
+  const [newEngine, setNewEngine] = useState(""); //new
+  const [newGrade, setNewGrade] = useState(""); //new
+  const [newDrive, setNewDrive] = useState(""); //new
+  const [newHP, setNewHP] = useState(""); //new
+  const [newSpeed, setNewSpeed] = useState(""); //new
+  const [newFuelCapacity, setNewFuelCapacity] = useState(""); //new
+  const [newTrunkVolume, setNewTrunkVolume] = useState(""); //new
+  const [newAccelerationTime, setNewAccelerationTime] = useState(""); //new
+  const [newTorque, setNewTorque] = useState(""); //new
+  const [newMixedCycle, setNewMixedCycle] = useState(""); //new
+  const [newRecommendedFuel, setNewRecommendedFuel] = useState(""); //new
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:7831/api/transm/",
+
+      headers: {
+        "content-type": "application/json",
+        withCredentials: true,
+      },
+    })
+      .then((response) => {
+        setTransm(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const handleChangeEngine = (event) => {
+    setCurrentEngine(event.target.value);
+    setCurrentEngineId(event.target.value);
+
+    setGrades(
+      ged
+        .filter(
+          (item) => item.engineId == event.target.value && item.modelId == 1
+        )
+        .map((i) => i.grade)
+        .reduce((o, c) => {
+          const exist = o.find(
+            (item) => item.id === c.id && item.grade1 === c.grade1
+          );
+          if (!exist) {
+            const options = ged
+              .filter((item) => item.id === c.id && item.grade1 === c.grade1)
+              .map((item) => item.option);
+
+            o.push({
+              id: c.id,
+              grade1: c.grade1,
+              options: Array.from(new Set(options)),
+            });
+          }
+
+          return o;
+        }, [])
+    );
+  };
+
+  const handleChangeGrade = (event) => {
+    setCurrentGrade(event.target.value);
+    setCurrentGradeId(event.target.value);
+    setDrives(
+      ged
+        .filter(
+          (item) =>
+            item.engineId == currentIdEng &&
+            item.modelId == 1 &&
+            item.gradeId == event.target.value
+        )
+        .map((i) => i.drive)
+        .reduce((o, c) => {
+          const exist = o.find(
+            (item) => item.id === c.id && item.drive1 === c.drive1
+          );
+          if (!exist) {
+            const options = ged
+              .filter((item) => item.id === c.id && item.drive1 === c.drive1)
+              .map((item) => item.option);
+
+            o.push({
+              id: c.id,
+              drive1: c.drive1,
+              options: Array.from(new Set(options)),
+            });
+          }
+
+          return o;
+        }, [])
+    );
+  };
+  const handleChangeDrive = (event) => {
+    setCurrentDrive(event.target.value);
+    setCurrentDriveId(event.target.value);
+    setCurrentPerformanceId(
+      ged
+        .filter(
+          (i) =>
+            i.modelId == currentIdM &&
+            i.engineId == currentIdEng &&
+            i.gradeId == currentIdGr &&
+            i.driveId == event.target.value
+        )
+        .map((k) => k.performance.map((o) => o.id))
+    );
+    setCurrentPerformance(
+      ged
+        .filter(
+          (i) =>
+            i.modelId == currentIdM &&
+            i.engineId == currentIdEng &&
+            i.gradeId == currentIdGr &&
+            i.driveId == event.target.value
+        )
+        .map((k) => k.performance.map((o) => o))
+    );
+    setCurrentPerformanceF(true);
+    setCurrentTransm(
+      transm.find(
+        (i) =>
+          i.id ==
+          parseInt(
+            ged
+              .filter(
+                (i) =>
+                  i.modelId == currentIdM &&
+                  i.engineId == currentIdEng &&
+                  i.gradeId == currentIdGr &&
+                  i.driveId == event.target.value
+              )
+              .map((k) => k.performance.map((o) => o.transmId))
+          )
+      ).transmission1
+    );
+    setCurrentTransmId(
+      transm.find(
+        (i) =>
+          i.id ==
+          parseInt(
+            ged
+              .filter(
+                (i) =>
+                  i.modelId == currentIdM &&
+                  i.engineId == currentIdEng &&
+                  i.gradeId == currentIdGr &&
+                  i.driveId == event.target.value
+              )
+              .map((k) => k.performance.map((o) => o.transmId))
+          )
+      ).id
+    );
+    setCurrentTransmF(true);
+  };
+
+  const handleChangeTransm = (event) => {
+    setCurrentTransm(event.target.value);
+    setCurrentTransmId(event.target.value);
+  };
+
+  const handleChangeAccelerationTime = (event) => {
+    setNewAccelerationTime(event.target.value);
+  };
+  const handleChangeHp = (event) => {
+    setNewHP(event.target.value);
+  };
+  const handleChangeSpeed = (event) => {
+    setNewSpeed(event.target.value);
+  };
+  const handleChangeTorque = (event) => {
+    setNewTorque(event.target.value);
+  };
+  const handleChangeRecommendedFuel = (event) => {
+    setNewRecommendedFuel(event.target.value);
+  };
+  const handleChangeFuelCapacity = (event) => {
+    setNewFuelCapacity(event.target.value);
+  };
+  const handleChangeTrunkVolume = (event) => {
+    setNewTrunkVolume(event.target.value);
+  };
+
+  const handleChangeMixedCycle = (event) => {
+    setNewMixedCycle(event.target.value);
+  };
+
+  const handleChangeNewDrive = (event) => {
+    setNewDrive(event.target.value);
+  };
+  const handleChangeNewGrade = (event) => {
+    setNewGrade(event.target.value);
+  };
+  const handleChangeNewEngine = (event) => {
+    setNewEngine(event.target.value);
+  };
+
   return (
     <>
       <div className="mazda6-options-main-container">
@@ -128,6 +355,21 @@ const Mazda6OptionsMain = (props) => {
           </Link>
 
           <h2>ВЫБЕРИТЕ ДВИГАТЕЛЬ, КОМПЛЕКТАЦИЮ И ПАКЕТ</h2>
+          {currentRole == 2 && (
+            <Tooltip
+              title="Добавить конфигурацию"
+              // ref={titleRefCarsCreateToTable}
+              style={{ float: "right" }}
+            >
+              <IconButton
+              // onClick={() => {
+              //   handleBackClickCarsCreate();
+              // }}
+              >
+                <AddIcon style={{ fontSize: "32px" }} />
+              </IconButton>
+            </Tooltip>
+          )}
         </div>
         <div className="main-container-engine-cards">
           <CardsEngine6
@@ -525,6 +767,51 @@ const Mazda6OptionsMain = (props) => {
             pathnameForExtraServ={pathnameForExtraServ}
           />
         )}
+
+        <>
+          <Mazda6FormNewConfigGED
+            ged={ged}
+            engines={engines}
+            gedF={gedF}
+            handleChangeGrade={handleChangeGrade}
+            handleChangeEngine={handleChangeEngine}
+            handleChangeDrive={handleChangeDrive}
+            grades={grades}
+            drives={drives}
+            currentIdEng={currentIdEng}
+            currentIdGr={currentIdGr}
+            currentDriveId={currentDriveId}
+            currentPerformance={currentPerformance}
+            currentPerformanceId={currentPerformanceId}
+            currentPerformanceF={currentPerformanceF}
+            currentTransm={currentTransm}
+            currentTransmF={currentTransmF}
+            currentTransmId={currentTransmId}
+            transm={transm}
+            handleChangeTransm={handleChangeTransm}
+            newAccelerationTime={newAccelerationTime}
+            newDrive={newDrive}
+            newEngine={newEngine}
+            newFuelCapacity={newFuelCapacity}
+            newGrade={newGrade}
+            newHP={newHP}
+            newMixedCycle={newMixedCycle}
+            newRecommendedFuel={newRecommendedFuel}
+            newSpeed={newSpeed}
+            newTorque={newTorque}
+            handleChangeAccelerationTime={handleChangeAccelerationTime}
+            handleChangeFuelCapacity={handleChangeFuelCapacity}
+            handleChangeHp={handleChangeHp}
+            handleChangeMixedCycle={handleChangeMixedCycle}
+            handleChangeRecommendedFuel={handleChangeRecommendedFuel}
+            handleChangeSpeed={handleChangeSpeed}
+            handleChangeTrunkVolume={handleChangeTrunkVolume}
+            handleChangeTorque={handleChangeTorque}
+            handleChangeNewDrive={handleChangeNewDrive}
+            handleChangeNewEngine={handleChangeNewEngine}
+            handleChangeNewGrade={handleChangeNewGrade}
+          />
+        </>
 
         <div className="prices-container">
           <p className="prices-text-conf-main">

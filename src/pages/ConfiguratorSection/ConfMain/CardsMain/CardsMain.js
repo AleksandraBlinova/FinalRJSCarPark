@@ -56,7 +56,12 @@ const CardsMain = (props) => {
   const [modelsFlag, setModelsFlag] = useState(false);
   const [modelsLoading, setModelsLoading] = useState(false);
 
-  const paths = ["/mazda6config", "/mazdacx5config", "/mazdacx9config"];
+  const paths = [
+    "/mazda6config",
+    "/mazdacx5config",
+    "/mazdacx9config",
+    "/mazdacx30config",
+  ];
 
   const [currentModel, setCurrentModel] = useState("");
 
@@ -96,6 +101,7 @@ const CardsMain = (props) => {
       });
   }, []);
 
+  console.log(currentModel);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -288,7 +294,7 @@ const CardsMain = (props) => {
             }, "")}
         </div>
 
-        {/* <div
+        <div
           style={
             props.disabled && props.status === "sedan"
               ? { pointerEvents: "none", opacity: "0.4" }
@@ -318,7 +324,7 @@ const CardsMain = (props) => {
                   <Card
                     src={e.pictureUrl}
                     text={"MAZDA" + " " + e.model1}
-                    path={paths[2]}
+                    path={paths[3]}
                     type={e.type.type1}
                     price={"от " + e.startPrice + " ₽"}
                   />
@@ -327,7 +333,7 @@ const CardsMain = (props) => {
                 return res;
               }
             }, "")}
-        </div> */}
+        </div>
       </div>
 
       {props.currentRole == 2 && (

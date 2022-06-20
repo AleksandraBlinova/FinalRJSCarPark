@@ -51,6 +51,7 @@ import FinalEquipForApplicCX9 from "./pages/ConfiguratorSection/MazdaCX9Options/
 import ClientConfigurations from "./pages/ConfiguratorSection/ClientConfigurations/ClientConfigurations";
 import AdminConfigurations from "./pages/ConfiguratorSection/AdminConfigurations/AdminConfigurations";
 import ConfigForSocMedia from "./pages/ConfigForSocMedia/ConfigForSocMedia";
+import MazdaCX30OptionsMain from "./pages/ConfiguratorSection/MazdaCX30Options/MazdaCX30OptionsMain";
 
 function App() {
   const [role, setRole] = useState(localStorage.getItem("role")); // 0 - guest; 1 - client; 2 - admin
@@ -92,6 +93,7 @@ function App() {
           <Route path="/mazda6config" component={Mazda6OptionsMain} />
           <Route path="/mazdacx5config" component={MazdaCX5OptionsMain} />
           <Route path="/mazdacx9config" component={MazdaCX9OptionsMain} />
+          <Route path="/mazdacx30config" component={MazdaCX30OptionsMain} />
           <Route path="/mazda6equipdetails" component={Mazda6EquipDetails} />
           <Route path="/mazda6interiordrive" component={Mazda6InteriorDrive} />
           <Route
